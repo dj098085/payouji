@@ -343,7 +343,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .petslot .pf .nm{font-size:12.5px;font-weight:700;margin-bottom:5px;}
 .petopt{display:inline-block;border:1px solid var(--line);background:#fff;border-radius:9px;font-size:11px;padding:3px 8px;margin:0 5px 5px 0;cursor:pointer;color:var(--ink2);}
 .petopt.on{border-color:var(--caramel);background:var(--gold-soft);color:#7A5A22;font-weight:700;}
-.petimg{width:100%;display:block;border-radius:12px;}
+.petimg{width:100%;display:block;}
 .peturl{display:flex;gap:6px;margin-top:7px;}
 .peturl input{flex:1;min-width:0;border:1px solid var(--line);border-radius:9px;padding:6px 8px;font-size:11.5px;outline:none;}
 .peturl input:focus{border-color:var(--caramel);}
@@ -353,7 +353,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 
 .hero h1 .ver{font-size:11px;vertical-align:middle;margin-left:7px;color:#8C6F52;background:#fff;border:1px solid #F0E3CE;border-radius:7px;padding:2px 7px;font-weight:700;letter-spacing:0;box-shadow:0 2px 6px rgba(140,90,43,.08);}
 
-.bphoto{position:relative;width:100%;border-radius:46% 46% 38% 38%;overflow:hidden;animation:bob 3.2s ease-in-out infinite;transform-origin:50% 100%;background:#F5E6D0;}
+.bphoto{position:relative;width:100%;animation:bob 3.2s ease-in-out infinite;transform-origin:50% 100%;}
 
 .bphoto img{display:block;width:100%;height:auto;}
 
@@ -490,19 +490,6 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
  border-radius:99px;padding:2px 9px;box-shadow:0 4px 14px rgba(60,35,10,.18);position:absolute;}
 
 /* 地面投影：让“起跳抱住”有落点参照，动作才有重量感 */
-.bear-wrap:after{content:"";position:absolute;left:9%;right:9%;bottom:-5px;height:9px;border-radius:50%;
- background:radial-gradient(ellipse at center,rgba(140,92,40,.22),rgba(140,92,40,0) 72%);
- opacity:.85;pointer-events:none;transform-origin:50% 50%;}
-.bear-wrap.hugHoldA:after,.bear-wrap.hugHoldB:after{animation:shLift 1.75s cubic-bezier(.36,.07,.19,.97) forwards;}
-@keyframes shLift{
- 0%{opacity:.85;transform:scale(1,1)}
- 15%{opacity:.32;transform:scale(.70,.66)}
- 30%{opacity:.80;transform:scale(1.05,1.02)}
- 48%{opacity:.30;transform:scale(.68,.64)}
- 64%{opacity:.82;transform:scale(1.03,1)}
- 80%{opacity:.45;transform:scale(.78,.74)}
- 100%{opacity:.52;transform:scale(.80,.76)}
-}
 </style>
 </head>
 <body>
@@ -515,7 +502,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   <div class="bears" id="bearBox">
     <div class="bear-wrap b1" id="bearTT" data-skin="raw">
       <div class="bphoto">
-        <img class="b-all" src="https://workbuddy-space-static.codebuddy.work/image/c3Kw1vc6VL2pmnOH7LjVvM.jpg" alt="狍坨坨">
+        <img class="b-all" src="https://workbuddy-space-static.codebuddy.work/image/bfBEBe7TzlCYhRbK4ZrH5V.webp" alt="狍坨坨">
         <div class="gear">
           <svg class="o-scarf" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><path d="M55 125 Q100 145 145 125 L142 140 Q100 160 58 140 Z" fill="#C4553B"/><rect x="110" y="135" width="18" height="36" rx="9" fill="#C4553B" transform="rotate(9 119 153)"/><circle cx="119" cy="151" r="2.5" fill="#F5C24D"/></svg>
           <svg class="o-earmuffs" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><path d="M28 52 Q32 32 52 30" stroke="#8C5A2B" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M172 52 Q168 32 148 30" stroke="#8C5A2B" stroke-width="8" fill="none" stroke-linecap="round"/></svg>
@@ -534,7 +521,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
     </div>
     <div class="bear-wrap b2" id="bearGG" data-skin="raw">
       <div class="bphoto">
-        <img class="b-all" src="https://workbuddy-space-static.codebuddy.work/image/MmJQOO9Y6a7sBLMpa4GdI1.jpg" alt="狍果果">
+        <img class="b-all" src="https://workbuddy-space-static.codebuddy.work/image/EZ5UWD0FPgH3U8OYKZCjkv.webp" alt="狍果果">
         <div class="gear">
           <svg class="o-scarf" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><path d="M58 125 Q100 143 142 125 L140 140 Q100 158 60 140 Z" fill="#7B6BA8"/><rect x="108" y="135" width="17" height="35" rx="8" fill="#7B6BA8" transform="rotate(9 116 152)"/><circle cx="116" cy="150" r="2.5" fill="#EDE7F7"/></svg>
           <svg class="o-earmuffs" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><path d="M30 52 Q34 32 54 30" stroke="#6A5B9E" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M170 52 Q166 32 146 30" stroke="#6A5B9E" stroke-width="8" fill="none" stroke-linecap="round"/></svg>
@@ -1060,7 +1047,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.3';
+const APP_VER='1.3.1';
 const APP_DATE='2026-09-20';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
