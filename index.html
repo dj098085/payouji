@@ -1,0 +1,2718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>狍游记 · 坨坨果果陪你游东北（四季通用）</title>
+<meta name="description" content="狍游记——东北神兽狍坨坨与狍果果陪你游东北。四季通用：错峰规划、防宰客价格、小众目的地、本地小馆，含记账打卡清单与行后复盘，一键把行程分享给同伴。">
+<meta property="og:title" content="狍游记 · 坨坨果果陪你游东北">
+<meta property="og:description" content="四季通用的东北旅行管家：按人数给交通与防宰客价格，只推本地人去的小馆和冷门好地方，行程一键分享给同伴。">
+<meta property="og:image" content="https://workbuddy-space-static.codebuddy.work/image/LyHJ7EEJCBOMj3pWLiuhIU.jpg">
+<meta property="og:type" content="website">
+<meta name="format-detection" content="telephone=no">
+<style>
+:root{
+  --bg:#FFF6E9; --panel:#FFFDF8; --ink:#4A3320; --ink2:#8C6F52;
+  --caramel:#B5773A; --caramel-deep:#8C5A2B; --gold:#F5C24D; --gold-soft:#FDE7B0;
+  --green:#7FA86B; --red:#D9663F; --line:#F0E3CE;
+  --sp:#8FB37A; --su:#4E9BB5; --au:#D98B3A; --wi:#6E8CB8;
+  --r:18px; --shadow:0 4px 18px rgba(140,90,43,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:#EFE3CE;color:var(--ink);}
+#phone{max-width:480px;margin:0 auto;background:var(--bg);min-height:100vh;position:relative;box-shadow:0 0 40px rgba(0,0,0,.08);}
+.hero{position:relative;padding:26px 20px 18px;background:linear-gradient(160deg,#FBE3BC,#FFF3DC 60%,#FFF6E9);overflow:hidden;transition:.4s;}
+.hero.sp{background:linear-gradient(160deg,#DCEEDA,#F2FAEE 60%,#FFF6E9);}
+.hero.su{background:linear-gradient(160deg,#CFE7F2,#E8F5FA 60%,#FFF6E9);}
+.hero.au{background:linear-gradient(160deg,#FBDDBB,#FDEFD6 60%,#FFF6E9);}
+.hero.wi{background:linear-gradient(160deg,#D5E0F0,#E9F0F9 60%,#FFF6E9);}
+.hero h1{font-size:30px;letter-spacing:2px;color:var(--caramel-deep);font-weight:800;}
+.hero h1 .ver{font-size:11px;vertical-align:middle;margin-left:7px;color:#8C6F52;background:#fff;border:1px solid #F0E3CE;border-radius:7px;padding:2px 7px;font-weight:700;letter-spacing:0;box-shadow:0 2px 6px rgba(140,90,43,.08);}
+.hero h1 span{color:var(--red);}
+.hero .sub{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.7;}
+.badge-gq{position:absolute;top:20px;right:16px;background:var(--green);color:#fff;font-size:11px;padding:4px 10px;border-radius:999px;font-weight:700;box-shadow:0 3px 8px rgba(127,168,107,.35);}
+.bears{display:flex;gap:12px;margin-top:14px;align-items:center;}
+.bears .b1{width:74px;height:74px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:var(--shadow);}
+.bears .b2{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:var(--shadow);}
+.bears .say{flex:1;background:#fff;border-radius:16px;padding:10px 12px;font-size:12.5px;color:var(--ink2);line-height:1.7;position:relative;box-shadow:var(--shadow);}
+.bears .say b{color:var(--caramel-deep);}
+.bears .say:before{content:"";position:absolute;left:-7px;top:24px;border:8px solid transparent;border-right-color:#fff;border-left:0;}
+.seasonbar{display:flex;gap:8px;margin-top:14px;}
+.seasonbar button{flex:1;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:9px 4px;font-size:12px;color:var(--ink2);cursor:pointer;font-weight:700;line-height:1.35;}
+.seasonbar button .se{display:block;font-size:19px;margin-bottom:2px;}
+.seasonbar button.on{color:#fff;border-color:transparent;box-shadow:0 4px 12px rgba(0,0,0,.12);}
+.seasonbar button.on[data-s="sp"]{background:var(--sp);} .seasonbar button.on[data-s="su"]{background:var(--su);}
+.seasonbar button.on[data-s="au"]{background:var(--au);} .seasonbar button.on[data-s="wi"]{background:var(--wi);}
+.tabbar{position:sticky;bottom:0;z-index:50;display:flex;background:rgba(255,253,248,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);}
+.tabbar button{flex:1;border:0;background:none;padding:8px 0 10px;font-size:11px;color:var(--ink2);cursor:pointer;}
+.tabbar button .ic{display:block;font-size:20px;margin-bottom:2px;filter:grayscale(1);opacity:.55;}
+.tabbar button.on{color:var(--caramel-deep);font-weight:700;}
+.tabbar button.on .ic{filter:none;opacity:1;}
+main{padding:16px 16px 90px;}
+.view{display:none;} .view.on{display:block;animation:fade .25s;}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h2.sec{font-size:17px;font-weight:800;margin:18px 0 10px;display:flex;align-items:center;gap:8px;}
+h2.sec:first-child{margin-top:2px;}
+h2.sec .n{width:22px;height:22px;border-radius:7px;background:var(--gold);color:var(--caramel-deep);font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:800;}
+.card{background:var(--panel);border-radius:var(--r);padding:14px 15px;box-shadow:var(--shadow);margin-bottom:12px;}
+.card h3{font-size:14.5px;font-weight:800;color:var(--caramel-deep);margin-bottom:6px;}
+.card p,.card li{font-size:12.8px;line-height:1.8;color:var(--ink2);}
+.card ul{padding-left:16px;}
+.tip{background:var(--gold-soft);border-radius:12px;padding:9px 12px;font-size:12px;line-height:1.7;color:#7A5A22;margin:10px 0 0;}
+.tag{display:inline-block;font-size:10.5px;padding:2px 8px;border-radius:999px;margin-right:5px;font-weight:600;}
+.t-g{background:#EAF2E4;color:#5C8148;} .t-o{background:var(--gold-soft);color:#9A6B1E;}
+.t-b{background:#DCE9F4;color:#3F7B9B;} .t-w{background:#E3E8F2;color:#4E6380;}
+.chk{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;border-bottom:1px dashed var(--line);cursor:pointer;}
+.chk:last-child{border-bottom:0;}
+.chk .box{flex:0 0 18px;width:18px;height:18px;border-radius:6px;border:2px solid var(--caramel);margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;}
+.chk.done .box{background:var(--green);border-color:var(--green);}
+.chk.done span{text-decoration:line-through;color:#B8A88F;}
+.chk span{font-size:13px;line-height:1.6;}
+.gtitle{display:flex;justify-content:space-between;align-items:center;margin:14px 0 6px;}
+.gtitle b{font-size:13.5px;color:var(--caramel-deep);} .gtitle small{font-size:11px;color:#B8A88F;}
+.ppl{display:flex;gap:8px;margin:8px 0 4px;flex-wrap:wrap;}
+.ppl button{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:8px 13px;font-size:13px;color:var(--ink2);cursor:pointer;font-weight:600;}
+.ppl button.on{border-color:var(--caramel);background:var(--gold-soft);color:var(--caramel-deep);}
+.period{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0 4px;}
+.period button{border:1.5px solid var(--line);background:#fff;border-radius:11px;padding:7px 11px;font-size:12px;color:var(--ink2);cursor:pointer;}
+.period button.on{border-color:var(--su);background:#DCEBF3;color:#3F7B9B;font-weight:700;}
+.pt{width:100%;border-collapse:collapse;font-size:12px;}
+.pt th{background:var(--gold-soft);color:#7A5A22;padding:7px 6px;font-size:11.5px;text-align:left;}
+.pt td{padding:7px 6px;border-bottom:1px dashed var(--line);color:var(--ink2);line-height:1.5;}
+.pt td:first-child{color:var(--ink);font-weight:600;}
+.pt .pr{color:var(--red);font-weight:700;white-space:nowrap;}
+.day{border-left:3px solid var(--gold);margin-left:6px;padding-left:14px;position:relative;margin-bottom:14px;}
+.day:before{content:attr(data-d);position:absolute;left:-15px;top:0;width:26px;height:26px;border-radius:50%;background:var(--caramel);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:800;box-shadow:0 0 0 4px var(--bg);}
+.day h4{font-size:14px;font-weight:800;color:var(--caramel-deep);margin:2px 0 6px;}
+.stop{display:flex;gap:8px;align-items:flex-start;margin-bottom:7px;}
+.stop .st{flex:1;background:#fff;border-radius:12px;padding:8px 11px;box-shadow:0 2px 8px rgba(140,90,43,.07);font-size:12.5px;line-height:1.65;color:var(--ink2);}
+.stop .st b{color:var(--ink);font-size:13px;display:block;margin-bottom:2px;}
+.stop.done .st{background:#F0F6EC;}
+.stop .btn-mini{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:9px;font-size:10.5px;padding:4px 7px;color:var(--ink2);cursor:pointer;margin-top:8px;}
+.stop .btn-mini.on{background:var(--green);border-color:var(--green);color:#fff;}
+.altbox{background:#EEF3FA;border-radius:12px;padding:9px 11px;font-size:12px;color:#4E6380;line-height:1.7;margin-top:8px;}
+.dest{border-radius:var(--r);background:#fff;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden;}
+.dest .dhead{display:flex;gap:12px;padding:13px 14px 9px;align-items:center;cursor:pointer;}
+.dest .emoji{width:46px;height:46px;border-radius:14px;background:linear-gradient(140deg,#FBE3BC,#FDE7B0);display:flex;align-items:center;justify-content:center;font-size:24px;flex:0 0 46px;}
+.dest h4{font-size:14.5px;font-weight:800;color:var(--ink);}
+.dest .meta{font-size:11px;color:#B8A88F;margin-top:3px;}
+.dest .arrow{margin-left:auto;color:#CBB58F;font-size:18px;transition:.2s;}
+.dest.open .arrow{transform:rotate(90deg);}
+.dest .dbody{display:none;padding:0 14px 13px;font-size:12.6px;line-height:1.8;color:var(--ink2);border-top:1px dashed var(--line);}
+.dest.open .dbody{display:block;padding-top:10px;}
+.dest .dbody b{color:var(--caramel-deep);}
+.food{display:flex;gap:12px;background:#fff;border-radius:var(--r);padding:12px 14px;margin-bottom:10px;box-shadow:var(--shadow);}
+.food .fe{font-size:28px;flex:0 0 40px;text-align:center;}
+.food h4{font-size:13.8px;font-weight:800;color:var(--ink);}
+.food h4 .pr{float:right;font-size:12px;color:var(--red);font-weight:700;}
+.food p{font-size:12.2px;color:var(--ink2);line-height:1.7;margin-top:3px;}
+.food .where{font-size:11px;color:#5C8148;margin-top:4px;font-weight:600;}
+.exp-form{display:flex;gap:7px;margin-bottom:10px;flex-wrap:wrap;}
+.exp-form input,.exp-form select{border:1.5px solid var(--line);border-radius:11px;padding:9px 10px;font-size:13px;background:#fff;color:var(--ink);outline:none;}
+.exp-form input[type=number]{width:96px;} .exp-form input[type=text]{flex:1;min-width:110px;}
+.exp-form button{border:0;background:var(--caramel);color:#fff;border-radius:11px;padding:0 18px;font-size:14px;font-weight:700;cursor:pointer;}
+.bar{height:10px;background:#F3E7D2;border-radius:99px;overflow:hidden;margin-top:5px;}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--caramel));transition:.4s;}
+.bar i.over{background:var(--red);}
+.catbar{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--ink2);margin:7px 0;}
+.catbar .cb{flex:1;height:8px;background:#F3E7D2;border-radius:99px;overflow:hidden;}
+.catbar .cb i{display:block;height:100%;border-radius:99px;}
+.exp-item{display:flex;justify-content:space-between;align-items:center;padding:8px 2px;border-bottom:1px dashed var(--line);font-size:13px;}
+.exp-item small{color:#B8A88F;font-size:10.5px;display:block;}
+.exp-item .del{color:#C9B394;cursor:pointer;font-size:15px;padding:0 6px;}
+.ck-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.ck{background:#fff;border-radius:14px;padding:11px 12px;box-shadow:var(--shadow);cursor:pointer;border:2px solid transparent;}
+.ck.on{border-color:var(--gold);background:var(--gold-soft);}
+.ck .ce{font-size:22px;} .ck b{display:block;font-size:12.8px;margin-top:4px;}
+.ck small{font-size:10.5px;color:#B8A88F;} .ck.on small{color:#9A6B1E;}
+.stamp{float:right;font-size:10px;color:#fff;background:var(--green);border-radius:8px;padding:2px 7px;font-weight:700;}
+.add-row{display:flex;gap:7px;margin-bottom:10px;}
+.add-row input{flex:1;border:1.5px solid var(--line);border-radius:11px;padding:9px 11px;font-size:13px;outline:none;background:#fff;}
+.add-row button{border:0;background:var(--caramel);color:#fff;border-radius:11px;padding:0 16px;font-weight:700;cursor:pointer;}
+.stars{font-size:26px;letter-spacing:4px;cursor:pointer;color:#E4D4B8;}
+.stars b{color:var(--gold);text-shadow:0 1px 4px rgba(245,194,77,.5);}
+textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px;font-size:13px;font-family:inherit;min-height:76px;resize:vertical;outline:none;background:#fff;color:var(--ink);}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.stat{background:#fff;border-radius:14px;padding:12px;box-shadow:var(--shadow);text-align:center;}
+.stat b{font-size:19px;color:var(--caramel-deep);display:block;} .stat small{font-size:10.5px;color:#B8A88F;}
+.empty{text-align:center;color:#C9B394;font-size:12px;padding:16px 0;}
+.divider{height:1px;background:var(--line);margin:12px 0;}
+input[type=range]{width:100%;accent-color:var(--caramel);}
+.sel{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 11px;font-size:13.5px;background:#fff;color:var(--ink);outline:none;margin-bottom:9px;font-family:inherit;}
+.frow{display:flex;gap:8px;margin-bottom:9px;}
+.frow>*{flex:1;margin-bottom:0;}
+.frow .sel{margin-bottom:0;}
+.kv{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;padding:7px 0;border-bottom:1px dashed var(--line);color:var(--ink2);line-height:1.5;}
+.kv b{color:var(--ink);}
+.kv .v{font-weight:800;color:var(--caramel-deep);white-space:nowrap;}
+.res{background:linear-gradient(150deg,#FFF7E4,#FFFDF8);border:2px solid var(--gold);border-radius:16px;padding:13px 14px;margin-top:12px;}
+.res .rl{font-size:11.5px;color:#9A6B1E;font-weight:700;margin-bottom:3px;}
+.res .big{font-size:25px;font-weight:800;color:var(--red);letter-spacing:-.5px;}
+.res .big small{font-size:13px;color:var(--ink2);font-weight:600;letter-spacing:0;}
+.warn{background:#FDECE6;border:1.5px solid #F0BBAE;border-radius:12px;padding:10px 12px;font-size:12.2px;color:#A63F22;line-height:1.75;margin-top:10px;}
+.ok{background:#EDF5E8;border:1.5px solid #C6DDB6;border-radius:12px;padding:10px 12px;font-size:12.2px;color:#4C7040;line-height:1.75;margin-top:10px;}
+.src{font-size:10.5px;color:#B8A88F;line-height:1.85;margin-top:9px;}
+.pill{display:inline-block;font-size:11.5px;padding:5px 10px;border-radius:999px;background:#fff;border:1.3px solid var(--line);color:var(--ink2);cursor:pointer;margin:0 6px 6px 0;font-weight:600;}
+.pill.on{border-color:var(--caramel);background:var(--gold-soft);color:var(--caramel-deep);font-weight:800;}
+.mini-t{font-size:11px;color:#B8A88F;margin:2px 0 8px;}
+/* ===== 动态IP角色 ===== */
+.bears{flex-wrap:wrap;}
+.bears .say{flex:1 1 100%;}
+.bear-wrap{position:relative;flex:0 0 auto;cursor:pointer;transition:transform .3s;}
+.bear-wrap:hover{transform:translateY(-5px);}
+.bear-wrap svg{display:block;overflow:visible;}
+.bear-wrap.b1{width:112px;} .bear-wrap.b1 svg{width:112px;height:124px;}
+.bear-wrap.b2{width:94px;} .bear-wrap.b2 svg{width:94px;height:104px;margin-bottom:14px;}
+.btag{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);font-size:10px;background:#fff;border-radius:99px;padding:1px 8px;color:var(--caramel-deep);font-weight:700;box-shadow:var(--shadow);white-space:nowrap;}
+.b2 .btag{bottom:4px;}
+.bear-hint{flex:1 1 100%;text-align:right;font-size:11px;color:#C9A96E;padding-top:2px;}
+.gifpop{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);width:150px;background:#fff;border-radius:18px;padding:7px;box-shadow:0 8px 26px rgba(60,35,10,.22);display:none;z-index:40;}
+.gifpop img{width:100%;border-radius:12px;display:block;}
+.gifpop:after{content:"";position:absolute;top:100%;left:50%;margin-left:-8px;border:8px solid transparent;border-top-color:#fff;}
+.gifpop .cap{font-size:11.5px;text-align:center;color:var(--caramel-deep);font-weight:700;padding:4px 0 2px;}
+/* 分层动画 */
+.b-all{transform-box:fill-box;transform-origin:50% 100%;animation:bob 3.2s ease-in-out infinite;}
+.b-body{transform-box:fill-box;transform-origin:50% 100%;animation:breathe 3.2s ease-in-out infinite;}
+.b-eyes{transform-box:fill-box;transform-origin:50% 55%;animation:blink 4.6s infinite;}
+.b-tail{transform-box:fill-box;transform-origin:85% 85%;animation:wag 2.6s ease-in-out infinite;}
+.b-ear{transform-box:fill-box;transform-origin:50% 95%;}
+.b-ear.earR{animation:twitch 5.4s infinite;}
+.b-arm{transform-box:fill-box;transform-origin:50% 12%;}
+.b2 .aR{animation:wave 2.8s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+@keyframes wag{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(13deg)}}
+@keyframes twitch{0%,87%,100%{transform:rotate(0)}91%{transform:rotate(-9deg)}95%{transform:rotate(6deg)}}
+@keyframes wave{0%,100%{transform:rotate(6deg)}50%{transform:rotate(-26deg)}}
+@keyframes shiver{0%,100%{transform:translateX(0)}25%{transform:translateX(-2.2px)}75%{transform:translateX(2.2px)}}
+@keyframes puff{0%{opacity:0;transform:translate(0,0) scale(.5)}30%{opacity:.9}100%{opacity:0;transform:translate(16px,-16px) scale(1.6)}}
+@keyframes sweatdrop{0%{opacity:0;transform:translateY(-4px)}25%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+/* 温度档显隐：默认全隐藏 */
+.o-scarf,.o-earmuffs,.o-gloves,.o-coat,.o-shades,.e-sweat,.e-breath{display:none;}
+.lv-chill .o-scarf{display:block;}
+.lv-freeze .o-scarf,.lv-freeze .o-earmuffs,.lv-freeze .o-gloves{display:block;}
+.lv-frozen .o-scarf,.lv-frozen .o-earmuffs,.lv-frozen .o-gloves,.lv-frozen .o-coat{display:block;}
+.lv-frozen .b-all{animation:bob 3.2s ease-in-out infinite,shiver .38s linear infinite;}
+.lv-frozen .e-breath,.lv-freeze .e-breath{display:block;}
+.e-breath circle{animation:puff 2.4s ease-out infinite;opacity:0;}
+.e-breath .p2{animation-delay:1.2s;}
+.lv-warm .o-shades,.lv-hot .o-shades{display:block;}
+.lv-hot .e-sweat{display:block;}
+.e-sweat path{animation:sweatdrop 1.7s linear infinite;opacity:0;}
+.lv-hot .b-all{animation:bob 5.5s ease-in-out infinite;}
+/* 季节粒子 */
+.fall{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.fall span{position:absolute;top:-26px;animation:fall linear infinite;}
+@keyframes fall{to{transform:translateY(430px) rotate(330deg);}}
+/* 实时天气卡 */
+.wx-big{font-size:32px;font-weight:800;color:var(--caramel-deep);line-height:1;}
+.wx-big small{font-size:13px;color:var(--ink2);font-weight:600;}
+.wx-sub{font-size:11.5px;color:var(--ink2);line-height:1.7;}
+.wx-live{font-size:10px;background:var(--green);color:#fff;border-radius:99px;padding:2px 8px;font-weight:700;}
+.wx-sim{font-size:10px;background:#D9C6A6;color:#6B5533;border-radius:99px;padding:2px 8px;font-weight:700;}
+.bear-say{background:var(--gold-soft);border-radius:14px;padding:9px 12px;font-size:12.5px;color:#7A5A22;line-height:1.7;margin-top:10px;display:none;}
+.bear-say.on{display:block;}
+
+/* ============ 东北话气泡 ============ */
+#neToast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%) translateY(14px);
+ width:min(400px,calc(100% - 28px));z-index:99;opacity:0;pointer-events:none;transition:.34s cubic-bezier(.2,.9,.3,1.2);}
+#neToast.on{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+.ne-bub{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1.5px solid var(--caramel);
+ border-radius:16px;padding:10px 12px;box-shadow:0 8px 26px rgba(90,60,25,.20);}
+.ne-face{flex:0 0 34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+ font-size:17px;font-weight:800;color:#fff;}
+.ne-face.t{background:linear-gradient(145deg,#E0AE7C,#C98B54);}
+.ne-face.g{background:linear-gradient(145deg,#FBEBD2,#E8CFA6);color:#8A6A3A;}
+.ne-txt{flex:1;font-size:12.8px;line-height:1.66;color:var(--ink);}
+.ne-txt b{color:var(--caramel-deep);}
+.ne-txt .who{font-size:11px;color:#B09877;display:block;margin-bottom:1px;}
+.ne-close{flex:0 0 auto;border:0;background:transparent;color:#C3B096;font-size:15px;cursor:pointer;padding:0 2px;line-height:1;}
+
+/* ============ 帮我规划 ============ */
+.gen-q{margin-bottom:16px;}
+.gen-qt{font-size:12.8px;font-weight:800;color:var(--ink);margin-bottom:7px;display:flex;align-items:center;gap:5px;}
+.gen-qt small{font-weight:500;color:#B09877;font-size:11px;}
+.opts{display:flex;flex-wrap:wrap;gap:7px;}
+.opt{border:1.4px solid var(--line);background:#fff;border-radius:99px;padding:7px 13px;font-size:12.2px;
+ color:var(--ink2);cursor:pointer;transition:.16s;user-select:none;line-height:1.3;}
+.opt:hover{border-color:var(--caramel);color:var(--caramel-deep);}
+.opt.on{background:var(--caramel);border-color:var(--caramel);color:#fff;font-weight:700;
+ box-shadow:0 3px 10px rgba(200,140,80,.28);}
+.gen-go{width:100%;border:0;border-radius:14px;padding:13px;font-size:14.5px;font-weight:800;cursor:pointer;
+ background:linear-gradient(135deg,var(--caramel),var(--caramel-deep));color:#fff;
+ box-shadow:0 6px 18px rgba(160,105,50,.32);margin-top:4px;letter-spacing:1px;}
+.gen-go:active{transform:translateY(1px);}
+.gen-more{font-size:11.5px;color:#B09877;text-align:center;margin-top:9px;cursor:pointer;text-decoration:underline;}
+.res-hero{background:linear-gradient(140deg,#FFF6E7,#FCEBD2);border:1.5px dashed var(--caramel);
+ border-radius:16px;padding:12px 13px;font-size:13px;line-height:1.75;color:#7A5A22;}
+.res-hero b{color:var(--caramel-deep);}
+.rec{display:flex;gap:9px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line);}
+.rec:last-child{border-bottom:0;}
+.rec-n{flex:0 0 22px;height:22px;border-radius:7px;background:var(--caramel);color:#fff;font-size:11.5px;
+ font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.rec-b{flex:1;min-width:0;}
+.rec-t{font-size:12.9px;font-weight:800;color:var(--ink);}
+.rec-d{font-size:11.8px;color:var(--ink2);line-height:1.68;margin-top:2px;}
+.rec-s{display:flex;align-items:center;gap:6px;margin-top:5px;}
+.rec-bar{flex:1;height:5px;background:#EFE4D2;border-radius:99px;overflow:hidden;}
+.rec-bar i{display:block;height:100%;background:linear-gradient(90deg,#E8B978,#C98B54);border-radius:99px;}
+.rec-v{font-size:10.5px;color:#B09877;font-weight:700;}
+.pl-d{border-left:2.5px solid var(--caramel);padding:0 0 0 11px;margin:0 0 13px;}
+.pl-dh{font-size:12.6px;font-weight:800;color:var(--caramel-deep);margin-bottom:5px;}
+.pl-i{font-size:12.1px;color:var(--ink2);line-height:1.72;padding:1.5px 0;}
+.pl-tag{display:inline-block;font-size:10px;background:var(--gold-soft);color:#8A6A3A;border-radius:6px;
+ padding:1px 6px;margin-left:5px;vertical-align:1px;}
+.cost-tb{width:100%;border-collapse:collapse;font-size:12.1px;}
+.cost-tb td{padding:6px 2px;border-bottom:1px dashed var(--line);color:var(--ink2);}
+.cost-tb td:last-child{text-align:right;font-weight:800;color:var(--ink);white-space:nowrap;}
+.cost-tb tr.sum td{border-bottom:0;border-top:1.6px solid var(--caramel);padding-top:9px;font-size:13.4px;}
+.cost-tb tr.sum td:last-child{color:var(--caramel-deep);}
+.warnbox{background:#FFF3F1;border:1.4px solid #F0BDB2;border-radius:13px;padding:10px 12px;
+ font-size:12.1px;line-height:1.72;color:#8C4A3C;margin-top:10px;}
+.okbox{background:#F1F8F0;border:1.4px solid #B9D9B4;border-radius:13px;padding:10px 12px;
+ font-size:12.1px;line-height:1.72;color:#3E6B3C;margin-top:10px;}
+
+/* ===== 自驾模块 ===== */
+.tabbar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.tabbar::-webkit-scrollbar{display:none;}
+.tabbar button{flex:0 0 auto;min-width:52px;}
+.dv-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:7px;}
+.dv-lab{font-size:12px;color:var(--ink2);min-width:52px;font-weight:700;}
+.dv-car{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 13px;margin-bottom:10px;}
+.dv-car.top{border:2px solid var(--caramel);background:linear-gradient(180deg,#FFF9EF,#fff);}
+.dv-car h4{font-size:13.5px;margin-bottom:3px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.dv-car .rank{background:var(--caramel);color:#fff;font-size:10px;border-radius:6px;padding:1px 6px;font-weight:700;}
+.dv-car .rank.r2{background:#C9A227;}
+.dv-car .rank.r3{background:#B8A88F;}
+.dv-car .ex{font-size:11px;color:#B8A88F;margin:2px 0 6px;}
+.dv-car p{font-size:12px;color:var(--ink2);line-height:1.7;margin:4px 0 0;}
+.dv-price{font-size:15px;font-weight:800;color:var(--caramel-deep);}
+.dv-price small{font-size:11px;color:#B8A88F;font-weight:400;}
+.dv-why{background:var(--gold-soft);border-radius:10px;padding:7px 10px;font-size:11.5px;color:#7A5A22;margin-top:7px;line-height:1.65;}
+.dv-bad{background:#FDF0EE;border-radius:10px;padding:7px 10px;font-size:11.5px;color:#A6483A;margin-top:6px;line-height:1.65;}
+.dv-bar{height:6px;background:#F0E7DA;border-radius:4px;overflow:hidden;margin-top:8px;}
+.dv-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--caramel),#E8B96A);border-radius:4px;}
+.cost-row{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px dashed #EFE5D6;color:var(--ink2);}
+.cost-row b{color:var(--ink);}
+.cost-sum{background:var(--gold-soft);border-radius:11px;padding:10px 12px;margin-top:9px;display:flex;justify-content:space-between;align-items:baseline;}
+.cost-sum span{font-size:12px;color:#7A5A22;}
+.cost-sum b{font-size:19px;color:var(--caramel-deep);}
+.droute{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 13px;margin-bottom:10px;cursor:pointer;transition:.18s;}
+.droute:hover{border-color:var(--caramel);}
+.droute.on{border:2px solid var(--caramel);background:#FFFBF3;}
+.droute h4{font-size:13px;margin-bottom:4px;}
+.droute .meta{font-size:11px;color:#B8A88F;margin-bottom:5px;}
+.droute p{font-size:11.5px;color:var(--ink2);line-height:1.7;margin:3px 0 0;}
+.droute .warn{color:#A6483A;}
+.park{display:flex;gap:9px;padding:9px 0;border-bottom:1px dashed #EFE5D6;}
+.park .pk{font-size:19px;width:26px;text-align:center;flex:0 0 auto;}
+.park .pi{flex:1;font-size:11.5px;color:var(--ink2);line-height:1.65;}
+.park .pi b{font-size:12.5px;color:var(--ink);}
+.life{display:flex;gap:8px;font-size:11.5px;color:var(--ink2);line-height:1.7;padding:5px 0;}
+.life .li{font-size:15px;flex:0 0 auto;}
+.life b{color:var(--ink);}
+
+/* ===== 举实物 ===== */
+.bear-wrap{overflow:visible;}
+.bear-wrap.holding .b-arm.aR{transform:rotate(-64deg);transform-origin:139px 152px;animation:none;}
+.holdbox{position:absolute;left:58%;top:26%;width:40%;text-align:center;pointer-events:none;opacity:0;transform:translateY(12px) scale(.6);transition:opacity .26s,transform .26s;z-index:7;}
+.holdbox.on{opacity:1;transform:translateY(0) scale(1);}
+.holdbox .hv{font-size:32px;display:block;line-height:1;filter:drop-shadow(0 3px 7px rgba(0,0,0,.2));animation:hvB 1.2s ease-in-out infinite;}
+.holdbox img.hv{width:100%;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.15);}
+@keyframes hvB{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-8px) rotate(5deg)}}
+.bear-wrap.holding .b-arm.aR{transform:rotate(-64deg);transform-origin:139px 152px;}
+.b-arm.aR{transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+.bear-wrap.holding .b-head{animation:hvNod .7s ease-in-out infinite;transform-origin:100px 120px;}
+.bear-wrap.holding .b-ear{animation:none;}
+@keyframes hvNod{0%,100%{transform:rotate(0)}50%{transform:rotate(-3deg)}}
+.stage{display:flex;gap:12px;align-items:center;background:linear-gradient(135deg,#FFF7E9,#FFFDF8);border:1px solid #F2E3C8;border-radius:16px;padding:12px;margin-bottom:12px;}
+.stage .sb{width:118px;flex:0 0 auto;position:relative;}
+.stage .sb .bear-wrap{width:100%;}
+.stage .st{flex:1;min-width:0;}
+.stage .st h4{font-size:13.5px;color:var(--caramel-deep);margin-bottom:4px;}
+.stage .st p{font-size:12px;color:var(--ink2);line-height:1.75;margin:0;}
+.stage .st .wh{font-size:11px;color:#B8A88F;margin-top:6px;}
+
+/* ===== 美食素材库 ===== */
+.fd{background:#fff;border:1px solid var(--line);border-radius:13px;padding:10px 11px;margin-bottom:8px;cursor:pointer;display:flex;gap:10px;align-items:flex-start;transition:.16s;}
+.fd:hover{border-color:var(--caramel);}
+.fd.on{border:2px solid var(--caramel);background:#FFFBF3;}
+.fd .fe{font-size:24px;width:30px;text-align:center;flex:0 0 auto;}
+.fd .fb{flex:1;min-width:0;}
+.fd h4{font-size:12.8px;margin-bottom:2px;display:flex;gap:5px;align-items:baseline;flex-wrap:wrap;}
+.fd .pr{font-size:11px;color:var(--caramel-deep);font-weight:700;}
+.fd p{font-size:11.5px;color:var(--ink2);line-height:1.65;margin:2px 0 0;}
+.fd .tip{font-size:11px;color:#A6483A;margin-top:4px;}
+.fd .tagb{display:inline-block;background:var(--gold-soft);color:#7A5A22;font-size:10px;border-radius:6px;padding:1px 6px;margin-right:4px;}
+.fd .getimg{font-size:10px;color:#B8A88F;border:1px dashed var(--line);border-radius:7px;padding:2px 7px;margin-top:6px;display:inline-block;cursor:pointer;}
+.fd .getimg:hover{color:var(--caramel-deep);border-color:var(--caramel);}
+.food .hint{font-size:10.5px;color:#B8A88F;margin-top:5px;}
+
+/* ===== 电子宠物 / 形象定制 ===== */
+.petbar{display:flex;align-items:center;gap:6px;justify-content:center;margin-top:8px;flex-wrap:wrap;}
+.petbtn{border:1px solid var(--line);background:#fff;border-radius:12px;font-size:11px;padding:5px 10px;color:var(--ink2);cursor:pointer;}
+.petbtn:hover{border-color:var(--caramel);color:var(--caramel-deep);}
+.petpanel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;margin:10px 0;}
+.petpanel h3{font-size:13.5px;margin-bottom:3px;}
+.petslot{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px dashed #EFE5D6;}
+.petslot .pv{width:56px;flex:0 0 auto;position:relative;}
+.petslot .pv .bear-wrap{width:100%;}
+.petslot .pf{flex:1;min-width:0;}
+.petslot .pf .nm{font-size:12.5px;font-weight:700;margin-bottom:5px;}
+.petopt{display:inline-block;border:1px solid var(--line);background:#fff;border-radius:9px;font-size:11px;padding:3px 8px;margin:0 5px 5px 0;cursor:pointer;color:var(--ink2);}
+.petopt.on{border-color:var(--caramel);background:var(--gold-soft);color:#7A5A22;font-weight:700;}
+.petimg{width:100%;display:block;border-radius:12px;}
+.bear-wrap[data-skin="snow"] svg{filter:hue-rotate(-18deg) saturate(.55) brightness(1.09);}
+.bear-wrap[data-skin="maple"] svg{filter:hue-rotate(28deg) saturate(1.3);}
+.bear-wrap[data-skin="berry"] svg{filter:hue-rotate(-38deg) saturate(1.15) brightness(1.02);}
+.bear-wrap[data-skin="night"] svg{filter:hue-rotate(190deg) saturate(.85) brightness(.95);}
+.peturl{display:flex;gap:6px;margin-top:7px;}
+.peturl input{flex:1;min-width:0;border:1px solid var(--line);border-radius:9px;padding:6px 8px;font-size:11.5px;outline:none;}
+.peturl input:focus{border-color:var(--caramel);}
+.peturl button{border:none;background:var(--caramel);color:#fff;border-radius:9px;font-size:11px;padding:6px 10px;cursor:pointer;white-space:nowrap;}
+
+
+/* ===== 分享与备份（无账号方案） ===== */
+.shRow{display:flex;gap:8px;margin-top:9px;}
+.shBtn{flex:1;border:0;border-radius:12px;padding:11px 5px;font-size:12.3px;font-weight:800;cursor:pointer;
+ background:linear-gradient(135deg,var(--caramel),#D8A063);color:#fff;font-family:inherit;}
+.shBtn:active{transform:translateY(1px);}
+.shBtn.gray{background:#fff;color:var(--ink2);border:1.4px solid var(--line);}
+.shLinkBox{border:1px solid var(--line);border-radius:11px;padding:9px 10px;font-size:11px;color:var(--ink2);
+ background:#FFFDF8;word-break:break-all;line-height:1.65;margin-top:10px;}
+.shQrBox{display:none;text-align:center;margin-top:12px;}
+.shQrBox.on{display:block;}
+.shQrBox img{width:148px;height:148px;border-radius:12px;background:#fff;border:1px solid var(--line);}
+.shQrTip{font-size:11px;color:var(--ink2);margin-top:6px;line-height:1.6;}
+#shInbox{display:none;margin-bottom:12px;}
+#shInbox.on{display:block;}
+.shIMsg{font-size:12.5px;line-height:1.75;color:var(--ink);}
+.shIMsg b{color:var(--caramel-deep);}
+.wxTip{display:none;background:#EAF6EE;border-left:4px solid var(--green);border-radius:10px;
+ padding:10px 12px;font-size:12px;line-height:1.7;color:#2F5A3C;margin-top:11px;}
+.wxTip.on{display:block;}
+</style>
+</head>
+<body>
+<div id="phone">
+
+<header class="hero" id="hero">
+  <div class="badge-gq">四季通用 · 全年可玩</div>
+  <h1>狍<span>游</span>记<span class="ver" id="appVer">V1.0</span></h1>
+  <div class="sub">坨坨果果陪你游东北 · 春夏秋冬各有玩法 · 小众目的地 × 错峰规划 × 防宰客指南 × 记账打卡复盘</div>
+  <div class="bears" id="bearBox">
+    <div class="bear-wrap b1" id="bearTT">
+      <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="210" rx="50" ry="8" fill="rgba(140,90,43,.15)"/>
+        <g class="b-all">
+          <path class="b-tail" d="M150 150 C168 138,160 118,146 126 C140 112,122 120,128 134 C120 150,138 160,150 150 Z" fill="#FFF6EA"/>
+          <ellipse cx="82" cy="197" rx="15" ry="11" fill="#8C5A32"/>
+          <ellipse cx="118" cy="197" rx="15" ry="11" fill="#8C5A32"/>
+          <g class="b-body">
+            <ellipse cx="100" cy="164" rx="47" ry="44" fill="#D9A878"/>
+            <ellipse cx="100" cy="177" rx="30" ry="25" fill="#FBF2E1"/>
+          </g>
+          <g class="b-arm aL"><ellipse cx="61" cy="152" rx="12" ry="20" fill="#D9A878"/><ellipse cx="60" cy="170" rx="9" ry="8" fill="#8C5A32"/></g>
+          <g class="b-arm aR"><ellipse cx="139" cy="152" rx="12" ry="20" fill="#D9A878"/><ellipse cx="141" cy="170" rx="9" ry="8" fill="#8C5A32"/></g>
+          <g class="o-scarf"><path d="M60 136 Q100 156 140 136 L138 152 Q100 172 62 152 Z" fill="#C4553B"/></g>
+          <g class="b-head">
+            <g class="b-ear earL"><ellipse cx="40" cy="56" rx="16" ry="21" fill="#D9A878" transform="rotate(-16 40 56)"/><ellipse cx="43" cy="58" rx="9" ry="13" fill="#F2D6B4" transform="rotate(-16 43 58)"/></g>
+            <g class="b-ear earR"><ellipse cx="160" cy="56" rx="16" ry="21" fill="#D9A878" transform="rotate(16 160 56)"/><ellipse cx="157" cy="58" rx="9" ry="13" fill="#F2D6B4" transform="rotate(16 157 58)"/></g>
+            <path d="M74 34 C66 16,82 6,86 18 C90 6,106 16,98 34 C94 44,78 44,74 34 Z" fill="#A9744F"/>
+            <path d="M102 34 C94 16,110 6,114 18 C118 6,134 16,126 34 C122 44,106 44,102 34 Z" fill="#A9744F"/>
+            <ellipse cx="100" cy="88" rx="62" ry="55" fill="#D9A878"/>
+            <g class="b-eyes">
+              <circle cx="76" cy="86" r="8" fill="#4A3220"/><circle cx="79" cy="83" r="2.6" fill="#fff"/>
+              <circle cx="124" cy="86" r="8" fill="#4A3220"/><circle cx="127" cy="83" r="2.6" fill="#fff"/>
+            </g>
+            <ellipse cx="100" cy="114" rx="27" ry="18" fill="#FBF2E1"/>
+            <ellipse cx="100" cy="105" rx="7" ry="5" fill="#4A3220"/>
+            <path d="M92 119 Q100 127 108 119" stroke="#4A3220" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <ellipse cx="63" cy="104" rx="10" ry="6" fill="#F5B79E" opacity=".6"/>
+            <ellipse cx="137" cy="104" rx="10" ry="6" fill="#F5B79E" opacity=".6"/>
+          </g>
+          <g class="o-earmuffs">
+            <path d="M26 50 Q30 30 50 28" stroke="#8C5A2B" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M174 50 Q170 30 150 28" stroke="#8C5A2B" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M28 46 Q52 22 78 40" stroke="#8C5A2B" stroke-width="3.5" fill="none"/>
+            <path d="M172 46 Q148 22 122 40" stroke="#8C5A2B" stroke-width="3.5" fill="none"/>
+          </g>
+          <g class="o-gloves"><ellipse cx="60" cy="172" rx="10" ry="9" fill="#F5C24D"/><ellipse cx="141" cy="172" rx="10" ry="9" fill="#F5C24D"/></g>
+          <g class="o-coat"><path d="M55 140 Q100 160 145 140 L145 160 Q126 178 100 178 Q74 178 55 160 Z" fill="#B54F30"/><circle cx="90" cy="156" r="2.2" fill="#F5C24D"/><circle cx="110" cy="158" r="2.2" fill="#F5C24D"/><circle cx="78" cy="162" r="2.2" fill="#F5C24D"/><circle cx="124" cy="164" r="2.2" fill="#F5C24D"/></g>
+          <g class="o-shades"><rect x="62" y="76" width="30" height="19" rx="9" fill="#3A2A1A"/><rect x="108" y="76" width="30" height="19" rx="9" fill="#3A2A1A"/><rect x="90" y="80" width="20" height="4.5" rx="2" fill="#3A2A1A"/></g>
+          <g class="e-sweat"><path d="M156 62 C156 70,164 72,164 64 C164 58,158 54,156 48 C154 54,148 58,148 64 C148 72,156 70,156 62 Z" fill="#7FC4E8"/></g>
+          <g class="e-breath"><circle class="p1" cx="134" cy="120" r="6" fill="#fff"/><circle class="p2" cx="144" cy="128" r="8" fill="#fff"/></g>
+          <g class="o-scarf"><rect x="110" y="146" width="15" height="28" rx="7" fill="#C4553B" transform="rotate(9 117 160)"/><circle cx="117" cy="158" r="2" fill="#F5C24D"/></g>
+        </g>
+      </svg>
+      <span class="btag">坨坨</span>
+      <div class="gifpop"><img alt="坨坨"><div class="cap"></div></div>
+    </div>
+    <div class="bear-wrap b2" id="bearGG">
+      <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="210" rx="48" ry="8" fill="rgba(140,90,43,.15)"/>
+        <g class="b-all">
+          <path class="b-tail" d="M148 152 C166 140,158 120,144 128 C138 114,120 122,126 136 C118 152,136 162,148 152 Z" fill="#FBF7EE"/>
+          <ellipse cx="83" cy="197" rx="14" ry="10" fill="#B08D6A"/>
+          <ellipse cx="117" cy="197" rx="14" ry="10" fill="#B08D6A"/>
+          <g class="b-body"><ellipse cx="100" cy="164" rx="45" ry="42" fill="#F2E3CB"/><ellipse cx="100" cy="177" rx="28" ry="24" fill="#FBF7EE"/></g>
+          <g class="b-arm aL"><ellipse cx="62" cy="152" rx="11" ry="19" fill="#F2E3CB"/><ellipse cx="61" cy="169" rx="8" ry="7" fill="#B08D6A"/></g>
+          <g class="b-arm aR"><ellipse cx="138" cy="152" rx="11" ry="19" fill="#F2E3CB"/><ellipse cx="139" cy="169" rx="8" ry="7" fill="#B08D6A"/></g>
+          <g class="o-scarf"><path d="M62 136 Q100 155 138 136 L136 151 Q100 170 64 151 Z" fill="#7B6BA8"/></g>
+          <g class="b-head">
+            <g class="b-ear earL"><ellipse cx="42" cy="56" rx="15" ry="20" fill="#F2E3CB" transform="rotate(-16 42 56)"/><ellipse cx="45" cy="58" rx="8" ry="12" fill="#EAD3B0" transform="rotate(-16 45 58)"/></g>
+            <g class="b-ear earR"><ellipse cx="158" cy="56" rx="15" ry="20" fill="#F2E3CB" transform="rotate(16 158 56)"/><ellipse cx="155" cy="58" rx="8" ry="12" fill="#EAD3B0" transform="rotate(16 155 58)"/></g>
+            <g class="b-berry">
+              <path d="M166 42 Q174 30 182 28" stroke="#8FA86B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <circle cx="184" cy="30" r="5" fill="#7B6BA8"/><circle cx="174" cy="22" r="4.5" fill="#8F7FC0"/><circle cx="188" cy="20" r="4" fill="#6A5B9E"/>
+              <ellipse cx="170" cy="14" rx="6" ry="3" fill="#8FA86B" transform="rotate(-28 170 14)"/>
+            </g>
+            <ellipse cx="100" cy="88" rx="60" ry="54" fill="#F2E3CB"/>
+            <g class="b-eyes">
+              <circle cx="78" cy="86" r="7.5" fill="#3A2A1A"/><circle cx="80.5" cy="83" r="2.4" fill="#fff"/>
+              <circle cx="122" cy="86" r="7.5" fill="#3A2A1A"/><circle cx="124.5" cy="83" r="2.4" fill="#fff"/>
+            </g>
+            <ellipse cx="100" cy="113" rx="25" ry="17" fill="#FBF7EE"/>
+            <ellipse cx="100" cy="104" rx="6.5" ry="4.5" fill="#5C4030"/>
+            <path d="M93 118 Q100 125 107 118" stroke="#5C4030" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+            <ellipse cx="64" cy="103" rx="10" ry="6" fill="#F3A9A0" opacity=".6"/>
+            <ellipse cx="136" cy="103" rx="10" ry="6" fill="#F3A9A0" opacity=".6"/>
+          </g>
+          <g class="o-earmuffs">
+            <path d="M28 50 Q32 30 52 28" stroke="#6A5B9E" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M172 50 Q168 30 148 28" stroke="#6A5B9E" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M30 46 Q54 22 80 40" stroke="#6A5B9E" stroke-width="3.5" fill="none"/>
+            <path d="M170 46 Q146 22 120 40" stroke="#6A5B9E" stroke-width="3.5" fill="none"/>
+          </g>
+          <g class="o-gloves"><ellipse cx="61" cy="171" rx="9" ry="8" fill="#B7A6E0"/><ellipse cx="139" cy="171" rx="9" ry="8" fill="#B7A6E0"/></g>
+          <g class="o-coat"><path d="M57 140 Q100 159 143 140 L143 159 Q125 177 100 177 Q75 177 57 159 Z" fill="#6A5B9E"/><circle cx="90" cy="156" r="2.2" fill="#EDE7F7"/><circle cx="110" cy="158" r="2.2" fill="#EDE7F7"/><circle cx="78" cy="162" r="2.2" fill="#EDE7F7"/><circle cx="124" cy="164" r="2.2" fill="#EDE7F7"/></g>
+          <g class="o-shades"><rect x="64" y="76" width="28" height="18" rx="9" fill="#3A2A1A"/><rect x="108" y="76" width="28" height="18" rx="9" fill="#3A2A1A"/><rect x="90" y="80" width="20" height="4.5" rx="2" fill="#3A2A1A"/></g>
+          <g class="e-sweat"><path d="M154 62 C154 70,162 72,162 64 C162 58,156 54,154 48 C152 54,146 58,146 64 C146 72,154 70,154 62 Z" fill="#7FC4E8"/></g>
+          <g class="e-breath"><circle class="p1" cx="133" cy="119" r="6" fill="#fff"/><circle class="p2" cx="143" cy="127" r="8" fill="#fff"/></g>
+          <g class="o-scarf"><rect x="108" y="146" width="14" height="27" rx="7" fill="#7B6BA8" transform="rotate(9 115 160)"/><circle cx="115" cy="158" r="2" fill="#EDE7F7"/></g>
+        </g>
+      </svg>
+      <span class="btag">果果</span>
+      <div class="gifpop"><img alt="果果"><div class="cap"></div></div>
+    </div>
+    <div class="say" id="heroSay"><b>坨坨：</b>东北一年四张脸——春看杜鹃、夏来避暑、秋赏五花山、冬玩冰雪，哪季来都不白来。<br><b>果果：</b>选个季节，清单和线路我给你换好，嗷嗷～</div>
+    <div class="bear-hint">👆 点一点我们，有嗷呜惊喜 · 我们还会跟着实时天气换装</div>
+  </div>
+  <div class="fall" id="fallBox"></div>
+
+  <div class="petbar">
+    <button class="petbtn" id="petToggle">🎨 换形象</button>
+    <button class="petbtn" id="petRandom">🎲 随机搭一只</button>
+  </div>
+  <div class="petpanel" id="petPanel" style="display:none;margin:10px 0 0;">
+    <h3>🐾 我的旅行搭子 · 电子宠物</h3>
+    <p style="font-size:11.5px;color:#B8A88F;margin-bottom:6px;">左右两个位置随便换形象、换配色。以后有了新角色，把图片链接粘进去就能用。</p>
+    <div class="petslot"><div class="pv" id="pvA"></div><div class="pf"><div class="nm">左位</div><div class="opts" id="petA"></div><div class="opts" id="skinA" style="margin-top:5px;"></div>
+      <div class="peturl"><input id="imgA" placeholder="粘贴图片链接，换成别的角色"><button id="setA">换上</button></div></div></div>
+    <div class="petslot"><div class="pv" id="pvB"></div><div class="pf"><div class="nm">右位</div><div class="opts" id="petB"></div><div class="opts" id="skinB" style="margin-top:5px;"></div>
+      <div class="peturl"><input id="imgB" placeholder="粘贴图片链接，换成别的角色"><button id="setB">换上</button></div></div></div>
+    <button class="petbtn" id="petReset" style="margin-top:9px;width:100%;">↺ 恢复坨坨 &amp; 果果</button>
+  </div>
+
+  <div class="seasonbar" id="seasonBar">
+    <button data-s="sp"><span class="se">🌱</span>春<br><small>4–5月</small></button>
+    <button data-s="su"><span class="se">🌿</span>夏<br><small>6–8月</small></button>
+    <button data-s="au"><span class="se">🍁</span>秋<br><small>9–10月</small></button>
+    <button data-s="wi"><span class="se">❄️</span>冬<br><small>11–3月</small></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ VIEW 0: 帮我规划 ============ -->
+<section class="view on" id="v-gen">
+  <h2 class="sec"><span class="n">✨</span>说吧想咋玩 · 坨坨果果给你盘一个</h2>
+  <div class="card" id="genForm">
+    <div class="gen-q">
+      <div class="gen-qt">🧑‍🤝‍🧑 几个人走？<small>决定交通方式与人均分摆</small></div>
+      <div class="opts" id="gPpl"></div>
+    </div>
+    <div class="gen-q">
+      <div class="gen-qt">📅 打算玩几天？</div>
+      <div class="opts" id="gDays"></div>
+    </div>
+    <div class="gen-q">
+      <div class="gen-qt">🎯 想整点儿啥？<small>可多选，选得越细越对味</small></div>
+      <div class="opts" id="gWant"></div>
+    </div>
+    <div class="gen-q">
+      <div class="gen-qt">🏠 想住啥样的？</div>
+      <div class="opts" id="gStay"></div>
+      <div style="font-size:11.4px;color:#B09877;line-height:1.6;margin-top:6px;" id="gStayHint"></div>
+    </div>
+    <div class="gen-q">
+      <div class="gen-qt">💰 预算松还是紧？</div>
+      <div class="opts" id="gMoney"></div>
+    </div>
+    <div class="gen-q">
+      <div class="gen-qt">🚉 打哪儿进东北？<small>决定落地交通与首站顺序</small></div>
+      <div class="opts" id="gCity"></div>
+    </div>
+    <button class="gen-go" id="gGo">🦌 给俺盘一个！</button>
+    <div class="gen-more" id="gLucky">🎲 啥也没想好，随便给俺整一个</div>
+  </div>
+  <div id="genOut"></div>
+</section>
+
+<!-- ============ VIEW 1: 出发 ============ -->
+<section class="view" id="v-depart">
+  <div class="card" id="wxCard">
+    <h3>🌤️ 实时天气 · 坨坨果果按气温换装</h3>
+    <div class="frow">
+      <select id="wxCity" class="sel"></select>
+      <button id="wxGo" style="border:0;background:var(--caramel);color:#fff;border-radius:12px;padding:0 18px;font-weight:700;cursor:pointer;">刷新</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;margin-top:6px;">
+      <div class="wx-big"><span id="wxTemp">--</span><small>℃</small></div>
+      <div style="flex:1;">
+        <div class="wx-sub" id="wxSub">--</div>
+        <div class="wx-sub"><span id="wxCond">--</span> · <span id="wxFeel">--</span></div>
+      </div>
+      <span class="wx-sim" id="wxTag">模拟</span>
+    </div>
+    <div style="margin-top:10px;">
+      <div class="mini-t">手动试温（网络不通时也能玩）：<b id="wxSlideV" style="color:var(--caramel-deep)">10℃</b></div>
+      <input type="range" id="wxSlider" min="-35" max="35" step="1" value="10">
+    </div>
+    <div class="tip">🦌 气温怎么影响坨坨果果：≤−15℃ 冻得发抖、哈白气、套上大棉袄；−5℃ 以下耳包手套全副武装；≤14℃ 戴围脖；≥26℃ 戴墨镜、冒汗。数据来自 open-meteo 免费天气接口，按你选的城市实时拉取。</div>
+  </div>
+
+  <h2 class="sec"><span class="n">1</span>行前准备 · 跟着季节换装备</h2>
+
+  <div class="card">
+    <h3 id="wearTitle">🌡️ 当季天气 &amp; 穿衣</h3>
+    <p id="wearText"></p>
+    <div class="tip" id="wearTip"></div>
+  </div>
+
+  <div class="card">
+    <h3>👥 出发人数（影响交通方案与预算）</h3>
+    <div class="ppl" id="pplPicker"></div>
+    <p id="pplAdvice" style="margin-top:8px;"></p>
+  </div>
+
+  <div class="card">
+    <h3>🎒 当季装备清单（点击勾选，自动保存）</h3>
+    <div class="gtitle"><b>通用必备</b><small id="g0c"></small></div><div id="g0"></div>
+    <div class="gtitle"><b id="g1t">当季专属</b><small id="g1c"></small></div><div id="g1"></div>
+    <div class="gtitle"><b>护肤 &amp; 药品</b><small id="g2c"></small></div><div id="g2"></div>
+    <div class="gtitle"><b>电子 &amp; 其他</b><small id="g3c"></small></div><div id="g3"></div>
+  </div>
+
+  <h2 class="sec"><span class="n">2</span>防宰客价格对照表 · 果果帮你盯着计价器</h2>
+  <div class="tip" style="margin:0 0 12px;">📐 下表是<b>速查版参考区间</b>。想要精确到"我这一趟具体多少钱"，去 <b>「💰 算价」</b>页——那里按<b>各城市地铁里程票价表</b>和<b>出租车官方计价规则</b>（起步价 + 续程 + 空驶费 + 夜间/等候）逐项算，还会给出防宰红线。</div>
+
+  <div class="card">
+    <h3>✈️ 机场 / 车站 → 市区 参考价（全年通用）</h3>
+    <table class="pt">
+      <tr><th>路线</th><th>方式</th><th>参考价</th></tr>
+      <tr><td>哈尔滨太平机场→中央大街</td><td>出租车打表 / 机场大巴</td><td class="pr">80–110元 / 20元</td></tr>
+      <tr><td>哈尔滨西站→中央大街</td><td>出租车打表</td><td class="pr">15–25元</td></tr>
+      <tr><td>长春龙嘉机场→市区</td><td>机场城铁（推荐）</td><td class="pr">8.5–12元 / 打车70–90</td></tr>
+      <tr><td>沈阳桃仙机场→中街</td><td>出租车 / 机场大巴</td><td class="pr">60–80元 / 15–17元</td></tr>
+      <tr><td>大连周水子机场→中山广场</td><td>地铁2号线 / 出租车</td><td class="pr">4元 / 25–35元</td></tr>
+      <tr><td>延吉朝阳川机场→市区</td><td>出租车打表</td><td class="pr">15–25元</td></tr>
+      <tr><td>牡丹江海浪机场→市区（雪乡方向）</td><td>出租车 / 拼车</td><td class="pr">20–30元 / 30–50/人</td></tr>
+    </table>
+    <div class="tip">🚕 出了机场别坐"拉客黑车"，找<b>正规出租车乘降点排队上车</b>，上车说"打表"；一口价、拼车议价的直接拒绝。网约车平台下单留行程记录最稳。</div>
+  </div>
+
+  <div class="card">
+    <h3>🚐 市区/车站 → 景区 参考价（含包车）</h3>
+    <table class="pt">
+      <tr><th>路线</th><th>方式</th><th>参考价</th></tr>
+      <tr><td>伊春市区→五营/汤旺河</td><td>拼车 / 包车一天</td><td class="pr">40–60/人 / 300–450</td></tr>
+      <tr><td>二道白河→长白山北坡</td><td>出租车拼车</td><td class="pr">20–30/人（单程）</td></tr>
+      <tr><td>哈尔滨→亚布力（冬季热门）</td><td>高铁+接驳 / 包车</td><td class="pr">高铁约30元+接驳 / 600–900</td></tr>
+      <tr><td>哈尔滨→雪乡（冬季热门）</td><td>拼车 / 包车</td><td class="pr">120–180/人 / 1000–1500</td></tr>
+      <tr><td>吉林市→雾凇岛（冬季）</td><td>拼车 / 包车</td><td class="pr">30–50/人 / 200–300</td></tr>
+      <tr><td>松原→查干湖（冬捕季）</td><td>拼车 / 包车</td><td class="pr">40–60/人 / 300–400</td></tr>
+      <tr><td>本溪→老边沟（秋季）</td><td>班车 / 包车</td><td class="pr">15–20 / 300–400</td></tr>
+      <tr><td>丹东→绿江村（夏秋）</td><td>包车一天（山路远）</td><td class="pr">500–700</td></tr>
+      <tr><td>沈阳→盘锦红海滩（秋季）</td><td>高铁+打车 / 包车</td><td class="pr">高铁30元+打车40 / 600–800</td></tr>
+      <tr><td>漠河市区→北极村</td><td>拼车 / 包车</td><td class="pr">25–40/人 / 250–350</td></tr>
+    </table>
+    <div class="tip" id="seasonPriceTip"></div>
+  </div>
+
+  <div class="card">
+    <h3>💰 包车整日参考价（按人数自动匹配）</h3>
+    <table class="pt">
+      <tr><th>车型</th><th>适用人数</th><th>全包参考价/天</th></tr>
+      <tr><td>经济轿车</td><td>1–3 人</td><td class="pr">500–700元</td></tr>
+      <tr><td>SUV（山路稳）</td><td>3–4 人</td><td class="pr">600–800元</td></tr>
+      <tr><td>商务 7 座</td><td>5–7 人</td><td class="pr">800–1200元</td></tr>
+      <tr><td>冬季（雪地胎/四驱，11–3月）</td><td>全车型</td><td class="pr">上浮 10–20%</td></tr>
+    </table>
+    <p style="margin-top:8px;">含油费+司机费；<b style="color:var(--caramel-deep)">门票、停车费、过路费、司机餐食另计</b>，下单前把费用明细聊清楚并留截图。冬季务必确认车辆有<b>雪地胎</b>。</p>
+    <div class="tip">🛡️ 防宰三招：① 只坐打表车/平台网约车，拒绝"不打表一口价"；② 机场车站走正规乘降点，拒绝拉客；③ 包车提前问清"过路费谁出、能不能进景区"，白纸黑字聊明白。冬季雪乡/亚布力线路尤其要防"半路加价"。遇强揽客或甩客，拨 12328。</div>
+  </div>
+</section>
+
+<!-- ============ VIEW: 算价 ============ -->
+<section class="view" id="v-price">
+  <h2 class="sec"><span class="n">¥</span>交通算价 · 按官方计价规则估算</h2>
+  <p style="font-size:12px;color:var(--ink2);margin-bottom:10px;">不拍脑袋报价：<b>地铁按里程分段票价表</b>、<b>出租车按当地计价规则（起步价 + 续程 + 空驶费 + 夜间/等候）</b>逐项算出，再给出防宰客红线。人数沿用你在「出发」页选的 <b id="pcPplEcho">2</b> 人。</p>
+
+  <div class="card">
+    <h3>① 城市（决定计价规则）</h3>
+    <select class="sel" id="pcCity"></select>
+    <div class="mini-t" id="pcCityMeta"></div>
+
+    <h3>② 线路（选好后可手改里程）</h3>
+    <select class="sel" id="pcRoute"></select>
+
+    <div class="frow">
+      <input class="sel" type="number" id="pcKm" min="0.5" max="300" step="0.5" inputmode="decimal" style="flex:0 0 38%;">
+      <select class="sel" id="pcTime">
+        <option value="day">白天 · 平峰</option>
+        <option value="peak">早晚高峰 · 拥堵</option>
+        <option value="night">夜间 22:30 后</option>
+      </select>
+    </div>
+    <div class="mini-t">左：实际里程（km） · 右：用车时段</div>
+
+    <div id="pcOut"></div>
+    <div class="src">计价规则来源：各市发改委/交通局公布的票价与运价文件、地铁集团票务规则、机场集团巴士公示价（2021–2025 年版，见下方规则表）。<b>估值为参考区间，实际以计价器/平台报价为准。</b></div>
+  </div>
+
+  <div class="card">
+    <h3>🚕 防宰客怎么用这个数</h3>
+    <ul>
+      <li><b>上车只说两个字：打表。</b>司机报"一口价"，先问多少，超过本页"出租车估算上限"就换车；</li>
+      <li><b>红线 = 估算上限 × 1.3</b>。超过这个数且说不出理由（过路费/等待费），直接拒绝并拨 12328；</li>
+      <li><b>过路费单算</b>：机场高速等过路过桥费由乘客承担，属正常加价，但要票；</li>
+      <li><b>包车按天另算</b>：整日包车见「出发」页车型表，冬季确认雪地胎；</li>
+      <li><b>最稳的是网约车</b>：平台下单有行程记录、可追溯，价格透明，异地被宰概率最低。</li>
+    </ul>
+  </div>
+
+  <h2 class="sec"><span class="n">🏨</span>住宿算价 · 星级 × 节假日溢价</h2>
+  <div class="card">
+    <h3>① 目的地类型 &amp; 住宿档次</h3>
+    <select class="sel" id="phZone"></select>
+    <select class="sel" id="phTier"></select>
+    <div class="mini-t">基准取自主流旅行平台挂牌价与星级酒店经营数据，按档期溢价上调</div>
+
+    <h3>② 出行档期（决定溢价倍数）</h3>
+    <select class="sel" id="phPeriod"></select>
+
+    <div id="phOut"></div>
+    <div class="src">基准价（元/间夜，平日）参考：同程/携程等平台 2026 年挂牌价区间、国家文旅部星级酒店平均房价数据（哈尔滨 2024 五星 729 元 / 四星 345 元 / 三星 223 元）。<b>景区型目的地冬季溢价最猛，春节雪乡可达基准 2.5–3 倍。</b></div>
+  </div>
+
+  <h2 class="sec"><span class="n">📋</span>计价规则公示（可核对）</h2>
+  <div class="card">
+    <h3>🚇 地铁 / 轻轨 里程分段票价</h3>
+    <table class="pt">
+      <tr><th>城市</th><th>计价规则</th><th>封顶</th></tr>
+      <tr><td>哈尔滨</td><td>2元/6km，每1元晋级 4·4·7·7 km（3元10、4元14、5元21、6元28）；28km以上每10km+1元</td><td>7元</td></tr>
+      <tr><td>沈阳</td><td>2元/6km，每1元晋级 4·4·7·7 km（3元10、4元14、5元21、6元28）；28km以上每10km+1元</td><td>7元</td></tr>
+      <tr><td>长春</td><td>2元/7km（地铁轻轨同网同价），每1元晋级 6·6·8·8 km（3元13、4元19、5元27、6元35）；35km以上每10km+1元</td><td>—</td></tr>
+      <tr><td>大连</td><td>2元/6km，每1元晋级 6·6·8·8·10·10 km（3元12、4元18、5元26、6元34、7元44、8元54）；54km以上每15km+1元</td><td>—</td></tr>
+      <tr><td>公交（四市通用）</td><td>市区线路基本 1 元/人次，部分空调线或远郊线 2 元；有轨电车（大连 201/202、长春 54/55）1–2 元</td><td>—</td></tr>
+    </table>
+    <div class="src">来源：哈尔滨市发改委城市轨道交通线网票制票价公告（2号线一期开通起执行）／沈阳地铁票务规则／长春市发改委轨道交通同网同价公告（2019-05-30 起）／大连市发改委《关于大连地铁线网票制票价的通知》（13号线开通起执行）。</div>
+  </div>
+
+  <div class="card">
+    <h3>🚕 出租车计价规则（巡游车）</h3>
+    <table class="pt">
+      <tr><th>城市</th><th>起步价</th><th>续程</th><th>空驶/返空费</th></tr>
+      <tr><td>哈尔滨</td><td>8元/3km（含燃油附加并入计价器）</td><td>1.90元/km</td><td>超12km部分加收50%；夜间22:30–6:00超起步里程部分加收20%；低速等候首5分钟免费，之后每2.5分钟按0.5km计</td></tr>
+      <tr><td>长春</td><td>8元/2.5km（夜间22:00–4:00为9元）</td><td>2.20元/km</td><td>15–30km加收50%，超30km加收75%；低速等候0.4元/分钟</td></tr>
+      <tr><td>沈阳</td><td>9元/3km（市区）</td><td>白天2.00元/km（1元/500m）</td><td>夜间22:00–6:00或开空调按1元/455m≈2.20元/km；15–20km加收30%，超20km加收50%；等候平峰3分钟1元、高峰2分钟1元</td></tr>
+      <tr><td>大连</td><td>10元/3km</td><td>2.00元/km</td><td>夜间22:00–5:00起步13元/3km，续程2.60元/km</td></tr>
+      <tr><td>吉林市</td><td>7元/2.5km</td><td>1.80元/km</td><td>夜间23:00–4:00每运次加2元；低速等候0.36元/分钟</td></tr>
+      <tr><td>齐齐哈尔</td><td>8元/3km</td><td>1.80元/km</td><td>夜间23:00–6:00起步9元/2.5km，续程2.00元/km；等候0.5元/分钟</td></tr>
+      <tr><td>其他地级市<br>（牡丹江/延吉/丹东等）</td><td>6元/2.5km 左右</td><td>1.2–1.6元/km</td><td>城区里程短，一般无返空费；长途可与司机议价但需事先谈定</td></tr>
+    </table>
+    <div class="src">来源：哈尔滨市交通运输局·发改委《哈尔滨市巡游出租汽车计价规则》（2025-01-01 起施行，有效期五年）／长春市 2020 年调价后运价标准／沈阳市现行运价（起步9元/3km）／大连现行运价／吉林市人民政府办公厅吉市政办函〔2021〕66 号／齐齐哈尔市城区运价。<b>地级市为区间估计，请以车内明码标价为准。</b></div>
+  </div>
+
+  <div class="card">
+    <h3>✈️ 机场 / 车站 → 市区 速查（按上述规则估算）</h3>
+    <table class="pt">
+      <tr><th>线路</th><th>公交地铁</th><th>机场/城际巴士</th><th>出租车估算</th></tr>
+      <tr><td>哈尔滨太平机场→中央大街（约37km）</td><td>—</td><td class="pr">20元/人（8条市内线）</td><td class="pr">100–130元 +过路费25</td></tr>
+      <tr><td>哈尔滨太平机场→哈西站（约32km）</td><td>—</td><td class="pr">20元/人</td><td class="pr">85–110元 +过路费25</td></tr>
+      <tr><td>哈尔滨站→中央大街（约3km）</td><td class="pr">地铁2元起</td><td>—</td><td class="pr">8–10元（起步价）</td></tr>
+      <tr><td>哈尔滨西站→中央大街（约8km）</td><td class="pr">地铁3元</td><td>—</td><td class="pr">20–25元</td></tr>
+      <tr><td>长春龙嘉机场→市区（约31km）</td><td class="pr">城际铁路约10元</td><td class="pr">20–25元/人</td><td class="pr">95–120元 +过路费20</td></tr>
+      <tr><td>沈阳桃仙机场→中街（约20km）</td><td class="pr">地铁2号线约5元</td><td class="pr">15–17元/人</td><td class="pr">55–70元 +过路费10</td></tr>
+      <tr><td>大连周水子机场→中山广场（约11km）</td><td class="pr">地铁2号线约3元</td><td>—</td><td class="pr">30–35元</td></tr>
+      <tr><td>延吉朝阳川机场→市区（约9km）</td><td class="pr">公交1–2元</td><td>—</td><td class="pr">20–25元</td></tr>
+      <tr><td>牡丹江海浪机场→市区（约10km）</td><td class="pr">公交1–2元</td><td>—</td><td class="pr">20–25元</td></tr>
+    </table>
+    <div class="tip">🦌 果果提醒：机场出口的"拉客黑车"报价常是打表的 2–3 倍，一律不理；走<b>正规出租乘降点</b>排队上车。城际铁路/机场大巴是性价比之王——哈尔滨 20 元、长春城铁 10 元就能进城。</div>
+  </div>
+</section>
+
+<!-- ============ VIEW 2: 行程 ============ -->
+<section class="view" id="v-plan">
+  <h2 class="sec"><span class="n">3</span>错峰日历 · 按你的出行档期给建议</h2>
+  <div class="card">
+    <h3>📅 选一个出行档期</h3>
+    <div class="period" id="periodBar"></div>
+    <div id="periodText" style="margin-top:10px;font-size:12.8px;line-height:1.85;color:var(--ink2);"></div>
+    <div class="tip" id="periodTip"></div>
+  </div>
+
+  <h2 class="sec"><span class="n">4</span><span id="routeSeasonTitle">当季</span>推荐线路（点行程项可标记完成）</h2>
+  <div id="routeBox"></div>
+
+  <h2 class="sec"><span class="n">5</span>计划变更工具</h2>
+  <div class="card">
+    <h3>🔁 行程弹性原则（堵车/变天/临时闭园时用）</h3>
+    <ul>
+      <li><b>顺延不砍</b>：某天堵在半路，把当天最后一个点顺延到次日早，砍点不如挪点；</li>
+      <li><b>换备选</b>：景区临时闭园/恶劣天气，用线路下方的"当日备选"室内方案顶上；</li>
+      <li><b>反向错峰</b>：同一条线倒着走（先远后近），能错开大部分旅行团节奏；</li>
+      <li><b>交通兜底</b>：高铁晚点 30 分钟以上可全额退改签；包车遇封路，提前约定"实际等待 2 小时内不加钱"；</li>
+      <li><b>季节性提醒</b>：冬季关注高速封路与景区临时闭园（暴雪），夏季关注暴雨与山区落石，出行前一天查一次目的地天气与景区公告。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ VIEW 3: 探索 ============ -->
+
+<!-- ============ VIEW 5: 自驾 ============ -->
+<section class="view" id="v-drive">
+  <h2 class="sec"><span class="n">5</span>自驾规划 · 停车、线路、车型一次算明白</h2>
+  <div class="card" style="padding:12px 13px;">
+    <div class="dv-row"><span class="dv-lab">方式</span><span style="flex:1"></span></div>
+    <div class="opts" id="dvMode"></div>
+    <div class="dv-row" style="margin-top:10px;"><span class="dv-lab">人数</span><span style="flex:1"></span></div>
+    <div class="opts" id="dvPpl"></div>
+    <div class="dv-row" style="margin-top:10px;"><span class="dv-lab">天数</span><span style="flex:1"></span></div>
+    <div class="opts" id="dvDays"></div>
+    <div class="dv-row" style="margin-top:10px;"><span class="dv-lab">路况</span><span style="flex:1"></span></div>
+    <div class="opts" id="dvTerr"></div>
+    <div class="dv-row" style="margin-top:10px;"><span class="dv-lab">取车</span><span style="flex:1"></span></div>
+    <div class="opts" id="dvCity"></div>
+    <div class="dv-row" style="margin-top:10px;"><span class="dv-lab">还车</span><span style="flex:1"></span></div>
+    <div class="opts" id="dvBack"></div>
+    <div style="display:flex;gap:8px;margin-top:12px;">
+      <button id="dvGo" style="flex:1;border:none;background:var(--caramel);color:#fff;border-radius:12px;padding:11px;font-size:13.5px;font-weight:700;cursor:pointer;">🚗 给俺算算开啥车</button>
+      <button id="dvLucky" style="border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px 14px;font-size:13px;color:var(--ink2);cursor:pointer;">🎲 随便</button>
+    </div>
+    <p style="font-size:11px;color:#B8A88F;margin:8px 0 0;text-align:center;">租金/油费/高速费/雪地胎全部按公开行情规则计算，落地价以平台实时报价为准</p>
+  </div>
+  <div id="dvOut"></div>
+
+  <h2 class="sec"><span class="n">5.2</span>东北自驾线路 · 选一条就出发</h2>
+  <p style="font-size:12px;color:var(--ink2);margin-bottom:9px;">点一条线路，上面的车型推荐会跟着变。里程为全程环线参考值。</p>
+  <div id="dvRoutes"></div>
+
+  <h2 class="sec"><span class="n">5.3</span>停车速查 · 到了往哪儿停</h2>
+  <div class="card" id="dvPark"></div>
+
+  <h2 class="sec"><span class="n">5.4</span>东北自驾保命清单 · 坨坨拿本儿记的</h2>
+  <div class="card" id="dvLife"></div>
+
+  <div class="card" style="background:var(--gold-soft);border:none;">
+    <h3 style="margin-bottom:6px;">🦌 关于雪地胎，别信朋友圈</h3>
+    <ul style="font-size:12px;color:#7A5A22;">
+      <li><b>「不换雪地胎出事故负全责」是谣言</b>——吉林省公安厅交警总队已公开辟谣，全国性法规里没有这条。</li>
+      <li>但<b>黑龙江要求 11 月 1 日–次年 4 月 1 日使用冬季胎</b>（认 3PMSF 雪花认证），沈阳以北高速与主要道路 12 月起同样要求，没换可能被劝返。</li>
+      <li>实测：−5℃ 压实雪面，普通胎刹车距离比雪地胎<b>多 8–12 米</b>，差不多三个车身。事故认定看过错，冰雪路面不减速照样担责。</li>
+      <li>四驱不能替代雪地胎——四驱只管起步，刹车转向全靠胎。</li>
+    </ul>
+  </div>
+</section>
+
+<section class="view" id="v-explore">
+  <h2 class="sec"><span class="n">6</span>小众目的地 · 人少，但东北味儿十足</h2>
+  <div class="card" style="padding:11px 13px;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <b style="font-size:13px;color:var(--caramel-deep);">季节筛选</b>
+      <span id="destFilterHint" style="font-size:11px;color:#B8A88F;flex:1;"></span>
+      <button id="destAll" style="border:1px solid var(--line);background:#fff;border-radius:10px;font-size:11.5px;padding:5px 10px;color:var(--ink2);cursor:pointer;">查看全部</button>
+    </div>
+  </div>
+  <div id="destList"></div>
+
+  <h2 class="sec"><span class="n">7</span>吃喝探索 · 藏在巷子里的东北味</h2>
+  <p style="font-size:12px;color:var(--ink2);margin-bottom:10px;">找小馆子的口诀：<b>导航搜"开了×十年"、店在老小区里、饭点坐满本地大爷大妈</b>——三条占两条，味道差不了。</p>
+  <div id="foodList"></div>
+
+  <h2 class="sec"><span class="n">7.5</span>东北特产 · 坨坨果果举给你看</h2>
+  <p style="font-size:12px;color:var(--ink2);margin-bottom:10px;">点一样，俩小狍子给你举起来唠两句。<b>后期把实物图链接补进来，就能换成真图</b>——点卡片下面的「🖼️ 补素材」直接贴。</p>
+  <div class="stage">
+    <div class="sb"><div class="bear-wrap" id="stageBear"></div></div>
+    <div class="st" id="stageTxt">
+      <h4>👆 点下面任意一样</h4>
+      <p>俺俩这就给你举起来——吃的喝的带的，东北这点儿好东西俺门儿清。</p>
+    </div>
+  </div>
+  <div id="fdGrid"></div>
+  <div class="card" style="background:var(--gold-soft);border:none;">
+    <h3 style="margin-bottom:5px;">🖼️ 素材库怎么补（给后期用）</h3>
+    <p style="font-size:11.5px;color:#7A5A22;line-height:1.75;">每条特产卡下面的「🖼️ 补素材」粘贴一张图片链接即可，立刻生效、存在本机。批量补的话，直接改代码里的 <b>FOOD_DB</b> 数组，给对应条目填 <b>img:'图片链接'</b>；形象同理改 <b>PETS</b> 数组。图片建议 1:1 透明 PNG，主体占画面 70% 以上。</p>
+  </div>
+
+
+  <div class="card">
+    <h3>🏠 风土人情 · 住进东北的日子</h3>
+    <ul>
+      <li><b>睡火炕</b>：延边/长白山脚下民宿多有火炕房，冬天烧得暖烘烘，人均 80–150 元含早饭；</li>
+      <li><b>逛大集</b>：东北农村大集按日开（逢二、五、八之类），粘豆包、大煎饼、现杀活鱼，比景区便宜一半；</li>
+      <li><b>搓澡文化</b>：北方澡堂是社交场，搓澡+汗蒸一套 40–100 元，走完一天腿酸，搓完直接复活；</li>
+      <li><b>朝鲜族民俗</b>：延边穿韩服拍照、看象帽舞，水上市场早市 5 点开张 8 点收摊，去晚了饼就没了；</li>
+      <li><b>赫哲族渔猎</b>：同江/抚远乌苏里江边，鱼皮衣、"杀生鱼"（不敢生食可要求做熟）；</li>
+      <li><b>冬捕与冰雪</b>：查干湖冬捕 12 月底–1 月最壮观，祭湖醒网仪式后万斤鱼出网；冰雪大世界 12 月下旬开园；</li>
+      <li><b>东北话速成</b>：好使=行，稀罕=喜欢，埋汰=脏，唠嗑=聊天，"整点儿"=来点儿。学会这三句，老板娘多送你一碟小菜。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ VIEW 4: 工具 ============ -->
+<section class="view" id="v-tools">
+  <h2 class="sec"><span class="n">8</span>预算记账 · 花到哪一目都清楚</h2>
+  <div class="card">
+    <div class="grid2">
+      <div class="stat"><b id="t-total">¥0</b><small>累计花费</small></div>
+      <div class="stat"><b id="t-budget">¥3000</b><small>预算上限（滑块可调）</small></div>
+    </div>
+    <input type="range" id="budgetSlider" min="500" max="30000" step="100" style="margin-top:12px;">
+    <div style="margin-top:8px;"><small id="budgetHint" style="color:var(--ink2);font-size:11.5px;"></small><div class="bar"><i id="budgetBar"></i></div></div>
+    <div class="divider"></div>
+    <div class="exp-form">
+      <input type="number" id="expAmt" placeholder="金额 ¥" inputmode="decimal">
+      <select id="expCat">
+        <option>大交通</option><option>当地交通</option><option>住宿</option><option>吃喝</option><option>门票</option><option>购物手信</option><option>其他</option>
+      </select>
+      <input type="text" id="expNote" placeholder="备注（可空）">
+      <button id="expAdd">记一笔</button>
+    </div>
+    <div id="catBars"></div>
+    <div id="expList"></div>
+  </div>
+
+  <h2 class="sec"><span class="n">9</span>打卡记录 · 走到哪戳到哪</h2>
+  <div class="card">
+    <p style="margin-bottom:10px;">点击卡片即打卡，进度自动统计到"复盘"页。想加自己的点？用下方自定义清单。</p>
+    <div class="ck-grid" id="ckGrid"></div>
+  </div>
+
+  <h2 class="sec"><span class="n">10</span>自定义清单</h2>
+  <div class="card">
+    <div class="add-row"><input id="liInput" placeholder="想加什么写这儿：买蓝莓干 / 取票 / 给坨坨拍照…"><button id="liAdd">添加</button></div>
+    <div id="liList"></div>
+  </div>
+
+  <h2 class="sec"><span class="n">11</span>分享给同伴 · 换设备接着用</h2>
+  <div id="shInbox">
+    <div class="card">
+      <h3 style="font-size:14.5px;margin-bottom:7px;">📨 有人给你分享了一份行程</h3>
+      <div class="shIMsg" id="shIMsg"></div>
+      <div class="shRow">
+        <button class="shBtn" id="shAccept">载入这份</button>
+        <button class="shBtn gray" id="shSkip">我自己规划</button>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="font-size:14px;margin-bottom:6px;">🦌 没做注册登录，数据就在你自个儿手里</h3>
+    <div class="tip">所有内容只存在这台设备的浏览器里：<b>不上传服务器、不用手机号、不用密码</b>——谁也拿不走，也不会有人给你打电话。要换手机或者发给同伴，用下面这三招就够。</div>
+    <div class="shRow">
+      <button class="shBtn" id="shLink">🔗 生成分享链接</button>
+      <button class="shBtn gray" id="shCopy">📋 复制链接</button>
+    </div>
+    <div class="shRow">
+      <button class="shBtn gray" id="shExport">📤 导出备份文件</button>
+      <button class="shBtn gray" id="shImport">📥 导入备份</button>
+    </div>
+    <input type="file" id="shFile" accept="application/json,.json" style="display:none">
+    <div id="shOut"></div>
+    <div class="shQrBox" id="shQrBox">
+      <img id="shQr" alt="扫码打开狍游记">
+      <div class="shQrTip">扫一扫打开；或者在微信里点右上角 <b>···</b> → 发送给朋友</div>
+    </div>
+    <div class="wxTip" id="wxShareTip">
+      瞅着你是在微信里打开的 —— 点右上角 <b>···</b> 选「发送给朋友」，同伴点开就能瞧见你这份行程。<br>
+      <b>注意：</b>微信内置浏览器不支持下载文件，换设备备份请用电脑或手机自带浏览器打开本页面。
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIEW 5: 复盘 ============ -->
+<section class="view" id="v-review">
+  <h2 class="sec"><span class="n">11</span>旅行复盘 · 回家路上干这事儿最合适</h2>
+  <div class="grid2" style="margin-bottom:12px;">
+    <div class="stat"><b id="r-exp">¥0</b><small>本次总花费</small></div>
+    <div class="stat"><b id="r-ck">0</b><small>打卡地点数</small></div>
+    <div class="stat"><b id="r-days">0</b><small>完成行程点</small></div>
+    <div class="stat"><b id="r-day-cost">¥0</b><small>日均花费</small></div>
+  </div>
+  <div class="card">
+    <h3>分类花费分布</h3>
+    <div id="r-cats"></div>
+    <p id="r-catEmpty" style="font-size:12px;color:#C9B394;">还没有记账记录，去"工具"页记几笔吧。</p>
+  </div>
+  <div class="card">
+    <h3>这趟旅行打几分？</h3>
+    <div class="stars" id="starRow"></div>
+    <p style="font-size:11.5px;color:#B8A88F;margin-top:4px;">点亮小星星，坨坨会帮你记住。</p>
+  </div>
+  <div class="card">
+    <h3>最难忘的一个瞬间</h3>
+    <textarea id="rvText" placeholder="比如：在伊春的山脊上，整片五花山只有我们四个人…"></textarea>
+    <div style="display:flex;gap:8px;margin-top:10px;">
+      <button style="flex:1;border:0;background:var(--caramel);color:#fff;border-radius:11px;padding:10px;font-weight:700;cursor:pointer;" id="rvSave">保存复盘</button>
+      <button style="border:1px solid var(--line);background:#fff;color:#B8A88F;border-radius:11px;padding:10px 14px;cursor:pointer;" id="rvReset">清空全部数据</button>
+    </div>
+    <div class="tip" id="rvSaved" style="display:none;">✅ 复盘已保存。下一季的东北又换了一张脸，坨坨果果等你再回来！嗷呜～</div>
+  </div>
+  <div class="card">
+    <h3>四季东北 · 下一次来的理由</h3>
+    <div class="pt" style="font-size:12.4px;">
+      <div style="padding:6px 0;border-bottom:1px dashed var(--line);"><b style="color:#5C8148;">🌱 春（4–5月）</b>兴安杜鹃开满山岗，松花江开江鱼上市，冰雪初融人最少</div>
+      <div style="padding:6px 0;border-bottom:1px dashed var(--line);"><b style="color:#3F7B9B;">🌿 夏（6–8月）</b>22℃ 的天然空调，森林与湿地最绿，菌子季吃鲜</div>
+      <div style="padding:6px 0;border-bottom:1px dashed var(--line);"><b style="color:#B5731F;">🍁 秋（9–10月）</b>五花山与枫叶的色彩峰值，红海滩最红，秋收大集最热闹</div>
+      <div style="padding:6px 0;"><b style="color:#4E6380;">❄️ 冬（11–3月）</b>冰雪大世界、雾凇、查干湖冬捕、雪乡热炕头，是另一个星球</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<nav class="tabbar">
+  <button data-v="v-gen" class="on"><span class="ic">✨</span>规划</button>
+  <button data-v="v-depart"><span class="ic">🎒</span>出发</button>
+  <button data-v="v-price"><span class="ic">💰</span>算价</button>
+  <button data-v="v-plan"><span class="ic">🗺️</span>行程</button>
+
+  <button data-v="v-drive"><span class="ic">🚗</span>自驾</button>
+  <button data-v="v-explore"><span class="ic">🍄</span>探索</button>
+  <button data-v="v-tools"><span class="ic">🧾</span>工具</button>
+  <button data-v="v-review"><span class="ic">⭐</span>复盘</button>
+</nav>
+
+<div id="neToast">
+  <div class="ne-bub">
+    <div class="ne-face t" id="neFace">坨</div>
+    <div class="ne-txt" id="neTxt"></div>
+    <button class="ne-close" id="neClose" aria-label="关闭">✕</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+const APP_VER='1.0';
+const APP_DATE='2026-09-20';
+try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
+const KEY='paoyouji_state_v2';
+let S=JSON.parse(localStorage.getItem(KEY)||'null')||{
+  season:'au', period:'weekend', ppl:2, budget:4000, exps:[], cks:{}, list:[], gear:{}, days:{}, stars:0, rv:'', showAll:false
+};
+const save=()=>localStorage.setItem(KEY,JSON.stringify(S));
+
+/* ============ 东北话系统 ============ */
+const NE={
+ hi:{
+  m:['早上好啊铁子！吃没吃饭呢？','起这么早，是打算出门整一趟咋的？','早啊老铁，今儿个天儿不错，适合出去溜达溜达。'],
+  n:['来啦铁子！快进来坐，喝口水儿。','晌午头儿的了，先扒拉口饭再研究行程。','你瞅啥？瞅半天了，进来啊，外头怪冷的。'],
+  a:['下午好啊老铁，这阵儿头脑最清楚，适合规划。','整点儿啥好吃的没？闲着也是闲着，咱盘个行程呗。'],
+  e:['晚上好铁子！夜猫子啊，正好没人跟你抢网。','黑天了还不睡？那咱把行程捋明白了再眯着。','哟这个点儿了，整完这个赶紧歇着啊，别熬太晚。']
+ },
+ idle:[
+  '你瞅啥？瞅够了就赶紧选个季节呗～',
+  '嗷呜～俺俩搁这儿等半天了，点一下我们试试？',
+  '东北这疙瘩四季都有嗑儿唠，别光惦记冬天啊铁子。',
+  '铁子，装备清单勾完没？落下一样，到山里可没处买去。',
+  '记账勤快点儿，回去好跟同伴掰扯明白钱都花哪儿了。',
+  '别慌，东北的路比你想的好走，就是冬天滑溜点儿。',
+  '贼拉冷的天儿，鞋必须防滑，不然屁股先着地——俺试过。',
+  '这疙瘩的馆子，越是破破烂烂的越好吃，你信不信？',
+  '老铁出门别装大款，先问价再上车，省得让人当冤大头。',
+  '嗷嗷～果果说：预算留三成机动，路上总有想不到的。',
+  '东北话速成：好使＝行，稀罕＝喜欢，埋汰＝脏，唠嗑＝聊天。',
+  '东北话速成②：整点儿＝来一点，稀罕人＝讨人喜欢，得劲儿＝舒服。',
+  '拿不准就选俺俩推荐的，保准不忽悠你。',
+  '该吃吃该喝喝，遇事别往心里搁——出来玩就图个乐呵。',
+  '别磨叽了，想玩啥直接说，俺俩给你盘明白的。',
+  '这地界儿冬天下午四点半就擦黑，行程可别排太满。',
+  '铁子，逛大集比逛景区得劲儿——粘豆包、大煎饼，便宜一半还新鲜。',
+  '澡堂子必须安排一次，搓完澡那条腿，第二天还能爬长白山。'
+ ],
+ err:{
+  net:['诶呀，网不好使了，这疙瘩信号是差点儿意思。不碍事！俺先按季节给你估摸着来，你还能自己拖那个滑块试。',
+       '网咋还抽抽了呢？没事儿，天儿俺猜个八九不离十，凑合瞅哈。'],
+  empty:['铁子你啥也没选，俺俩再能耐也变不出来啊！随便勾一个呗，要不点底下那个"随便整一个"。',
+         '嗷呜～你这可难为俺了，总得告诉俺你想干点儿啥吧？'],
+  nofit:['哎呀，你这要求凑一块儿有点儿拧巴，俺给你挑了最接近的，别嫌弃哈。',
+         '你这几个条件有点儿刁钻啊老铁，不过难不倒俺——瞅瞅这个中不中？'],
+  nofare:['这段价儿俺这儿没数，不敢瞎给你报，怕你挨宰。去「算价」页自己算，比俺准成。'],
+  overload:['老铁，你这选得也太满了，这天数根本转不完！俺给你砍掉俩，剩下的留着下回来。'],
+  season:['这个季节这么玩有点儿勉强，俺给你换个更对路子的，你看行不？']
+ },
+ ev:{
+  season:{sp:'春天来啦！兴安杜鹃顶着残雪开，那叫一个绝。',
+          su:'夏天好啊，东北这疙瘩 22 度，天然大空调，别处上哪儿找去。',
+          au:'秋天！五花山上色了，一年就这两周，瞅一眼少一眼。',
+          wi:'冬天来了铁子，羽绒服穿厚实点儿，耳朵可别冻掉了。'},
+  gearDone:'诶呀不错啊，全勾完了，这回出门心里有底了。',
+  budgetOver:'哎呀超了超了！赶紧瞅瞅哪块儿花冒了。',
+  planDone:'行程盘完了，瞅着咋样？不合口味俺再给你调。',
+  lucky:'那俺就给你整一个俺俩私藏的，保准不糊弄。'
+ }
+};
+const RARR=a=>a[Math.floor(Math.random()*a.length)];
+let neTimer=null;
+function neSay(txt,who,ms){
+ const box=document.getElementById('neToast'); if(!box)return;
+ document.getElementById('neFace').textContent=who==='g'?'\u679c':'\u5768';
+ document.getElementById('neFace').className='ne-face '+(who==='g'?'g':'t');
+ document.getElementById('neTxt').innerHTML='<span class="who">'+(who==='g'?'\u72cd\u679c\u679c':'\u72cd\u5768\u5768')+'</span>'+txt;
+ box.classList.add('on');
+ clearTimeout(neTimer);
+ neTimer=setTimeout(()=>box.classList.remove('on'),ms||5400);
+}
+function neIdle(){ neSay(RARR(NE.idle),Math.random()<.5?'t':'g'); }
+function neHi(){
+ const h=new Date().getHours();
+ const k=h<11?'m':h<14?'n':h<18?'a':'e';
+ neSay(RARR(NE.hi[k]),Math.random()<.5?'t':'g',6400);
+}
+
+
+/* ============ 四季配置 ============ */
+const SEASON={
+ sp:{name:'春',months:'4–5月',emoji:'🌱',
+  wear:'气温 5–18℃，早晚凉、白天暖，山区比市区低 3–5℃。春风硬、偶有倒春寒，4 月中下旬可能有雨夹雪。',
+  tip:'🧥 春装建议：薄外套 + 长袖 + 一件轻薄羽绒/抓绒备用。林区土路融雪泥泞，鞋一定要防水防滑。',
+  gear:['防风防水外套（春风硬）','轻薄羽绒或抓绒（早晚/山区）','防水防滑徒步鞋','折叠伞 or 雨衣'],
+  priceTip:'🌱 春季提示：山区道路融雪泥泞，包车选底盘高的车；4–5 月是淡季，包车与住宿议价空间大（可砍 10–20%），开江鱼季江边馆子火爆但不加价。'},
+ su:{name:'夏',months:'6–8月',emoji:'🌿',
+  wear:'气温 18–28℃，东北是全国避暑天花板；长白山山顶仍可能只有 10℃ 左右，早晚需外套。7–8 月为雨季，山区多雷阵雨。',
+  tip:'🧥 夏装建议：短袖 + 薄外套，长裤防蚊虫；山区与山顶务必带一件防风外套，别被"避暑"二字骗了。',
+  gear:['薄外套/皮肤衣（山顶与早晚）','速干衣裤 ×2','涉水凉鞋或防滑徒步鞋','泳衣（温泉/湖边用得上）'],
+  priceTip:'🌿 夏季提示：7–8 月是最旺的避暑季，热门民宿需提前 2–4 周订；周中出行比周末便宜 20–30%；雨季山路注意落石与临时封路。'},
+ au:{name:'秋',months:'9–10月',emoji:'🍁',
+  wear:'气温 3–18℃，昼夜温差最大，长白山山顶可到 −5℃。9 月末–10 月上旬是五花山与枫叶的色彩峰值期。',
+  tip:'🧅 洋葱穿衣法：内层速干 + 中层抓绒/薄羽绒 + 外层防风冲锋衣。帽子围巾必带，北方风"钻骨头缝"。',
+  gear:['防风冲锋衣或厚外套','抓绒衣/薄羽绒（内层）','帽子 + 围巾（防风钻缝）','舒适防滑运动鞋（山路）'],
+  priceTip:'🍁 秋季提示：9 月末–10 月上旬住宿与包车最紧俏（尤其十一），热门赏秋地要提前订；10 月中下旬叶子落了大半但人少价低，是性价比窗口。'},
+ wi:{name:'冬',months:'11–3月',emoji:'❄️',
+  wear:'气温 −30~−8℃，哈尔滨/吉林 −15~−25℃ 是常态，漠河可到 −40℃。雪乡、亚布力体感更冷，风一吹脸像被刀刮。',
+  tip:'🧊 冬装建议：厚羽绒（充绒量 200g 以上）+ 保暖内衣 + 羊毛衫；雪地靴（防滑防水）、手套、护耳帽、围脖缺一不可。手机低温掉电极快，暖宝宝贴充电宝上。',
+  gear:['厚羽绒服（充绒 200g+）','保暖内衣 + 羊毛衫','雪地靴（防滑防水、大一号）','可触屏手套 + 护耳帽 + 围脖'],
+  priceTip:'❄️ 冬季提示：包车务必确认<b>雪地胎/四驱</b>，价格比平时上浮 10–20%；雪乡、亚布力春节初一至初五房价可翻 2–3 倍，尽量错开；高速暴雪会临时封闭，行程要留缓冲日。'}
+};
+const GEAR_COMMON=[
+ ['身份证（必带，进景区/住宿都查）','学生证/军官证等优惠证件','现金 200–300 元（大集、山里小店用得上）','手机充电宝 2 万毫安（冬季贴暖宝宝防掉电）'],
+ ['保湿霜+润唇膏（北方干，冬季更要）','防晒霜（夏季紫外线强，雪地反光也晒）','感冒药/肠胃药/创可贴','晕车药（山路多）'],
+ ['相机 + 备用电池（冬季多带一块）','离线地图（山里信号弱）','保温杯（冬季救命）','折叠伞（夏秋雨季）']
+];
+
+/* ============ 错峰档期 ============ */
+const PERIODS={
+ weekend:{n:'平日 / 周末',t:['周五晚–周六早为出程小高峰','周六 10:00–15:00 是景区峰值，周日 15:00 后返程小高峰','热门景区建议 8:30 前入园，或改走小众点'],tip:'🦌 周末玩法：周六一早出发、周日午后返程，中间把热门点排在早上，下午转小众点。'},
+ may:{n:'清明 / 五一',t:['假期首日 8:00–12:00 出程最高峰','假期倒数第二天下午起返程高峰','热门景区首日与次日人最多，第三日起明显回落'],tip:'🦌 五一玩法：首日下午或次日上午出发，最后一天提前半天回城，能躲掉两个大峰。'},
+ summer:{n:'暑期（7–8月）',t:['东北是避暑热门地，7 月中–8 月中住宿最紧','周末效应极强：周中比周末便宜 20–30%','热门民宿需提前 2–4 周预订，临时订大概率翻倍'],tip:'🦌 暑期玩法：把行程排在周一至周四，周五六住城市、周日回，花钱最少人也最少。'},
+ oct:{n:'十一（9.30–10.7）',t:['9.30 下午–10.1 上午：出程最高峰，高速堵 + 票最贵','10.1 下午–10.2：最佳出发窗口','10.3–10.4：景区高峰，热门景区 8 点前入园','10.5–10.6 上午：长线客撤离，小众地基本包场','10.6 下午–10.7：返程高峰，建议 10.6 早挪或 10.7 早 6–10 点出发'],tip:'🦌 十一玩法：<b>10.1 下午出发、10.6 下午前回城</b>，前后两大高峰全躲开；顶流景区一定赶早上第一波。'},
+ winter:{n:'元旦 / 寒假 / 春节',t:['冰雪季 12 月下旬–2 月最旺，元旦与春节为双高峰','雪乡/亚布力春节初一至初五房价翻 2–3 倍','春运期间火车票紧张，需提前 15 天抢票','寒假中段（1 月中–2 月初，避开春节）性价比最高'],tip:'🦌 冰雪季玩法：想省钱就把行程压在 12 月上旬或 1 月中–2 月初；春节期间务必提前一个月订房，并确认暴雪退改政策。'}
+};
+
+/* ============ 四季线路 ============ */
+const ROUTES={
+ sp:[
+  {n:'🌸 兴安杜鹃线（哈尔滨进出 · 4 天）',d:'4 月末–5 月初，小兴安岭的兴安杜鹃顶着残雪开放，漫山粉紫，是东北春天最上镜的两周；游客极少，住宿是全年最低价。',
+   s:['D1 哈尔滨落地 → 中央大街 + 老道外巴洛克街区','D2 哈尔滨 → 伊春（约 4h）→ 五营国家森林公园看杜鹃','D3 汤旺河林海奇石 → 嘉荫中俄界江','D4 返程哈尔滨，秋林公司买红肠与大列巴'],
+   alt:'🌧️ 备选：伊春森林博物馆、嘉荫恐龙国家地质公园（室内）、或转场哈尔滨索菲亚教堂与省博物馆。'},
+  {n:'🐟 开江鱼线（哈尔滨–佳木斯–抚远 · 5 天）',d:'松花江、黑龙江 4 月下旬–5 月开江，"开江鱼"是一年里最鲜的一口；同江、抚远的赫哲族渔村也在这条线上。',
+   s:['D1 哈尔滨 → 松花江畔，尝开江鱼宴','D2 哈尔滨 → 佳木斯（高铁约 2h），逛江边早市','D3 佳木斯 → 同江三江口（松花江与黑龙江交汇）','D4 同江 → 抚远东极：黑瞎子岛、东极广场看最早日出','D5 返程，途经赫哲族村看鱼皮衣制作'],
+   alt:'🌧️ 备选：佳木斯博物馆、赫哲族博物馆、鱼皮技艺传习所（室内体验）。'}],
+ su:[
+  {n:'🌲 避暑森林线（哈尔滨–伊春–五大连池 · 5 天）',d:'22℃ 的夏天。小兴安岭是天然氧吧，五大连池的火山地貌与冷矿泉是夏天独有的玩法。',
+   s:['D1 哈尔滨落地 → 松花江畔夜市','D2 哈尔滨 → 伊春（约 4h）→ 溪水国家森林公园','D3 五营红松林 → 汤旺河石林徒步','D4 伊春 → 五大连池（火山堰塞湖、冷泉）','D5 五大连池 → 黑河 → 返程或继续北上'],
+   alt:'🌧️ 备选：五大连池火山博物馆、伊春森林博物馆、温泉泡汤。'},
+  {n:'🏔️ 长白夏色线（长春–长白山–延吉 · 5 天）',d:'夏天长白山植被最绿，天池云雾多但要碰运气；二道白河是避暑小镇，延吉的夜市和冷面是夏天的主场。',
+   s:['D1 长春 → 二道白河（约 3.5h）','D2 长白山北坡：天池 + 长白瀑布 + 绿渊潭（早 7 点入园）','D3 长白山西坡 / 露水河漂流','D4 二道白河 → 延吉：水上市场早市 + 朝鲜族民俗园','D5 延吉 → 珲春防川"一眼望三国"→ 返程'],
+   alt:'🌧️ 备选：长白山自然博物馆、延吉博物馆、温泉酒店泡汤。'}],
+ au:[
+  {n:'🍁 小兴安岭五花山线（哈尔滨进出 · 5 天）',d:'9 月末–10 月上旬，红松、白桦、枫、柞同时上色，"五花山"一词的原产地，游客只有长白山的一个零头。',
+   s:['D1 哈尔滨落地 → 中央大街 + 老道外','D2 哈尔滨 → 伊春（约 4h），傍晚溪水森林公园','D3 五营红松母树林 → 汤旺河林海奇石','D4 茅兰沟峡谷 → 嘉荫中俄界江','D5 返程哈尔滨，秋林公司采买手信'],
+   alt:'🌧️ 备选：伊春森林博物馆、汤旺河奇石馆、或者去体验东北澡堂搓澡（人均 40–80 元）。'},
+  {n:'🏔️ 长白秋色 + 延边风情线（长春/延吉进出 · 5 天）',d:'十月上旬长白山天气通透率高，天池露出概率是全年最大窗口之一；顺路把朝鲜族风情一网打尽。',
+   s:['D1 长春/延吉落地 → 二道白河','D2 长白山北坡：天池 + 长白瀑布（早 7 点前入园）','D3 西坡 1432 级台阶看天池全景，或改露水河（人极少）','D4 二道白河 → 延吉：水上市场 + 朝鲜族民俗园','D5 珲春防川 → 返程'],
+   alt:'🌧️ 备选：延吉博物馆、长白山自然博物馆、二道白河温泉。'},
+  {n:'🔴 枫叶红海滩线（沈阳进出 · 5 天）',d:'本溪枫叶 10 月上旬进入最佳期，比关门山人少的老边沟是本地人私藏；盘锦红海滩碱蓬草此时最红。',
+   s:['D1 沈阳落地 → 沈阳故宫 + 中街','D2 沈阳 → 本溪老边沟/大石湖枫叶谷','D3 本溪 → 丹东：断桥 + 鸭绿江游船','D4 丹东绿江村（鸭绿江第一湾秋色）','D5 丹东 → 盘锦红海滩 → 返沈阳'],
+   alt:'🌧️ 备选：沈阳故宫 + 辽宁省博物馆、本溪水洞（室内暗河行船，恒温）。'}],
+ wi:[
+  {n:'⛄ 冰雪大世界线（哈尔滨–亚布力–雪乡 · 5 天）',d:'冬天来东北的主线。冰雪大世界 12 月下旬开园，亚布力滑雪，雪乡的雪蘑菇与热炕头是这一季的招牌。',
+   s:['D1 哈尔滨：中央大街 + 马迭尔冰棍（零下吃冰是传统）','D2 冰雪大世界（下午 3 点入园，看夜景亮灯）','D3 哈尔滨 → 亚布力（滑雪一天）','D4 亚布力 → 雪乡（雪韵大街、观景栈道夜景）','D5 雪乡 → 牡丹江/哈尔滨返程'],
+   alt:'❄️ 备选（暴雪/极寒）：哈尔滨室内冰雪艺术馆、索菲亚教堂、老道外澡堂搓澡 + 汗蒸。'},
+  {n:'🌫️ 雾凇冬捕线（长春–吉林–查干湖 · 4 天）',d:'12 月底–2 月，吉林雾凇岛的雾凇与查干湖冬捕是东北冬天最有画面感的两件事，仪式感拉满。',
+   s:['D1 长春落地 → 伪满皇宫 / 这有山','D2 吉林市 → 雾凇岛（清晨 7–9 点雾凇最盛）','D3 吉林 → 松原查干湖（冬捕，看祭湖醒网）','D4 查干湖鱼宴 → 返长春'],
+   alt:'❄️ 备选：吉林省博物馆、长春室内滑冰、温泉度假区泡汤。'},
+  {n:'🧭 极寒找北线（哈尔滨–漠河 · 5 天）',d:'中国最北。漠河北极村、北红村，−40℃ 的极寒体验与可能的极光，冬天的极致玩法。',
+   s:['D1 哈尔滨 → 漠河（飞机约 2h 或火车）','D2 北极村：最北邮局、最北沙洲、找北石碑','D3 北红村（真正最北的村落）→ 龙江第一湾','D4 漠河县城：北极星广场、松苑原始森林','D5 返程哈尔滨'],
+   alt:'❄️ 备选：漠河民俗馆、室内火炕民宿体验、大兴安岭五六火灾纪念馆。'}]
+};
+
+/* ============ 目的地 ============ */
+const SN={sp:'春',su:'夏',au:'秋',wi:'冬'};
+const DESTS=[
+ ['🌲','伊春 · 小兴安岭','森林之城',['au','su','sp'],'"五花山"这个词的老家：9 月末–10 月上旬红松、白桦、枫、柞同时上色。夏天是 22℃ 的天然氧吧，春天兴安杜鹃顶雪开放。五营红松母树林、汤旺河石林、茅兰沟峡谷都值得停，游客密度约长白山的十分之一。','<b>怎么去</b>：哈尔滨自驾/包车约 4 小时，或火车至伊春站。<b>住</b>：市区连锁 150–250 元，林区民宿火炕 100–200 元。'],
+ ['🍁','本溪 · 老边沟 & 大石湖','枫叶谷',['au'],'关门山名气大，本地人却往老边沟跑——同一条枫叶带，人少一半，溪流+枫林构图更好拍。10 月上旬色彩峰值，早 7 点进山能拍到晨雾。','<b>怎么去</b>：沈阳自驾约 2h；本溪客运站有班车。<b>票</b>：约 60–80 元/沟。'],
+ ['🌊','丹东 · 绿江村','辽东第一村',['su','au'],'鸭绿江与浑江交汇处的原生态渔村，江心岛、江湾草甸、"辽东第一湾"。住农家院、吃江鱼，晚上看对岸灯火。','<b>怎么去</b>：丹东包车约 3h 山路，弯多但路况好。<b>住</b>：农家院含三餐 120–200 元/人。'],
+ ['🏔️','长白山 · 北/西/南坡','天池',['su','au','wi'],'夏天植被最绿、秋天通透率最高（全年看天池最好的窗口之一）、冬天可滑雪泡温泉。北坡设施全但人最多，<b>南坡人最少</b>（限流需预约），西坡 1432 级台阶看火山口湖最完整。','<b>票+车</b>：北坡约 225 元起，南坡需抢约。<b>住</b>：二道白河镇 150–400 元，冬季温泉酒店 300–800 元。'],
+ ['🔭','珲春 · 防川','一眼望三国',['su','au','sp'],'防川村龙虎阁上，左侧俄罗斯、右侧朝鲜、脚下图们江入海口。顺路能吃延边最正宗的俄式/朝鲜族混搭菜，几乎没有旅行团。','<b>怎么去</b>：延吉→珲春高铁约 40 分钟，珲春拼车去防川。'],
+ ['🔴','盘锦 · 红海滩','红色海岸线',['au'],'碱蓬草 9–10 月红得最狠，几十公里海岸线像铺红毯，配稻田画与芦苇荡。下午 4 点后顺光最好拍。','<b>怎么去</b>：沈阳高铁 30 分钟到盘锦，打车约 40 元。<b>票</b>：廊道约 110 元含观光车。'],
+ ['⛄','哈尔滨 · 冰雪大世界 & 中央大街','冰城',['wi'],'12 月下旬开园的冰雪大世界是冬天的主角，下午 3 点入园能看到白天通透的冰砖与入夜后的灯光两个版本。中央大街零下二十度啃马迭尔冰棍是传统艺能。','<b>票</b>：冰雪大世界旺季约 300–400 元。<b>住</b>：中央大街周边冬季 300–600 元，需提前订。'],
+ ['🏡','牡丹江 · 雪乡（双峰林场）','雪蘑菇',['wi'],'雪量最大的地方，屋顶积雪形成"雪蘑菇"，雪韵大街夜景与观景栈道是招牌。也正因为出名，价格与体验参差，务必选正规住宿并提前确认价格、保留凭证。','<b>怎么去</b>：哈尔滨包车约 5–6h 或牡丹江中转。<b>住</b>：淡季 200–400 元，春节 600–1500 元，务必提前订。'],
+ ['🌫️','吉林 · 雾凇岛','雾凇奇观',['wi'],'12 月底–2 月，松花江不冻的水汽在枝头凝结成雾凇，清晨 7–9 点最盛，日出时整岛银白。需要运气（温差+无风+水汽），建议留两天等一次。','<b>怎么去</b>：吉林市拼车约 30–50 元/人。<b>住</b>：岛上农家院 150–300 元含餐。'],
+ ['🎣','松原 · 查干湖','冬捕',['wi','su'],'12 月底–1 月的冬捕最壮观：祭湖醒网仪式后万斤鱼出网，是国家级非遗。夏天则是湖景与全鱼宴。','<b>怎么去</b>：松原市区拼车约 40–60 元/人。<b>吃</b>：查干湖胖头鱼，人均 60–100 元。'],
+ ['❄️','漠河 · 北极村 & 北红村','找北',['wi','su'],'中国最北村落，冬天 −40℃ 的极寒与可能的极光，夏天则是极昼（凌晨 3 点天亮）。最北邮局寄张明信片是仪式感。','<b>怎么去</b>：哈尔滨飞机约 2h 或火车 K7041。<b>住</b>：北极村民宿 150–300 元。'],
+ ['🐟','抚远 / 同江 · 东极与赫哲族','最早日出',['su','sp','au'],'祖国最东端，夏天凌晨 3 点多天就亮。赫哲族的鱼皮衣、伊玛堪说唱，乌苏里江的"三花五罗"江鱼，春天开江鱼最鲜。','<b>怎么去</b>：哈尔滨飞抚远约 1.5h。<b>吃</b>：开江鱼、杀生鱼（可要求做熟）。'],
+ ['🌋','黑河 · 五大连池','火山冷泉',['su','au'],'火山堰塞湖群 + 天然冷矿泉水，夏天来最舒服，看火山石海、泡冷泉、喝真正的矿泉水。','<b>怎么去</b>：哈尔滨火车约 6h 或飞机 1h。<b>票</b>：景区联票约 100–200 元。'],
+ ['🌸','伊春 · 兴安杜鹃','春季限定',['sp'],'4 月末–5 月初，小兴安岭的杜鹃顶着残雪开放，粉紫漫山，花期约两周，是东北春天最上镜的限定景观。','<b>怎么去</b>：伊春市区包车前往五营/红星。<b>提示</b>：花期受气温影响大，出发前查当地花讯。'],
+ ['🏮','延吉 · 朝鲜族风情','网红外壳本地芯',['sp','su','au','wi'],'民俗园穿韩服出片是网红玩法，但早市水上市场（5–8 点）、河坝烧烤夜市、市井里的锅包肉小店才是本地人的日常。四季皆宜，冬天配一碗热汤饭最舒服。','<b>吃</b>：水上市场烤冷面、米肠、豆腐脑，人均 15 元吃到扶墙。'],
+ ['🛕','沈阳 · 故宫 + 老北市','关东盛京',['sp','su','au','wi'],'全国第二大故宫建筑群，游客比北京故宫友好太多；老北市复古街区晚上评剧、二人转轮着上，吃一碗老边饺子。冬天室内景点多，适合当避寒中转站。','<b>票</b>：沈阳故宫约 50 元。<b>吃</b>：老边饺子、鸡架，人均 30–60 元。']
+];
+
+/* ============ 吃喝 ============ */
+const FOODS=[
+ ['🍲','铁锅炖（大鹅/江鱼/排骨）','人均 50–80 元',['au','wi','sp','su'],'灶台一口大铁锅现炖，贴一圈玉米饼子，土豆豆角垫底吸满汤汁。冬天围着灶台吃最香，人多点"一锅出"。','认准"柴火铁锅炖"招牌、店里烟雾缭绕那家；景区门口的"俄式大鹅"慎入。'],
+ ['🥩','东北烧烤（锦州派 / 齐市烤肉）','人均 40–70 元',['su','au','sp'],'锦州烧烤啥都能烤，齐齐哈尔烤肉是拌完自己烤，配紫菜包饭和冷面。夏天的深夜烧烤摊是东北的灵魂。','找"24 小时""老店"字样；商场负一层的美食广场是游客版。'],
+ ['🍖','老式锅包肉','人均 40–60 元',['sp','su','au','wi'],'糖醋汁的老式做法才正宗（番茄酱的是改良款），外皮炸得咔嚓响，趁热吃凉了就韧。','菜单上写"老式锅包肉"的才对；配一碗米饭就是本地人的正餐。'],
+ ['🐟','开江鱼 / 查干湖胖头鱼','人均 60–100 元',['sp','wi'],'春天松花江开江的头一网鱼最鲜，冬天查干湖冬捕的胖头鱼最肥。铁锅炖鱼、得莫利炖鱼是经典做法。','开江鱼季（4 月下旬–5 月）江边馆子不加价但要排队；查干湖认准"湖鱼"字样。'],
+ ['🍜','延吉冷面 & 米肠','人均 25–40 元',['su'],'冰碴牛肉汤冷面配辣白菜；米肠是猪肠灌米血蘸料吃。夏天一碗下去从头顶凉到脚后跟。','水上市场早市的冷面摊、学校门口的米肠小店最地道。'],
+ ['🍄','菌子宴（松茸/榛蘑/元蘑）','人均 60–120 元',['su','au'],'7–9 月是东北采蘑菇的季节，榛蘑炖小鸡、元蘑炒肉，是夏天和早秋才有的鲜。','林区小镇的路边小馆最实在；景区里的"山珍宴"多半是养殖货。'],
+ ['🫘','粘豆包 & 大煎饼','人均 5–15 元',['wi','au'],'黄米面包豆沙蘸白糖，冬天冻在外头，蒸热了吃。大煎饼卷大葱大酱是标配。','赶一次农村大集全都齐了；早市现摊的煎饼摊最松软。'],
+ ['🍐','冻梨 · 冻柿子 · 糖葫芦','人均 5–15 元',['wi'],'零下三十度冻出来的梨，化在凉水里咬一口吸汁水，是东北冬天的甜品。糖葫芦冻得梆硬，啃着嘎嘣脆。','冬天街边摊都有，别在景区买；冻梨要选黑皮软身的。'],
+ ['🥟','酸菜白肉 / 杀猪菜','人均 45–70 元',['wi','au','sp'],'自家腌的酸菜配五花肉血肠炖一锅，冬天吃暖身，秋天"下酸菜"是家家户户的大事。','居民区里的"家常菜""杀猪菜"小馆；手写塑封菜单的店加分。'],
+ ['🍢','烤冷面（正宗铁板）','人均 6–10 元',['sp','su','au','wi'],'铁板一压一卷，加蛋加肠刷甜辣酱，是街头小吃不是网红甜品。','学校门口、夜市流动小推车 > 商场专柜。'],
+ ['🥛','马迭尔冰棍 & 老式汽水','人均 3–8 元',['wi','su'],'零下二十度在中央大街吃冰棍是哈尔滨传统艺能；配一瓶大白梨汽水，仪式感拉满。','街边小卖部 3 块钱的和旗舰店 10 块钱的是同一根。'],
+ ['🥖','秋林红肠 & 大列巴','人均 30–80 元（手信）',['sp','su','au','wi'],'哈尔滨百年老号的红肠与大列巴，是最靠谱的东北手信，秋林公司地下商场能买到正宗的。','认准秋林·里道斯、哈肉联；火车站周边的山寨货多。']
+];
+
+/* ============ 人数与交通推荐 ============ */
+const PPL_TXT={
+ 1:'1 人出行：首选<b>火车/高铁 + 网约车</b>组合，最灵活也最省钱；景区拼车按人头算很划算（20–60 元/段）。安全提示：夜间尽量不拼黑车。',
+ 2:'2 人出行（情侣首选）：市内用网约车；去远景区两人拼车或与同行者拼团包车分摊。预算重点给住宿——江景/雪景房旺季加价多，早订。',
+ 3:'3 人出行：市内打车一车刚好；去景区<b>包一辆经济轿车（500–700 元/天）三人分摊 170–230 元/人</b>，是性价比拐点。',
+ 4:'4 人出行：包一辆 SUV（600–800 元/天）<b>人均仅 150–200 元/天</b>，路线自己定、想停就停；山路与雪路选 SUV 更稳。',
+ 5:'5 人出行：商务 7 座包车（800–1200 元/天），人均 160–240 元，行李与长途舒适度都拉满；也可拆成 2+3 两台网约车走市内。',
+ 6:'6 人出行：商务 7 座包车人均 130–200 元/天，是全场景性价比之王；预订时确认行李空间（6 个行李箱需 GL8 级别）。',
+ 7:'7 人及以上：直接<b>两台车或考斯特商务（1200–1800 元/天）</b>；住宿订民宿整层通常能砍 10–20%。冬季雪乡线路建议配雪地胎四驱车。',
+ 8:'8 人及以上：建议<b>两台商务车或小型团队包车（1800–2500 元/天）</b>；人多务必统一集合时间与行李规则，冬季行程每天留出 1 小时机动。'
+};
+
+/* ============ 渲染 ============ */
+function renderSeason(){
+ document.querySelectorAll('#seasonBar button').forEach(b=>b.classList.toggle('on',b.dataset.s===S.season));
+ document.getElementById('hero').className='hero '+S.season;
+ const s=SEASON[S.season];
+ document.getElementById('wearTitle').textContent=s.emoji+' '+s.name+'季天气 & 穿衣（'+s.months+'）';
+ document.getElementById('wearText').innerHTML=s.wear;
+ document.getElementById('wearTip').innerHTML=s.tip;
+ document.getElementById('g1t').textContent=s.emoji+' '+s.name+'季专属';
+ document.getElementById('seasonPriceTip').innerHTML=s.priceTip;
+ document.getElementById('routeSeasonTitle').textContent=s.name+'季';
+ renderGear();renderRoutes();renderDests();renderFoods();renderCk();
+ buildFall();
+ if(WX.cur==null){WX.src='sim';applyTemp(SEASON_T[S.season]);}else{applyTemp(WX.cur);}
+}
+function renderGear(){
+ const groups=[GEAR_COMMON[0],SEASON[S.season].gear,GEAR_COMMON[1],GEAR_COMMON[2]];
+ const ids=['g0','g1','g2','g3'],cs=['g0c','g1c','g2c','g3c'];
+ groups.forEach((items,gi)=>{
+  const box=document.getElementById(ids[gi]); box.innerHTML='';
+  items.forEach((it,i)=>{
+   const k=ids[gi]+'_'+i,on=S.gear[k];
+   const d=document.createElement('div'); d.className='chk'+(on?' done':'');
+   d.innerHTML=`<div class="box">${on?'✓':''}</div><span>${it}</span>`;
+   d.onclick=()=>{S.gear[k]=!S.gear[k];save();renderGear();}; box.appendChild(d);
+  });
+  document.getElementById(cs[gi]).textContent=items.filter((_,i)=>S.gear[ids[gi]+'_'+i]).length+'/'+items.length;
+ });
+}
+function renderPpl(){
+ const pk=document.getElementById('pplPicker'); pk.innerHTML='';
+ for(let i=1;i<=8;i++){
+  const b=document.createElement('button'); b.textContent=i+(i===8?' 人+':' 人');
+  if(S.ppl===i||(i===8&&S.ppl>=8))b.classList.add('on');
+  b.onclick=()=>{S.ppl=i;save();renderPpl();}; pk.appendChild(b);
+ }
+ document.getElementById('pplAdvice').innerHTML='🦌 '+PPL_TXT[S.ppl];
+ if(S.price&&document.getElementById('pcOut')){renderPrice();renderHotel();}
+}
+function renderPeriod(){
+ const pb=document.getElementById('periodBar'); pb.innerHTML='';
+ Object.entries(PERIODS).forEach(([k,v])=>{
+  const b=document.createElement('button'); b.textContent=v.n;
+  if(S.period===k)b.classList.add('on');
+  b.onclick=()=>{S.period=k;save();renderPeriod();}; pb.appendChild(b);
+ });
+ const p=PERIODS[S.period];
+ document.getElementById('periodText').innerHTML=p.t.map(x=>'· '+x).join('<br>');
+ document.getElementById('periodTip').innerHTML=p.tip;
+}
+function renderRoutes(){
+ const box=document.getElementById('routeBox'); box.innerHTML='';
+ ROUTES[S.season].forEach((r,ri)=>{
+  const c=document.createElement('div'); c.className='card';
+  c.innerHTML=`<h3>${r.n}</h3><p>${r.d}</p><div id="rt_${S.season}_${ri}"></div><div class="altbox">${r.alt}</div>`;
+  box.appendChild(c);
+  const rb=c.querySelector(`#rt_${S.season}_${ri}`);
+  r.s.forEach((it,i)=>{
+   const k=S.season+'_'+ri+'_'+i,on=S.days[k];
+   const d=document.createElement('div'); d.className='day'; d.dataset.d=it.slice(0,2);
+   const parts=it.slice(2).trim().split('→');
+   d.innerHTML=`<h4>${it.slice(0,2)}</h4>`;
+   const s=document.createElement('div'); s.className='stop'+(on?' done':'');
+   s.innerHTML=`<div class="st"><b>${(parts[0]||'').trim()}</b>${parts.length>1?'→ '+parts.slice(1).join('→').trim():''}</div><button class="btn-mini${on?' on':''}">${on?'✓ 已完成':'标记'}</button>`;
+   s.querySelector('button').onclick=()=>{S.days[k]=!S.days[k];save();renderRoutes();review();};
+   d.appendChild(s); rb.appendChild(d);
+  });
+ });
+}
+function renderDests(){
+ const box=document.getElementById('destList'); box.innerHTML='';
+ const list=S.showAll?DESTS:DESTS.filter(d=>d[3].includes(S.season));
+ document.getElementById('destFilterHint').textContent=S.showAll
+  ? '全部 '+DESTS.length+' 个目的地'
+  : SEASON[S.season].name+'季推荐 '+list.length+' 个（共 '+DESTS.length+' 个）';
+ document.getElementById('destAll').textContent=S.showAll?'只看当季':'查看全部';
+ list.forEach(([e,t,sub,seasons,desc,more])=>{
+  const c=document.createElement('div'); c.className='dest';
+  const tags=seasons.map(s=>`<span class="tag ${s==='sp'?'t-g':s==='su'?'t-b':s==='au'?'t-o':'t-w'}">${SN[s]}</span>`).join('');
+  c.innerHTML=`<div class="dhead"><div class="emoji">${e}</div><div><h4>${t}</h4><div class="meta">${sub} · ${tags}</div></div><span class="arrow">›</span></div><div class="dbody">${desc}<br><br>${more}</div>`;
+  c.querySelector('.dhead').onclick=()=>c.classList.toggle('open');
+  box.appendChild(c);
+ });
+}
+function renderFoods(){
+ const box=document.getElementById('foodList'); box.innerHTML='';
+ const mk=f=>{
+  const c=document.createElement('div'); c.className='food';
+  c.innerHTML=`<div class="fe">${f[0]}</div><div style="flex:1"><h4>${f[1]}<span class="pr">${f[2]}</span></h4><p>${f[4]}</p><div class="where">🔎 ${f[5]}</div></div>`;
+  box.appendChild(c);
+ };
+ FOODS.filter(f=>f[3].includes(S.season)).forEach(mk);
+ const others=FOODS.filter(f=>!f[3].includes(S.season));
+ if(others.length){
+  const h=document.createElement('p');
+  h.style.cssText='font-size:12px;color:#B8A88F;margin:14px 0 8px;text-align:center;';
+  h.textContent='— 其他季节也能吃到的东北味 —'; box.appendChild(h);
+  others.forEach(mk);
+ }
+}
+
+/* ============ 算价：城市计价规则库 ============ */
+const CITY={
+ hrb:{n:'哈尔滨',sub:'太平机场 / 哈尔滨站 / 哈西站',
+  metro:{rule:[6,10,14,21,28],step:10,cap:7},bus:'1 元（少量 2 元）',
+  taxi:{b:8,bkm:3,per:1.9,longs:[[12,Infinity,0.5]],nightR:0.2,nightB:0},wait:0.38,waitFree:5,
+  routes:[['自定义里程',0,0,0],['太平机场→中央大街',37,25,20],['太平机场→哈尔滨站',35,25,20],['太平机场→哈西站',32,25,20],['太平机场→冰雪大世界',40,25,20],['哈尔滨西站→中央大街',8,0,0],['哈尔滨站→中央大街',3,0,0],['中央大街→太阳岛',6,0,0]]},
+ cc:{n:'长春',sub:'龙嘉机场 / 长春站 / 城际铁路',
+  metro:{rule:[7,13,19,27,35],step:10,cap:99},bus:'1 元',
+  taxi:{b:8,bkm:2.5,per:2.2,longs:[[15,30,0.5],[30,Infinity,0.75]],nightR:0,nightB:1},wait:0.4,
+  routes:[['自定义里程',0,0,0],['龙嘉机场→市区（人民广场）',31,20,22],['龙嘉机场→长春站',33,20,22],['长春站→净月潭',18,0,0],['市区→伪满皇宫',4,0,0]]},
+ sy:{n:'沈阳',sub:'桃仙机场 / 沈阳站 / 沈阳北站',
+  metro:{rule:[6,10,14,21,28],step:10,cap:7},bus:'1 元',
+  taxi:{b:9,bkm:3,per:2.0,longs:[[15,20,0.3],[20,Infinity,0.5]],nightR:0.099,nightB:0},wait:0.5,
+  routes:[['自定义里程',0,0,0],['桃仙机场→中街',20,10,16],['桃仙机场→沈阳北站',22,10,16],['沈阳北站→中街/故宫',4,0,0],['沈阳站→棋盘山',25,0,0]]},
+ dl:{n:'大连',sub:'周水子机场 / 大连站 / 大连北站',
+  metro:{rule:[6,12,18,26,34,44,54],step:15,cap:99},bus:'1 元（远郊/空调 2 元）',
+  taxi:{b:10,bkm:3,per:2.0,longs:[],nightR:0.3,nightB:3},wait:0.4,
+  routes:[['自定义里程',0,0,0],['周水子机场→中山广场',11,0,0],['周水子机场→星海广场',13,0,0],['大连北站→市区',16,0,0],['市区→金石滩',52,15,0]]},
+ jl:{n:'吉林市',sub:'吉林站 / 雾凇岛方向',metro:null,bus:'1 元',
+  taxi:{b:7,bkm:2.5,per:1.8,longs:[],nightR:0,nightFlat:2},wait:0.36,
+  routes:[['自定义里程',0,0,0],['吉林站→雾凇岛（韩屯）',45,0,0],['市区→松花湖',25,0,0],['吉林站→市区酒店',4,0,0]]},
+ qqhr:{n:'齐齐哈尔',sub:'齐齐哈尔机场 / 齐齐哈尔站',metro:null,bus:'1 元',
+  taxi:{b:8,bkm:3,per:1.8,longs:[],nightR:0.111,nightB:1},wait:0.5,
+  routes:[['自定义里程',0,0,0],['机场→市区',13,0,20],['齐齐哈尔站→扎龙保护区',30,0,0],['市区→明月岛',10,0,0]]},
+ other:{n:'其他地级市',sub:'牡丹江 / 延吉 / 丹东 / 锦州 / 营口 / 伊春等',metro:null,bus:'1–2 元',
+  taxi:{b:6,bkm:2.5,per:1.6,longs:[],nightR:0.2,nightB:1},wait:0.4,
+  routes:[['自定义里程',0,0,0],['机场/车站→市区酒店',10,0,0],['市区→近郊景区',25,0,0],['市区→远郊景区（如雪乡/镜泊湖）',70,20,0]]}
+};
+const HOTEL={
+ hrb:{n:'哈尔滨（省会 · 冰雪热门）',base:[[130,220],[230,340],[340,490],[650,980]]},
+ cc:{n:'长春（省会）',base:[[120,200],[190,300],[260,400],[520,820]]},
+ sy:{n:'沈阳（省会）',base:[[120,200],[170,290],[300,440],[560,900]]},
+ dl:{n:'大连（滨海 · 旺季明显）',base:[[160,270],[280,490],[480,780],[900,1500]]},
+ city:{n:'其他地级市（吉林/延吉/牡丹江/丹东等）',base:[[90,165],[150,265],[240,390],[450,720]]},
+ scenic:{n:'景区型（雪乡/长白山/亚布力/漠河/雾凇岛）',base:[[180,320],[320,580],[620,1200],[1200,2300]]}
+};
+const TIER=['经济型（快捷 / 青旅 / 家庭旅馆）','舒适型（连锁精选 / 精品民宿）','高档型（四星 / 亚朵 / 欢朋级）','豪华型（五星 / 度假酒店）'];
+const PMUL={weekend:{m:1.15,t:'平日 / 周末'},may:{m:1.4,t:'清明 / 五一'},summer:{m:1.35,t:'暑期 7–8 月'},oct:{m:1.7,t:'十一'},winter:{m:1.9,t:'元旦 / 寒假 / 春节'}};
+
+/* ---- 计算函数 ---- */
+function metroFare(m,km){
+ if(!m)return null;
+ for(let i=0;i<m.rule.length;i++) if(km<=m.rule[i]) return Math.min(2+i,m.cap);
+ return Math.min(2+m.rule.length+Math.ceil((km-m.rule[m.rule.length-1])/m.step),m.cap);
+}
+function taxiBase(t,km){
+ let f=t.b+Math.max(0,km-t.bkm)*t.per;
+ (t.longs||[]).forEach(([a,b,r])=>{f+=Math.max(0,Math.min(km,b)-a)*t.per*r;});
+ return f;
+}
+function taxiFare(c,km,time){
+ const t=c.taxi; let f=taxiBase(t,km);
+ if(time==='night') f+= (t.nightB||0)+(t.nightFlat||0)+Math.max(0,km-t.bkm)*t.per*(t.nightR||0);
+ const rate={day:1.5,peak:2.6,night:1.2}[time];
+ let min=km*rate; if(c.waitFree)min=Math.max(0,min-c.waitFree);
+ f+=min*(c.wait||0.4);
+ return f;
+}
+function hailFare(c,km,time){
+ const t=c.taxi; let f=t.b+Math.max(0,km-t.bkm)*t.per;
+ f+=(km/(time==='peak'?22:30)*60)*0.35;
+ if(time==='peak')f*=1.25; if(time==='night')f*=1.12;
+ return f;
+}
+const r5=x=>Math.round(x/5)*5;
+
+/* ---- 渲染算价页 ---- */
+S.price=S.price||{city:'hrb',route:1,km:37,time:'day',zone:'hrb',tier:1,period:'oct'};
+function renderPrice(){
+ const P=S.price,c=CITY[P.city],km=+P.km||0,time=P.time,n=S.ppl;
+ document.getElementById('pcPplEcho').textContent=n;
+ const cs=document.getElementById('pcCity');
+ if(!cs.options.length){
+  cs.innerHTML=Object.entries(CITY).map(([k,v])=>`<option value="${k}">${v.n} · ${v.sub}</option>`).join('');
+ }
+ cs.value=P.city;
+ document.getElementById('pcCityMeta').innerHTML=c.metro
+  ? '🚇 有地铁：'+c.n+'城市轨道交通按里程分段计价，封顶 '+(c.metro.cap>=99?'无':c.metro.cap+' 元')+'　·　🚌 市区公交 '+c.bus
+  : '🚇 无地铁：出行以公交 + 出租车/网约车为主　·　🚌 市区公交 '+c.bus;
+ const rs=document.getElementById('pcRoute');
+ rs.innerHTML=c.routes.map((r,i)=>`<option value="${i}">${r[0]}${r[1]?'（约 '+r[1]+' km）':''}</option>`).join('');
+ rs.value=P.route;
+ document.getElementById('pcKm').value=P.km;
+ document.getElementById('pcTime').value=time;
+
+ const out=document.getElementById('pcOut');
+ if(!km||km<=0){out.innerHTML='<div class="warn">先填一个里程数，坨坨才能帮你算～</div>';return;}
+ const r=c.routes[P.route]||['',0,0,0], toll=+r[2]||0, busP=+r[3]||0;
+ const mf=metroFare(c.metro,km);
+ const tf=taxiFare(c,km,time), tl=r5(tf*0.88), th=r5(tf*1.14);
+ const hf=hailFare(c,km,time), hl=r5(hf*0.92), hh=r5(hf*1.12);
+ const redline=r5((th+(toll||0))*1.3);
+ let h='';
+ h+='<div class="res"><div class="rl">🚕 出租车打表估算（'+n+' 人一车）</div>'
+   + '<div class="big">¥'+tl+'–'+th+' <small>/车</small></div>'
+   + '<div style="font-size:11.5px;color:#9A6B1E;margin-top:3px;">'
+   + (toll?'含过路费另计约 '+toll+' 元 · ':'') + '人均 ¥'+Math.round(tl/n)+'–'+Math.ceil(th/n)+'</div></div>';
+ h+='<div class="kv"><span>📱 网约车（平台打车，有行程记录）</span><span class="v">¥'+hl+'–'+hh+(toll?' +'+toll:'')+'</span></div>';
+ if(mf!==null) h+='<div class="kv"><span>🚇 地铁（按里程分段票价表）</span><span class="v">¥'+mf+'/人 · 共 ¥'+mf*n+'</span></div>';
+ h+='<div class="kv"><span>🚌 公交（市区线路）</span><span class="v">'+c.bus+' · 共约 ¥'+(mf?n:n*1)+'–'+n*2+'</span></div>';
+ if(busP) h+='<div class="kv"><span>🚌 机场 / 城际巴士</span><span class="v">¥'+busP+'/人 · 共 ¥'+busP*n+'</span></div>';
+ h='<div style="margin-top:6px;">'+h+'</div>';
+ h+='<div class="warn">🚫 <b>防宰红线：司机报价超过 ¥'+redline+'（估算上限×1.3）就是宰客</b>，理由只有过路费和长时间等候两种。上车只说"打表"，一口价超过红线直接换车，被拒载或强揽可拨 12328。</div>';
+ let best='';
+ if(busP) best='🦌 果果建议：这条线坐<b>机场/城际巴士</b>最划算，'+busP+' 元/人直达市区，比打车省 '+Math.round((tl-busP*n)/n)+' 元/人。行李多或 '+n+' 人以上同行时，打车人均也才 ¥'+Math.round(tl/n)+'，可以直接打车。';
+ else if(mf!==null&&km<=25) best='🦌 果果建议：'+km+' km 不堵车的话<b>地铁 ¥'+mf+'/人</b>最快最稳（'+c.n+'不堵车时地铁比打车快）；赶时间或行李多选网约车。';
+ else if(n>=4&&km>=25) best='🦌 果果建议：'+n+' 人同行、'+km+' km 的活儿，<b>直接包车更划算</b>——按「出发」页车型表，'+n+' 人包车人均约 ¥'+Math.round(700/n)+'/天，还能沿途停车拍照。';
+ else best='🦌 果果建议：'+n+' 人出行，网约车最省心（价格透明、有记录）；城区短途优先公交/地铁。';
+ h+='<div class="ok">'+best+'</div>';
+ out.innerHTML=h;
+}
+function renderHotel(){
+ const P=S.price,H=HOTEL[P.zone],tier=P.tier,pm=PMUL[P.period],n=S.ppl;
+ const zs=document.getElementById('phZone');
+ if(!zs.options.length) zs.innerHTML=Object.entries(HOTEL).map(([k,v])=>`<option value="${k}">${v.n}</option>`).join('');
+ zs.value=P.zone;
+ const ts=document.getElementById('phTier');
+ if(!ts.options.length) ts.innerHTML=TIER.map((t,i)=>`<option value="${i}">${t}</option>`).join('');
+ ts.value=tier;
+ const ps=document.getElementById('phPeriod');
+ if(!ps.options.length) ps.innerHTML=Object.entries(PMUL).map(([k,v])=>`<option value="${k}">${v.t}　溢价 ×${v.m}</option>`).join('');
+ ps.value=P.period;
+ let mul=pm.m;
+ if(P.zone==='scenic'&&P.period==='winter')mul*=1.35;
+ if(P.zone==='dl'&&P.period==='summer')mul*=1.2;
+ const b=H.base[tier];
+ const lo=Math.round(b[0]*mul/10)*10, hi=Math.round(b[1]*mul/10)*10;
+ const rooms=Math.max(1,Math.ceil(n/2));
+ document.getElementById('phOut').innerHTML=
+  '<div class="res"><div class="rl">🏨 '+pm.t+' · 溢价 ×'+mul.toFixed(2)+'</div>'
+  +'<div class="big">¥'+lo+'–'+hi+' <small>/间夜</small></div>'
+  +'<div style="font-size:11.5px;color:#9A6B1E;margin-top:3px;">平日基准 ¥'+b[0]+'–'+b[1]+'　→　当档期上调至 ¥'+lo+'–'+hi+'</div></div>'
+  +'<div class="kv"><span>按 '+n+' 人 '+rooms+' 间分摊</span><span class="v">人均 ¥'+Math.round(lo/2)+'–'+Math.ceil(hi/2)+'/晚</span></div>'
+  +'<div class="kv"><span>整团 '+rooms+' 间 · 5 晚预估</span><span class="v">¥'+(lo*rooms*5).toLocaleString()+'–'+(hi*rooms*5).toLocaleString()+'</span></div>'
+  +(mul>=1.7?'<div class="warn">⚠️ 该档期溢价较高，<b>建议提前 3–4 周预订</b>并选可免费取消的房型；景区型目的地春节前后房价可能再上浮，务必保留预订凭证与价格截图。</div>'
+    :'<div class="ok">🦌 这个档期溢价温和，提前 1–2 周订房即可；同地段比价时优先看<b>含早 + 可免费取消</b>的房型。</div>');
+}
+document.getElementById('pcCity').onchange=e=>{S.price.city=e.target.value;S.price.route=1;S.price.km=CITY[S.price.city].routes[1][1];save();renderPrice();};
+document.getElementById('pcRoute').onchange=e=>{const i=+e.target.value;S.price.route=i;if(i>0)S.price.km=CITY[S.price.city].routes[i][1];save();renderPrice();};
+document.getElementById('pcKm').oninput=e=>{S.price.km=+e.target.value||0;save();renderPrice();};
+document.getElementById('pcTime').onchange=e=>{S.price.time=e.target.value;save();renderPrice();};
+document.getElementById('phZone').onchange=e=>{S.price.zone=e.target.value;save();renderHotel();};
+document.getElementById('phTier').onchange=e=>{S.price.tier=+e.target.value;save();renderHotel();};
+document.getElementById('phPeriod').onchange=e=>{S.price.period=e.target.value;save();renderHotel();};
+
+/* ===== 记账 ===== */
+const CATC={'大交通':'#B5773A','当地交通':'#D9A23F','住宿':'#7FA86B','吃喝':'#D9663F','门票':'#8C7BB5','购物手信':'#E08FB0','其他':'#A8A29A'};
+function renderExp(){
+ const list=document.getElementById('expList'); list.innerHTML='';
+ const total=S.exps.reduce((a,e)=>a+e.a,0);
+ document.getElementById('t-total').textContent='¥'+total.toLocaleString();
+ const pct=Math.min(100,total/S.budget*100);
+ const bar=document.getElementById('budgetBar'); bar.style.width=pct+'%'; bar.className=total>S.budget?'over':'';
+ document.getElementById('budgetHint').innerHTML= total>S.budget
+  ? `⚠️ 已超预算 ¥${(total-S.budget).toLocaleString()}，坨坨建议：砍一个纪念品，别砍一顿铁锅炖`
+  : `已用 ${pct.toFixed(0)}%，还剩 ¥${(S.budget-total).toLocaleString()} 可花`;
+ document.getElementById('budgetSlider').value=S.budget;
+ document.getElementById('t-budget').textContent='¥'+S.budget.toLocaleString();
+ const cats={}; S.exps.forEach(e=>cats[e.c]=(cats[e.c]||0)+e.a);
+ const cb=document.getElementById('catBars'); cb.innerHTML='';
+ Object.entries(cats).sort((a,b)=>b[1]-a[1]).forEach(([c,v])=>{
+  cb.innerHTML+=`<div class="catbar"><span style="flex:0 0 60px;">${c}</span><div class="cb"><i style="width:${v/total*100}%;background:${CATC[c]||'#999'}"></i></div><span>¥${v.toLocaleString()}</span></div>`;
+ });
+ [...S.exps].reverse().forEach(e=>{
+  const idx=S.exps.indexOf(e);
+  const d=document.createElement('div'); d.className='exp-item';
+  d.innerHTML=`<div><span style="font-weight:700;">${e.c}</span> · ${e.n||'—'}<small>${e.t||''}</small></div><div style="display:flex;align-items:center;gap:4px;"><b style="color:var(--caramel-deep);">¥${e.a}</b><span class="del">✕</span></div>`;
+  d.querySelector('.del').onclick=()=>{S.exps.splice(idx,1);save();renderExp();};
+  list.appendChild(d);
+ });
+ if(!S.exps.length)list.innerHTML='<div class="empty">还没有记录，先记一笔吧～</div>';
+ review();
+}
+document.getElementById('expAdd').onclick=()=>{
+ const a=parseFloat(document.getElementById('expAmt').value);
+ if(!a||a<=0)return alert('先填个金额呀～');
+ S.exps.push({a:Math.round(a),c:document.getElementById('expCat').value,n:document.getElementById('expNote').value.trim(),t:new Date().toLocaleDateString('zh-CN',{month:'numeric',day:'numeric'})});
+ save();document.getElementById('expAmt').value='';document.getElementById('expNote').value='';renderExp();
+};
+document.getElementById('budgetSlider').oninput=e=>{S.budget=+e.target.value;save();renderExp();};
+
+/* ===== 打卡 ===== */
+function renderCk(){
+ const g=document.getElementById('ckGrid'); g.innerHTML='';
+ const onSeason=DESTS.filter(d=>d[3].includes(S.season)),rest=DESTS.filter(d=>!d[3].includes(S.season));
+ onSeason.concat(rest).forEach(([e,t])=>{
+  const on=S.cks[t];
+  const d=document.createElement('div'); d.className='ck'+(on?' on':'');
+  d.innerHTML=`${on?'<span class="stamp">已打卡</span>':''}<div class="ce">${e}</div><b>${t.split(' · ')[0]}</b><small>${t}</small>`;
+  d.onclick=()=>{S.cks[t]=!S.cks[t];save();renderCk();};
+  g.appendChild(d);
+ });
+}
+
+/* ===== 自定义清单 ===== */
+function renderList(){
+ const l=document.getElementById('liList'); l.innerHTML='';
+ if(!S.list.length){l.innerHTML='<div class="empty">清单空空的，加一条吧</div>';return;}
+ S.list.forEach((it,i)=>{
+  const d=document.createElement('div'); d.className='chk'+(it[1]?' done':'');
+  d.innerHTML=`<div class="box">${it[1]?'✓':''}</div><span>${it[0]}</span>`;
+  d.onclick=()=>{S.list[i][1]=!S.list[i][1];save();renderList();};
+  d.oncontextmenu=e=>{e.preventDefault();S.list.splice(i,1);save();renderList();};
+  l.appendChild(d);
+ });
+}
+document.getElementById('liAdd').onclick=()=>{
+ const v=document.getElementById('liInput').value.trim(); if(!v)return;
+ S.list.push([v,false]);save();document.getElementById('liInput').value='';renderList();
+};
+
+/* ===== 复盘 ===== */
+function review(){
+ const total=S.exps.reduce((a,e)=>a+e.a,0);
+ document.getElementById('r-exp').textContent='¥'+total.toLocaleString();
+ document.getElementById('r-ck').textContent=Object.values(S.cks).filter(Boolean).length+' 地';
+ document.getElementById('r-days').textContent=Object.values(S.days).filter(Boolean).length+' 个';
+ document.getElementById('r-day-cost').textContent='¥'+(total/5|0).toLocaleString();
+ const cats={}; S.exps.forEach(e=>cats[e.c]=(cats[e.c]||0)+e.a);
+ const en=Object.entries(cats).sort((a,b)=>b[1]-a[1]);
+ document.getElementById('r-catEmpty').style.display=en.length?'none':'block';
+ document.getElementById('r-cats').innerHTML=en.map(([c,v])=>`<div class="catbar"><span style="flex:0 0 60px;">${c}</span><div class="cb"><i style="width:${v/total*100}%;background:${CATC[c]||'#999'}"></i></div><span>¥${v.toLocaleString()} · ${(v/total*100).toFixed(0)}%</span></div>`).join('');
+ const row=document.getElementById('starRow'); row.innerHTML='';
+ for(let i=1;i<=5;i++)row.innerHTML+=`<b style="${i<=S.stars?'':'color:transparent;-webkit-text-stroke:1px #E4D4B8;'}" data-i="${i}">⭐</b>`;
+ [...row.children].forEach(st=>st.onclick=()=>{S.stars=+st.dataset.i;save();review();});
+}
+document.getElementById('rvSave').onclick=()=>{S.rv=document.getElementById('rvText').value;save();const t=document.getElementById('rvSaved');t.style.display='block';setTimeout(()=>t.style.display='none',3000);};
+document.getElementById('rvReset').onclick=()=>{if(confirm('清空全部数据（清单/记账/打卡/复盘）？此操作不可恢复。')){localStorage.removeItem(KEY);location.reload();}};
+document.getElementById('rvText').value=S.rv;
+document.getElementById('destAll').onclick=()=>{S.showAll=!S.showAll;save();renderDests();};
+
+/* ============ 动态IP & 实时天气引擎 ============ */
+const GIFS=[
+ ['喜','https://workbuddy-space-static.codebuddy.work/image/OY3SFi2j2fmtqFr2C1rG2q.gif'],
+ ['乐','https://workbuddy-space-static.codebuddy.work/image/Fe0tQLkMsqBC5fbHJEB3pI.gif'],
+ ['比心','https://workbuddy-space-static.codebuddy.work/image/cJobRdx1KhBLKydoRgDqFj.gif'],
+ ['抱抱','https://workbuddy-space-static.codebuddy.work/image/ujegULdJSrMH9FXJeeDmQm.gif'],
+ ['贴贴','https://workbuddy-space-static.codebuddy.work/image/uyK5VeAC5QCCcMGIJ9IUj.gif'],
+ ['胜利','https://workbuddy-space-static.codebuddy.work/image/lSW9JHqDHeVfhGKfMnJv47.gif']
+];
+const WXCITY=[
+ ['hrb','哈尔滨',45.80,126.53],['cc','长春',43.88,125.32],['sy','沈阳',41.80,123.43],['dl','大连',38.91,121.60],
+ ['jl','吉林市',43.84,126.55],['yj','延吉',42.91,129.51],['mdj','牡丹江',44.55,129.63],['qqhe','齐齐哈尔',47.35,123.92],
+ ['yc','伊春',47.73,128.84],['mh','漠河',52.97,122.54],['eb','二道白河·长白山',42.47,128.10],['dd','丹东',40.13,124.38]
+];
+const WCODE={0:['☀️','晴'],1:['🌤️','基本晴'],2:['⛅','多云'],3:['☁️','阴'],45:['🌫️','雾'],48:['🌫️','雾凇'],51:['🌦️','毛毛雨'],53:['🌦️','毛毛雨'],55:['🌦️','毛毛雨'],61:['🌧️','小雨'],63:['🌧️','中雨'],65:['🌧️','大雨'],66:['🌧️','冻雨'],67:['🌧️','冻雨'],71:['🌨️','小雪'],73:['🌨️','中雪'],75:['❄️','大雪'],77:['🌨️','雪粒'],80:['🌧️','阵雨'],81:['🌧️','阵雨'],82:['🌧️','强阵雨'],85:['🌨️','阵雪'],86:['❄️','强阵雪'],95:['⛈️','雷阵雨'],96:['⛈️','雷雨+冰雹'],99:['⛈️','雷雨+冰雹']};
+const SEASON_T={sp:12,su:24,au:10,wi:-15};
+const SAY={
+ 'lv-frozen':['嗷呜——我的角尖尖都在抖！这温度鼻涕都能拉丝！','睫毛结霜花啦！果果快把暖宝宝分我一半！'],
+ 'lv-freeze':['嗷呜~呼吸都是白烟，我的小蹄子冻透了……','裹紧围脖！尾巴也要藏好，冻掉就不可爱了。'],
+ 'lv-chill':['嗷呜~这风专钻骨头缝，围脖勒紧点！','现在来看五花山，正是最好看的时候！'],
+ 'lv-cool':['嗷呜~洋葱式穿衣最靠谱，热了脱冷了穿。','爬山正合适！不冷不热，走起！'],
+ 'lv-mild':['嗷呜~这个温度来东北最舒服，尾巴都摇起来了！','适合瘫在草地上打滚，或者去湖边发呆！'],
+ 'lv-warm':['嗷呜~太阳有点晒，墨镜戴上了，酷吧？','去长白山顶躲太阳，比这儿凉快 10℃！'],
+ 'lv-hot':['嗷呜——出汗啦！快带我去 22℃ 的森林里！','这个天气……我只想趴在树荫下当一只废狍。']
+};
+const WX={cur:null,src:'sim'};
+S.wx=S.wx||{city:'hrb'};
+
+function tempLv(t){
+ if(t<=-15)return'lv-frozen'; if(t<=-5)return'lv-freeze'; if(t<=5)return'lv-chill';
+ if(t<=14)return'lv-cool'; if(t<=25)return'lv-mild'; if(t<=30)return'lv-warm'; return'lv-hot';
+}
+function tempDesc(t){return t<=-15?'极寒':t<=-5?'严寒':t<=5?'冷':t<=14?'微凉':t<=25?'舒适':t<=30?'偏热':'炎热';}
+function applyTemp(t){
+ WX.cur=t;
+ const lv=tempLv(t),box=document.getElementById('bearBox');
+ ['lv-frozen','lv-freeze','lv-chill','lv-cool','lv-mild','lv-warm','lv-hot'].forEach(x=>box.classList.remove(x));
+ box.classList.add(lv);
+ const arr=SAY[lv];
+ document.getElementById('heroSay').innerHTML='🦌 '+arr[Math.floor(Math.random()*arr.length)];
+ document.getElementById('wxSlider').value=t;
+ document.getElementById('wxSlideV').textContent=t+'℃';
+ updateWxLabel();
+}
+function updateWxLabel(){
+ const t=WX.cur; if(t==null)return;
+ document.getElementById('wxTemp').textContent=t;
+ document.getElementById('wxTag').className=WX.src==='live'?'wx-live':'wx-sim';
+ document.getElementById('wxTag').textContent=WX.src==='live'?'实时':'模拟';
+ const a=WXCITY.find(x=>x[0]===S.wx.city);
+ document.getElementById('wxSub').textContent=a[1]+' · '+tempDesc(t);
+}
+async function fetchWeather(){
+ const c=WXCITY.find(x=>x[0]===S.wx.city);
+ document.getElementById('wxTemp').textContent='…';
+ try{
+  const u=`https://api.open-meteo.com/v1/forecast?latitude=${c[2]}&longitude=${c[3]}&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m&timezone=Asia%2FShanghai`;
+  const r=await fetch(u,{signal:AbortSignal.timeout(8000)});
+  const d=await r.json();
+  const cu=d.current,t=Math.round(cu.temperature_2m);
+  WX.src='live';
+  const wc=WCODE[cu.weather_code]||['🌡️','—'];
+  document.getElementById('wxCond').textContent=wc[0]+' '+wc[1];
+  document.getElementById('wxFeel').textContent='体感 '+Math.round(cu.apparent_temperature)+'℃ · 风 '+Math.round(cu.wind_speed_10m)+'km/h';
+  applyTemp(t);
+ }catch(e){
+  WX.src='sim';
+  document.getElementById('wxCond').textContent='📶 网络不通';
+  document.getElementById('wxFeel').textContent=NE.err.net[1];
+  neSay(RARR(NE.err.net),'t',6200);
+  applyTemp(SEASON_T[S.season]);
+ }
+}
+function buildFall(){
+ const map={sp:['🌸','#F6B9C8'],su:['🌿','#9CC98B'],au:['🍁','#E08A3C'],wi:['❄️','#BFD5EC']};
+ const ch=map[S.season][0];
+ const box=document.getElementById('fallBox'); box.innerHTML='';
+ for(let i=0;i<14;i++){
+  const s=document.createElement('span');
+  s.textContent=ch;
+  s.style.left=(Math.random()*100)+'%';
+  s.style.fontSize=(9+Math.random()*13)+'px';
+  s.style.animationDuration=(6+Math.random()*7)+'s';
+  s.style.animationDelay=(-Math.random()*10)+'s';
+  s.style.opacity=.45+Math.random()*.4;
+  box.appendChild(s);
+ }
+}
+/* 逗TA：GIF 表情气泡 */
+let gifTimer=null;
+document.querySelectorAll('.bear-wrap').forEach(w=>{
+ w.addEventListener('click',()=>{
+  const p=w.querySelector('.gifpop');
+  const g=GIFS[Math.floor(Math.random()*GIFS.length)];
+  p.querySelector('img').src=g[1];
+  p.querySelector('.cap').textContent=(w.id==='bearTT'?'坨坨：嗷呜～':'果果：嗷嗷～')+g[0];
+  p.style.display='block';
+  clearTimeout(gifTimer);
+  gifTimer=setTimeout(()=>{p.style.display='none';},3800);
+ });
+});
+/* 天气 UI 绑定 */
+(function(){
+ const sel=document.getElementById('wxCity');
+ sel.innerHTML=WXCITY.map(c=>`<option value="${c[0]}">${c[1]}</option>`).join('');
+ sel.value=S.wx.city;
+ sel.onchange=()=>{S.wx.city=sel.value;save();fetchWeather();};
+ document.getElementById('wxGo').onclick=fetchWeather;
+ document.getElementById('wxSlider').oninput=e=>{WX.src='sim';applyTemp(+e.target.value);};
+})();
+fetchWeather();
+
+
+/* ============ 帮我规划：需求式智能引擎 ============ */
+const WANT=[
+ ['snow','\u2744\ufe0f \u770b\u96ea\u73a9\u96ea'],['sea','🌊 \u770b\u6d77\u770b\u6c5f'],['food','🍢 \u5403\u7f8e\u98df'],['culture','🏮 \u4e1c\u5317\u6c11\u4fd7'],
+ ['history','🛕 \u5386\u53f2\u8bb0\u5fc6'],['nature','🌲 \u68ee\u6797\u81ea\u7136'],['photo','📸 \u62cd\u7167\u51fa\u7247'],['spring','\u2668\ufe0f \u6ce1\u6e29\u6cc9'],
+ ['kid','👶 \u5e26\u5a03\u4eb2\u5b50'],['slow','\u2615 \u6e05\u9759\u6162\u901b'],['city','🌃 \u57ce\u5e02\u70ed\u95f9']
+];
+const STAY=[['minsu','🏡 \u6c11\u5bbf \u00b7 \u70df\u706b\u6c14'],['lively','🌃 \u5546\u5708 \u00b7 \u70ed\u95f9'],['comfort','🛏\ufe0f \u8bbe\u65bd\u66f4\u597d'],['any','🤷 \u90fd\u4e2d']];
+const STAY_HINT={
+ minsu:'\u6e05\u9759\u4f18\u5148\uff1a\u519c\u5bb6\u9662\u3001\u706b\u7095\u623f\u3001\u8001\u5c0f\u533a\u91cc\u7684\u6c11\u5bbf\u3002\u8001\u677f\u80fd\u8ddf\u4f60\u5520\u534a\u5929\uff0c\u65e9\u4e0a\u8fd8\u80fd\u8e6d\u987f\u5bb6\u5e38\u65e9\u996d\u3002\u4ee3\u4ef7\u662f\u8bbe\u65bd\u7b80\u5355\u3001\u9694\u97f3\u4e00\u822c\u3001\u4f4d\u7f6e\u591a\u534a\u504f\u4e00\u70b9\u3002',
+ lively:'\u70ed\u95f9\u4f18\u5148\uff1a\u4f4f\u4e2d\u592e\u5927\u8857 / \u4e2d\u8857 / \u5ef6\u5409\u5e02\u533a\u8fd9\u7c7b\u5546\u5708\uff0c\u4e0b\u697c\u5c31\u662f\u591c\u5e02\u548c\u70e7\u70e4\u6446\uff0c\u534a\u591c\u4e5f\u997f\u4e0d\u7740\u3002\u4ee3\u4ef7\u662f\u5435\u3001\u505c\u8f66\u96be\u3001\u65fa\u5b63\u8d35\u3002',
+ comfort:'\u8bbe\u65bd\u4f18\u5148\uff1a\u8fde\u9501\u7cbe\u9009 / \u6e29\u6cc9\u5ea6\u5047 / \u56db\u4e94\u661f\uff0c\u6696\u6c14\u8db3\u3001\u65e9\u9910\u7a33\u3001\u6709\u7535\u68af\u548c\u6d17\u8863\u623f\u3002\u4ee3\u4ef7\u662f\u5c11\u4e86\u70b9\u513f\u70df\u706b\u6c14\uff0c\u4ef7\u683c\u9ad8\u4e00\u6863\u3002',
+ any:'\u54ea\u513f\u987a\u8def\u4f4f\u54ea\u513f\uff0c\u4ffa\u6309\u8def\u7ebf\u987a\u4e0d\u987a\u7ed9\u4f60\u6311\u3002'
+};
+const MONEY=[['save','💰 \u7701\u7740\u70b9'],['norm','💳 \u6b63\u5e38\u82b1'],['rich','💎 \u4e0d\u5dee\u94b1']];
+const CITYIN=[['hrb','\u54c8\u5c14\u6ee8\u8fdb\u51fa'],['cc','\u957f\u6625\u8fdb\u51fa'],['sy','\u6c88\u9633\u8fdb\u51fa'],['dl','\u5927\u8fde\u8fdb\u51fa'],['any','\u54ea\u513f\u65b9\u4fbf\u54ea\u513f']];
+const DAYOPT=[[2,'2 \u5929'],[3,'3 \u5929'],[4,'4 \u5929'],[5,'5 \u5929'],[6,'6 \u5929'],[7,'7 \u5929\u4ee5\u4e0a'],[0,'\u8fd8\u6ca1\u5b9a']];
+const CITY_NAME={hrb:'\u54c8\u5c14\u6ee8',cc:'\u957f\u6625',sy:'\u6c88\u9633',dl:'\u5927\u8fde',any:'\u4e1c\u5317\uff08\u4ffa\u7ed9\u4f60\u5b9a\uff09'};
+
+/* \u73a9\u6cd5\u6a21\u5757\u5e93\uff1ahub=\u4ea4\u901a\u5708\uff0cd=\u5efa\u8bae\u5929\u6570\uff0cc=\u4e0d\u542b\u4f4f\u5bbf\u7684\u4eba\u5747\u65e5\u82b1\u8d39\u57fa\u51c6 */
+const MOD=[
+{n:'\u54c8\u5c14\u6ee8\u5e02\u533a\uff08\u4e2d\u592e\u5927\u8857 \u00b7 \u7d22\u83f2\u4e9a \u00b7 \u8001\u9053\u5916\uff09',tags:['city','food','culture','history','photo','snow'],se:['sp','su','au','wi'],hub:'hrb',stay:['lively','comfort'],d:1.5,c:170,
+ why:'\u767e\u5e74\u9762\u5305\u77f3\u5927\u8857\u914d\u4fc4\u5f0f\u5efa\u7b51\uff0c\u51ac\u5929\u96f6\u4e0b\u5543\u9a6c\u8fed\u5c14\u51b0\u68cd\u662f\u4f20\u7edf\u827a\u80fd\uff1b\u8001\u9053\u5916\u7684\u5df4\u6d1b\u514b\u8857\u533a\u548c\u5c0f\u9986\u5b50\uff0c\u624d\u662f\u672c\u5730\u4eba\u8fc7\u65e5\u5b50\u7684\u5730\u65b9\u3002',
+ acts:['\u4e2d\u592e\u5927\u8857\u901b\u5230\u5934\uff0c\u9a6c\u8fed\u5c14\u51b0\u68cd\u6765\u4e00\u6839\uff08\u51ac\u5929\u5403\u624d\u5bf9\u5473\uff09','\u7d22\u83f2\u4e9a\u6559\u5802\u5e7f\u573a\u62cd\u7167 \u2192 \u8001\u9053\u5916\u4e2d\u534e\u5df4\u6d1b\u514b\u8857\u533a','\u8001\u9053\u5916\u627e\u5bb6\u8001\u5f0f\u9505\u5305\u8089 + \u79cb\u6797\u516c\u53f8\u4e70\u7ea2\u80a0\u5927\u5217\u5df4']},
+{n:'\u54c8\u5c14\u6ee8\u51b0\u96ea\u5927\u4e16\u754c',tags:['snow','photo','kid','city'],se:['wi'],hub:'hrb',stay:['lively','comfort'],d:0.5,c:400,
+ why:'12 \u6708\u4e0b\u65ec\u5f00\u56ed\uff0c\u4e0b\u5348 3 \u70b9\u5165\u56ed\u80fd\u4e00\u6b21\u770b\u5168\u767d\u5929\u901a\u900f\u7684\u51b0\u7816\u548c\u5165\u591c\u540e\u7684\u706f\u5149\u4e24\u4e2a\u7248\u672c\u2014\u2014\u8fd9\u662f\u51ac\u5929\u4e1c\u5317\u6700\u786c\u7684\u4e00\u5f20\u724c\u3002',
+ acts:['\u4e0b\u5348 3 \u70b9\u5165\u56ed\uff0c\u5148\u62cd\u901a\u900f\u7684\u51b0\u7816\uff0c\u7b49 4 \u70b9\u534a\u4eae\u706f\u518d\u62cd\u4e00\u8f6e','\u8d85\u957f\u51b0\u6ed1\u68af\u6392\u961f 40 \u5206\u949f\u8d77\uff0c\u5148\u73a9\u540e\u62cd','\u56ed\u533a\u91cc\u5403\u4e0d\u4e0a\u6b63\u7ecf\u996d\uff0c\u51fa\u6765\u518d\u6574\u4e00\u987f\u94c1\u9505\u7096']},
+{n:'\u4e9a\u5e03\u529b \u00b7 \u6ed1\u96ea',tags:['snow','kid','spring'],se:['wi'],hub:'hrb',stay:['comfort'],d:1,c:520,
+ why:'\u56fd\u5185\u6700\u65e9\u7684\u6ed1\u96ea\u5ea6\u5047\u533a\uff0c\u96ea\u9053\u5206\u7ea7\u5168\u3001\u6559\u7ec3\u591a\uff0c\u4eb2\u5b50\u548c\u7b2c\u4e00\u6b21\u4e0a\u96ea\u7684\u4eba\u6700\u7701\u5fc3\u7684\u9009\u62e9\u3002',
+ acts:['\u4e0a\u5348\u8bf7\u6559\u7ec3\u4e0a\u4e00\u8282\u57fa\u7840\u8bfe\uff08\u522b\u786c\u4e0a\uff0c\u6454\u4e86\u540e\u534a\u7a0b\u5e9f\uff09','\u4e0b\u5348\u521d\u7ea7\u9053\u5237\u5230\u817f\u8f6f \u2192 \u6ce1\u4e2a\u70ed\u6c34\u6fa1\u56de\u8840']},
+{n:'\u7261\u4e39\u6c5f \u00b7 \u96ea\u4e61\uff08\u53cc\u5cf0\u6797\u573a\uff09',tags:['snow','photo','slow'],se:['wi'],hub:'hrb',stay:['minsu'],d:1,c:450,
+ why:'\u96ea\u91cf\u5168\u56fd\u9876\u683c\uff0c\u5c4b\u9876\u79ef\u96ea\u957f\u51fa"\u96ea\u8611\u83c7"\uff0c\u96ea\u97f5\u5927\u8857\u591c\u666f\u662f\u8fd9\u4e00\u5b63\u6700\u6709\u753b\u9762\u611f\u7684\u4e00\u5f20\u3002\u4e5f\u6b63\u56e0\u4e3a\u51fa\u540d\uff0c\u52a1\u5fc5\u9009\u6b63\u89c4\u4f4f\u5bbf\u3001\u63d0\u524d\u786e\u8ba4\u4ef7\u683c\u3001\u7559\u597d\u51ed\u8bc1\u3002',
+ acts:['\u4e0b\u5348\u5230\u96ea\u4e61\uff0c\u5148\u7761\u4e2a\u70ed\u7095\u5934\u7f13\u4e00\u7f13','\u508d\u665a\u96ea\u97f5\u5927\u8857 + \u89c2\u666f\u6808\u9053\u62cd\u591c\u666f\uff08\u84dd\u8c03\u65f6\u523b\u6700\u51fa\u7247\uff09','\u6e05\u65e9\u8d77\u6765\u62cd\u6668\u96fe\u91cc\u7684\u96ea\u8611\u83c7\uff0c\u4eba\u8fd8\u6ca1\u9192'],
+ warn:'\u96ea\u4e61\u4ef7\u683c\u4e0e\u4f53\u9a8c\u53c2\u5dee\uff0c\u6de1\u65fa\u5b63\u5dee\u4ef7\u6781\u5927\uff08\u6625\u8282\u53ef\u5230 3 \u500d\uff09\uff0c\u4e00\u5b9a\u8981\u8ba2\u6b63\u89c4\u6e20\u9053\u5e76\u4fdd\u7559\u51ed\u8bc1\u3002'},
+{n:'\u4f0a\u6625 \u00b7 \u5c0f\u5174\u5b89\u5cad\uff08\u4e94\u8425 / \u6c64\u65fa\u6cb3\uff09',tags:['nature','photo','slow'],se:['sp','su','au'],hub:'hrb',stay:['minsu','comfort'],d:2,c:220,
+ why:'"\u4e94\u82b1\u5c71"\u8fd9\u4e2a\u8bcd\u7684\u8001\u5bb6\u30029 \u6708\u672b\u201310 \u6708\u4e0a\u65ec\u7ea2\u677e\u3001\u767d\u6866\u3001\u679a\u3001\u67de\u540c\u65f6\u4e0a\u8272\uff1b\u590f\u5929\u662f 22\u2103 \u5929\u7136\u6c27\u5427\uff1b\u6625\u5929\u5174\u5b89\u675c\u9e43\u9876\u7740\u6b8b\u96ea\u5f00\u3002\u6e38\u5ba2\u5bc6\u5ea6\u53ea\u6709\u957f\u767d\u5c71\u7684\u4e00\u4e2a\u96f6\u5934\u3002',
+ acts:['\u54c8\u5c14\u6ee8\u51fa\u53d1\u7ea6 4h \u2192 \u508d\u665a\u6eaa\u6c34\u56fd\u5bb6\u68ee\u6797\u516c\u56ed\u6563\u6b65','\u4e94\u8425\u7ea2\u677e\u6bcd\u6811\u6797 \u2192 \u6c64\u65fa\u6cb3\u6797\u6d77\u5947\u77f3\u5f92\u6b65','\u8305\u5170\u6c9f\u5ce1\u8c37 \u2192 \u5609\u836b\u4e2d\u4fc4\u754c\u6c5f\uff0c\u8fd4\u7a0b\u524d\u4e70\u70b9\u5c71\u8d27'],
+ warn:'\u6797\u533a\u95f4\u8ddd\u79bb\u8fdc\uff0c\u5305\u8f66\u6bd4\u516c\u4ea4\u73b0\u5b9e\uff1b\u5c71\u533a\u6bd4\u5e02\u533a\u4f4e 3\u20135\u2103\u3002'},
+{n:'\u9ed1\u6cb3 \u00b7 \u4e94\u5927\u8fde\u6c60',tags:['nature','spring','kid'],se:['su','au'],hub:'hrb',stay:['comfort'],d:1,c:200,
+ why:'\u706b\u5c71\u5830\u585e\u6e56\u7fa4 + \u5929\u7136\u51b7\u77ff\u6cc9\u6c34\uff0c\u770b\u706b\u5c71\u77f3\u6d77\u3001\u559d\u771f\u6b63\u7684\u51b7\u77ff\u6cc9\uff0c\u590f\u5929\u6765\u6700\u8212\u670d\uff0c\u5e26\u5a03\u4e5f\u957f\u89c1\u8bc6\u3002',
+ acts:['\u8001\u9ed1\u5c71\u706b\u5c71\u53e3 \u2192 \u77f3\u6d77\u5f92\u6b65','\u51b7\u6cc9\u5e7f\u573a\u63a5\u4e00\u74f6\u77ff\u6cc9\u6c34\u5c1d\u5c1d\uff0c\u6e29\u6cca\u770b\u6c34\u4e0b\u82d4\u85d3']},
+{n:'\u957f\u767d\u5c71\uff08\u5317\u5761 / \u897f\u5761 \u00b7 \u4e8c\u9053\u767d\u6cb3\uff09',tags:['snow','nature','spring','photo','kid'],se:['sp','su','au','wi'],hub:'cc',stay:['comfort','minsu'],d:2,c:380,
+ why:'\u56db\u5b63\u90fd\u80fd\u53bb\u7684\u552f\u4e00\u9876\u6d41\uff1a\u590f\u5929\u690d\u88ab\u6700\u7eff\u3001\u79cb\u5929\u901a\u900f\u7387\u6700\u9ad8\uff08\u5168\u5e74\u770b\u5929\u6c60\u6700\u597d\u7684\u7a97\u53e3\uff09\u3001\u51ac\u5929\u80fd\u6ed1\u96ea\u6ce1\u6e29\u6cc9\u3002\u5317\u5761\u8bbe\u65bd\u5168\u4f46\u4eba\u6700\u591a\uff0c\u5357\u5761\u4eba\u6700\u5c11\uff08\u9650\u6d41\u9700\u9884\u7ea6\uff09\u3002',
+ acts:['\u65e9 7 \u70b9\u524d\u5165\u56ed \u2192 \u5929\u6c60 + \u957f\u767d\u7011\u5e03 + \u7eff\u6e0a\u6f6d','\u897f\u5761 1432 \u7ea7\u53f0\u9636\u770b\u706b\u5c71\u53e3\u6e56\u5168\u666f\uff08\u6216\u6539\u9732\u6c34\u6cb3\uff0c\u4eba\u6781\u5c11\uff09','\u4e8c\u9053\u767d\u6cb3\u6ce1\u6e29\u6cc9\uff0c\u628a\u817f\u6ce1\u56de\u6765'],
+ warn:'\u5929\u6c60\u80fd\u4e0d\u80fd\u770b\u89c1\u770b\u8fd0\u6c14\uff1b\u5c71\u9876\u6bd4\u5c71\u4e0b\u4f4e 10\u201315\u2103\uff0c\u590f\u5929\u4e5f\u8981\u5e26\u5916\u5957\u3002'},
+{n:'\u5ef6\u5409 \u00b7 \u671d\u9c9c\u65cf\u98ce\u60c5',tags:['food','culture','city','photo'],se:['sp','su','au','wi'],hub:'cc',stay:['lively','minsu'],d:1.5,c:200,
+ why:'\u6c11\u4fd7\u56ed\u7a7f\u97e9\u670d\u662f\u7f51\u7ea2\u73a9\u6cd5\uff0c\u4f46\u65e9\u5e02\u7684\u6c34\u4e0a\u5e02\u573a\uff085\u20138 \u70b9\uff09\u3001\u6cb3\u575d\u70e7\u70e4\u591c\u5e02\u3001\u5df7\u5b50\u91cc\u7684\u9505\u5305\u8089\u5c0f\u5e97\uff0c\u624d\u662f\u672c\u5730\u4eba\u7684\u65e5\u5e38\u3002\u56db\u5b63\u7686\u5b9c\uff0c\u51ac\u5929\u914d\u4e00\u7897\u70ed\u6c64\u996d\u6700\u5f97\u52b2\u513f\u3002',
+ acts:['\u65e9\u4e0a 6 \u70b9\u6c34\u4e0a\u5e02\u573a\uff1a\u70e4\u51b7\u9762\u3001\u7c73\u80a0\u3001\u8c46\u8150\u8111\uff0c\u4eba\u5747 15 \u5403\u5230\u6276\u5899','\u671d\u9c9c\u65cf\u6c11\u4fd7\u56ed\u7a7f\u97e9\u670d\u62cd\u7167 / \u8fb9\u5883\u53e3\u5cb8\u901b\u901b','\u665a\u4e0a\u6cb3\u575d\u70e7\u70e4 + \u51b7\u9762\uff0c\u6536\u5c3e\u5b8c\u7f8e']},
+{n:'\u73d2\u6625 \u00b7 \u9632\u5ddd\uff08\u4e00\u773c\u671b\u4e09\u56fd\uff09',tags:['history','photo','culture'],se:['sp','su','au'],hub:'cc',stay:['minsu'],d:1,c:150,
+ why:'\u9f99\u864e\u9601\u4e0a\u5de6\u8fb9\u4fc4\u7f57\u65af\u3001\u53f3\u8fb9\u671d\u9c9c\u3001\u811a\u4e0b\u56fe\u4eec\u6c5f\u5165\u6d77\u53e3\u3002\u51e0\u4e4e\u6ca1\u6709\u65c5\u884c\u56e2\uff0c\u662f\u90a3\u79cd"\u7ad9\u4e00\u4f1a\u513f\u5c31\u503c\u56de\u7968\u4ef7"\u7684\u5730\u65b9\u3002',
+ acts:['\u5ef6\u5409\u9ad8\u94c1 40 \u5206\u949f\u5230\u73d2\u6625 \u2192 \u62fc\u8f66\u53bb\u9632\u5ddd','\u9f99\u864e\u9601\u671b\u4e09\u56fd \u2192 \u56de\u7a0b\u5403\u4fc4\u5f0f / \u671d\u9c9c\u65cf\u6df7\u642d\u83dc']},
+{n:'\u957f\u6625\u5e02\u533a\uff08\u4f2a\u6ee1\u7687\u5bab \u00b7 \u957f\u5f71 \u00b7 \u51c0\u6708\u6f6d\uff09',tags:['history','culture','city','kid'],se:['sp','su','au','wi'],hub:'cc',stay:['lively','comfort'],d:1.5,c:170,
+ why:'\u4f2a\u6ee1\u7687\u5bab\u662f\u8fd9\u6bb5\u5386\u53f2\u6700\u76f4\u89c2\u7684\u73b0\u573a\uff0c\u957f\u5f71\u65e7\u5740\u662f\u65b0\u4e2d\u56fd\u7535\u5f71\u7684\u8d77\u70b9\uff0c\u5e26\u5a03\u6765\u6bd4\u591a\u5237\u4e00\u4e2a\u666f\u533a\u503c\u3002\u51ac\u5929\u5ba4\u5185\u666f\u70b9\u591a\uff0c\u9002\u5408\u5f53\u907f\u5bd2\u4e2d\u8f6c\u7ad9\u3002',
+ acts:['\u4f2a\u6ee1\u7687\u5bab + \u4e1c\u5317\u6ca6\u9677\u53f2\u9648\u5217\u9986\uff08\u534a\u5929\uff0c\u522b\u8d76\uff09','\u957f\u5f71\u65e7\u5740\u535a\u7269\u9986 \u2192 \u8fd9\u6709\u5c71\u901b\u8857\u5403\u996d','\u51c0\u6708\u6f6d\u73af\u6f6d\u9a91\u884c / \u51ac\u5929\u770b\u51b0\u9762']},
+{n:'\u5409\u6797 \u00b7 \u96fe\u51ea\u5c9b',tags:['snow','photo','slow'],se:['wi'],hub:'cc',stay:['minsu'],d:1,c:200,
+ why:'12 \u6708\u5e95\u20132 \u6708\uff0c\u677e\u82b1\u6c5f\u4e0d\u51bb\u7684\u6c34\u6c14\u5728\u679d\u5934\u51dd\u6210\u96fe\u51ea\uff0c\u6e05\u6668 7\u20139 \u70b9\u6700\u76db\uff0c\u65e5\u51fa\u65f6\u6574\u5c9b\u94f6\u767d\u3002\u9700\u8981\u8fd0\u6c14\uff08\u6e29\u5dee + \u65e0\u98ce + \u6c34\u6c14\uff09\uff0c\u5efa\u8bae\u7559\u4e24\u5929\u7b49\u4e00\u6b21\u3002',
+ acts:['\u524d\u4e00\u665a\u4f4f\u5c9b\u4e0a\u519c\u5bb6\u9662\uff0c\u65e9 6 \u70b9\u534a\u8d77\u6765\u7b49\u96fe\u51ea','7\u20139 \u70b9\u97e9\u5c6f / \u66fe\u901a\u5c6f\u62cd\u65e5\u51fa + \u96fe\u51ea','\u4e2d\u5348\u56de\u6696\u540e\u64a4\uff0c\u56de\u5409\u6797\u5e02\u5403\u987f\u9c7c\u5bb4'],
+ warn:'\u96fe\u51ea\u770b\u5929\u5403\u996d\uff0c\u5efa\u8bae\u884c\u7a0b\u91cc\u7559\u4e00\u4e2a\u5907\u9009\u65e5\uff1b\u4e0d\u6210\u884c\u5c31\u5f53\u7761\u4e86\u4e2a\u70ed\u7095\u3002'},
+{n:'\u677e\u539f \u00b7 \u67e5\u5e72\u6e56\u51ac\u6355',tags:['snow','culture','food','history'],se:['wi'],hub:'cc',stay:['minsu'],d:1,c:220,
+ why:'12 \u6708\u5e95\u20131 \u6708\u6700\u58ee\u89c2\uff1a\u796d\u6e56\u9192\u7f51\u4eea\u5f0f\u540e\u4e07\u65a4\u9c7c\u51fa\u7f51\uff0c\u662f\u56fd\u5bb6\u7ea7\u975e\u9057\u3002\u770b\u5b8c\u76f4\u63a5\u6574\u4e00\u987f\u80d6\u5934\u9c7c\u5bb4\uff0c\u9c7c\u662f\u521a\u4ece\u51b0\u7a9f\u7aa9\u91cc\u62fd\u51fa\u6765\u7684\u3002',
+ acts:['\u65e9\u51fa\u53d1\u53bb\u51b0\u9762\u770b\u796d\u6e56\u9192\u7f51 + \u51fa\u9c7c','\u4e2d\u5348\u67e5\u5e72\u6e56\u80d6\u5934\u9c7c\u5bb4\uff08\u4eba\u5747 60\u2013100\uff09','\u4e0b\u5348\u56de\u677e\u539f\u6216\u8f6c\u957f\u6625'],
+ warn:'\u51ac\u6355\u5177\u4f53\u65e5\u671f\u7531\u6e14\u573a\u5b9a\uff0c\u51fa\u53d1\u524d\u52a1\u5fc5\u67e5\u5f53\u5b63\u516c\u544a\u3002'},
+{n:'\u6c88\u9633\uff08\u6545\u5bab \u00b7 \u8001\u5317\u5e02 \u00b7 \u4e2d\u8857\uff09',tags:['history','culture','city','food'],se:['sp','su','au','wi'],hub:'sy',stay:['lively','comfort'],d:1.5,c:170,
+ why:'\u5168\u56fd\u7b2c\u4e8c\u5927\u6545\u5bab\u5efa\u7b51\u7fa4\uff0c\u6e38\u5ba2\u6bd4\u5317\u4eac\u53cb\u597d\u592a\u591a\uff1b\u8001\u5317\u5e02\u665a\u4e0a\u8bc4\u5267\u4e8c\u4eba\u8f6c\u8f6e\u7740\u4e0a\uff0c\u914d\u4e00\u7897\u8001\u8fb9\u997a\u5b50\u3002\u51ac\u5929\u5ba4\u5185\u666f\u70b9\u591a\uff0c\u662f\u4e2a\u597d\u7528\u7684\u8fdb\u51fa\u95e8\u6237\u3002',
+ acts:['\u6c88\u9633\u6545\u5bab\uff08\u7ea6 50 \u5143\uff09+ \u4e2d\u8857','\u8fbd\u5b81\u7701\u535a\u7269\u9986\uff08\u514d\u8d39\uff0c\u9700\u9884\u7ea6\uff09','\u665a\u4e0a\u8001\u5317\u5e02\u770b\u4e8c\u4eba\u8f6c + \u5403\u8001\u8fb9\u997a\u5b50 / \u9e21\u67b6']},
+{n:'\u672c\u6eaa \u00b7 \u8001\u8fb9\u6c9f & \u5927\u77f3\u6e56',tags:['photo','nature'],se:['au'],hub:'sy',stay:['minsu'],d:1,c:120,
+ why:'\u5173\u95e8\u5c71\u540d\u6c14\u5927\uff0c\u672c\u5730\u4eba\u5374\u5f80\u8001\u8fb9\u6c9f\u8dd1\u2014\u2014\u540c\u4e00\u6761\u679a\u53f6\u5e26\uff0c\u4eba\u5c11\u4e00\u534a\uff0c\u6eaa\u6d41\u914d\u679a\u6797\u6784\u56fe\u66f4\u597d\u62cd\u300210 \u6708\u4e0a\u65ec\u5cf0\u503c\uff0c\u65e9 7 \u70b9\u8fdb\u5c71\u80fd\u649e\u4e0a\u6668\u96fe\u3002',
+ acts:['\u65e9 7 \u70b9\u8fdb\u6c9f\uff0c\u5148\u62cd\u6668\u96fe\u91cc\u7684\u679a\u6797','\u6cbf\u6eaa\u6d41\u6162\u8d70\u5230\u5927\u77f3\u6e56\uff0c\u4e2d\u5348\u51fa\u6c9f\u627e\u5bb6\u519c\u5bb6\u9662'],
+ warn:'\u679a\u53f6\u5b63\u53ea\u6709 10 \u6708\u4e0a\u65ec\u90a3\u4e24\u5468\uff0c\u65e9\u4e86\u7eff\u665a\u4e86\u843d\uff0c\u51fa\u53d1\u524d\u67e5\u5f53\u5730\u7ea2\u53f6\u6307\u6570\u3002'},
+{n:'\u4e39\u4e1c \u00b7 \u9e2d\u7eff\u6c5f & \u7eff\u6c5f\u6751',tags:['sea','slow','photo','history'],se:['su','au'],hub:'sy',stay:['minsu'],d:1.5,c:180,
+ why:'\u9e2d\u7eff\u6c5f\u65ad\u6865\u662f\u8fd9\u6bb5\u5386\u53f2\u6700\u786c\u7684\u5b9e\u7269\uff1b\u7eff\u6c5f\u6751\u5728\u6c5f\u6e7e\u6df1\u5904\uff0c\u6c5f\u5fc3\u5c9b\u3001\u8349\u7538\u3001"\u8fbd\u4e1c\u7b2c\u4e00\u6e7e"\uff0c\u4f4f\u519c\u5bb6\u9662\u5403\u6c5f\u9c7c\uff0c\u665a\u4e0a\u770b\u5bf9\u5cb8\u7684\u706f\u706b\u3002',
+ acts:['\u4e39\u4e1c\u5e02\u533a\uff1a\u65ad\u6865 + \u9e2d\u7eff\u6c5f\u6e38\u8239\uff08\u770b\u5bf9\u5cb8\uff09','\u5305\u8f66\u7ea6 3h \u5c71\u8def\u53bb\u7eff\u6c5f\u6751\uff0c\u4f4f\u519c\u5bb6\u9662','\u65e9\u8d77\u770b\u6c5f\u6e7e\u6668\u96fe \u2192 \u8fd4\u7a0b'],
+ warn:'\u53bb\u7eff\u6c5f\u6751\u662f\u5c71\u8def\u5f2f\u591a\uff0c\u6656\u8f66\u7684\u4eba\u63d0\u524d\u5403\u836f\uff1b\u8def\u51b5\u597d\u4f46\u8981\u6162\u5f00\u3002'},
+{n:'\u76d8\u9526 \u00b7 \u7ea2\u6d77\u6ee9',tags:['sea','photo','nature'],se:['au'],hub:'sy',stay:['comfort'],d:1,c:150,
+ why:'\u78b1\u84ec\u8349 9\u201310 \u6708\u7ea2\u5f97\u6700\u72e0\uff0c\u51e0\u5341\u516c\u91cc\u6d77\u5cb8\u7ebf\u50cf\u94fa\u4e86\u7ea2\u6bef\uff0c\u914d\u7a3b\u7530\u753b\u548c\u82a6\u82c7\u8361\u3002\u4e0b\u5348 4 \u70b9\u540e\u987a\u5149\u6700\u597d\u62cd\u3002',
+ acts:['\u6c88\u9633\u9ad8\u94c1 30 \u5206\u949f\u5230\u76d8\u9526 \u2192 \u6253\u8f66\u53bb\u5eca\u9053\uff08\u7ea6 40 \u5143\uff09','\u4e0b\u5348 4 \u70b9\u540e\u62cd\u7ea2\u6d77\u6ee9 + \u82a6\u82c7\u8361'],
+ warn:'\u7ea2\u6d77\u6ee9\u989c\u8272\u968f\u5b63\u8282\u53d8\u5316\u5927\uff0c10 \u6708\u4e2d\u65ec\u540e\u5f00\u59cb\u892a\uff0c\u51fa\u53d1\u524d\u67e5\u666f\u533a\u516c\u544a\u3002'},
+{n:'\u5927\u8fde\uff08\u6ee8\u6d77\u8def \u00b7 \u661f\u6d77 \u00b7 \u65c5\u987a\uff09',tags:['sea','city','food','photo','kid','history'],se:['sp','su','au','wi'],hub:'dl',stay:['lively','comfort'],d:2,c:260,
+ why:'\u4e1c\u5317\u552f\u4e00\u771f\u6b63\u7684\u6d77\u6ee8\u5927\u57ce\u5e02\uff1a\u6ee8\u6d77\u8def\u4e00\u8fb9\u5c71\u4e00\u8fb9\u6d77\uff0c\u661f\u6d77\u5e7f\u573a\u5582\u6d77\u9e25\uff0c\u65c5\u987a\u7684\u65e7\u70ae\u53f0\u4e0e\u76d1\u72f1\u662f\u53e6\u4e00\u79cd\u5386\u53f2\u91cd\u91cf\u3002\u590f\u5929\u8d76\u6d77\uff0c\u51ac\u5929\u770b\u6d77\u51b0\uff0c\u56db\u5b63\u90fd\u6709\u7406\u7531\u3002',
+ acts:['\u6ee8\u6d77\u8def\u5f92\u6b65 / \u9a91\u884c\uff08\u4e1c\u6bb5\u6700\u6f02\u4eae\uff09\u2192 \u661f\u6d77\u5e7f\u573a','\u8001\u864e\u6ee9\u6216\u5723\u4e9a\u6d77\u6d0b\u4e16\u754c\uff08\u5e26\u5a03\u9996\u9009\uff09','\u65c5\u987a\u4e00\u65e5\uff1a\u767d\u7389\u5c71 + \u65e5\u4fc4\u76d1\u72f1\u65e7\u5740 + \u519b\u6e2f'],
+ warn:'\u51ac\u5929\u6d77\u8fb9\u98ce\u786c\uff0c\u4f53\u611f\u6bd4\u5e02\u533a\u4f4e\u597d\u51e0\u5ea6\uff0c\u8138\u4f1a\u75bc\u2014\u2014\u5e3d\u5b50\u56f4\u5dfe\u522b\u5acc\u9ebb\u70e6\u3002'},
+{n:'\u8425\u53e3 \u00b7 \u9c85\u9c7c\u5708\u6d77\u6ee8',tags:['sea','kid','slow'],se:['su'],hub:'dl',stay:['comfort'],d:1.5,c:190,
+ why:'\u6e24\u6d77\u6e7e\u5317\u7aef\u7684\u5e73\u4ef7\u6d77\u6ee8\uff0c\u6c99\u6ee9\u5e73\u7f13\u3001\u4eba\u6bd4\u5927\u8fde\u5c11\uff0c\u5e26\u5a03\u8e29\u6c34\u8d76\u6d77\u6700\u7701\u4e8b\uff0c\u6d77\u9c9c\u4e5f\u4fbf\u5b9c\u4e00\u5927\u622a\u3002',
+ acts:['\u4e0b\u5348\u5230\u6d77\u8fb9\u8e29\u6c34\u8d76\u6d77\uff08\u67e5\u597d\u9000\u6f6e\u65f6\u95f4\uff09','\u665a\u4e0a\u6d77\u9c9c\u5e02\u573a\u81ea\u9009\u52a0\u5de5\uff0c\u4eba\u5747 80 \u5403\u5f97\u633a\u6a2a']},
+{n:'\u9526\u5dde\uff08\u7b14\u67b6\u5c71 \u00b7 \u8fbd\u6c88\u6218\u5f79\u7eaa\u5ff5\u9986 \u00b7 \u70e7\u70e4\uff09',tags:['history','food','sea'],se:['sp','su','au','wi'],hub:'dl',stay:['lively'],d:1.5,c:160,
+ why:'\u8fbd\u6c88\u6218\u5f79\u7eaa\u5ff5\u9986\u662f\u628a\u8fd9\u6bb5\u5386\u53f2\u8bb2\u660e\u767d\u7684\u5730\u65b9\uff1b\u7b14\u67b6\u5c71\u90a3\u6761"\u5929\u6865"\u4e00\u5929\u53ea\u9732\u4e24\u6b21\uff0c\u9000\u6f6e\u65f6\u8d70\u8fc7\u53bb\u5f88\u6709\u610f\u601d\uff1b\u9526\u5dde\u70e7\u70e4\u81ea\u6210\u4e00\u6d3e\uff0c\u5565\u90fd\u80fd\u70e4\u3002',
+ acts:['\u8fbd\u6c88\u6218\u5f79\u7eaa\u5ff5\u9986\uff08\u514d\u8d39\uff0c\u534a\u5929\uff09','\u7b14\u67b6\u5c71\u770b\u9000\u6f6e\u9732\u51fa\u7684"\u5929\u6865"\uff08\u67e5\u5f53\u65e5\u6f6e\u6c50\u8868\uff09','\u665a\u4e0a\u9526\u5dde\u70e7\u70e4\uff0c\u70e4\u9e21\u722a\u70e4\u8327\u86f9'],
+ warn:'\u7b14\u67b6\u5c71\u5929\u6865\u53d7\u6f6e\u6c50\u63a7\u5236\uff0c\u5fc5\u987b\u63d0\u524d\u67e5\u5f53\u65e5\u9000\u6f6e\u65f6\u95f4\uff0c\u9519\u8fc7\u4e86\u767d\u8dd1\u3002'},
+{n:'\u6f20\u6cb3 \u00b7 \u5317\u6781\u6751 & \u5317\u7ea2\u6751',tags:['snow','photo','history'],se:['wi','su'],hub:'hrb',stay:['minsu'],d:2,c:400,
+ why:'\u4e2d\u56fd\u6700\u5317\u3002\u51ac\u5929 \u221240\u2103 \u7684\u6781\u5bd2\u4e0e\u5076\u5c14\u7684\u6781\u5149\uff0c\u590f\u5929\u5219\u662f\u6781\u663c\uff08\u51cc\u6668 3 \u70b9\u5929\u5c31\u4eae\uff09\u3002\u6700\u5317\u90ae\u5c40\u5bc4\u5f20\u660e\u4fe1\u7247\uff0c\u662f\u4e00\u8f88\u5b50\u5c31\u8fd9\u4e00\u56de\u7684\u4eea\u5f0f\u611f\u3002',
+ acts:['\u54c8\u5c14\u6ee8\u98de\u6f20\u6cb3\u7ea6 2h \u2192 \u5317\u6781\u6751\uff08\u6700\u5317\u90ae\u5c40\u3001\u627e\u5317\u77f3\u7891\uff09','\u5317\u7ea2\u6751\uff08\u771f\u6b63\u6700\u5317\u7684\u6751\u843d\uff09\u2192 \u9f99\u6c5f\u7b2c\u4e00\u6e7e','\u6f20\u6cb3\u53bf\u57ce\uff1a\u5317\u6781\u661f\u5e7f\u573a + \u677e\u82d1\u539f\u59cb\u68ee\u6797'],
+ warn:'\u51ac\u5b63\u6781\u5bd2\uff0c\u624b\u673a\u4f1a\u51bb\u5173\u673a\uff0c\u6696\u5b9d\u5b9d\u8d34\u5145\u7535\u5b9d\u4e0a\uff1b\u822a\u73ed\u53d7\u5929\u6c14\u5f71\u54cd\u5927\uff0c\u52a1\u5fc5\u7559\u7f13\u51b2\u65e5\u3002'},
+{n:'\u629a\u8fdc / \u540c\u6c5f \u00b7 \u4e1c\u6781\u4e0e\u8d6b\u54f2\u65cf',tags:['culture','food','history','sea'],se:['sp','su','au'],hub:'hrb',stay:['minsu'],d:2,c:250,
+ why:'\u7956\u56fd\u6700\u4e1c\u7aef\uff0c\u590f\u5929\u51cc\u6668 3 \u70b9\u591a\u5929\u5c31\u4eae\u3002\u8d6b\u54f2\u65cf\u7684\u9c7c\u76ae\u8863\u3001\u4f0a\u739b\u582a\u8bf4\u5531\uff0c\u4e4c\u82cf\u91cc\u6c5f\u7684"\u4e09\u82b1\u4e94\u7f57"\uff0c\u6625\u5929\u5f00\u6c5f\u9c7c\u662f\u4e00\u5e74\u91cc\u6700\u9c9c\u7684\u4e00\u53e3\u3002',
+ acts:['\u54c8\u5c14\u6ee8\u98de\u629a\u8fdc\u7ea6 1.5h \u2192 \u4e1c\u6781\u5e7f\u573a\u770b\u6700\u65e9\u65e5\u51fa','\u9ed1\u778e\u5b50\u5c9b + \u540c\u6c5f\u4e09\u6c5f\u53e3\uff08\u677e\u82b1\u6c5f\u4e0e\u9ed1\u9f99\u6c5f\u4ea4\u6c47\uff09','\u8d6b\u54f2\u65cf\u6751\u770b\u9c7c\u76ae\u8863\u5236\u4f5c + \u5403\u5f00\u6c5f\u9c7c / \u6740\u751f\u9c7c\uff08\u53ef\u8981\u6c42\u505a\u719f\uff09']},
+{n:'\u9f50\u9f50\u54c8\u5c14 \u00b7 \u624e\u9f99\u4e39\u9876\u9e64',tags:['nature','kid','photo'],se:['su','au'],hub:'hrb',stay:['comfort'],d:1,c:150,
+ why:'\u4e39\u9876\u9e64\u7684\u6545\u4e61\uff0c\u6bcf\u5929\u5b9a\u70b9\u653e\u98de\uff0c\u51e0\u5341\u53ea\u4e00\u8d77\u8d77\u98de\u90a3\u4e00\u4e0b\u503c\u56de\u7968\u4ef7\u3002\u5e26\u5a03\u7684\u79d1\u666e\u4ef7\u503c\u6bd4\u5927\u591a\u6570\u666f\u533a\u9ad8\u3002',
+ acts:['\u4e0a\u5348\u5230\u624e\u9f99\uff0c\u5361\u653e\u98de\u65f6\u95f4\uff08\u4e00\u5929\u4e24\u573a\uff0c\u5148\u67e5\uff09','\u6e7f\u5730\u6808\u9053\u6563\u6b65 \u2192 \u56de\u5e02\u533a\u5403\u9f50\u5e02\u70e4\u8089\uff08\u81ea\u5df1\u62cc\u81ea\u5df1\u70e4\uff09']}
+];
+
+/* ===== \u89c4\u5212\u5668\u8868\u5355\u6e32\u67d3 ===== */
+function mkOpts(box,list,cur,multi,cb){
+ box.innerHTML='';
+ list.forEach(([k,label])=>{
+  const b=document.createElement('div'); b.className='opt'+(cur.indexOf(k)>=0?' on':'');
+  b.innerHTML=label.replace(/^(\S+)\s/,'<span class="oe">$1</span>');
+  b.onclick=()=>{
+   if(multi){ const i=cur.indexOf(k); if(i>=0)cur.splice(i,1); else cur.push(k); }
+   else { cur.length=0; cur.push(k); }
+   save(); if(cb)cb(k); renderGenForm();
+  };
+  box.appendChild(b);
+ });
+}
+let G=S.gen||{want:[],stay:['any'],money:['norm'],city:['any'],days:5,ppl:2};
+S.gen=G;
+function renderGenForm(){
+ const pk=document.getElementById('gPpl'); pk.innerHTML='';
+ for(let i=1;i<=8;i++){
+  const b=document.createElement('div'); b.className='opt'+(S.ppl===i||(i===8&&S.ppl>=8)?' on':'');
+  b.textContent=i+(i===8?' \u4eba+':' \u4eba');
+  b.onclick=()=>{S.ppl=i;save();renderPpl();renderGenForm();};
+  pk.appendChild(b);
+ }
+ mkOpts(document.getElementById('gDays'),DAYOPT.map(d=>[String(d[0]),d[1]]),[String(G.days)],false,k=>{G.days=+k;save();});
+ mkOpts(document.getElementById('gWant'),WANT,G.want,true);
+ mkOpts(document.getElementById('gStay'),STAY,G.stay,false);
+ document.getElementById('gStayHint').textContent=STAY_HINT[G.stay[0]]||'';
+ mkOpts(document.getElementById('gMoney'),MONEY,G.money,false);
+ mkOpts(document.getElementById('gCity'),CITYIN,G.city,false);
+}
+
+/* ===== 住宿偏好 → 具体住哪儿 ===== */
+const LODG={
+ hrb:{minsu:'道里区老小区民宿 / 松北一带，清静，早上楼下就是早市',lively:'中央大街 · 索菲亚教堂周边，下楼就是步行街和马迭尔冰棍',comfort:'哈西 / 群力新区的连锁与温泉酒店，设施新、停车方便'},
+ cc:{minsu:'净月潭边民宿 / 二道白河镇上的家庭旅馆',lively:'重庆路 · 桂林路商圈，小吃和夜市密集',comfort:'人民大街沿线连锁 / 二道白河温泉度假酒店'},
+ sy:{minsu:'老北市周边老小区民宿，早上能听见院子里大爷唠嗑',lively:'中街 · 太原街，夜市和小串摊都在楼下',comfort:'青年大街沿线 / 浑南新区，房间新、配套全'},
+ dl:{minsu:'渔人码头 / 滨海路沿线民宿，安静，能听见浪',lively:'青泥洼桥 · 中山广场，老城中心最热闹',comfort:'星海广场 / 东港商务区，海景房与高端连锁都在这'},
+ scenic:{minsu:'景区内或门口的农家院 · 火炕房（雪乡、雾凇岛、长白山脚下都这路子）',lively:'景区小镇主街上（雪韵大街、二道白河镇里），晚上有灯有摊',comfort:'温泉度假 / 雪场配套酒店，暖气足、含早、玩完能直接泡汤'}
+};
+const WANT_NAME=Object.fromEntries(WANT);
+const UNMET_TXT={
+ snow:'这季节雪是真看不上了，雪场早关了。不过长白山高海拔那圈儿常年有残雪，俺给你留了个"高山版过瘾"——先凑合着，冬天再来真格的。',
+ sea:'海边儿这阵子能去，但风硬水凉，看个海景吃顿海鲜还成，下水就别想了。真想看海，等 6–9 月来，那才叫得劲儿。',
+ spring:'温泉这季节泡着有点儿捂得慌，俺给你换成了山里江边更透亮的玩法。想泡汤等 11 月往后，外头飘雪里头泡汤，那才叫会享受。',
+ food:'吃这块儿你放心，东北四季都有得吃，只是当季最肥的那口得等时候——春开江鱼、夏菌子、秋榛蘑、冬冻梨。',
+ culture:'民俗这块儿有些是季节限定的（冬捕、开江节），这时间不对口，俺挑了四季都能唠上的。',
+ history:'历史类景点大多四季开放，只是冬天室外那部分（界江、旧炮台）风大受不了，俺给你往室内挪了挪。',
+ nature:'这季节的林子颜色单一，看头少点儿。俺给你留了林区和湿地，秋天来才是"五花山"的满配版本。',
+ photo:'拍照这块儿当季光线和色彩一般，俺尽量给你挑了构图和层次好的地方，出片还得靠早晚那一小时。',
+ kid:'带娃的当季专属项目少，俺挑了室内场馆和动物类（不挑季节）的，走哪儿都不至于闹。',
+ slow:'清净的地儿俺给你留着了，只是这季节人可能比你想的多一丢丢，早出门半小时就解决。',
+ city:'城市热闹这块儿一年四季都有，俺在行程里给你留了商圈和夜市。'
+};
+
+/* ===== 打分 ===== */
+function scoreMods(season,city,stay,want){
+ return MOD.map(m=>{
+  let sc=0,hit=[];
+  m.tags.forEach(t=>{ if(want.includes(t)){sc+=10;hit.push(t);} });
+  const okSe=m.se.includes(season);
+  if(!okSe) sc-=26;
+  if(m.stay.includes(stay)) sc+=6;
+  if(city!=='any'&&m.hub===city) sc+=7;
+  return {m,sc,hit,okSe};
+ }).filter(x=>x.hit.length>0&&x.sc>0).sort((a,b)=>b.sc-a.sc);
+}
+function dayCaps(cap){ const a=[]; for(let i=0;i<cap;i++) a.push((i===0||i===cap-1)?1:2); return a; }
+
+const TAG_SEASON={snow:['wi'],sea:['su','au'],spring:['wi','sp'],nature:['sp','su','au'],
+ photo:['sp','su','au','wi'],culture:['sp','su','au','wi'],history:['sp','su','au','wi'],
+ food:['sp','su','au','wi'],kid:['sp','su','au','wi'],slow:['sp','su','au','wi'],city:['sp','su','au','wi']};
+const LINESET={north:['漠河'],east:['抚远'],snow:['雪乡','亚布力'],cb:['长白山','延吉','珲春','雾凇岛','查干湖'],
+ sea:['大连','营口','丹东','盘锦','锦州'],west:['五大连池','扎龙'],
+ city:['哈尔滨市区','冰雪大世界','长春市区','沈阳','本溪','伊春']};
+function lineOf(n){ for(const k in LINESET){ if(LINESET[k].some(s=>n.indexOf(s)>=0)) return k; } return 'city'; }
+const SPICK={sp:['may','weekend'],su:['summer','weekend'],au:['oct','weekend'],wi:['winter','weekend']};
+function pickPeriod(season,cur){ const ok=SPICK[season]; return ok.indexOf(cur)>=0?cur:ok[0]; }
+
+function genPlan(lucky){
+ if(lucky){
+  const pool=WANT.map(w=>w[0]);
+  G.want=[]; const n=2+Math.floor(Math.random()*2);
+  while(G.want.length<n){ const t=pool[Math.floor(Math.random()*pool.length)]; if(!G.want.includes(t))G.want.push(t); }
+  G.stay=[STAY[Math.floor(Math.random()*4)][0]];
+  G.money=[MONEY[Math.floor(Math.random()*3)][0]];
+  G.city=[CITYIN[Math.floor(Math.random()*5)][0]];
+  G.days=[3,4,5,5,6][Math.floor(Math.random()*5)];
+  save(); renderGenForm();
+  neSay(NE.ev.lucky,Math.random()<.5?'t':'g',5000);
+ }
+ const season=S.season,city=G.city[0],stay=G.stay[0],money=G.money[0],want=G.want.slice();
+ if(!want.length){ neSay(RARR(NE.err.empty),'t',6000); return; }
+ let cap=G.days; if(!cap)cap=5;
+ const period=pickPeriod(season,S.period);
+ let scored=scoreMods(season,city,stay,want);
+ let seasonFix=false;
+ if(!scored.length){
+  seasonFix=true;
+  scored=MOD.map(m=>{ let sc=0,hit=[];
+   m.tags.forEach(t=>{ if(want.includes(t)){sc+=10;hit.push(t);} });
+   if(m.stay.indexOf(stay)>=0)sc+=6; if(city!=='any'&&m.hub===city)sc+=7;
+   return {m,sc,hit,okSe:false};
+  }).filter(x=>x.hit.length>0).sort((a,b)=>b.sc-a.sc);
+ }
+ if(!scored.length){ neSay(RARR(NE.err.nofit),'g',6000); return; }
+
+ const caps=dayCaps(cap), avail=caps.reduce((a,b)=>a+b,0)/2;
+ let picked=[]; let used=0;
+ for(const x of scored){ if(used+x.m.d<=avail+0.01){picked.push(x);used+=x.m.d;} if(used>=avail-0.24)break; }
+ if(!picked.length)picked.push(scored[0]);
+ /* 地理跨度整理：极远线路（漠河/抚远）单独成行；其余最多两条线 */
+ const EX=['north','east'];
+ const exLine=EX.filter(l=>picked.some(p=>lineOf(p.m.n)===l));
+ if(exLine.length) picked=picked.filter(p=>{const l=lineOf(p.m.n);return l===exLine[0]||l==='city';});
+ else{
+  const ls=[...new Set(picked.map(p=>lineOf(p.m.n)))];
+  if(ls.length>3){
+   const rank=ls.map(l=>({l,sc:Math.max.apply(null,picked.filter(p=>lineOf(p.m.n)===l).map(p=>p.sc))})).sort((a,b)=>b.sc-a.sc);
+   const keep=rank.slice(0,2).map(r=>r.l);
+   picked=picked.filter(p=>keep.indexOf(lineOf(p.m.n))>=0);
+  }
+ }
+ used=picked.reduce((a,x)=>a+x.m.d,0);
+ /* 用剩下的空档补齐（仍受线路约束） */
+ for(const x of scored){
+  if(picked.indexOf(x)>=0)continue;
+  const l=lineOf(x.m.n), ls=[...new Set(picked.map(p=>lineOf(p.m.n)))];
+  const ok=exLine.length?(l===exLine[0]||l==='city'):(ls.length<3||ls.indexOf(l)>=0);
+  if(ok&&used+x.m.d<=avail+0.01){picked.push(x);used+=x.m.d;}
+ }
+ const hubRank={}; picked.forEach((x,i)=>{ if(hubRank[x.m.hub]===undefined)hubRank[x.m.hub]=i; });
+ if(city!=='any'&&hubRank[city]!==undefined)hubRank[city]=-1;
+ picked.sort((a,b)=>(hubRank[a.m.hub]-hubRank[b.m.hub])||(b.sc-a.sc));
+
+ const strong={},weak={};
+ picked.forEach(x=>x.hit.forEach(t=>{ if(TAG_SEASON[t].indexOf(season)>=0)strong[t]=1; else weak[t]=1; }));
+ const unmet=want.filter(t=>!strong[t]&&!weak[t]);
+ const weakHit=want.filter(t=>!strong[t]&&weak[t]);
+ const lastSc=picked[picked.length-1].sc;
+ const over=scored.filter(x=>picked.indexOf(x)<0&&x.sc>=lastSc-6).slice(0,3);
+
+ const D=[]; for(let i=0;i<cap;i++)D.push([]);
+ D[0].push('落地 '+CITY_NAME[city]+' · 机场/车站 → 市区（花多少，「算价」页能给你算到个位数）');
+ let di=0,slot=caps[0];
+ picked.forEach(x=>{
+  let need=Math.max(1,Math.round(x.m.d*2)),ai=0;
+  const acts=(x.m.acts&&x.m.acts.length)?x.m.acts:[x.m.n];
+  while(need>0&&di<cap){
+   if(slot<=0){di++;if(di>=cap)break;slot=caps[di];continue;}
+   D[di].push((ai===0?'【'+x.m.n+'】':'')+acts[ai%acts.length]);
+   ai++;need--;slot--;
+  }
+ });
+ D.forEach((d,i)=>{ if(i>0&&i<cap-1&&d.length<2) d.push('机动半天：睡个懒觉 / 逛趟早市 / 找个澡堂子搓个澡'); });
+ D[cap-1].push('返程：提前 2 小时到站 or 机场，路上再整碗热乎的');
+
+ const nights=Math.max(1,cap-1), ppl=S.ppl, rooms=Math.ceil(ppl/2);
+ const scenicKw=['雪乡','长白山','亚布力','漠河','雾凇岛'];
+ const isSc=x=>scenicKw.some(k=>x.m.n.indexOf(k)>=0);
+ const totD=picked.reduce((a,x)=>a+x.m.d,0)||1;
+ const scD=picked.filter(isSc).reduce((a,x)=>a+x.m.d,0);
+ const wSc=scD/totD;
+ const cityZ=(city!=='any')?city:(picked.find(x=>!isSc(x))||picked[0]).m.hub;
+ let tier=stay==='comfort'?2:1;
+ if(money==='save')tier=Math.max(0,tier-1);
+ if(money==='rich')tier=Math.min(3,tier+1);
+ const mul=PMUL[period].m;
+ const bS=HOTEL.scenic.base[tier], bC=HOTEL[cityZ].base[tier];
+ const mix=i=>bS[i]*wSc+bC[i]*(1-wSc);
+ const hLo=Math.round(mix(0)*mul/10)*10, hHi=Math.round(mix(1)*mul/10)*10, hAvg=Math.round((hLo+hHi)/2);
+ const zone=wSc>0.5?'scenic':cityZ;
+ const hotelTotal=hAvg*rooms*nights;
+ const mealPer=money==='save'?75:money==='norm'?115:190;
+ const mealTotal=mealPer*cap*ppl;
+ const tickPer=picked.reduce((a,x)=>a+Math.round(x.m.c*0.62)*x.m.d,0);
+ const tickTotal=Math.round(tickPer*ppl);
+ const segs=Math.max(1,new Set(picked.map(x=>x.m.hub)).size);
+ const far=exLine.length?1:0;
+ const interPer=ppl>=4?Math.round(780*(segs+far*2)/ppl):Math.round(160*segs+1000*far);
+ const interTotal=interPer*ppl;
+ const buf=Math.round((hotelTotal+mealTotal+tickTotal+interTotal)*0.12);
+ const grand=hotelTotal+mealTotal+tickTotal+interTotal+buf;
+ const perHead=Math.round(grand/ppl);
+
+ renderGenResult({season,city,stay,money,period,want,cap,picked,unmet,weakHit,over,seasonFix,D,
+  b:{hLo,hHi,hAvg,hotelTotal,mealPer,mealTotal,tickPer,tickTotal,interPer,interTotal,buf,grand,perHead,rooms,nights,tier,zone,mul,isScenic:wSc>0.5,wSc,segs}});
+ neSay(NE.ev.planDone,Math.random()<.5?'t':'g',5200);
+ setTimeout(()=>{const o=document.getElementById('genOut');if(o)window.scrollTo({top:o.offsetTop-70,behavior:'smooth'});},60);
+}
+
+function renderGenResult(R){
+ const p=R.picked, b=R.b;
+ const seasonName=SEASON[R.season].name;
+ const lz=b.zone==='scenic'?'scenic':(R.city!=='any'?R.city:p[0].m.hub);
+ const stayLabel=STAY.find(s=>s[0]===R.stay)[1];
+ const moneyLabel=MONEY.find(m=>m[0]===R.money)[1];
+ let h='';
+ h+='<div class="res-hero"><b>'+R.cap+' 天 · '+S.ppl+' 人 · '+seasonName+'季 · '+CITY_NAME[R.city]+'进出 · '+PMUL[R.period].t+'</b><br>';
+ if(p.length) h+='这条线主要奔着你想要的：<b>'+[...new Set(p.flatMap(x=>x.hit))].map(t=>WANT_NAME[t]).join(' ')+'</b>来的。<br>';
+ h+='按你选的「'+stayLabel+'」和「'+moneyLabel+'」，整程人均大概 <b>¥'+b.perHead+'</b>，细账在下头摆着呢。</div>';
+
+ h+='<h2 class="sec" style="margin-top:16px;"><span class="n">①</span>给你挑的这几块儿</h2><div class="card">';
+ p.forEach((x,i)=>{
+  const sc=Math.min(100,Math.round(40+x.hit.length*20+(x.m.stay.indexOf(R.stay)>=0?12:0)));
+  h+='<div class="rec"><div class="rec-n">'+(i+1)+'</div><div class="rec-b">';
+  h+='<div class="rec-t">'+x.m.n+(x.okSe?'':'<span class="pl-tag">非当季主力</span>')+'</div>';
+  h+='<div class="rec-d">'+x.m.why+'</div>';
+  if(x.hit.length) h+='<div class="rec-d" style="color:#B5731F;">🎯 对口：'+x.hit.map(t=>WANT_NAME[t]).join(' ')+'</div>';
+  if(x.m.warn) h+='<div class="rec-d" style="color:#B86B3C;">⚠️ '+x.m.warn+'</div>';
+  h+='<div class="rec-s"><div class="rec-bar"><i style="width:'+sc+'%"></i></div><span class="rec-v">匹配 '+sc+'%</span></div>';
+  h+='</div></div>';
+ });
+ if(R.over.length) h+='<div style="font-size:11.6px;color:#B09877;margin-top:8px;line-height:1.75;">天数装不下了，这几块儿也挺对口，下回来：<br>· '+R.over.map(x=>x.m.n).join('<br>· ')+'</div>';
+ h+='</div>';
+
+ h+='<h2 class="sec"><span class="n">②</span>逐日行程（照着走就成）</h2><div class="card">';
+ R.D.forEach(d=>{
+  h+='<div class="pl-d"><div class="pl-dh">'+d[0]+'</div>';
+  d.slice(1).forEach(t=>{ h+='<div class="pl-i">· '+t+'</div>'; });
+  h+='</div>';
+ });
+ h+='</div>';
+
+ h+='<h2 class="sec"><span class="n">③</span>住哪儿 · 按你"'+stayLabel+'"的口味</h2><div class="card">';
+ h+='<div class="rec-d" style="font-size:12.6px;line-height:1.85;">🏠 <b>'+(LODG[lz][R.stay]||LODG[lz].lively)+'</b></div>';
+ h+='<div class="rec-d" style="margin-top:6px;">档位：<b>'+TIER[b.tier]+'</b>'+(b.isScenic?'（景区型为主）':'')+' · '+PMUL[R.period].t+'溢价 ×'+b.mul+'</div>';
+ h+='<div class="rec-d">参考价：<b>¥'+b.hLo+'–'+b.hHi+' / 间夜</b>'+(b.mul>1.3?'（节假日已上浮，平时能便宜三成）':'')+'</div>';
+ h+='<div class="rec-d">'+b.rooms+' 间 × '+b.nights+' 晚 ≈ <b>¥'+b.hotelTotal.toLocaleString()+'</b>（按 2 人一间算'+(b.wSc>0.05&&b.wSc<0.95?'，已按景区/城市混住加权':'')+'）</div>';
+ if(R.stay==='minsu') h+='<div class="okbox">清净派小贴士：民宿 / 农家院多有火炕房，冬天烧得暖烘烘，人均常含早饭；缺点是隔音一般、位置偏，自驾或包车最合适。订之前问清三件事：有没有独立卫浴、能不能开发票、退改怎么算。</div>';
+ if(R.stay==='lively') h+='<div class="okbox">热闹派小贴士：商圈房步行到夜市，缺点是吵。订房时备注"要高楼层、远离电梯"，能睡个囫囵觉；旺季房价能翻一倍，越早订越省。</div>';
+ if(R.stay==='comfort') h+='<div class="okbox">设施派小贴士：'+(R.season==='wi'?'冬天优先选带温泉 / 恒温泳池的，玩完雪回来泡一下，第二天腿不酸。':'优先选含早 + 有洗衣房的，连住两晚以上一般能谈个协议价。')+'</div>';
+ h+='</div>';
+
+ h+='<h2 class="sec"><span class="n">④</span>交通咋整（'+S.ppl+' 人）</h2><div class="card"><div class="rec-d" style="font-size:12.6px;line-height:1.85;">'+PPL_TXT[S.ppl]+'</div>';
+ h+='<div class="rec-d" style="margin-top:8px;">🚄 城际约 '+b.segs+' 段，人均 <b>¥'+b.interPer+'</b>（'+(S.ppl>=4?'人多包车划算，商务车 800–1200/天，摊下来比高铁还便宜':'人少走高铁 / 城际最省，班次密、准点')+'）</div>';
+ h+='<div class="rec-d">🚕 市内与短驳：机场车站到酒店这一段最容易被宰，<b>先去「算价」页按官方运价算一遍</b>，心里有数再上车。'+(R.season==='wi'?'冬季包车务必确认<b>雪地胎 / 四驱</b>，价格上浮 10–20% 属正常。':'')+'</div></div>';
+
+ h+='<h2 class="sec"><span class="n">⑤</span>钱花在哪儿（'+S.ppl+' 人合计）</h2><div class="card"><table class="cost-tb">';
+ h+='<tr><td>住宿（'+b.rooms+' 间 × '+b.nights+' 晚）</td><td>¥'+b.hotelTotal.toLocaleString()+'</td></tr>';
+ h+='<tr><td>吃饭（人均 ¥'+b.mealPer+'/天 × '+R.cap+' 天）</td><td>¥'+b.mealTotal.toLocaleString()+'</td></tr>';
+ h+='<tr><td>门票 · 体验 · 当地交通</td><td>¥'+b.tickTotal.toLocaleString()+'</td></tr>';
+ h+='<tr><td>城际往返</td><td>¥'+b.interTotal.toLocaleString()+'</td></tr>';
+ h+='<tr><td>机动备用（12%，路上总有想不到的）</td><td>¥'+b.buf.toLocaleString()+'</td></tr>';
+ h+='<tr class="sum"><td>合计 · 人均 <span style="font-size:11px;color:#B09877;">¥'+b.perHead+'</span></td><td>¥'+b.grand.toLocaleString()+'</td></tr>';
+ h+='</table><div style="font-size:11.4px;color:#B09877;margin-top:8px;line-height:1.7;">住宿按 '+PMUL[R.period].t+' 档期上浮 ×'+b.mul+' 估算（档期已按你选的季节自动匹配，可在「行程」页改）；吃饭与门票取区间中值，实际看你怎么花。</div></div>';
+
+ if(R.weakHit.length){
+  h+='<h2 class="sec"><span class="n">⑥</span>这几样俺给你整了个"将就版"</h2><div class="card"><div class="warnbox"><b>'+seasonName+'季玩这个有点儿勉强：</b>'+R.weakHit.map(t=>WANT_NAME[t]).join(' ')+'<br><br>';
+  R.weakHit.forEach(t=>{ h+='· <b>'+WANT_NAME[t]+'</b>：'+(UNMET_TXT[t]||'这个俺实在摆不平，换季再来准能安排上。')+'<br>'; });
+  h+='<br>不是俺不给力，是东北这疙瘩讲究时令——硬安排上了你去了也白搭，不如换个时候再来一趟。</div></div>';
+ }
+ if(R.unmet.length){
+  h+='<h2 class="sec"><span class="n">'+(R.weakHit.length?'⑦':'⑥')+'</span>这几样是真没对上</h2><div class="card"><div class="warnbox"><b>没安排上的：</b>'+R.unmet.map(t=>WANT_NAME[t]).join(' ')+'<br><br>';
+  R.unmet.forEach(t=>{ h+='· <b>'+WANT_NAME[t]+'</b>：'+(UNMET_TXT[t]||'这个俺实在摆不平，换季再来准能安排上。')+'<br>'; });
+  h+='</div></div>';
+ }
+ h+='<div class="card"><h3>🦌 '+(R.seasonFix?'俺给你调了调':'最后唠叨两句')+'</h3><ul>';
+ h+='<li>'+SEASON[R.season].priceTip+'</li>';
+ h+='<li>'+PERIODS[R.period].tip+'</li>';
+ h+='<li>狍子是<b>国家二级保护动物</b>，山里遇见了远远看着就好，别追别喂也别往家带——坨坨果果替它们谢谢你。</li>';
+ try{window.__LASTPLAN=packPlanFrom(R,p,b,typeof seasonName!=='undefined'?seasonName:'');}catch(e){}
+ h+='</ul><button class="gen-go" id="gSave" style="margin-top:10px;background:linear-gradient(135deg,#8FA97B,#5C8148);">🧾 把这份行程记进我的清单</button>'+(window.__LASTPLAN?'<button class="gen-go" id="gShare" style="margin-top:8px;background:linear-gradient(135deg,#6E8CB8,#4E6E96);">🔗 生成链接分享给同伴</button>':'')+'</div>';
+
+ document.getElementById('genOut').innerHTML=h;
+ const sv=document.getElementById('gSave');
+ if(sv) sv.onclick=()=>{
+  const items=['行程：'+R.cap+'天 · '+seasonName+'季 · '+CITY_NAME[R.city]+'进出 · '+PMUL[R.period].t];
+  p.forEach(x=>items.push('订 '+x.m.n));
+  items.push('住宿：'+String(LODG[lz][R.stay]||'').slice(0,18)+' ¥'+b.hLo+'–'+b.hHi+'/间夜');
+  items.push('人均预算 ¥'+b.perHead+'（含 12% 机动）');
+  SEASON[R.season].gear.forEach(g=>items.push('装备：'+g));
+  items.forEach(t=>{ if(!S.list.some(x=>x[0]===t)) S.list.push([t,false]); });
+  save(); renderList();
+  neSay('记下了记下了！清单在「工具」页最后一栏，出门前照着划拉一遍就齐活。','g',5600);
+ };
+}
+
+document.getElementById('gGo').onclick=()=>genPlan(false);
+document.getElementById('gLucky').onclick=()=>genPlan(true);
+document.getElementById('neClose').onclick=()=>document.getElementById('neToast').classList.remove('on');
+/* 东北话定时冒泡 */
+(function tick(){ setTimeout(()=>{ if(!document.hidden) neIdle(); tick(); },52000+Math.random()*48000); })();
+setTimeout(neHi,1100);
+
+/* ===== 季节切换 & Tab ===== */
+/* ==========================================================
+   自驾规划模块
+   ========================================================== */
+if(!S.dv) S.dv={mode:['rent'],ppl:2,days:5,terr:['city'],city:['hrb'],back:['same'],route:''};
+const D=S.dv;
+
+const DVMODE=[['own','\u{1F699} 开自己的车'],['rent','\u{1F511} 落地租车'],['charter','\u{1F690} 落地包车']];
+const DVDAYS=[[3,'3 天'],[4,'4 天'],[5,'5 天'],[6,'6 天'],[7,'7 天'],[10,'10 天+']];
+const DVTERR=[
+ ['city','\u{1F3D9} 城市为主'],
+ ['mount','\u26F0\uFE0F 山区盘山'],
+ ['snow','\u2744\uFE0F 冰雪路段'],
+ ['coast','\u{1F30A} 沿海公路'],
+ ['border','\u{1F6E3}\uFE0F 边境国道'],
+ ['forest','\u{1F332} 林区土路'],
+ ['grass','\u{1F33E} 草原湿地']
+];
+const DVCITY=[['hrb','\u54c8\u5c14\u6ee8\u53d6\u8f66'],['cc','\u957f\u6625\u53d6\u8f66'],['sy','\u6c88\u9633\u53d6\u8f66'],['dl','\u5927\u8fde\u53d6\u8f66'],['yan','\u5ef6\u5409 / \u73e0\u6625']];
+const DVBACK=[['same','\u540c\u57ce\u53d6\u8fd8\uff08\u7701\u94b1\uff09'],['diff','\u5f02\u5730\u8fd8\u8f66']];
+
+const CARS=[
+ {id:'eco',n:'经济轿车',ex:'朗逸 / 卡罗拉 / 轩逸',seat:5,bag:2,day:[150,280],peak:[300,420],oil:5.5,
+  good:['city','coast'],bad:['mount','snow','forest'],
+  txt:'俩人轻装跑城市最省钱，油耗低、好停车、巷子里掉头方便。',
+  warn:'底盘低，积雪路面和林场土路易托底；后备箱只够两个 24 寸箱。'},
+ {id:'sedan',n:'舒适轿车',ex:'凯美瑞 / 雅阁 / 帕萨特',seat:5,bag:3,day:[220,400],peak:[380,520],oil:6.5,
+  good:['city','coast'],bad:['mount','snow','forest'],
+  txt:'长途坐着不累，高速稳、隔音好，跑沈阳—大连这种平坦线路很舒服。',
+  warn:'同样底盘低，雪乡、长白山的坡道和结冰路面别硬上。'},
+ {id:'suv',n:'城市 SUV',ex:'CR-V / RAV4 / 途观L / 哈弗H6',seat:5,bag:4,day:[260,400],peak:[320,500],oil:8,
+  good:['city','coast','mount','border','forest'],ok:['snow'],
+  txt:'东北自驾的万金油。底盘高、后备箱能塞、雪乡和长白山的坡道也扛得住。',
+  warn:'租来的多是两驱，深雪路段还是要慢；订车时问清是不是四驱。'},
+ {id:'suv7',n:'7 座 SUV',ex:'汉兰达 / 锐界 / 传祺GS8',seat:7,bag:5,day:[350,550],peak:[450,700],oil:9.5,
+  good:['city','coast','mount','border','forest','grass'],ok:['snow'],
+  txt:'5–7 人一台车最划算，人均摊下来比包车便宜一大截，行李也塞得下。',
+  warn:'第三排坐成年人不舒服，适合小孩或 1–2 小时短途；满座时后备箱只剩两个箱位。'},
+ {id:'offroad',n:'硬派越野（四驱）',ex:'普拉多 / 帕杰罗 / 坦克300',seat:5,bag:4,day:[550,750],peak:[700,950],oil:11,
+  good:['mount','snow','forest','border'],ok:['coast','grass'],
+  txt:'长白山山区、林场土路、雪乡深雪段的通过性最好，冬天这个钱花得值。',
+  warn:'贵，而且油耗高一截；纯城市跑就是浪费。'},
+ {id:'mpv',n:'商务 MPV',ex:'别克 GL8 / 赛那',seat:7,bag:6,day:[400,600],peak:[600,850],oil:9.5,
+  good:['city','coast','grass'],ok:['border'],bad:['mount','snow','forest'],
+  txt:'带老人小孩、行李多时最舒服，上下车不用弯腰，长途不累。',
+  warn:'底盘偏低、车身长，雪深路段和窄会车的山道要格外小心。'},
+ {id:'ev',n:'新能源（纯电）',ex:'比亚迪 / 埃安 / 特斯拉',seat:5,bag:3,day:[120,220],peak:[200,320],oil:1.8,
+  good:['city'],ok:['coast'],bad:['mount','snow','border','forest'],
+  txt:'市区代步便宜、安静，充电桩在哈长沈大城区挺密。',
+  warn:'东北冬天续航打对折，县城和景区充电桩稀疏，长途自驾不推荐。'}
+];
+
+const DROUTES=[
+ {id:'g331',n:'G331 边境线 · 中国北境公路之王',km:1450,days:5,terr:['border','mount'],seasons:['sp','su','au'],
+  seg:'沈阳 → 丹东 → 集安 → 临江 → 长白县 → 长白山 → 延吉 → 珲春 → 返程',
+  road:'高速 + 沿江国道。丹东段新 G331（丹集线）约 260km / 5 小时，路面宽阔适合新手；老 G331（泡浑线）约 340km / 8 小时，紧贴鸭绿江、弯道密集、免费观景台多，是摄影党首选。',
+  park:'断桥 / 虎山 / 河口 / 绿江村都有免费或低价停车场，大西岔镇政府驿站免费停车、充电、还能露营。',
+  warn:'多处边防检查站，身份证全程随身；严禁无人机对朝鲜一侧拍摄；河口→绿江村约 80km 加油站稀少，油箱过半就补；山区信号弱，出发前下载离线地图。'},
+ {id:'ice',n:'冰雪环线 · 哈尔滨—亚布力—雪乡',km:520,days:3,terr:['snow','mount'],seasons:['wi'],
+  seg:'哈尔滨 → 亚布力（滑雪）→ 雪乡（双峰林场）→ 哈尔滨',
+  road:'哈牡高速 + 山区公路。冬季全程冰雪路面，亚布力到雪乡段盘山，弯多坡陡。',
+  park:'雪乡私家车只能停在景区外停车场（过夜 20–30 元），必须换摆渡车进村；亚布力各滑雪场自有停车场。',
+  warn:'必须雪地胎，建议备防滑链；雪乡段下午 4 点后天黑得快，别赶夜路；手机在低温掉电极快，备暖宝宝贴手机。'},
+ {id:'cbs',n:'长白山深度 · 长春—长白山—延吉',km:760,days:4,terr:['mount','border'],seasons:['su','au','wi'],
+  seg:'长春 →（310km / 4h）长白山北坡 → 二道白河 → 延吉 → 返程',
+  road:'全程高速为主，长春到长白山约 310km / 4 小时（抚长高速—营松高速）。山区隧道多，注意限速。',
+  park:'长白山景区内部必须坐环保车，私家车停北坡换乘中心（10–20 元/天）。旺季 7 点前到才有位。',
+  warn:'天池看不看得到全看运气，早上 7 点前入园概率最高；长白山山区天气多变，夏季也要带防风外套。'},
+ {id:'maple',n:'五花山秋色 · 哈尔滨—凤凰山—镜泊湖',km:900,days:4,terr:['mount','forest'],seasons:['au'],
+  seg:'哈尔滨 → 五常 → 凤凰山 → 镜泊湖 → 牡丹江 → 哈尔滨',
+  road:'高速 + 省道，凤凰山段山路弯多。9 月下旬到 10 月中旬是五花山最佳期。',
+  park:'凤凰山、镜泊湖景区门口都有大型停车场，10–20 元/次。',
+  warn:'秋色窗口短，早一周绿、晚一周落，出发前查当地红叶预报；林区加油站点少，见站就补。'},
+ {id:'feng',n:'本溪枫叶 · 沈阳—本溪—桓仁—丹东',km:620,days:3,terr:['mount','border'],seasons:['au'],
+  seg:'沈阳 → 本溪（关门山/老边沟）→ 桓仁（五女山）→ 丹东 → 沈阳',
+  road:'高速 + 山区公路，本溪到桓仁段山路多。10 月上中旬枫叶最红。',
+  park:'关门山、老边沟旺季车位紧张，8 点前到或停在村民自营场地（10–20 元）。',
+  warn:'枫叶季周末堵车严重，尽量工作日去；老边沟栈道湿滑，穿防滑鞋。'},
+ {id:'sea',n:'滨海线 · 大连—旅顺—金石滩—丹东',km:560,days:4,terr:['coast','city'],seasons:['sp','su','au'],
+  seg:'大连 → 旅顺口 → 金石滩 → 庄河 → 丹东 → 返程',
+  road:'全程高速为主，路况最好，新手友好。夏季沿线海鲜正当季。',
+  park:'星海广场、老虎滩、金石滩都有大型停车场，5–10 元/小时；旺季 9 点前到有位。',
+  warn:'夏季游客多，星海广场周边堵；海边停车注意涨潮和盐雾腐蚀，别停在沙滩边过夜。'},
+ {id:'forest',n:'小兴安岭森林线 · 哈尔滨—伊春—汤旺河',km:700,days:3,terr:['forest','mount'],seasons:['su','au'],
+  seg:'哈尔滨 → 伊春 → 五营国家森林公园 → 汤旺河石林 → 哈尔滨',
+  road:'高速 + 林区公路，路况尚可但部分路段窄，会车要减速。',
+  park:'各森林公园门口停车场充足，10 元/次。',
+  warn:'林区清晨黄昏有狍子、野猪横穿公路，遇上别急刹别变道，减速让行；林子里手机常无信号，别单车独行。'},
+ {id:'wet',n:'湿地草原 · 哈尔滨—大庆—扎龙',km:620,days:3,terr:['grass','city'],seasons:['su','au'],
+  seg:'哈尔滨 → 大庆（油田/博物馆）→ 齐齐哈尔扎龙（丹顶鹤）→ 哈尔滨',
+  road:'全程高速，路况最好，适合带老人小孩。',
+  park:'扎龙景区停车场大，10 元/次。',
+  warn:'湿地蚊虫多，带驱蚊液；丹顶鹤野化放飞有固定时间，去前查景区公告。'},
+ {id:'north',n:'找北之旅 · 哈尔滨—漠河—北极村',km:1250,days:5,terr:['forest','snow'],seasons:['wi','su'],
+  seg:'哈尔滨 →（1200km）漠河 → 北极村 → 北红村 → 返程',
+  road:'单程 1200km 以上，纯开至少两天。更建议飞漠河（哈尔滨/北京有直飞）后当地租车。',
+  park:'北极村村口有集中停车场，冬季可停暖库（加价 20–30 元）。',
+  warn:'极寒路段（−40℃）车必须做冬季保养，电瓶、防冻液、玻璃水全部到位；沿途服务区间距大，务必满油出发。'}
+];
+
+const PARK=[
+ ['\u{1F17F}\uFE0F','哈尔滨 · 中央大街 / 索菲亚','极难','步行街禁停。停防洪纪念塔地下停车场或附近商场，5–8 元/小时，走 5–10 分钟进街。','别停消防通道和清雪路线，晚上清雪车会来。'],
+ ['\u{1F17F}\uFE0F','哈尔滨 · 冰雪大世界','中等','有大型专用停车场，10–20 元/次，步行 5 分钟到园。','散场高峰能堵 40 分钟，提前半小时离场或坐地铁 2 号线。'],
+ ['\u{1F17F}\uFE0F','长白山 · 北坡（二道白河）','旺季紧张','景区内部必须换乘环保车，私家车停北坡换乘中心，10–20 元/天。','7 点前到才有位；镇上民宿多可免费停院内。'],
+ ['\u{1F17F}\uFE0F','雪乡（双峰林场）','需换乘','私家车只能停景区外停车场（过夜 20–30 元），换摆渡车进村。','行李多的话先在车上把必需品装小包，摆渡车换乘要走路。'],
+ ['\u{1F17F}\uFE0F','大连 · 星海广场 / 老虎滩','中等','周边商业停车场多，5–10 元/小时；老虎滩旺季 9 点前到有位。','海边别停在沙滩边过夜，涨潮和盐雾都伤车。'],
+ ['\u{1F17F}\uFE0F','沈阳 · 中街 / 故宫','中等','沈阳故宫有地下停车场，约 8 元/小时；中街可停大悦城等商场。','故宫周一闭馆，别白跑。'],
+ ['\u{1F17F}\uFE0F','丹东 · 鸭绿江断桥 / G331','旺季紧张','沿江路边停车位 5 元/次，虎山、河口景区有专用停车场。','边境区域禁飞无人机，别对着对岸长时间拍照。'],
+ ['\u{1F17F}\uFE0F','盘锦 · 红海滩','宽松','廊道各入口都有停车场，10 元/次，停在离你要走的那段最近的门。','红海滩颜色 10 月中旬后开始褪，出发前查景区公告。'],
+ ['\u{1F17F}\uFE0F','延吉 · 水上市场 / 网红墙','极难','水上市场早市路边基本没位，建议步行或打车去；网红墙停周边商场。','早市 5 点开张 8 点收摊，去晚了饼就没了。'],
+ ['\u{1F17F}\uFE0F','漠河 · 北极村','宽松','村口集中停车场，冬季可停暖库（加价 20–30 元）。','−40℃ 停室外一夜，第二天电瓶很可能趴窝。']
+];
+
+const DVLIFE=[
+ ['\u{1F4C4}','<b>证件随身</b>：身份证、驾驶证、行驶证。G331、防川、北极村这类边境地区有检查站，全程带身份证；边境区域禁飞无人机。'],
+ ['\u26FD','<b>油箱过半就补</b>：林区与边境国道加油站间距能到 80–150km，部分偏远站只有 92#、只收现金，备点零钱。'],
+ ['\u{1F50B}','<b>电瓶是第一杀手</b>：-30℃ 冷启动是北方冬季抛锚头号原因。车龄 3 年以上带个应急启动电源，停车别长时间怠速开暖风。'],
+ ['\u2744\uFE0F','<b>入冬三换</b>：玻璃水换 -40℃、防冻液查冰点、机油换冬季标号。雪天停车别拉手刹（会冻住），挂挡或垫挡块，雨刷立起来。'],
+ ['\u{1F6A8}','<b>看着是湿的其实是冰</b>：桥面、背阴弯、隧道出入口先结冰。冰雪路面限速 30km/h，跟车距离拉到平时三倍。'],
+ ['\u{1F98C}','<b>林子里有活物</b>：清晨黄昏狍子、野猪常横穿公路。遇上别急刹、别变道、别下车追，松油门减速让它先过——这是俺们老家，你才是客。'],
+ ['\u{1F5FA}\uFE0F','<b>下离线地图</b>：山区、林场、边境江段常没信号，提前下好离线地图，纸质行程单放副驾。'],
+ ['\u{1F4F7}','<b>租车验车全程录像</b>：四条轮胎、前后杠、玻璃、仪表油量、备胎和三角警示牌，一样一样拍。还车时同角度再拍一遍。'],
+ ['\u{1F4B0}','<b>两个隐形坑</b>：异地还车费可达日租金的 30%–200%，同城取还最省；很多订单限 200km/天，超出 1 元/km，长途一定买不限里程。'],
+ ['\u{1F198}','<b>出事打这个</b>：事故 122，高速救援 12122。先拍照挪车再理论，雪天追尾后车全责的情形居多。']
+];
+
+function mkOpts2(box,list,cur,multi,cb){
+ if(!box)return; box.innerHTML='';
+ list.forEach(([k,label])=>{
+  const b=document.createElement('div'); b.className='opt'+(cur.indexOf(k)>=0?' on':'');
+  b.innerHTML=label.replace(/^(\S+)\s/,'<span class="oe">$1</span>');
+  b.onclick=()=>{
+   if(multi){ const i=cur.indexOf(k); if(i>=0)cur.splice(i,1); else cur.push(k); }
+   else { cur.length=0; cur.push(k); }
+   save(); if(cb)cb(k); renderDriveForm();
+  };
+  box.appendChild(b);
+ });
+}
+
+function curRoute(){ return DROUTES.filter(r=>r.id===D.route)[0]||null; }
+
+function renderDriveForm(){
+ mkOpts2(document.getElementById('dvMode'),DVMODE,D.mode,false);
+ const pp=document.getElementById('dvPpl'); if(pp){ pp.innerHTML='';
+  for(let i=1;i<=7;i++){ const b=document.createElement('div'); b.className='opt'+(D.ppl===i?' on':''); b.textContent=i+' 人';
+   b.onclick=()=>{D.ppl=i;save();renderDriveForm();}; pp.appendChild(b);} }
+ mkOpts2(document.getElementById('dvDays'),DVDAYS,[String(D.days)],false,k=>{D.days=+k;});
+ mkOpts2(document.getElementById('dvTerr'),DVTERR,D.terr,true);
+ mkOpts2(document.getElementById('dvCity'),DVCITY,D.city,false);
+ mkOpts2(document.getElementById('dvBack'),DVBACK,D.back,false);
+ const rb=document.getElementById('dvRoutes'); if(!rb)return;
+ const r=curRoute();
+ rb.innerHTML='';
+ DROUTES.forEach(rt=>{
+  const ok=rt.seasons.indexOf(S.season)>=0;
+  const c=document.createElement('div'); c.className='droute'+(D.route===rt.id?' on':'');
+  c.innerHTML=`<h4>${rt.n}${ok?'':' <span style="font-size:10px;color:#B8A88F;">（当季一般，看备注）</span>'}</h4>
+   <div class="meta">约 ${rt.km} km ｜ ${rt.days} 天 ｜ 建议 ${rt.days} 天走完</div>
+   <div class="meta">${rt.seg}</div>
+   <p>${rt.road}</p>
+   <p><b>停车：</b>${rt.park}</p>
+   <p class="warn"><b>⚠️</b> ${rt.warn}</p>`;
+  c.onclick=()=>{ D.route = (D.route===rt.id?'':rt.id); D.terr=[rt.terr[0]]; if(D.days<rt.days)D.days=rt.days; save(); renderDriveForm(); genDrive(); };
+  rb.appendChild(c);
+ });
+}
+
+function carScore(car,terr,ppl){
+ if(ppl>car.seat+1) return -999;
+ let s=0;
+ if(ppl>car.seat) s-=9;
+ terr.forEach(t=>{
+  if(car.good.indexOf(t)>=0) s+=12;
+  else if((car.ok||[]).indexOf(t)>=0) s+=4;
+  else if((car.bad||[]).indexOf(t)>=0) s-=10;
+ });
+ if(ppl>=5&&(car.id==='suv7'||car.id==='mpv')) s+=8;
+ if(ppl>=6&&car.seat<7) s-=14;
+ if(ppl<=2&&(car.id==='mpv'||car.id==='suv7'||car.id==='offroad')) s-=6;
+ return s;
+}
+
+function genDrive(lucky){
+ if(lucky){
+  D.mode=[['rent','own','charter'][Math.floor(Math.random()*3)]];
+  D.days=DVDAYS[Math.floor(Math.random()*DVDAYS.length)][0];
+  const rts=DROUTES.filter(r=>r.seasons.indexOf(S.season)>=0);
+  const rt=rts[Math.floor(Math.random()*rts.length)]||DROUTES[0];
+  D.route=rt.id; D.terr=[rt.terr[0]]; D.back=['same'];
+  if(neSay) neSay('\u968f\u4fbf\u7ed9\u4f60\u6574\u4e86\u4e2a\uff0c\u4e0d\u884c\u518d\u70b9\u4e00\u6b21\uff01','t',4200);
+ }
+ const r=curRoute();
+ const terr=D.terr.length?D.terr:(r?[r.terr[0]]:['city']);
+ const km=r?r.km:Math.max(180,D.days*130);
+ const ppl=D.ppl, days=D.days, mode=D.mode[0];
+ const peak=/may|summer|oct|winter/.test(S.period);
+ const winter=S.season==='wi';
+ const box=document.getElementById('dvOut'); if(!box)return;
+ box.innerHTML='';
+
+ const scored=CARS.map(c=>({c:c,sc:carScore(c,terr,ppl)})).filter(x=>x.sc>-900).sort((a,b)=>b.sc-a.sc);
+ const top=scored.slice(0,3);
+ if(!top.length){ box.innerHTML='<div class="card"><p>铁子你这' + ppl + '个人，一款车都塞不下啊——要不咱拆成两台车？</p></div>'; return; }
+
+ let h=`<div class="card"><h3>\u{1F697} 推荐车型 · ${ppl} 人 / ${days} 天 / 约 ${km} km</h3>`;
+ if(r) h+=`<p style="font-size:11.5px;color:#B8A88F;margin-bottom:8px;">按你选的「${r.n}」算的，路况：${terr.map(t=>(DVTERR.filter(x=>x[0]===t)[0]||['',''])[1]).join(' + ')}</p>`;
+ top.forEach((x,i)=>{
+  const c=x.c, d=peak?c.peak:c.day;
+  h+=`<div class="dv-car${i===0?' top':''}">
+   <h4><span class="rank${i?' r'+(i+1):''}">${i===0?'首选':(i===1?'备选':'也能开')}</span>${c.n}</h4>
+   <div class="ex">${c.ex} ｜ ${c.seat} 座 ｜ 后备箱约 ${c.bag} 件行李</div>
+   <div class="dv-price">¥${d[0]}–${d[1]} <small>/ 天（${peak?'旺季价':'平日价'}）</small></div>
+   <div class="dv-bar"><i style="width:${Math.max(12,Math.min(100,x.sc))}%"></i></div>
+   <p>${c.txt}</p>
+   <div class="dv-why"><b>为啥推它：</b>${terr.map(t=>{
+     if(c.good.indexOf(t)>=0) return '「'+((DVTERR.filter(y=>y[0]===t)[0]||['',''])[1].replace(/^\S+\s/,''))+'」路况它最对路';
+     if((c.ok||[]).indexOf(t)>=0) return '「'+((DVTERR.filter(y=>y[0]===t)[0]||['',''])[1].replace(/^\S+\s/,''))+'」能跑但别逞强';
+     return '';
+    }).filter(Boolean).join('；')||'综合通过性和性价比最均衡'}${winter?'；冬季建议加雪地胎':''}</div>
+   <div class="dv-bad"><b>注意：</b>${c.warn}</div>
+  </div>`;
+ });
+ h+='</div>';
+
+ /* 成本 */
+ const c0=top[0].c, d0=peak?c0.peak:c0.day;
+ const rows=[]; let lo=0,hi=0;
+ const add=(n,a,b)=>{ rows.push([n,a,b]); lo+=a; hi+=b; };
+ if(mode==='rent'){
+  add('租金（'+days+' 天）',d0[0]*days,d0[1]*days);
+  add('基础保险 / 不计免赔（约 70 元/天）',50*days,100*days);
+  if(winter) add('雪地胎（租，80–150 元/天）',80*days,150*days);
+ } else if(mode==='charter'){
+  add('包车含司机（'+days+' 天）',(d0[0]+300)*days,(d0[1]+400)*days);
+ } else {
+  add('雪地胎（自备，四条一次性 2000–4000）',winter?2000:0,winter?4000:0);
+ }
+ if(mode!=='charter') add('油费（约 '+km+' km × '+c0.oil+' L/100km）',Math.round(km/100*c0.oil*7.6),Math.round(km/100*c0.oil*8.2));
+ add('高速通行费（约 0.45 元/km）',Math.round(km*.4),Math.round(km*.55));
+ add('停车费（'+days+' 天）',20*days,40*days);
+ if(mode==='rent'&&D.back[0]==='diff') add('异地还车费（日均租金约 30%–200%）',Math.round(d0[0]*.3),Math.round(d0[1]*2));
+ if(mode==='own') add('进东北单程高速（参考 800km）',320,440);
+
+ h+=`<div class="card"><h3>\u{1F4B8} 成本估算 · ${DVMODE.filter(m=>m[0]===mode)[0][1]}</h3>`;
+ rows.forEach(r2=>{ h+=`<div class="cost-row"><span>${r2[0]}</span><b>¥${r2[1].toLocaleString()}${r2[2]!==r2[1]?' – '+r2[2].toLocaleString():''}</b></div>`; });
+ h+=`<div class="cost-sum"><span>合计 / 人均（${ppl} 人）</span><b>¥${Math.round(lo/ppl).toLocaleString()} – ${Math.round(hi/ppl).toLocaleString()}</b></div>
+  <p style="font-size:11px;color:#B8A88F;margin-top:8px;">合计 ¥${lo.toLocaleString()} – ¥${hi.toLocaleString()}。租金取平台公开行情区间，油费按 7.6–8.2 元/L 计算，落地以实时报价为准。</p></div>`;
+
+ /* 停车 & 保命清单 */
+ h+=`<div class="card"><h3>\u{1F17F}\uFE0F 这条线的停车</h3>`;
+ if(r){ h+=`<p style="font-size:12px;color:var(--ink2);line-height:1.75;">${r.park}</p>`; }
+ h+=`<div style="margin-top:6px;">`;
+ PARK.slice(0,4).forEach(p=>{ h+=`<div class="park"><div class="pk">${p[0]}</div><div class="pi"><b>${p[1]}</b> · ${p[2]}<br>${p[3]}<br><span style="color:#A6483A;">${p[4]}</span></div></div>`; });
+ h+=`</div><p style="font-size:11px;color:#B8A88F;margin-top:6px;">完整停车速查在下面「停车速查」一节。</p></div>`;
+ box.innerHTML=h;
+}
+
+function renderPark(){
+ const b=document.getElementById('dvPark'); if(!b)return;
+ b.innerHTML='<h3>\u{1F17F}\uFE0F 热门目的地停车速查</h3>'+PARK.map(p=>
+  `<div class="park"><div class="pk">${p[0]}</div><div class="pi"><b>${p[1]}</b> · 停车难度：${p[2]}<br>${p[3]}<br><span style="color:#A6483A;">${p[4]}</span></div></div>`).join('');
+}
+function renderLife(){
+ const b=document.getElementById('dvLife'); if(!b)return;
+ b.innerHTML='<h3>\u{1F9E3} 上路前照着念一遍</h3>'+DVLIFE.map(l=>`<div class="life"><span class="li">${l[0]}</span><span>${l[1]}</span></div>`).join('');
+}
+
+/* ==========================================================
+   美食素材库 + 举实物
+   ========================================================== */
+const FOOD_DB=[
+ {id:'mdl',icon:'\u{1F366}',n:'马迭尔冰棍',city:'哈尔滨',cat:'冷饮',price:'5 元/根（中央大街）',seasons:['sp','su','au','wi'],by:'t',
+  desc:'1906 年就有了，中央大街原味 5 块一根，奶味厚实不齁甜。零下二十度站在街上啃冰棍，才是哈尔滨的正确打开方式。',
+  tip:'中央大街店最便宜（5 元），长春、沈阳的代卖点能卖到 8–10 元；造型款（索菲亚教堂形状）18 元。别在景区旁小摊买。',
+  say:'来，整一根！零下二十度啃冰棍儿，这才叫哈尔滨——牙冻掉了都值。',img:''},
+ {id:'zjdg',icon:'\u{1F367}',n:'中街大果',city:'沈阳',cat:'冷饮',price:'5 元/根（麻酱味）',seasons:['sp','su','au','wi'],by:'g',
+  desc:'沈阳中街冰点城的老字号，本地人从小吃到大。麻酱味最经典，能嚼到芝麻碎，南方朋友第一口可能懵。',
+  tip:'店在中街，人均 5–15 元。还有「半液」——融化的冰激凌当奶茶喝，很甜，怕甜的点原味。',
+  say:'麻酱味儿的！第一口你可能懵，第二口就该上头了——嗷嗷～',img:''},
+ {id:'jj',icon:'\u{1F357}',n:'沈阳鸡架',city:'沈阳',cat:'硬菜',price:'10–15 元/个，人均 18–44 元',seasons:['sp','su','au','wi'],by:'t',
+  desc:'沈阳人的精神图腾。熏的、拌的、烤的三派各有信徒。肉不多，啃的就是个味儿和那股子烟火气。',
+  tip:'老四季人均 18 元，街边摊 15–25 元一份；本地网红店能到 30–50。拌鸡架偏甜口，吃不惯甜的记得让老板少放糖。',
+  say:'鸡架这玩意儿，啃的是味儿不是肉！配瓶老雪，那叫一个得劲儿。',img:''},
+ {id:'ngl',icon:'\u{1F350}',n:'鞍山南果梨',city:'鞍山',cat:'特产水果',price:'5–10 元/斤',seasons:['au'],by:'g',
+  desc:'国家地理标志产品，「梨中之王」。9 月上市，刚摘下来是青红色，常温捂 3–5 天后果皮转金黄、果肉变软，会散出一股自然的酒香。',
+  tip:'核心产区在海城（28 万亩，全国第一）。千山 9/10–9/20 最早熟，海城 9/15–9/25，岫岩 9/20–10/1。买礼盒认「地理标志保护产品」专用标志。',
+  say:'别急着吃！捂几天，等它黄了软了，那股酒香出来才叫正宗——俺能闻着味儿找着梨园。',img:''},
+ {id:'hs',icon:'\u{1F98E}',n:'大连海参',city:'大连',cat:'海产',price:'淡干参论头数，几百到几千不等',seasons:['sp','su','au','wi'],by:'t',
+  desc:'北纬 39° 冷水海域的底播海参，生长慢、肉质厚。大连是全国海参的核心产区，也是送礼的头号硬通货。',
+  tip:'即食、淡干、盐干三种，自己吃买即食最省事，送人选淡干看「头数」（每斤多少头，越少越大越贵）。景区店慎买，去正规海产店或超市。',
+  say:'这玩意儿贵是有贵的道理——冷水里长四年才够个儿。买的时候瞪大眼睛，别让忽悠了。',img:''},
+ {id:'by',icon:'\u{1F41A}',n:'大连鲍鱼',city:'大连',cat:'海产',price:'鲜活按个头，几十到上百元/斤',seasons:['sp','su','au','wi'],by:'g',
+  desc:'皱纹盘鲍，大连是全国鲍鱼主产区。鲜鲍清蒸或蒜蓉粉丝蒸最吃本味，干鲍才是老饕的赛道。',
+  tip:'吃鲜鲍去海鲜市场自己挑、找加工店代做，比餐厅便宜一半。9–11 月和春季最肥。',
+  say:'蒜蓉粉丝蒸，出锅那一下香得我直跺蹄子——嗷嗷！',img:''},
+ {id:'hc',icon:'\u{1F32D}',n:'哈尔滨红肠',city:'哈尔滨',cat:'伴手礼',price:'真空装 30–50 元/袋',seasons:['sp','su','au','wi'],by:'t',
+  desc:'秋林里道斯、哈肉联两大派，蒜香浓郁、烟熏味足。掰开直接吃，或者炒个辣椒，下饭神器。',
+  tip:'认品牌真空装，散装称重的水分大。中央大街周边店贵，超市和副食店便宜。夏天买完注意冷藏。',
+  say:'掰一段直接啃，蒜香味儿直冲天灵盖！带回去炒辣椒，米饭得多添两碗。',img:''},
+ {id:'lm',icon:'\u{1F35C}',n:'延吉冷面',city:'延吉',cat:'主食',price:'15–25 元/碗',seasons:['su','sp','au'],by:'g',
+  desc:'现压荞麦面，浇冰镇牛肉汤，配辣白菜、牛肉片、鸡蛋、苹果梨丝。夏天一碗下肚，从嗓子眼凉到胃。',
+  tip:'服务大楼、金达莱是老牌子。正宗吃法是先喝口汤再加醋和芥末，别一股脑全搅进去。',
+  say:'汤是冰镇的！第一口别大口灌，凉得脑门儿一激灵——嗷嗷～',img:''},
+ {id:'dg',icon:'\u{1F359}',n:'打糕 / 辣白菜',city:'延吉',cat:'朝鲜族',price:'打糕 10–20 元，辣白菜 15–25 元/斤',seasons:['sp','su','au','wi'],by:'t',
+  desc:'现打的糯米糕裹黄豆粉或红豆粉，软糯拉丝。辣白菜是延边的灵魂，真空装能带走。',
+  tip:'水上市场早市 5 点开张 8 点收摊，去晚了只剩空摊。西塔街的金刚山食品店能买真空装带走。',
+  say:'早市得早起！去晚了连打糕渣儿都不剩。',img:''},
+ {id:'cm',icon:'\u{1F353}',n:'丹东草莓',city:'丹东',cat:'特产水果',price:'按品种 20–60 元/斤',seasons:['wi','sp'],by:'g',
+  desc:'东港是「中国草莓第一县」，品牌价值超 400 亿。红颜（巧克力草莓）最甜，12 月到次年 5 月是主产季。',
+  tip:'冬季来东北能吃到现摘草莓，是很多南方朋友没想到的。产地直发比在南方买便宜太多，包装好可快递。',
+  say:'冬天来东北还能吃着现摘草莓，惊喜不？嗷嗷，甜掉牙。',img:''},
+ {id:'xh',icon:'\u{1F990}',n:'丹东黄蚬子',city:'丹东',cat:'海产',price:'20–40 元/斤',seasons:['sp','su','au'],by:'t',
+  desc:'丹东东港的黄蚬子个大肉肥，炭烤、辣炒、做汤都鲜。跟海边的海鲜大排档是绝配。',
+  tip:'去东港吃最新鲜，丹东市区也便宜。夏天配一碗冷面，本地人的标准组合。',
+  say:'炭烤黄蚬子，开口那一秒最鲜，撒把孜然——嗷呜！',img:''},
+ {id:'dx',icon:'\u{1F980}',n:'珲春帝王蟹',city:'珲春 / 延吉',cat:'硬菜',price:'海鲜餐人均 150–250 元',seasons:['sp','su','au','wi'],by:'t',
+  desc:'珲春紧邻俄罗斯帝王蟹产地，是进口通道，在这儿吃帝王蟹比内地便宜一大截。蟹腿肉一整条抽出来，过瘾。',
+  tip:'延吉、珲春的海鲜餐厅都能做，旺季价格浮动大，去前问清时价并按斤称。',
+  say:'这腿比俺角还长！在珲春吃，比你在家那边便宜一半不止。',img:''},
+ {id:'phx',icon:'\u{1F980}',n:'盘锦河蟹',city:'盘锦',cat:'特产',price:'按大小 30–80 元/斤',seasons:['au'],by:'g',
+  desc:'中华绒螯蟹，盘锦「湿地之都」出品。九月团脐十月尖，秋天最肥，蟹黄顶壳。',
+  tip:'9–10 月最佳。稻田蟹比河蟹便宜，味道也不差，讲清楚你要哪种。',
+  say:'九月的母蟹十月公，掰开满黄——嗷嗷，这一口等一年。',img:''},
+ {id:'lmy',icon:'\u{1FAD0}',n:'伊春蓝莓 / 红松子',city:'伊春',cat:'山货',price:'蓝莓 20–40 元/斤，松子 60–120 元/斤',seasons:['su','au'],by:'t',
+  desc:'小兴安岭的野生蓝莓花青素高、个头小味道足；红松子要三年才结一次，个大仁满。',
+  tip:'7–8 月蓝莓季，去伊春能赶上采摘。松子认「红松子」，便宜的多是落叶松子或进口的，开口小、味淡。',
+  say:'山里摘的蓝莓，个头小但味儿足！松子别贪便宜，红松子才香。',img:''},
+ {id:'sy',icon:'\u{1F41F}',n:'大马哈鱼 / 鲟鳇鱼',city:'抚远 / 同江',cat:'江鲜',price:'按品种与时价',seasons:['su','au','wi'],by:'t',
+  desc:'黑龙江、乌苏里江的冷水鱼。赫哲族「杀生鱼」是传统吃法，不敢生食可以让他做熟，铁锅炖鱼贴饼子最香。',
+  tip:'抚远是中国最东端，鱼最全。点菜先问时价，江鱼价格浮动大。',
+  say:'铁锅炖鱼贴饼子，锅边那圈饼子蘸汤——嗷呜，给个神仙都不换。',img:''},
+ {id:'suan',icon:'\u{1F963}',n:'东北酸菜 / 粘豆包',city:'东北全域',cat:'家常',price:'酸菜 5–15 元，粘豆包 10–20 元/斤',seasons:['au','wi','sp'],by:'g',
+  desc:'酸菜是东北冬天的命，炖白肉血肠、包饺子、汆锅底都靠它。粘豆包是黄米面裹红小豆，蒸熟蘸白糖。',
+  tip:'真空装能带走。农村大集（逢二五八开集）比超市便宜一半，还能看现做。',
+  say:'酸菜炖粉条，再来俩粘豆包蘸白糖——这才是东北的冬天。嗷嗷～',img:''},
+ {id:'js',icon:'\u{1F362}',n:'锦州烧烤',city:'锦州',cat:'夜宵',price:'人均 50–90 元',seasons:['sp','su','au','wi'],by:'t',
+  desc:'东北烧烤的祖师爷，讲究「小串小料小火」。肉串小、刷酱多、火候准，配一扎啤酒能从天黑吃到后半夜。',
+  tip:'锦州本地老店多，别只去连锁。夏天凌晨两三点还满座，节假日要等位。',
+  say:'小串配老雪，唠着嗑就到后半夜了——这才叫活着的滋味。',img:''},
+ {id:'blm',icon:'\u{1F36D}',n:'不老林糖 / 克拉古斯香肠',city:'沈阳',cat:'伴手礼',price:'不老林 16–23 元/斤',seasons:['sp','su','au','wi'],by:'g',
+  desc:'不老林是沈阳人的童年糖果，花生牛轧裹巧克力；克拉古斯香肠是本地老品牌，真空装方便带。',
+  tip:'别在景区买，去大东副食或超市，价格便宜还保真。',
+  say:'从小吃到大的糖！带回去给家里人尝尝，便宜又体面。',img:''},
+ {id:'bws',icon:'\u{1F964}',n:'八王寺汽水 / 辉山酸奶',city:'沈阳',cat:'饮品',price:'5–15 元',seasons:['sp','su','au','wi'],by:'t',
+  desc:'八王寺是沈阳百年汽水品牌，果子蜜味最经典；辉山酸奶是本地人的日常。配鸡架解腻刚刚好。',
+  tip:'超市就有，别在景区买。夏天冰镇最好喝。',
+  say:'啃鸡架配八王寺，解腻！这组合沈阳人从小喝到大。',img:''},
+ {id:'wcdm',icon:'\u{1F35A}',n:'五常大米',city:'五常（哈尔滨南）',cat:'特产',price:'正宗稻花香 8–20 元/斤',seasons:['au','wi'],by:'g',
+  desc:'「一餐五常米，浑忘酒肉香」。稻花香 2 号是正宗品种，蒸出来的饭油亮、凉了不回生。',
+  tip:'认「五常大米」地理标志 + 稻花香 2 号，市面上假货多。秋季新米 10 月上市最好。',
+  say:'新米下来那阵子，蒸一锅饭满屋香——嗷嗷，啥菜都不用。',img:''}
+];
+
+let HOLD_T=null;
+function ensureHold(w){
+ let h=w.querySelector('.holdbox');
+ if(!h){ h=document.createElement('div'); h.className='holdbox'; h.innerHTML='<span class="hv"></span>'; w.appendChild(h); }
+ return h;
+}
+function setHold(w,html,on){
+ const h=ensureHold(w); h.innerHTML=html; h.classList.toggle('on',!!on); w.classList.toggle('holding',!!on);
+}
+function showFood(i){
+ const f=FOOD_DB[i]; if(!f)return;
+ if(!f.img&&S.foodImg&&S.foodImg[f.id]) f.img=S.foodImg[f.id];
+ const html=f.img?`<img class="hv" src="${f.img}" alt="${f.n}">`:`<span class="hv">${f.icon}</span>`;
+ ['bearTT','bearGG','stageBear'].forEach(id=>{ const w=document.getElementById(id); if(w) setHold(w,html,true); });
+ const t=document.getElementById('stageTxt');
+ if(t) t.innerHTML=`<h4>${f.n} · ${f.city}</h4><p>${f.say}</p><div class="wh">💰 ${f.price} ｜ ${f.tip}</div>`;
+ document.querySelectorAll('.fd').forEach(e=>e.classList.remove('on'));
+ const card=document.querySelector('.fd[data-i="'+i+'"]'); if(card) card.classList.add('on');
+ if(neSay) neSay(f.say,f.by||'t',4600);
+ clearTimeout(HOLD_T);
+ HOLD_T=setTimeout(()=>{ ['bearTT','bearGG'].forEach(id=>{const w=document.getElementById(id); if(w) setHold(w,'',false);}); },5000);
+}
+function renderFoodGrid(){
+ const b=document.getElementById('fdGrid'); if(!b)return;
+ const s=S.season;
+ const inS=FOOD_DB.filter(f=>f.seasons.indexOf(s)>=0);
+ const out=FOOD_DB.filter(f=>f.seasons.indexOf(s)<0);
+ const mk=(f,gi)=>{
+  const c=document.createElement('div'); c.className='fd'; c.dataset.i=FOOD_DB.indexOf(f);
+  const hasImg=(f.img||(S.foodImg&&S.foodImg[f.id]));
+  c.innerHTML=`<div class="fe">${f.icon}</div><div class="fb">
+   <h4>${f.n} <span class="pr">${f.price}</span></h4>
+   <div style="margin:3px 0 4px;"><span class="tagb">${f.city}</span><span class="tagb">${f.cat}</span>${hasImg?'<span class="tagb">\u{1F5BC}\uFE0F 有图</span>':''}</div>
+   <p>${f.desc}</p><div class="tip">💡 ${f.tip}</div>
+   <span class="getimg" data-img="${f.id}">\u{1F5BC}\uFE0F 补素材</span></div>`;
+  c.onclick=(e)=>{
+   if(e.target.classList.contains('getimg')) return;
+   showFood(FOOD_DB.indexOf(f));
+  };
+  c.querySelector('.getimg').onclick=(e)=>{
+   e.stopPropagation();
+   const u=prompt('粘贴「'+f.n+'」的实物图链接（1:1 透明 PNG 效果最好）：',(f.img||(S.foodImg&&S.foodImg[f.id])||''));
+   if(u===null)return;
+   if(!S.foodImg)S.foodImg={};
+   if(u.trim()){S.foodImg[f.id]=u.trim();} else {delete S.foodImg[f.id]; f.img='';}
+   save(); renderFoodGrid(); showFood(FOOD_DB.indexOf(f));
+  };
+  b.appendChild(c);
+ };
+ b.innerHTML='';
+ inS.forEach(mk);
+ if(out.length){
+  const h=document.createElement('p'); h.style.cssText='font-size:11.5px;color:#B8A88F;margin:12px 0 8px;text-align:center;';
+  h.textContent='— 别的季节也有，馋了就带点回家 —'; b.appendChild(h); out.forEach(mk);
+ }
+}
+
+/* ==========================================================
+   电子宠物 / 形象定制
+   ========================================================== */
+const PETS=[
+ {id:'tt',n:'狍坨坨',src:'tt',desc:'公 · 浅焦糖 · 心形不分叉小角 · 嗷呜'},
+ {id:'gg',n:'狍果果',src:'gg',desc:'母 · 暖奶油白 · 右耳蓝靛果枝 · 嗷嗷'}
+];
+const SKINS=[['raw','原色'],['snow','雪原'],['maple','枫叶'],['berry','靛蓝'],['night','夜色']];
+if(!S.pet) S.pet={A:{pet:'tt',skin:'raw',img:''},B:{pet:'gg',skin:'raw',img:''}};
+const PET_TPL={};
+function petTpl(p){
+ if(p.img&&p.img.length>4) return `<img class="petimg" src="${p.img}" alt="形象"><div class="gifpop"><img alt=""><div class="cap"></div></div>`;
+ const base=PET_TPL[p.pet]||PET_TPL.tt||'';
+ return base.replace(/<span class="btag">[\s\S]*?<\/span>/,'')+'';
+}
+function applyPet(){
+ ['A','B'].forEach(k=>{
+  const p=S.pet[k];
+  const wid=k==='A'?'bearTT':'bearGG';
+  const w=document.getElementById(wid);
+  if(w){ w.innerHTML=petTpl(p); w.dataset.skin=p.skin||'raw'; }
+  const pv=document.getElementById('pv'+k);
+  if(pv){ pv.innerHTML=`<div class="bear-wrap" data-skin="${p.skin||'raw'}">${petTpl(p)}</div>`; }
+  if(k==='A'){ const sb=document.getElementById('stageBear');
+   if(sb){ sb.innerHTML=petTpl(p)||''; sb.dataset.skin=p.skin||'raw'; } }
+ });
+ renderPetOpts();
+}
+function renderPetOpts(){
+ ['A','B'].forEach(k=>{
+  const p=S.pet[k];
+  const ob=document.getElementById('pet'+k);
+  if(ob){ ob.innerHTML='';
+   PETS.forEach(pt=>{ const b=document.createElement('span'); b.className='petopt'+(p.pet===pt.id&&!p.img?' on':''); b.textContent=pt.n;
+    b.onclick=()=>{p.pet=pt.id;p.img='';save();applyPet();}; ob.appendChild(b); });
+   const c=document.createElement('span'); c.className='petopt'+(p.img?' on':''); c.textContent='🖼️ 自定义图';
+   c.onclick=()=>{ const u=prompt('粘贴形象图片链接：',p.img||''); if(u===null)return; p.img=u.trim(); save(); applyPet(); };
+   ob.appendChild(c);
+  }
+  const sb=document.getElementById('skin'+k);
+  if(sb){ sb.innerHTML='';
+   SKINS.forEach(s=>{ const b=document.createElement('span'); b.className='petopt'+(p.skin===s[0]?' on':''); b.textContent=s[1];
+    b.onclick=()=>{p.skin=s[0];save();applyPet();}; sb.appendChild(b); }); }
+ });
+}
+function petBoot(){
+ PET_TPL.tt=document.getElementById('bearTT')?document.getElementById('bearTT').innerHTML:'';
+ PET_TPL.gg=document.getElementById('bearGG')?document.getElementById('bearGG').innerHTML:'';
+ applyPet();
+ const tg=document.getElementById('petToggle'),pn=document.getElementById('petPanel');
+ if(tg&&pn) tg.onclick=()=>{ pn.style.display=(pn.style.display==='none'?'block':'none'); };
+ const rd=document.getElementById('petRandom');
+ if(rd) rd.onclick=()=>{
+  const a=PETS[Math.floor(Math.random()*PETS.length)],b2=PETS[Math.floor(Math.random()*PETS.length)],sk=SKINS[Math.floor(Math.random()*SKINS.length)];
+  S.pet.A={pet:a.id,skin:sk[0],img:''}; S.pet.B={pet:b2.id,skin:SKINS[Math.floor(Math.random()*SKINS.length)][0],img:''};
+  save(); applyPet(); if(neSay) neSay('\u6362\u4e86\u4e00\u8eab\u65b0\u884c\u5934\uff0c\u770b\u7740\u8fd8\u884c\u4e0d\uff1f\u55f7\u55f7\uff5e','g',3600);
+ };
+ const rs=document.getElementById('petReset');
+ if(rs) rs.onclick=()=>{ S.pet={A:{pet:'tt',skin:'raw',img:''},B:{pet:'gg',skin:'raw',img:''}}; save(); applyPet(); };
+ ['A','B'].forEach(k=>{
+  const inp=document.getElementById('img'+k),btn=document.getElementById('set'+k);
+  if(btn&&inp) btn.onclick=()=>{ const u=inp.value.trim(); if(!u)return; S.pet[k].img=u; save(); applyPet(); inp.value=''; };
+ });
+}
+
+/* ---- 自驾事件绑定 ---- */
+const dvGo=document.getElementById('dvGo');
+if(dvGo) dvGo.onclick=()=>genDrive(false);
+const dvLk=document.getElementById('dvLucky');
+if(dvLk) dvLk.onclick=()=>{genDrive(true);renderDriveForm();};
+
+document.querySelectorAll('#seasonBar button').forEach(b=>{
+ b.onclick=()=>{S.season=b.dataset.s;save();renderSeason();renderFoodGrid();renderDriveForm();neSay(NE.ev.season[S.season],Math.random()<.5?'t':'g',5200);};
+});
+document.querySelectorAll('.tabbar button').forEach(b=>{
+ b.onclick=()=>{
+  document.querySelectorAll('.tabbar button').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');document.getElementById(b.dataset.v).classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+ };
+});
+
+/* init：无历史数据时按当前月份定季节 */
+(function(){
+ if(!localStorage.getItem(KEY)){
+  const m=new Date().getMonth()+1;
+  S.season=(m>=4&&m<=5)?'sp':(m>=6&&m<=8)?'su':(m>=9&&m<=10)?'au':'wi';
+ }
+})();
+
+/* ===== 分享与备份引擎（无账号方案） ===== */
+var IS_WX=/MicroMessenger/i.test(navigator.userAgent||'');
+
+function b64e(str){
+  var bytes=new TextEncoder().encode(str), bin='';
+  for(var i=0;i<bytes.length;i++) bin+=String.fromCharCode(bytes[i]);
+  return btoa(bin).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+function b64d(s){
+  s=s.replace(/-/g,'+').replace(/_/g,'/');
+  while(s.length%4) s+='=';
+  var bin=atob(s), bytes=new Uint8Array(bin.length);
+  for(var i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+function packPlanFrom(R,p,b,seasonName){
+  var ms=[];
+  try{ (p||[]).forEach(function(x){ if(x&&x.m&&x.m.n) ms.push(x.m.n); }); }catch(e){}
+  var cn='',pn='';
+  try{ cn=(typeof CITY_NAME!=='undefined'&&CITY_NAME[R.city])?CITY_NAME[R.city]:String(R.city||''); }catch(e){}
+  try{ pn=(typeof PMUL!=='undefined'&&PMUL[R.period]&&PMUL[R.period].t)?PMUL[R.period].t:''; }catch(e){}
+  return {v:1,t:'plan',s:R.season,pd:R.period,n:R.ppl,c:R.city,st:R.stay,cap:R.cap,
+    sn:seasonName||'',cn:cn,pn:pn,ms:ms,b:{lo:b?b.hLo:0,hi:b?b.hHi:0,ph:b?b.perHead:0}};
+}
+function packShare(){
+  var L=window.__LASTPLAN;
+  if(L&&L.t==='plan') return L;
+  return {v:1,t:'state',s:S.season,pd:S.period,n:S.ppl,bd:S.budget,
+    ex:(S.exps||[]).length,li:(S.list||[]).length,ck:Object.keys(S.cks||{}).length};
+}
+function shareURL(){
+  var base=location.href.split('#')[0];
+  if(location.protocol==='file:') return '';
+  return base+'#p='+b64e(JSON.stringify(packShare()));
+}
+var _lastURL='';
+function shareLink(){
+  var out=document.getElementById('shOut'), url=shareURL();
+  if(!url){
+    out.innerHTML='<div class="shLinkBox">本地文件打开生成不了分享链接 —— 先打开线上版（paoyouji.app.workbuddy.host）再点这个就成了。</div>';
+    return;
+  }
+  _lastURL=url;
+  var L=window.__LASTPLAN, brief='';
+  if(L&&L.t==='plan') brief='这份：'+L.cap+'天 · '+L.sn+'季 · '+L.cn+'进出 · '+L.n+'人';
+  else brief='我当前这份设置（季节/人数/预算/账目/清单）';
+  out.innerHTML='<div class="shLinkBox"><b>已生成，复制下面这条链接发出去：</b><br>'+url+
+    '<br><span style="color:#9A8367">（'+brief+'，对方点开就能瞧见）</span></div>';
+  var qb=document.getElementById('shQrBox'), qi=document.getElementById('shQr');
+  qb.classList.add('on');
+  qi.src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data='+encodeURIComponent(url);
+  qi.onerror=function(){ qb.classList.remove('on'); };
+  try{ neSay('链接整好了！发给同伴，他点开就能看着你这份安排，嗷呜～','t',5200); }catch(e){}
+}
+function copyLink(){
+  var url=_lastURL||shareURL();
+  if(!url){ shareLink(); url=_lastURL; }
+  if(!url) return;
+  var done=function(){
+    try{ neSay('复制走了！粘到微信里发给同伴就成。','g',4200); }catch(e){}
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(done,function(){ fallbackCopy(url,done); });
+  } else fallbackCopy(url,done);
+}
+function fallbackCopy(url,done){
+  try{
+    var ta=document.createElement('textarea');
+    ta.value=url; ta.style.position='fixed'; ta.style.left='-9999px';
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta); done();
+  }catch(e){ alert('复制没成，手动选中链接复制吧：\n'+url); }
+}
+function exportData(){
+  var name='狍游记_备份_'+new Date().toISOString().slice(0,10)+'.json';
+  try{
+    var blob=new Blob([JSON.stringify(S,null,1)],{type:'application/json'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download=name;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); },1500);
+    document.getElementById('shOut').innerHTML='<div class="shLinkBox">备份文件已导出：<b>'+name+
+      '</b><br>存网盘或发微信都行。换设备时点「导入备份」选它就能原样恢复。'+
+      (IS_WX?'<br><span style="color:#C0392B">微信里下载可能被拦，建议用系统浏览器打开本页面再导。</span>':'')+'</div>';
+  }catch(e){
+    document.getElementById('shOut').innerHTML='<div class="shLinkBox" style="color:#C0392B">导出没成：'+e.message+'<br>换个浏览器试试。</div>';
+  }
+}
+function importData(file){
+  var fr=new FileReader();
+  fr.onload=function(){
+    try{
+      var o=JSON.parse(fr.result);
+      if(!o||typeof o!=='object') throw new Error('不是有效的备份文件');
+      localStorage.setItem(KEY,JSON.stringify(o));
+      document.getElementById('shOut').innerHTML='<div class="shLinkBox">导入成功，正在刷新…</div>';
+      setTimeout(function(){ location.reload(); },700);
+    }catch(e){
+      document.getElementById('shOut').innerHTML='<div class="shLinkBox" style="color:#C0392B">这文件读不出来：'+e.message+'</div>';
+    }
+  };
+  fr.readAsText(file);
+}
+function showInbox(P){
+  var box=document.getElementById('shInbox'), msg=document.getElementById('shIMsg');
+  if(!box||!msg) return;
+  var h='';
+  if(P&&P.t==='plan'){
+    h='<b>'+(P.cap||0)+' 天 · '+(P.sn||'')+'季 · '+(P.cn||'')+'进出 · '+(P.n||2)+' 人</b><br>';
+    if(P.pn) h+='档期：'+P.pn+'<br>';
+    if(P.ms&&P.ms.length) h+='安排：'+P.ms.join(' / ')+'<br>';
+    if(P.b&&P.b.ph) h+='人均预算约 <b>¥'+P.b.ph+'</b>'+(P.b.lo?'（住宿 ¥'+P.b.lo+'–'+P.b.hi+'/间夜）':'');
+    h+='<br><br>载入后会把天数、目的地和预算记进你的清单，季节和人数也给你调好。';
+  }else if(P&&P.t==='state'){
+    h='同伴分享了他的设置：'+(P.n||2)+' 人 · 预算 ¥'+(P.bd||0)+
+      (P.li?' · 自定义清单 '+P.li+' 条':'')+(P.ex?' · 账目 '+P.ex+' 笔':'')+'。<br><br>载入后按他的设置初始化。';
+  }else{
+    h='这份分享内容俺没读明白，要不你自己规划一个？';
+  }
+  msg.innerHTML=h;
+  box.classList.add('on');
+  var acc=document.getElementById('shAccept');
+  if(acc) acc.onclick=function(){
+    try{
+      if(P&&P.t==='plan'){
+        S.season=P.s||S.season; S.period=P.pd||S.period; S.ppl=P.n||S.ppl;
+        var items=['分享行程：'+(P.cap||0)+'天 · '+((P.ms||[]).join(' / ')||'东北')];
+        if(P.b&&P.b.ph) items.push('人均预算 ¥'+P.b.ph);
+        items.forEach(function(t){ if(!S.list.some(function(x){return x[0]===t;})) S.list.push([t,false]); });
+      }else if(P&&P.t==='state'){
+        S.season=P.s||S.season; S.period=P.pd||S.period; S.ppl=P.n||S.ppl; S.budget=P.bd||S.budget;
+      }
+      save();
+    }catch(e){}
+    location.reload();
+  };
+  var sk=document.getElementById('shSkip');
+  if(sk) sk.onclick=function(){
+    box.classList.remove('on');
+    var b=document.querySelector('[data-v="v-gen"]'); if(b) b.click();
+    try{ neSay('中！那咱自己盘一个，想看雪看海还是整点吃的？','g',5200); }catch(e){}
+  };
+  var tab=document.querySelector('[data-v="v-tools"]');
+  if(tab) tab.click();
+  setTimeout(function(){ try{ box.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){} },260);
+}
+function shareBoot(){
+  if(IS_WX){
+    var wt=document.getElementById('wxShareTip');
+    if(wt) wt.classList.add('on');
+  }
+  document.getElementById('shLink').onclick=shareLink;
+  document.getElementById('shCopy').onclick=copyLink;
+  document.getElementById('shExport').onclick=exportData;
+  document.getElementById('shImport').onclick=function(){ document.getElementById('shFile').click(); };
+  document.getElementById('shFile').onchange=function(e){
+    var f=e.target.files&&e.target.files[0];
+    if(f) importData(f);
+  };
+  document.addEventListener('click',function(e){
+    if(e.target&&e.target.id==='gShare'){ e.preventDefault(); shareLink();
+      var tab=document.querySelector('[data-v="v-tools"]'); if(tab) tab.click();
+      setTimeout(function(){ var o=document.getElementById('shOut'); if(o) o.scrollIntoView({behavior:'smooth',block:'center'}); },300);
+    }
+  });
+  var m=/(?:^|#)p=([A-Za-z0-9\-_]+)/.exec(location.hash||'');
+  if(m){
+    try{ var P=JSON.parse(b64d(m[1])); showInbox(P); }
+    catch(e){ try{ neSay('诶呀，这条分享链接看着不太对劲儿，要不你自己规划一个？','t',5000); }catch(e2){} }
+  }
+}
+
+shareBoot();
+renderSeason();renderPpl();renderPeriod();renderPrice();renderHotel();renderExp();renderList();review();renderDriveForm();renderPark();renderLife();renderFoodGrid();petBoot();genDrive(false);renderGenForm();
+</script>
+</body>
+</html>

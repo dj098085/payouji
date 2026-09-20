@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>狍游记 · 可上线规划方案 V2.6（四季通用 · 规则化价格引擎）</title>
+<style>
+:root{--bg:#FFF6E9;--panel:#FFFDF8;--ink:#4A3320;--ink2:#8C6F52;--caramel:#B5773A;--deep:#8C5A2B;--gold:#F5C24D;--soft:#FDE7B0;--red:#D9663F;--green:#7FA86B;--line:#F0E3CE;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:#EFE3CE;color:var(--ink);line-height:1.75;}
+.wrap{max-width:900px;margin:0 auto;background:var(--bg);box-shadow:0 0 40px rgba(0,0,0,.07);}
+header{background:linear-gradient(150deg,#FBE3BC,#FFF3DC 60%,#FFF6E9);padding:34px 34px 26px;position:relative;overflow:hidden;}
+header h1{font-size:34px;color:var(--deep);letter-spacing:1px;}
+header .sub{margin-top:8px;font-size:14px;color:var(--ink2);}
+header .ver{position:absolute;top:30px;right:34px;font-size:12px;background:var(--red);color:#fff;padding:4px 12px;border-radius:99px;font-weight:700;}
+.bears{display:flex;gap:14px;align-items:center;margin-top:18px;}
+.bears img{border-radius:50%;border:3px solid #fff;box-shadow:0 4px 14px rgba(140,90,43,.14);}
+.bears img.a{width:78px;height:78px;} .bears img.b{width:66px;height:66px;}
+.bears .say{background:#fff;border-radius:16px;padding:11px 14px;font-size:13px;color:var(--ink2);box-shadow:0 4px 14px rgba(140,90,43,.1);flex:1;}
+main{padding:8px 34px 50px;}
+h2{font-size:20px;margin:34px 0 12px;color:var(--deep);display:flex;align-items:center;gap:10px;}
+h2 .n{width:28px;height:28px;border-radius:9px;background:var(--gold);color:var(--deep);font-size:13px;display:flex;align-items:center;justify-content:center;font-weight:800;}
+h3{font-size:15px;margin:18px 0 8px;color:var(--caramel);}
+p,li{font-size:13.6px;color:var(--ink2);}
+p{margin:6px 0;}
+ul{padding-left:19px;margin:6px 0;}
+.card{background:var(--panel);border-radius:16px;padding:16px 18px;margin:12px 0;box-shadow:0 3px 14px rgba(140,90,43,.08);}
+table{width:100%;border-collapse:collapse;font-size:12.8px;margin:10px 0;background:#fff;border-radius:12px;overflow:hidden;}
+th{background:var(--soft);color:#7A5A22;padding:9px 10px;text-align:left;font-size:12.3px;}
+td{padding:9px 10px;border-top:1px dashed var(--line);color:var(--ink2);vertical-align:top;}
+td b,th b{color:var(--ink);}
+.tag{display:inline-block;font-size:11px;padding:2px 9px;border-radius:99px;font-weight:700;margin-right:5px;}
+.t-p0{background:#FBE7E4;color:#C0392B;} .t-p1{background:var(--soft);color:#9A6B1E;} .t-p2{background:#EAF2E4;color:#5C8148;} .t-x{background:#EFEAE2;color:#8C7F6E;}
+.tip{background:var(--soft);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:10px 14px;font-size:13px;color:#7A5A22;margin:12px 0;}
+.warn{background:#FBE7E4;border-left:4px solid var(--red);border-radius:0 12px 12px 0;padding:10px 14px;font-size:13px;color:#9A3B22;margin:12px 0;}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0;}
+.kpi div{background:#fff;border-radius:14px;padding:12px;text-align:center;box-shadow:0 3px 12px rgba(140,90,43,.08);}
+.kpi b{display:block;font-size:22px;color:var(--deep);} .kpi small{font-size:11px;color:#B8A88F;}
+.flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12.5px;color:var(--ink2);margin:10px 0;}
+.flow span{background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 10px;box-shadow:0 2px 6px rgba(140,90,43,.06);}
+.flow i{color:var(--caramel);font-style:normal;font-weight:800;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.mini{background:#fff;border-radius:14px;padding:13px 15px;box-shadow:0 3px 12px rgba(140,90,43,.08);}
+.mini h4{font-size:13.5px;color:var(--deep);margin-bottom:5px;}
+.mini p{font-size:12.6px;}
+footer{padding:20px 34px 34px;font-size:12px;color:#B8A88F;border-top:1px solid var(--line);}
+code{background:#F7EFE1;padding:1px 6px;border-radius:5px;font-size:12.2px;color:#8C5A2B;}
+@media(max-width:640px){main,header,footer{padding-left:18px;padding-right:18px}.kpi{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="ver">V2.6 · 2026-09-20 · 四季通用 · 规则化价格引擎</div>
+  <h1>狍游记 · 可上线规划方案</h1>
+  <div class="sub">全年四季通用版 · 从「一个 HTML 原型」到「可上线的小程序 + AI 应用」：产品形态、MVP 边界、数据模型、技术架构、AI 能力、研发计划与上线检查</div>
+  <div class="bears">
+    <img class="a" src="https://workbuddy-space-static.codebuddy.work/image/LyHJ7EEJCBOMj3pWLiuhIU.jpg" alt="狍坨坨">
+    <img class="b" src="https://workbuddy-space-static.codebuddy.work/image/aFKnSirbUtXJcMRKVaFXUi.jpg" alt="狍果果">
+    <div class="say"><b>坨坨：</b>全年四季通用，季节是一级维度——换季就换装备、换线路、换玩法。<br><b>果果：</b>先想清楚做哪些、不做哪些——不然上线那天还在改需求，嗷嗷～</div>
+  </div>
+</header>
+
+<main>
+
+<h2><span class="n">0</span>结论先行</h2>
+<div class="card">
+<p><b>产品已定为全年四季通用款。</b>季节（春 4–5 月 / 夏 6–8 月 / 秋 9–10 月 / 冬 11–3 月）是贯穿全局的<b>一级维度</b>：穿衣与装备、当季线路、错峰建议、目的地与吃喝推荐全部随季节切换。<b>国庆只是五个出行档期之一</b>，不再作为产品的时间边界。</p>
+<p><b>首选形态：微信小程序（原生 + 云开发），配套一个 H5 分享页用于非微信渠道传播。</b></p>
+<p>理由是场景匹配度：目标用户是「朋友结伴 / 情侣」的小团组，行程要发给同伴、要 AA 记账、要在景区现场临时改路线——这些动作全发生在微信会话里，小程序的分享卡片、群待办、服务通知是天然入口，H5 和原生 App 都要额外付出传播成本。</p>
+<p><b>AI 不做噱头，只嵌三处刚需</b>：① 行程生成与临时变更（规划 Agent）；② 交通询价与防宰客核验（价格顾问 RAG）；③ 本地小馆推荐（去网红化检索）。三处都有明确兜底规则，宁可说"暂无可靠参考"，绝不编造价格和开放时间。</p>
+<p><b>本期坚决不做交易闭环</b>（不代订门票、不组织包车、不收佣）——这是规避《旅行社业务经营许可证》和资金合规的关键取舍，详见第 11 节。</p>
+</div>
+
+<h2><span class="n">1</span>业务目标与成功指标</h2>
+<table>
+<tr><th style="width:22%">维度</th><th>定义</th></tr>
+<tr><td><b>一句话定位</b></td><td>东北<b>全年四季通用</b>的小团组（2–7 人）旅行管家：行前准备 + 行中变更 + 行后复盘，狍坨坨 & 狍果果担任 IP 引导员。</td></tr>
+<tr><td><b>要解决的核心问题</b></td><td>① 出发前不知道带什么、怎么排、会不会被宰；② 旅途中一堵车、一变天、一闭园就全盘乱套；③ 回家只剩一堆照片，说不清钱花在哪、下次该怎么改。</td></tr>
+<tr><td><b>北极星指标</b></td><td><b>行程「一次采纳率」</b>：AI 生成的行程在用户手动修改 ≤2 处后即被采纳的比例，MVP 目标 ≥60%。</td></tr>
+<tr><td><b>辅助指标</b></td><td>行程创建完成率 ≥75%；记账渗透率 ≥50%；次日留存 ≥35%；分享率 ≥40%；价格查询命中率 ≥85%；<b>四季内容覆盖度 100%</b>（每季 ≥2 条线路、≥8 个目的地、≥6 个当季吃喝）。</td></tr>
+<tr><td><b>反向指标</b></td><td>AI 价格幻觉投诉 = 0 容忍（一旦出现即降级为"仅展示人工审核价"）；行程生成 P90 延迟 ≤8s。</td></tr>
+</table>
+<div class="tip">验证方式：MVP 上线后投放 100 名真实用户（东北目的地游客 + 本地居民各半），一周内回收问卷 + 后台行为数据，用「一次采纳率」决定是否投入第二期。</div>
+
+<h2><span class="n">2</span>目标用户与场景</h2>
+<div class="grid2">
+  <div class="mini"><h4>👯 A 类 · 朋友结伴（3–7 人）</h4><p>异地同学 / 同事组队，诉求是"谁也别寒碜、谁也别多掏"。痛点集中在：人数一多交通方案就变复杂、AA 记账扯不清、意见不统一导致行程反复改。<b>核心功能诉求：组队共享行程 + AA 记账 + 按人数的交通方案。</b></p></div>
+  <div class="mini"><h4>💞 B 类 · 情侣 / 双人（2 人）</h4><p>追求"人少、好看、别踩坑"。痛点集中在：网红点排队两小时体验为零、被出租车绕路影响心情、想找有氛围的小馆。<b>核心功能诉求：小众点推荐 + 防宰客价格 + 本地小馆。</b></p></div>
+</div>
+<p>使用环境高度一致：<b>行前在手机上看、行中在景区现场弱网甚至无网时看</b>。因此离线可用是硬要求——行程、清单、已缓存的价格基准必须能离线打开。</p>
+
+<h2><span class="n">3</span>MVP 边界：做什么、不做什么</h2>
+<table>
+<tr><th style="width:12%">优先级</th><th style="width:30%">功能</th><th>说明与验收标准</th></tr>
+<tr><td><span class="tag t-p0">P0 必须有</span></td><td><b>季节切换（一级维度）</b></td><td>全局季节选择器，联动穿衣建议、装备清单、当季线路、目的地筛选、吃喝推荐、价格季节系数。验收：切换无刷新卡顿，四套内容各自完整无缺口。</td></tr>
+<tr><td><span class="tag t-p0">P0 必须有</span></td><td>行程规划（AI 生成 + 手动编辑）</td><td>输入：出发城市 / 日期 / 天数 / 人数 / 偏好（自然风光·人文·美食·强度）→ 输出逐日行程，可增删改顺序、标记完成。验收：生成成功率 ≥99%，可编辑无卡顿。</td></tr>
+<tr><td><span class="tag t-p0">P0</span></td><td>住宿算价（星级 × 档期溢价）</td><td>按目的地类型（省会四城 / 其他地级市 / 景区型）× 住宿档次（经济·舒适·高档·豪华）给出平日基准区间，再乘档期溢价系数：平日周末 ×1.15、清明五一 ×1.4、暑期 ×1.35、十一 ×1.7、元旦寒假春节 ×1.9；<b>景区型目的地冬季再叠加 ×1.35（雪乡春节实际可达基准 2.5–3 倍）</b>，大连暑期再叠加 ×1.2。输出间夜价 + 人均（按人数分摊房间数）+ 整程预估。验收：6 类目的地 × 4 档 × 5 档期全覆盖，基准可后台调参不发版。</td></tr><tr><td><span class="tag t-p0">P0</span></td><td>错峰与拥堵规避（五档期模型）</td><td>档期：平日周末 / 清明五一 / 暑期 / 十一 / 元旦寒假春节，逐档期给出拥堵等级、出发与返程窗口、入园时间、住宿涨幅。验收：5 档期 × 4 季可组合，覆盖全年日历。</td></tr>
+<tr><td><span class="tag t-p0">P0</span></td><td>交通算价引擎（规则计算，非拍脑袋）</td><td>按人数（1–8）推荐交通方式与车型；<b>双层定价：① 规则层——地铁按各市里程分段票价表、出租车按官方运价规则（起步价 + 续程 + 空驶/返空费 + 夜间加成 + 低速等候）实时计算；② 基准层——包车、专线、景区接驳等无公开规则的路线走人工审核库</b>。输出：地铁 / 公交 / 出租车 / 网约车 / 机场巴士 五种方式的价格区间 + 人均 + <b>防宰红线（估算上限 ×1.3）</b>。验收：黑吉辽 ≥12 城计价规则入库且可复算；规则层命中率 ≥90%，基准层 ≥80 条含更新时间与季节标记；冬季（11–3 月）标注雪地胎/四驱与上浮 10–20% 系数。</td></tr>
+<tr><td><span class="tag t-p0">P0</span></td><td>行前清单（按季节）</td><td>四季四套装备模板 + 通用必备 + 自定义项，可勾选、可共享。验收：切换季节后清单同步换，勾选状态本地与云端双写，弱网不丢。</td></tr>
+<tr><td><span class="tag t-p0">P0</span></td><td>预算记账 + AA 分摊</td><td>七分类记账、预算进度条、按人均/按成员分摊。验收：分摊结果与总额误差 = 0。</td></tr>
+<tr><td><span class="tag t-p0">P0</span></td><td>组队共享</td><td>微信分享卡片邀请同伴进同一行程，成员可见可改（冲突以最后写入为准，保留 24h 操作日志）。</td></tr>
+<tr><td><span class="tag t-p1">P1 应该有</span></td><td>小众目的地库（带季节标签）</td><td>16–24 个东北小众点，每个标注<b>适用季节</b>，含怎么去、住哪、票价、最佳时段、避坑提示；支持按当前季节筛选与"查看全部"。</td></tr>
+<tr><td><span class="tag t-p1">P1</span></td><td>本地小馆推荐（带季节）</td><td>按城市 + 品类 + 季节检索（如冬季冻梨、春秋开江鱼、夏秋菌子宴），标注人均价与"本地人指引"，排除网红店标签。</td></tr>
+<tr><td><span class="tag t-p1">P1</span></td><td>打卡记录</td><td>预设点位 + 自定义，打卡后可回填照片与一句话感受。</td></tr>
+<tr><td><span class="tag t-p1">P1</span></td><td>行后复盘</td><td>花费结构、打卡完成率、评分、难忘瞬间，一键生成可分享长图。</td></tr>
+<tr><td><span class="tag t-p2">P2 可以有</span></td><td>众包价格上报与纠偏</td><td>用户上报实际成交价，进入待审池，审核后入基准库。</td></tr>
+<tr><td><span class="tag t-p2">P2</span></td><td>天气联动的自动备选</td><td>接入天气 API，<b>按季节触发不同备选</b>：夏季暴雨落石、冬季暴雪封路与极寒，自动推送当日室内备选方案。</td></tr>
+<tr><td><span class="tag t-x">本期不做</span></td><td>交易闭环</td><td>不代订门票、不组织包车、不收佣、不做商家入驻 —— 规避旅行社业务经营许可与资金风险。</td></tr>
+<tr><td><span class="tag t-x">不做</span></td><td>UGC 内容社区 / 图文攻略流</td><td>内容安全审核成本高，与工具定位无关，验证后再议。</td></tr>
+<tr><td><span class="tag t-x">不做</span></td><td>原生 App / 跨端框架</td><td>当前无需设备级能力（蓝牙、后台定位），投入产出比不成立。</td></tr>
+</table>
+
+<h2><span class="n">4</span>产品形态选型</h2>
+<table>
+<tr><th style="width:16%">形态</th><th style="width:34%">优势</th><th style="width:30%">劣势</th><th>结论</th></tr>
+<tr><td><b>微信小程序</b></td><td>分享卡片直达同伴；微信登录零门槛；群场景天然契合；位置/地图能力合规可用；审核链路清晰</td><td>受平台类目与审核约束；不能做虚拟支付以外的部分能力；离线能力弱于原生</td><td><b>✅ 首选</b></td></tr>
+<tr><td><b>H5 / PWA</b></td><td>跨平台、可被搜索引擎收录、可脱离微信传播；已有原型可直接演进</td><td>传播依赖链接；无法调用微信分享与通知；留存弱</td><td>⚠️ <b>配套</b>：做分享落地页 + 非微信渠道</td></tr>
+<tr><td><b>原生 / 跨端 App</b></td><td>离线能力强、可常驻</td><td>安装成本高、双端审核与维护成本翻倍</td><td>❌ 本期不做</td></tr>
+<tr><td><b>纯对话式 AI 应用</b></td><td>输入自由、处理长尾问题</td><td>结构化行程难以编辑与共享；结果不稳定</td><td>❌ 不做主体，<b>作为内嵌能力</b></td></tr>
+</table>
+<div class="tip"><b>切换条件</b>：若 3 个月内出现「非微信渠道流量占比 &gt;40%」或「用户强烈要求离线全功能」，再评估 H5/PWA 独立化或跨端 App。</div>
+
+<h2><span class="n">5</span>信息架构与页面清单</h2>
+<p>沿用原型已验证的 5 大分区（可用性已被原型承载），映射为小程序页面：</p>
+<table>
+<tr><th style="width:14%">Tab</th><th style="width:24%">页面</th><th>核心要素</th></tr>
+<tr><td><b>出发</b></td><td>行前首页</td><td><b>季节选择器（一级入口）</b>、IP 引导语、当季天气与穿衣、人数选择、当季装备清单、共享状态</td></tr>
+<tr><td><b>行程</b></td><td>行程规划页</td><td>AI 生成入口 / 参数表单（含季节与档期）；逐日时间轴；<b>五档期错峰模型</b>；当季线路；改点·顺延·季节化备选（暴雨/暴雪）；变更历史</td></tr>
+<tr><td><b>探索</b></td><td>目的地 &amp; 吃喝</td><td>小众目的地卡片（<b>季节标签 + 当季筛选</b>）；本地小馆检索（城市 × 品类 × 季节）；四季风土人情词条</td></tr>
+<tr><td><b>工具</b></td><td>记账 / 打卡 / 清单</td><td>预算滑块、分类记账、AA 分摊结果；打卡网格；自定义清单</td></tr>
+<tr><td><b>我的</b></td><td>复盘 &amp; 设置</td><td>花费结构、评分、难忘瞬间、分享长图；隐私与授权管理、清空数据</td></tr>
+<tr><td colspan="3"><b>附加页</b>：组队页（成员与权限）、价格查询页（起终点 → 参考区间 + 上报入口）、AI 顾问对话页（行程变更 / 询价 / 找吃的）</td></tr>
+</table>
+<h3>核心用户旅程</h3>
+<div class="flow">
+<span>微信里收到朋友分享的行程卡片</span><i>→</i><span>一键加入队伍</span><i>→</i><span>填人数与偏好</span><i>→</i><span>AI 生成行程</span><i>→</i><span>手动微调并确认</span><i>→</i><span>出发前清单打勾</span><i>→</i><span>行中变更 / 询价 / 打卡</span><i>→</i><span>随手记账</span><i>→</i><span>返程复盘并分享</span>
+</div>
+
+<h2><span class="n">6</span>数据模型（核心表）</h2>
+<table>
+<tr><th style="width:16%">表</th><th style="width:34%">关键字段</th><th>说明</th></tr>
+<tr><td><code>user</code></td><td>openid、unionid、昵称、头像、城市、创建时间</td><td>微信授权登录，手机号按需（不强绑）</td></tr>
+<tr><td><code>team</code></td><td>id、trip_id、name、owner_id、invite_code</td><td>一个行程一个队，邀请码入队</td></tr>
+<tr><td><code>member</code></td><td>team_id、user_id、role(owner/member)、joined_at</td><td>角色决定能否改行程</td></tr>
+<tr><td><code>trip</code></td><td>id、team_id、city_in/out、start_date、days、ppl、prefs[]、<b>season</b>、<b>period</b>、status、ai_version</td><td>season：sp/su/au/wi；period：weekend/may/summer/oct/winter</td></tr>
+<tr><td><code>trip_item</code></td><td>trip_id、day_no、seq、poi_id、plan_time、duration_min、status(plan/done/skip)、alt_of</td><td>alt_of 指向雨天备选方案</td></tr>
+<tr><td><code>poi</code></td><td>id、name、city、type、lat/lng、ticket、<b>seasons[]</b>、best_time、crowd_level、tips、source、verified_at</td><td>seasons 决定该点在四季的可见性；人工审核后入库</td></tr>
+<tr><td><code>price_bench</code></td><td>id、from/to、mode、min、max、unit、city、<b>season_factor</b>（冬季 1.1–1.2）、verified_at、source</td><td><b>防宰客核心资产</b>；按季节给出系数，必须人工审核 + 标注更新时间</td></tr><tr><td><code>fare_rule</code>（新增）</td><td>id、city、kind(metro/taxi/bus/airport_bus)、metro_rule(JSON 里程分段与封顶)、taxi_base、taxi_base_km、taxi_per_km、longs(JSON 空驶阶梯)、night_add、wait_rate、toll、effective_from、source_url、verified_at</td><td><b>规则层核心资产</b>：地铁按里程分段票价表、出租车按当地运价文件结构化入库；<b>价格由规则算出而非写死</b>，调价只改规则不改代码。必须挂官方文件出处与生效日期。</td></tr><tr><td><code>hotel_bench</code>（新增）</td><td>id、zone(省会/地级市/景区型)、city、tier(经济/舒适/高档/豪华)、base_min、base_max、period_mul(JSON 五档期系数)、extra_mul(季节叠加)、verified_at、source</td><td>住宿基准与溢价系数分离存储，档期系数后台可调；景区型冬季叠加系数单独配置。</td></tr>
+<tr><td><code>price_report</code></td><td>id、bench_id、user_id、actual、paid_at、status(待审/采纳/驳回)</td><td>众包纠偏，审核后才更新基准</td></tr>
+<tr><td><code>expense</code></td><td>id、trip_id、payer_id、amount、cat、note、split_to[]、created_at</td><td>AA 分摊的 split 明细与总额强校验</td></tr>
+<tr><td><code>checkin</code></td><td>id、trip_id、poi_id、user_id、photo_url、note、at</td><td>照片走对象存储 + 内容安全审核</td></tr>
+<tr><td><code>season_content</code></td><td>season、wear_text、wear_tip、gear[]、routes[]、price_tip、updated_at</td><td>四季配置表，驱动全端季节切换；内容后台可改不发版</td></tr>
+<tr><td><code>checklist</code></td><td>id、trip_id、group、<b>season</b>、text、done、owner_id</td><td>四季模板 + 自定义，可指派给成员</td></tr>
+<tr><td><code>review</code></td><td>trip_id、stars、highlight、cost_summary(json)、shared_at</td><td>复盘与分享长图数据源</td></tr>
+<tr><td><code>ai_log</code></td><td>id、user_id、scene(plan/price/food)、input、output、model、latency_ms、cost、feedback</td><td>AI 可追溯与评测基础</td></tr>
+</table>
+
+<h2><span class="n">7</span>技术架构</h2>
+<table>
+<tr><th style="width:18%">层</th><th style="width:32%">选型（MVP）</th><th>理由 / 说明</th></tr>
+<tr><td><b>前端</b></td><td>微信小程序原生 + TDesign 小程序组件库</td><td>原生性能与审核兼容最好；组件库省 UI 成本。H5 侧复用同一套接口与视觉规范</td></tr>
+<tr><td><b>后端</b></td><td>微信云开发（云函数 Node.js）+ 云数据库</td><td>MVP 阶段免运维、免服务器备案、天然打通微信登录与消息；日活过万后再迁自建</td></tr>
+<tr><td><b>数据库</b></td><td>云开发文档型；如需地点检索叠加 PostGIS 或腾讯位置服务检索 API</td><td>文档型适配行程这类半结构化数据；地理检索交给位置服务，不自研</td></tr>
+<tr><td><b>对象存储</b></td><td>云存储 / COS</td><td>打卡照片、分享长图</td></tr>
+<tr><td><b>登录与权限</b></td><td>微信授权登录（openid）；敏感操作校验队伍角色</td><td>不强制手机号；遵循最小必要</td></tr>
+<tr><td><b>第三方服务</b></td><td>腾讯位置服务（地图/路线/逆地理/地点检索）、天气 API、大模型 API</td><td>地图必须使用具备资质的服务商，不自制地图底图</td></tr>
+<tr><td><b>离线能力</b></td><td>行程/清单/价格基准写入本地 Storage，联网后增量同步</td><td>景区弱网是常态，离线可用是硬指标</td></tr>
+<tr><td><b>监控与日志</b></td><td>云监控 + 前端埋点（页面停留/功能转化/报错）+ AI 调用日志与成本看板</td><td>AI 成本与延迟需单独告警</td></tr>
+<tr><td><b>环境</b></td><td>dev / test / prod 三套隔离，数据不互通；价格库与 POI 库走内容后台维护</td><td>内容变更走后台审核，不发版</td></tr>
+</table>
+<h3>核心接口（示例）</h3>
+<table>
+<tr><th style="width:30%">接口</th><th>说明</th></tr>
+<tr><td><code>POST /trip/plan</code></td><td>入参：城市、日期、天数、人数、偏好 → 返回结构化行程 JSON（含备选）</td></tr>
+<tr><td><code>PATCH /trip/:id/item</code></td><td>增删改排序、标记 done/skip、切换备选</td></tr>
+<tr><td><code>GET /price/bench?from=&amp;to=&amp;mode=</code></td><td>返回参考区间 + 数据来源与更新时间</td></tr>
+<tr><td><code>POST /price/report</code></td><td>用户上报实际成交价，进待审池</td></tr>
+<tr><td><code>GET /poi?city=&amp;type=&amp;crowd=</code></td><td>目的地 / 小馆检索，支持"低人流"筛选</td></tr>
+<tr><td><code>POST /expense</code> / <code>GET /team/:id/settle</code></td><td>记账与 AA 结算</td></tr>
+<tr><td><code>POST /ai/chat</code></td><td>行程变更 / 询价 / 找馆子，返回结构化结果 + 依据引用</td></tr>
+</table>
+
+<h2><span class="n">8</span>AI 能力设计（三处刚需，不做噱头）</h2>
+<div class="grid2">
+<div class="mini"><h4>🗺️ 能力一：规划 Agent</h4><p><b>输入</b>：城市、日期（<b>据此推导 season</b>）、天数、人数、偏好、必去点、住宿位置、档期。<br><b>工具</b>：POI 库检索、错峰规则表、天气查询、路线耗时（位置服务）。<br><b>输出</b>：逐日行程 JSON（含每点建议停留、交通方式、雨天备选）。<br><b>回退</b>：工具失败或结果不足 → 返回模板线路并标注"数据不足，已按经验线路生成"。</p></div>
+<div class="mini"><h4>💰 能力二：价格顾问（规则计算优先 + RAG 兜底）</h4><p><b>第一层 · 规则计算（优先，不经过模型）</b>：命中 <code>fare_rule</code> 的城市与里程 → 按官方票价表与运价规则直接算出地铁 / 出租车 / 网约车区间，<b>模型不参与数值生成</b>，只做结果解释。<br><b>第二层 · 审核库检索（RAG）</b>：包车、专线、景区接驳等无公开规则的路线，仅检索人工审核过的 <code>price_bench</code> 与采纳的众包上报。<br><b>输出</b>：区间 + 计价过程（起步价/续程/空驶费逐项可展开）+ 数据来源 + 生效日期 + 防宰红线。<br><b>硬规则</b>：两层都没有的路线，<b>必须拒答</b>（"暂无可靠参考，建议……"），<b>禁止估算或编造价格</b>；<b>模型不得输出任何未经规则或审核库产生的数字</b>。<br><b>回退</b>：拒答时给出可行动建议（打表、走正规乘降点、拨 12328）。</p></div>
+</div>
+<div class="mini" style="margin-top:12px;"><h4>🍲 能力三：本地味蕾推荐</h4><p>从 POI 库按城市 + 品类检索，排序权重：本地人光顾信号 &gt; 开业年限 &gt; 人均价合理性 &gt; 距离；<b>主动降权网红标签与景区门口店铺</b>。输出必带"本地人指引"一句（如"找手写菜单、居民区里的家常菜馆"）。无数据时不硬凑，返回"该城此品类暂无可靠推荐"。</p></div>
+<h3>评测、兜底与治理</h3>
+<table>
+<tr><th style="width:22%">项</th><th>目标 / 规则</th></tr>
+<tr><td>质量指标</td><td>行程一次采纳率 ≥60%；平均人工修改 ≤2 处；价格查询命中率 ≥85%；拒答率 &lt;5%；<b>季节匹配准确率 ≥98%</b>（生成的行程不得出现当季不开放/不推荐的点）</td></tr>
+<tr><td>性能指标</td><td>行程生成 P90 ≤8s（流式输出首字 ≤2s）；单轮成本 ≤0.15 元</td></tr>
+<tr><td>安全与越权</td><td>AI 只能调用只读工具，无写库权限；所有写操作由用户确认后走业务接口</td></tr>
+<tr><td>提示注入防护</td><td>用户输入与系统提示隔离；POI/价格库内容不执行指令；敏感词与越权请求拦截</td></tr>
+<tr><td>可追溯</td><td>全量 <code>ai_log</code> 留存 ≥6 个月，含输入、输出、模型、延迟、成本、用户反馈</td></tr>
+<tr><td>人工复核</td><td>价格与众包数据 100% 人工审核后入基准库；AI 只做检索与呈现，不做改写</td></tr>
+</table>
+<div class="warn">⚠️ 红线：任何价格、票价、开放时间若来自模型生成而非数据库，一律视为事故。产品层面做双重保险——界面上所有数字都带「数据来源 + 更新时间」角标，无法提供来源的数字不显示。</div>
+
+<h2><span class="n">9</span>研发里程碑（8 周 MVP，较国庆版 +2 周用于四季内容）</h2>
+<table>
+<tr><th style="width:10%">里程碑</th><th style="width:18%">模块</th><th style="width:34%">任务</th><th style="width:14%">依赖</th><th>交付物 / 验收标准</th></tr>
+<tr><td><b>M1 需求与原型</b>（W1）</td><td>产品</td><td>用户访谈 ≥8 人；原型可用性测试 ≥5 人（<b>含四季切换路径</b>）；冻结 MVP 范围；视觉规范定稿</td><td>现有 HTML 原型</td><td>PRD、页面清单、验收用例；可用性 P0 问题清零</td></tr>
+<tr><td><b>M2 基础架构 + 季节引擎</b>（W2–W3）</td><td>前端/后端</td><td>小程序工程初始化；云开发与三套环境；微信登录；数据模型落地（含 season 字段）；<b>季节切换引擎与 season_content 配置</b>；内容后台骨架</td><td>M1</td><td>可登录、可建空行程、可切换四季；接口文档与数据字典</td></tr>
+<tr><td><b>M3 核心闭环</b>（W4–W5）</td><td>核心</td><td>AI 行程生成 + 编辑（<b>按季节</b>）；五档期错峰；价格查询（含冬季系数）；组队与共享；记账与 AA；当季清单</td><td>M2、内容库</td><td>建行程→共享→记账→AA 全流程跑通；AA 与总额零误差；四季切换无缺口</td></tr>
+<tr><td><b>M4 数据与集成</b>（W6）</td><td>内容/AI</td><td><b>POI 库 ≥60 条（四季分布）</b>、<b>价格基准 ≥80 条（含季节系数）</b>、<b>计价规则 ≥12 城（地铁票价表 + 出租车运价，含官方出处与生效日期）</b>、<b>住宿基准 6 类 × 4 档 × 5 档期</b>；四季线路 ≥10 条；地图/天气/大模型接入；AI 日志与评测看板</td><td>M3</td><td>价格命中率 ≥85%；生成 P90 ≤8s；季节匹配准确率 ≥98%</td></tr>
+<tr><td><b>M5 测试与修复</b>（W7）</td><td>质量</td><td>功能/异常/弱网离线/多机型兼容；<b>四季全量走查</b>；权限与越权；AI 准确性与拒答；内容安全；性能压测</td><td>M4</td><td>P0/P1 缺陷清零；崩溃率 &lt;0.2%</td></tr>
+<tr><td><b>M6 灰度上线</b>（W8）</td><td>发布</td><td>隐私政策与用户协议；类目与审核材料；100 人内测（<b>四季场景各 ≥10 人</b>）→ 提审 → 灰度放量</td><td>M5</td><td>通过平台审核；灰度 7 天无 P0 事故后全量</td></tr>
+</table>
+
+<h2><span class="n">10</span>上线检查表</h2>
+<table>
+<tr><th style="width:26%">检查项</th><th style="width:16%">状态</th><th>证据 / 上线前动作</th></tr>
+<tr><td>功能与异常流程</td><td>⬜ 待做</td><td>弱网、断网、并发改行程、成员退出、队伍解散等分支用例全部通过</td></tr>
+<tr><td>多角色与越权</td><td>⬜ 待做</td><td>非成员无法通过邀请码访问他人行程；member 不可删除行程</td></tr>
+<tr><td>设备与兼容</td><td>⬜ 待做</td><td>iOS/Android 主流机型各 ≥3 款；小屏与大字体适配</td></tr>
+<tr><td>性能与容量</td><td>⬜ 待做</td><td>首页首屏 ≤2s；AI 生成 P90 ≤8s；十一峰值预估容量 ×3 冗余</td></tr>
+<tr><td>隐私与数据安全</td><td>⬜ 待做</td><td>隐私政策、最小必要授权、位置授权说明、数据导出与删除入口</td></tr>
+<tr><td>生成式 AI 合规</td><td>⬜ 待做</td><td>履行备案与内容标识要求；内容安全过滤；AI 生成的行程标注来源</td></tr>
+<tr><td>地图合规</td><td>⬜ 待做</td><td>使用具备资质的地图服务，不自制底图；国界与行政区表达合规</td></tr>
+<tr><td>内容安全</td><td>⬜ 待做</td><td>打卡照片与文本走内容安全审核；举报入口与人工复审</td></tr>
+<tr><td>监控与回滚</td><td>⬜ 待做</td><td>错误率/延迟/AI 成本告警；一键回滚上一版本；数据每日备份</td></tr>
+<tr><td>审核材料</td><td>⬜ 待做</td><td>小程序类目、服务范围声明、测试账号、资质与 IP 授权材料</td></tr>
+</table>
+
+<h2><span class="n">11</span>合规与风险（重点）</h2>
+<div class="warn">
+<b>① 本期不做交易，规避旅行社业务许可。</b>只要涉及"代订门票 / 组织包车 / 收取佣金"，就可能落入旅行社业务经营范畴，需要相应许可与资金存管。产品只做<b>信息参考与规划工具</b>，所有预订动作引导用户自行到官方渠道完成，并在页面明示"本应用仅提供参考价，不参与交易"。
+</div>
+<div class="warn">
+<b>② 狍子 IP 的合规红线（与既有 IP 设定一致）。</b>狍为国家二级保护动物，应用内<b>禁止</b>出现猎具、陷阱、狩猎、野味餐桌、皮草、买卖等相关画面与文案；涉及狍子的科普须注明保护地位；卡通形象商用须确保自有版权或已获授权。
+</div>
+<table>
+<tr><th style="width:24%">风险</th><th style="width:36%">影响</th><th>应对</th></tr>
+<tr><td><b>季节性时间窗过期</b>（花期/冬捕/红海滩/冰雪开园）</td><td>用户按错误时间前往，扑空</td><td>这类 POI 必须标注"时间窗 + 年份"，且窗期前后各留 7 天缓冲提示；过期自动隐藏并提示"明年此时再来"</td></tr>
+<tr><td><b>政府调价导致规则过期</b></td><td>地铁票制或出租车运价调整后，规则层仍按旧价计算，系统性给出错误区间</td><td><code>fare_rule</code> 强制挂 <code>effective_from</code> 与官方文件出处；每季度核查一次各市发改委/交通局公告；规则变更走后台配置生效，<b>并在结果卡片标注"规则生效于 YYYY-MM"</b>；调价过渡期新旧价并轨时给出区间放宽提示</td></tr><tr><td>价格 / 开放时效过期</td><td>用户按旧价被宰或白跑，信任崩塌</td><td>每条数据标注 <code>verified_at</code>，超 12 个月自动降级为"待核实"；提供一键上报纠偏</td></tr>
+<tr><td>AI 编造价格 / 开放时间</td><td>直接导致行程事故，是最严重的一类</td><td>AI 只读审核库；无匹配必须拒答；界面强制显示来源与时间；日志全量可追溯</td></tr>
+<tr><td>众包数据噪声与恶意</td><td>价格被拉高/拉低；指向具体司机造成纠纷</td><td>人工审核后入库；去标识化，禁止录入车牌与司机信息；异常值自动剔除</td></tr>
+<tr><td>十一峰值流量</td><td>云函数冷启动与 AI 并发打满</td><td>行程生成结果缓存复用（同参数命中缓存）；降级开关：AI 不可用时返回模板线路</td></tr>
+<tr><td>位置权限争议</td><td>审核驳回 / 用户投诉</td><td>仅在用户主动使用"附近/导航"时申请，弹窗说明用途；可拒绝且不影响主流程</td></tr>
+<tr><td>生成式 AI 备案与标识</td><td>合规风险</td><td>按现行《生成式人工智能服务管理暂行办法》履行备案与安全评估，输出显著标识</td></tr>
+<tr><td>小程序类目不符</td><td>审核驳回</td><td>按实际功能选"工具-信息查询/效率"类目，避免旅游预订类目所需额外资质</td></tr>
+</table>
+
+<h2><span class="n">12</span>成本假设（MVP 首期）</h2>
+<div class="kpi">
+<div><b>300 元</b><small>小程序认证 / 年</small></div>
+<div><b>500–1500 元</b><small>云资源 / 月（低流量）</small></div>
+<div><b>≈0.1–0.15 元</b><small>单次 AI 行程生成</small></div>
+<div><b>2.5–4.5 万元</b><small>首期总投入（较国庆版 +1 万，四季内容）</small></div>
+</div>
+<p>说明：四季通用后内容量约为国庆版的 4 倍（POI ≥60 条、价格基准 ≥80 条、四季线路 ≥10 条），V2.6 新增计价规则库（≥12 城）与住宿基准矩阵（6×4×5）的结构化录入与核查，约合 <b>+0.3–0.5 万元</b>；这是 +2 周工期与 +1 万成本的主要来源。地图与天气服务在 MVP 流量下通常在免费额度内；AI 成本按 3000 次/月估算约 300–450 元/月（四季内容使单次 Prompt 变长，取上限）。人力为最大项，按 1 产品 + 1 前端 + 1 后端 <b>8 周</b>估算。</p>
+
+<h2><span class="n">13</span>待确认的三个假设</h2>
+<ol style="padding-left:20px;font-size:13.6px;color:var(--ink2);">
+<li><b>已确定：全年四季通用。</b>由此带来四季内容维护量约 4 倍——建议固定 1 名内容负责人按月更新，并在每个季节切换前 30 天做一次季节性内容专项核查（花期、开园、冬捕时间窗）。</li>
+<li><b>是否要做商家合作变现？</b>本期按"不做交易"设计。若后续要接商家，需同步规划资质、审核与利益冲突披露机制（推荐结果的商业关系必须明示）。</li>
+<li><b>内容库由谁维护？</b>POI 与价格基准是核心资产，建议固定 1 名内容负责人按周更新，否则三个月后数据过期，产品价值归零。</li>
+</ol>
+
+<h2><span class="n">14</span>下一步最小行动</h2>
+<div class="card">
+<p><b>本周只做一件事：拿现有 HTML 原型找 5 个真实用户做可用性测试。</b></p>
+<p>具体做法：让 2 组朋友结伴用户 + 2 对情侣 + 1 个东北本地人，分别完成"建一个 5 天行程 + 查一次机场到市区价格 + 记一笔账"三个任务，全程不指导，只记录卡住的地方。<b>超过 3 人在同一处卡住，就是原型必须先修的问题。</b>测试结论直接决定 M1 是否结项，比多写两页 PRD 有价值得多。</p>
+</div>
+
+
+<h2><span class="n">15</span>V2.6 增补：动态 IP 角色 + 实时天气驱动</h2>
+<div class="card">
+<p><b>结论：不需要用户额外提供美术素材。</b>趣味化分三层落地，全部用现有资产与免费接口实现：</p>
+<ul>
+<li><b>① 分层 SVG 角色（本版本已实装）</b>：坨坨（浅焦糖、不分叉心形小角、红围脖金点纹样）与果果（暖奶油白、无角、右耳蓝靛果枝、蓝靛果纹样）按优化母版手绘为分层 SVG，图层含身体/头/眼/耳/角/果枝/围脖/耳包/手套/棉袄/墨镜/汗滴/哈气/尾巴，CSS 动画驱动：呼吸、眨眼、摇尾、耳抖、果果招手。</li>
+<li><b>② 实时天气驱动换装换动作（已实装）</b>：接入 open-meteo 免费天气接口（无需密钥、支持跨域），内置东北 12 城坐标（哈尔滨/长春/沈阳/大连/吉林/延吉/牡丹江/齐齐哈尔/伊春/漠河/二道白河/丹东）。气温分七档：≤−15℃ 发抖+哈白气+大棉袄；≤−5℃ 耳包手套围脖全副武装；≤14℃ 围脖；≥26℃ 墨镜+冒汗。网络不通时回落到季节参考温度并开放手动滑块。</li>
+<li><b>③「逗TA」互动（已实装）</b>：点击角色弹出 GIF 表情气泡（复用现有表情包：喜/乐/比心/抱抱/贴贴/胜利，已托管公网直链）。</li>
+</ul>
+<div class="tip">小程序化时的技术路线：SVG 分层结构可直接迁移为 Rive/Lottie 骨骼动画；若追求毛发级质感，再向美术方索取<b>分层 PSD（头/身/角/围脖独立图层）</b>即可，当前阶段无阻塞依赖。天气接口在小程序端换成 wx.request 调用同一 open-meteo 端点，或替换为高德/和风（需密钥）。</div>
+</div>
+
+
+<h2><span class="n">16</span>V2.6 增补：东北话人格化 + 需求式智能规划</h2>
+<div class="card">
+<p><b>一、东北话人格化系统（坨坨果果“开口说话”）</b></p>
+<ul>
+<li><b>分时段问候</b>：按打开时间随机出问候（早上“吃没吃饭呢”、晌午“先扒拉口饭”、下午“闲着也是闲着盘个行程呗”、晚上“夜猫子啊”），坨坨/果果随机出场；</li>
+<li><b>定时冒话</b>：每 52–100 秒随机冒一句东北话（你瞅啥／贼拉冷／得劲儿／埋汰／唠嗑，附东北话速成小教学），底部气泡浮出，可手动关闭；</li>
+<li><b>报错话术库</b>：网络不通／输入为空／条件冲突等“解决不了”的场景，全部用调皮且友好的东北话回应，绝不甩冷冰冰的错误提示；</li>
+<li><b>场景触发</b>：切换季节、规划完成等动作都有对应的东北话反馈。</li>
+</ul>
+<p><b>二、需求式智能规划（“啥也没想好”也能出行程）</b></p>
+<ul>
+<li><b>五维输入</b>：出行人数 1–8+、天数 2–7/未定、玩法 11 项多选（看雪/看海/美食/民俗/历史/森林/拍照/温泉/亲子/清净/城市热闹）、住宿偏好 4 选（民宿烟火气＝清净 ↔ 商圈热闹↔ 设施更好 ↔ 都中）、预算 3 档，外加进出城市（哈/长/沈/大连/随便）；</li>
+<li><b>22 个玩法模块库</b>：覆盖东北 4 省 15+ 地市，每个带标签、季节、交通圈（hub）、住宿适配、建议天数、人均日花费、逐半天活动与风险提示；</li>
+<li><b>规则打分引擎</b>：标签命中×10 + 季节匹配 + 住宿适配 +6 + 落地城市 +7；<b>零命中模块硬过滤</b>（防止夏季混入冰雪大世界）；</li>
+<li><b>地理线路约束</b>：按交通圈聚簇串联，极远线路（漠河/抚远）单独成行，普通行程 ≤3 条线，避免“哈尔滨→漠河→雪乡”这种来回跑的鬼行程；</li>
+<li><b>季节三级匹配</b>：强匹配 / <b>将就版</b>（如夏季想看雪→长白山高山残雪，冬季想看海→大连海滨冬景，都用东北话把“为什么将就”讲明白）/ 没对上（明确说摆不平并给换季建议）；</li>
+<li><b>档期自动联动</b>：出季节自动匹配合法档期（冬→冰雪季、夏→暑期），杜绝“十一月还按十一溢价算房”的错配；</li>
+<li><b>住宿混合加权</b>：按行程中景区/城市天数比例对 scenic 与城市基准价加权，再乘档期溢价，输出间夜价区间与总预算；</li>
+<li><b>预算五项分表</b>：住宿（按 2 人一间）/吃饭（按预算档 75/115/190 元人天）/门票体验/城际（<b>极远线路自动加机票权重</b>）/12% 机动，给出人均与合计；</li>
+<li><b>一键落清单</b>：生成的行程、住宿、预算、装备自动写入「工具」页自定义清单。</li>
+</ul>
+<div class="tip">技术路线：纯前端规则引擎，无大模型依赖，小程序化可直接迁移（ wx:if + 配置表即可）；后续若接 AI 规划 Agent，本引擎的标签/线路/预算结构就是现成的约束层——AI 只在规则框架内填空，不越界编数字。</div>
+</div>
+
+
+<h2><span class="n">17</span>V2.6 增补：自驾模块 + 特产举物 + 开放素材库 + 形象定制</h2>
+<div class="card">
+<p><b>一、自驾规划（新增 🚗 独立页签，全部按公开行情规则计算）</b></p>
+<ul>
+<li><b>三种方式</b>：开自己的车进东北 / 落地租车 / 落地包车，按人数、天数、路况（城市/山区/冰雪/沿海/边境国道/林区/草原湿地）、取还车城市打分。</li>
+<li><b>七档车型库打分推荐</b>：经济轿车 / 舒适轿车 / 城市 SUV / 7 座 SUV / 硬派越野 / 商务 MPV / 纯电动（含冬季续航折价警示），每档给日租金区间（平日/旺季分档）、推荐理由与风险提示（如"底盘低，雪乡坡道别硬上""订车时问清是不是四驱"）。</li>
+<li><b>九条自驾线路</b>：G331 边境线（中国北境公路之王）、冰雪环线（哈—亚布力—雪乡）、长白山深度、五花山秋色、本溪枫叶、大连滨海线、小兴安岭森林线、湿地草原、找北之旅（哈—漠河），每条带里程/天数/路况/停车/风险。</li>
+<li><b>停车速查 10 处</b>：中央大街（极难）、冰雪大世界、长白山北坡、雪乡（需换乘）、星海广场、沈阳故宫、鸭绿江断桥、红海滩、延吉水上市场、北极村（暖库）。</li>
+<li><b>成本五项拆算</b>：租金（+异地还车费警示）+ 保险 + 冬季雪地胎加租 + 油费（按车型百公里油耗）+ 高速费 + 停车费，输出合计与人均。</li>
+<li><b>保命清单 10 条</b>：证件（边境检查站）、加油间距、电瓶冷启动、入冬三换、桥面暗冰、林区野生动物（含狍子 IP 彩蛋）、离线地图、租车验车录像、两个隐形坑（异地还车费 30%–200% / 限 200km/天）、救援电话。</li>
+<li><b>雪地胎辟谣专区</b>："不换雪地胎负全责"系谣言（吉林交警总队已辟谣），但黑龙江 11.1–次年 4.1 要求冬季胎（3PMSF），−5℃ 压实雪刹车距离多 8–12 米。</li>
+</ul>
+<p><b>二、特产美食 + 举实物（开放素材库）</b></p>
+<ul>
+<li><b>FOOD_DB 20 条</b>：马迭尔冰棍、中街大果、沈阳鸡架、鞍山南果梨（GI 产品，9 月上市后熟 3–5 天出酒香）、大连海参/鲍鱼、哈尔滨红肠、延吉冷面/打糕、丹东草莓/黄蚬子、珲春帝王蟹、盘锦河蟹、伊春蓝莓/红松子、江鱼、酸菜/粘豆包、锦州烧烤、伴手礼等，每条带价格、应季、挑选贴士与东北话推荐语。</li>
+<li><b>举实物动作</b>：点任意特产，坨坨/果果手臂抬起（CSS 动画接管，零新素材），食物悬浮在掌心做 bounce + 点头动作，同步弹出东北话气泡与推荐台详情。</li>
+<li><b>开放素材库</b>：每条食物有 <code>img</code> 字段，界面内点「🖼️ 补素材」粘贴图片链接即生效（存本机）；批量补直接改 FOOD_DB。形象同理走 PETS 数组。后期新增美食/特产零代码门槛。</li>
+</ul>
+<p><b>三、电子宠物形象定制</b></p>
+<ul>
+<li>左右两个角色位独立换形象与配色（原色/雪原/枫叶/靛蓝/夜色五套，CSS filter 实现）。</li>
+<li>支持贴自定义图片链接换成任意角色；「随机搭一只」彩蛋一键换装。</li>
+<li>新角色上线只需往 PETS 数组加一条，或在界面贴图即用。</li>
+</ul>
+<div class="tip">小程序化：自驾打分与成本公式为纯前端规则（可迁配置表）；特产/形象素材统一走 URL 字段，后端只需一张素材表（id / 类型 / 名称 / 图片 URL / 关联城市 / 应季）。图片托管建议直接用云存储（OSS/COS），避免自建图床。</div>
+</div>
+
+
+<h2><span class="n">18</span>V2.6 增补：发布托管与备案路线（已实测）</h2>
+<div class="card">
+<p><b>国内可达性实测（2026-09-20，本机国内网络、绕过代理）：</b></p>
+<table>
+<tr><th>平台</th><th>实测</th><th>判定</th></tr>
+<tr><td>WorkBuddy 托管（当前线上）</td><td>200 · 508–581ms，内容校验全中</td><td>可用，首选</td></tr>
+<tr><td>GitHub Pages（*.github.io）</td><td>226ms 快速失败</td><td>国内不可达</td></tr>
+<tr><td>Cloudflare Pages（*.pages.dev）</td><td>670ms 失败</td><td>国内不可达</td></tr>
+<tr><td>Netlify / Vercel</td><td>594 / 578ms 通</td><td>通但波动大，不可作唯一入口</td></tr>
+<tr><td>EdgeOne 国际站</td><td>750ms 通</td><td>可达（境外节点）</td></tr>
+</table>
+<p><b>纠正：</b>「GitHub Pages 作正式地址」「EdgeOne 不备案也能国内快」两条均不成立。EdgeOne 默认域名在大陆只能靠 3 小时有效期的预览链接访问，不可分享；不备案只能选境外节点。</p>
+<p><b>三阶段路线：</b>① 测试/参赛用现托管链接 + 单文件 HTML 离线分发（零准备）；② 正式公开地址 = 注册域名（¥70–90/年，<b>不要买 .cn，不备案无法解析</b>）+ EdgeOne 国际站（免备案、免费套餐）；③ 国内极速需 ICP 备案，<b>建议暂缓</b>。</p>
+<div class="tip"><b>为什么先别备案：</b>① 最终形态是微信小程序，小程序走云开发不需要 ICP 域名备案，只需「小程序备案」（微信公众平台提交）；② 个人备案站点不得含会员注册/在线交易/支付/企业商业宣传，将来商业化需推翻重来；③ 备案是长期合规负债，还需在开通后 30 日内办公安联网备案。若确定长期做独立 Web 品牌站再办：周期 5–19 个工作日，官方免费，域名实名认证须与备案主体完全一致（最常见驳回原因）。<b>CloudBase 个人版及以上环境可直接作为备案云资源，无需额外购买服务器</b>（需剩余有效期 ≥6 个月且已开启云托管固定 IP）——与小程序后端复用同一环境。</div>
+<p>GitHub 仍建议建立仓库，但<b>仅作版本管理与备份</b>，不作为访问入口。</p>
+</div>
+
+
+<h2><span class="n">19</span>V2.6 增补：无账号方案 · 分享链接 / 备份文件 / 微信 H5</h2>
+<div class="card">
+<p><b>决策：MVP 不做注册登录。</b>三条理由：① 个人备案站点不得含会员注册/在线交易/支付接口，加账号等于自断备案路；② 成本跳变（后端+数据库+短信+隐私合规，约 +1–1.5 万 / +2 周）；③ 注册墙会在价值被感知前制造流失。</p>
+<p><b>替代方案（已实装，半个工作日、零后端）：</b></p>
+<ul>
+<li><b>分享链接</b>：把当前状态（季节/人数/预算/账目/清单/规划结果）打包为 JSON → Base64 → 写入 URL 的 <code>#p=</code> 锚点。对方点开即解析，弹出「有人给你分享了一份行程」收件箱，可选「载入这份 / 我自己规划」。载入后自动同步天数、目的地、预算、季节与人数。</li>
+<li><b>导出 / 导入备份</b>：一键导出 <code>.json</code> 文件，换设备导入还原。微信内置浏览器不支持下载，界面已明确提示改用系统浏览器。</li>
+<li><b>二维码</b>：链接生成后同步出码（api.qrserver.com，实测国内 743ms 可达），便于线下/群内扫码。</li>
+<li><b>微信 H5 分享</b>：已配 <code>og:title / og:description / og:image</code>（狍坨坨母版图），微信内转发显示标题+缩略图；界面内提示「点右上角 ··· → 发送给朋友」。</li>
+</ul>
+<div class="tip"><b>为什么这样够用：</b>本应用 90% 的价值是单机可完成的（规划、算价、清单、记账）。唯一真正需要账号的场景是「组队共享 / AA 同步」——那正是<b>做小程序时用微信一键登录（wx.login 拿 openid）</b>顺带解决的，用户无感知、无密码、无短信费、无个人信息持有责任。Web 独立账号（手机号+验证码+隐私政策+注销入口）只在确定长期做独立 Web 品牌站时才值得做。</div>
+</div>
+
+</main>
+<footer>狍游记 · 可上线规划方案 V2.6（四季通用 · 规则化价格引擎）｜ 2026-09-20 ｜ 钟老师（小程序与 AI 应用开发顾问）出品 ｜ 数据口径与合规要求以最新官方文件为准</footer>
+</div>
+</body>
+</html>
