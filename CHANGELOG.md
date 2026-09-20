@@ -5,6 +5,72 @@
 
 ---
 
+## V1.3.4 · 2026-09-21
+
+**移除坨坨/果果的全部动态效果，只保留直立静置。**
+
+### 背景（用户诉求）
+> 「先不要给狍坨坨和果果加效果，都去掉，只保持现在的直立状态，你现在做的跳起来的效果
+> 就是图片给的抖动关键帧太僵硬了」
+
+V1.3 上线的自动表演调度器每 7.8s 歪头、13.5s 挥手、26s 跳一下、42s 走过去拥抱，
+其中「跳一下」（`.cute` 关键帧 `translateY(-6px) scale(1.07) rotate(±3deg)`）在写实照片上
+是整体位移，没有关节配合，观感僵硬。**决定全部撤掉，回到纯静态直立。**
+
+### 删了什么
+**CSS（共 12 个区间）**
+- 角色容器：`cursor:pointer`、`:hover{translateY(-5px)}`、`transition`（不再可点）
+- `@keyframes` 全套：`waveHand` / `popUp` / `cute` / `tiltAct` / `hugWalkA` /
+  `hugWalkB` / `hugHoldA` / `hugHoldB` / `hugBackA` / `hugBackB`
+- 对应触发规则：`.bear-wrap.wave|.cute|.tilt|.hug*`、`.a-hand`、`.pops`、`.pop`、`.pop.hugtip`
+- 常驻浮动：`.b-all` / `.bphoto` 上的 `animation:bob`；`.lv-frozen` 的 `shiver`（发抖）、
+  `.lv-hot` 的 `bob 5.5s`；`.bear-wrap.holding` 的 `hvNod`
+- 天气表情动画：`.e-breath`（哈气）、`.e-sweat`（汗滴）——连显示规则一起去掉，
+  天气档位只影响**换装**，不再有动效
+- `.gifpop` 4 条规则（GIF 表情气泡容器）
+
+**HTML**
+- 两个角色的 `.a-hand`（挥手手）、`.pops`（飘心容器）、`.gifpop`（GIF 气泡）共 6 个元素
+- hero 提示文案由「👆 点一下卖个萌 · 双击我俩抱一个 · 还会跟着实时天气换装」
+  改为「实时天气联动 · 天冷了自动换上围巾耳包」
+
+**JS**
+- 整个角色动作块：`bearTilt` / `bearWave` / `bearCute` / `bearHugTip` / `bearHug` /
+  `bearSpawnPops` / `startBearActor`（含 4 条自动调度定时器 + 绑定在角色上的
+  `click` / `dblclick` 监听）
+- `gifpop` 点击逻辑、`GIFS` 常量（顺带去掉 6 个外部 GIF 依赖）、`petTpl()` 里的 `.gifpop` 模板
+
+**顺带清理**：CSS 里残留 9 行 keyframes 残片（`50%{transform:...}}` 这类无头无尾的片段，
+历史编辑事故遗留，浏览器会整段丢弃），本次一并删除；同时删掉已失效的
+`.bear-wrap.holding .b-arm.aR`（旧 SVG 部件规则）。
+
+### 保留了什么
+- **直立静置的角色本体**（透明 WebP，V1.3.3 抠图）
+- **实时天气换装**：`.lv-chill/freeze/frozen` 显示围巾 / 耳包 / 手套 / 外套，`.lv-warm/hot` 显示墨镜
+- **配色皮肤**（`data-skin` hue-rotate）、**换形象面板**、**举实物**（`setHold`）
+- **落叶氛围**（`.fall`，属页面季节氛围，与角色无关）
+- 东北话气泡 (`neSay`)、四季切换、价格引擎、记账、导出导入、分享等全部业务功能
+
+共删除 246 行；`APP_VER` → 1.3.4，tag `v1.3.4`。
+
+### 验证
+1. **运行时诊断**（注入脚本读 `document.getAnimations()`，跑满 50s 虚拟时间覆盖原来
+   全部调度周期）：`BEAR_ANIM=0`，页面上仅剩 14 个 `fall @ SPAN`（落叶）；
+   `.a-hand / .pops / .gifpop` 各 0 个；`.gear / .hold-pop / .bear-wrap` 各 5 个（保留）。
+2. **像素比对**：6s 与 50s 两个时刻截图，角色区 98.87% 像素完全相同，
+   剩余 1.01% 差异经差异图确认**全部是飘过的落叶**——角色本体零位移。
+3. `node --check` 通过；Chrome 截图确认 hero 版式、装扮层定位、气泡、形象面板均正常。
+
+### 已知未处理（留档待定）
+- **`.hold-pop` 没有任何 CSS 定义**（"举实物"的浮层容器），`showFood()` 触发后
+  实物图会以块级元素插在角色下方并撑开 hero 版式。属 V1.3.3 之前就存在的坏点，
+  与本次改动无关，未擅自修改，待确认后再处理。
+- `@keyframes bob/shiver/puff/sweatdrop/hvNod` 的定义在本版之前**就已经丢失**
+  （被历史编辑切成残片），即那些 `animation:` 引用早已失效——这也是为什么
+  真正在跑的只有 4 条自动调度。
+
+---
+
 ## V1.3.3 · 2026-09-21
 
 **修复：果果被抠掉左耳/左臂（「缺肉」）；去掉角色名字牌。**

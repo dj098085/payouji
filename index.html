@@ -155,39 +155,17 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 /* ===== 动态IP角色 ===== */
 .bears{flex-wrap:wrap;}
 .bears .say{flex:1 1 100%;}
-.bear-wrap{position:relative;flex:0 0 auto;cursor:pointer;transition:transform .3s;}
-.bear-wrap:hover{transform:translateY(-5px);}
+.bear-wrap{position:relative;flex:0 0 auto;}
 .bear-wrap.b1{width:112px;}
 .bear-wrap.b2{width:94px;}
 .bear-hint{flex:1 1 100%;text-align:right;font-size:11px;color:#C9A96E;padding-top:2px;}
-.gifpop{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);width:150px;background:#fff;border-radius:18px;padding:7px;box-shadow:0 8px 26px rgba(60,35,10,.22);display:none;z-index:40;}
-.gifpop img{width:100%;border-radius:12px;display:block;}
-.gifpop:after{content:"";position:absolute;top:100%;left:50%;margin-left:-8px;border:8px solid transparent;border-top-color:#fff;}
-.gifpop .cap{font-size:11.5px;text-align:center;color:var(--caramel-deep);font-weight:700;padding:4px 0 2px;}
 /* 分层动画 */
-.b-all{transform-box:fill-box;transform-origin:50% 100%;animation:bob 3.2s ease-in-out infinite;}
-50%{transform:translateY(-4px)}}
-50%{transform:scale(1.035)}}
-96%{transform:scaleY(.08)}}
-50%{transform:rotate(13deg)}}
-91%{transform:rotate(-9deg)}95%{transform:rotate(6deg)}}
-50%{transform:rotate(-26deg)}}
-25%{transform:translateX(-2.2px)}75%{transform:translateX(2.2px)}}
-30%{opacity:.9}100%{opacity:0;transform:translate(16px,-16px) scale(1.6)}}
-25%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
 /* 温度档显隐：默认全隐藏 */
 .o-scarf,.o-earmuffs,.o-gloves,.o-coat,.o-shades,.e-sweat,.e-breath{display:none;}
 .lv-chill .o-scarf{display:block;}
 .lv-freeze .o-scarf,.lv-freeze .o-earmuffs,.lv-freeze .o-gloves{display:block;}
 .lv-frozen .o-scarf,.lv-frozen .o-earmuffs,.lv-frozen .o-gloves,.lv-frozen .o-coat{display:block;}
-.lv-frozen .b-all{animation:bob 3.2s ease-in-out infinite,shiver .38s linear infinite;}
-.lv-frozen .e-breath,.lv-freeze .e-breath{display:block;}
-.e-breath circle{animation:puff 2.4s ease-out infinite;opacity:0;}
-.e-breath .p2{animation-delay:1.2s;}
 .lv-warm .o-shades,.lv-hot .o-shades{display:block;}
-.lv-hot .e-sweat{display:block;}
-.e-sweat path{animation:sweatdrop 1.7s linear infinite;opacity:0;}
-.lv-hot .b-all{animation:bob 5.5s ease-in-out infinite;}
 /* 季节粒子 */
 .fall{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
 .fall span{position:absolute;top:-26px;animation:fall linear infinite;}
@@ -302,9 +280,6 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 
 /* ===== 举实物 ===== */
 .bear-wrap{overflow:visible;}
-50%{transform:translateY(-8px) rotate(5deg)}}
-.bear-wrap.holding .b-arm.aR{transform:rotate(-64deg);transform-origin:139px 152px;}
-50%{transform:rotate(-3deg)}}
 .stage{display:flex;gap:12px;align-items:center;background:linear-gradient(135deg,#FFF7E9,#FFFDF8);border:1px solid #F2E3C8;border-radius:16px;padding:12px;margin-bottom:12px;}
 .stage .sb{width:118px;flex:0 0 auto;position:relative;}
 .stage .sb .bear-wrap{width:100%;}
@@ -351,7 +326,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 
 .hero h1 .ver{font-size:11px;vertical-align:middle;margin-left:7px;color:#8C6F52;background:#fff;border:1px solid #F0E3CE;border-radius:7px;padding:2px 7px;font-weight:700;letter-spacing:0;box-shadow:0 2px 6px rgba(140,90,43,.08);}
 
-.bphoto{position:relative;width:100%;animation:bob 3.2s ease-in-out infinite;transform-origin:50% 100%;}
+.bphoto{position:relative;width:100%;}
 
 .bphoto img{display:block;width:100%;height:auto;}
 
@@ -361,13 +336,6 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 
 .b2 .bphoto{margin-bottom:8px;}
 
-.lv-frozen .bphoto{animation:bob 3.2s ease-in-out infinite,shiver .38s linear infinite;}
-
-.lv-hot .bphoto{animation:bob 5.5s ease-in-out infinite;}
-
-.bear-wrap.holding .bphoto{animation:hvNod .7s ease-in-out infinite;}
-
-.bear-wrap.holding .bphoto img{animation:none;}
 
 .bear-wrap[data-skin="snow"] .bphoto img{filter:hue-rotate(-18deg) saturate(.55) brightness(1.09);}
 
@@ -383,111 +351,6 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .wxTip.on{display:block;}
 
 .petimg{width:100%;height:auto;display:block;}
-/* ===== 3D 毛绒动态表情（叠加层，不影响版式） ===== */
-
-
-.a-hand{position:absolute;right:-8px;top:46%;width:32px;height:32px;pointer-events:none;opacity:0;transform:rotate(0deg);transform-origin:20% 80%;z-index:6;}
-.bear-wrap.b2 .a-hand{right:-6px;width:28px;height:28px;top:48%;}
-.bear-wrap.wave .a-hand{animation:waveHand 1.1s ease-in-out;}
-@keyframes waveHand{0%,100%{opacity:0;transform:rotate(0deg)}15%{opacity:1;transform:rotate(-28deg)}30%{transform:rotate(12deg)}45%{transform:rotate(-28deg)}60%{transform:rotate(12deg)}80%{opacity:1;transform:rotate(0deg)}100%{opacity:0}}
-
-.pops{position:absolute;inset:0;pointer-events:none;z-index:7;}
-.pop{position:absolute;font-size:16px;animation:popUp 1.2s ease-out forwards;opacity:0;}
-@keyframes popUp{0%{opacity:0;transform:translateY(0) scale(.3)}20%{opacity:1;transform:translateY(-18px) scale(1.1)}100%{opacity:0;transform:translateY(-70px) scale(.6)}}
-
-.bear-wrap.cute{animation:cute 1s ease-in-out;}
-@keyframes cute{0%,100%{transform:translateY(0) scale(1)}25%{transform:translateY(-6px) scale(1.07) rotate(-3deg)}50%{transform:translateY(-6px) scale(1.07) rotate(3deg)}75%{transform:translateY(-3px) scale(1.04) rotate(0deg)}}
-
-
-/* ===== V1.3 角色动作：照片本体不动，只做叠加变换，不占布局 ===== */
-.bear-wrap{transform-origin:50% 88%;}
-.bear-wrap .a-hand{width:30px;height:30px;}
-.bear-wrap.b2 .a-hand{width:26px;height:26px;}
-
-/* 歪头卖萌（替代原“眼睑眨眼”，避免在写实眼睛上盖色块） */
-.bear-wrap.tilt{animation:tiltAct 2s cubic-bezier(.45,.05,.55,.95);}
-@keyframes tiltAct{
- 0%{transform:rotate(0deg) translateY(0) scale(1,1)}
- 16%{transform:rotate(-7deg) translateY(-2px) scale(1.015,.985)}
- 44%{transform:rotate(-7deg) translateY(-3px) scale(1.02,.98)}
- 64%{transform:rotate(4deg) translateY(-1px) scale(.99,1.01)}
- 82%{transform:rotate(-1.5deg) translateY(0) scale(1.005,.995)}
- 100%{transform:rotate(0deg) translateY(0) scale(1,1)}
-}
-
-/* 走过去：踏步（绕脚底左右交替倾斜 + 重心起伏 = 迈步感）*/
-.bear-wrap.hugWalkA{animation:hugWalkA 1.15s cubic-bezier(.4,.06,.5,.96) forwards;}
-.bear-wrap.hugWalkB{animation:hugWalkB 1.15s cubic-bezier(.4,.06,.5,.96) .16s forwards;}
-@keyframes hugWalkA{
- 0%{transform:translateX(0) translateY(0) rotate(0deg) scale(1,1)}
- 11%{transform:translateX(0) translateY(-5px) rotate(-6.5deg) scale(1.025,.955)}
- 22%{transform:translateX(1px) translateY(1px) rotate(6.5deg) scale(.975,1.03)}
- 33%{transform:translateX(2px) translateY(-5px) rotate(-6.5deg) scale(1.025,.955)}
- 44%{transform:translateX(3px) translateY(1px) rotate(6.5deg) scale(.975,1.03)}
- 55%{transform:translateX(4px) translateY(-5px) rotate(-5.5deg) scale(1.022,.968)}
- 66%{transform:translateX(5px) translateY(1px) rotate(5.5deg) scale(.98,1.025)}
- 78%{transform:translateX(6px) translateY(-4px) rotate(-4.5deg) scale(1.018,.975)}
- 90%{transform:translateX(7px) translateY(0) rotate(3deg) scale(1.008,.992)}
- 100%{transform:translateX(8px) translateY(0) rotate(0deg) scale(1,1)}
-}
-@keyframes hugWalkB{
- 0%{transform:translateX(0) translateY(0) rotate(0deg) scale(1,1)}
- 11%{transform:translateX(0) translateY(-5px) rotate(6.5deg) scale(1.025,.955)}
- 22%{transform:translateX(-1px) translateY(1px) rotate(-6.5deg) scale(.975,1.03)}
- 33%{transform:translateX(-2px) translateY(-5px) rotate(6.5deg) scale(1.025,.955)}
- 44%{transform:translateX(-3px) translateY(1px) rotate(-6.5deg) scale(.975,1.03)}
- 55%{transform:translateX(-4px) translateY(-5px) rotate(5.5deg) scale(1.022,.968)}
- 66%{transform:translateX(-5px) translateY(1px) rotate(-5.5deg) scale(.98,1.025)}
- 78%{transform:translateX(-6px) translateY(-4px) rotate(4.5deg) scale(1.018,.975)}
- 90%{transform:translateX(-7px) translateY(0) rotate(-3deg) scale(1.008,.992)}
- 100%{transform:translateX(-8px) translateY(0) rotate(0deg) scale(1,1)}
-}
-
-/* 扑上去抱住：前倾 + 起跳 + 贴身挤压，保持倚靠姿态 */
-.bear-wrap.hugHoldA{animation:hugHoldA 1.75s cubic-bezier(.36,.07,.19,.97) forwards;}
-.bear-wrap.hugHoldB{animation:hugHoldB 1.75s cubic-bezier(.36,.07,.19,.97) forwards;}
-@keyframes hugHoldA{
- 0%{transform:translateX(8px) translateY(0) rotate(0deg) scale(1,1)}
- 15%{transform:translateX(12px) translateY(-11px) rotate(15deg) scale(1.07,.925)}
- 30%{transform:translateX(10px) translateY(-2px) rotate(9deg) scale(1.035,.975)}
- 48%{transform:translateX(13px) translateY(-12px) rotate(16deg) scale(1.075,.92)}
- 64%{transform:translateX(11px) translateY(-4px) rotate(11deg) scale(1.045,.965)}
- 80%{transform:translateX(12px) translateY(-9px) rotate(14deg) scale(1.06,.945)}
- 100%{transform:translateX(11px) translateY(-8px) rotate(13deg) scale(1.05,.955)}
-}
-@keyframes hugHoldB{
- 0%{transform:translateX(-8px) translateY(0) rotate(0deg) scale(1,1)}
- 15%{transform:translateX(-12px) translateY(-11px) rotate(-15deg) scale(1.07,.925)}
- 30%{transform:translateX(-10px) translateY(-2px) rotate(-9deg) scale(1.035,.975)}
- 48%{transform:translateX(-13px) translateY(-12px) rotate(-16deg) scale(1.075,.92)}
- 64%{transform:translateX(-11px) translateY(-4px) rotate(-11deg) scale(1.045,.965)}
- 80%{transform:translateX(-12px) translateY(-9px) rotate(-14deg) scale(1.06,.945)}
- 100%{transform:translateX(-11px) translateY(-8px) rotate(-13deg) scale(1.05,.955)}
-}
-
-/* 松开、各自踏回原位 */
-.bear-wrap.hugBackA{animation:hugBackA 1s cubic-bezier(.4,.06,.5,.96) forwards;}
-.bear-wrap.hugBackB{animation:hugBackB 1s cubic-bezier(.4,.06,.5,.96) forwards;}
-@keyframes hugBackA{
- 0%{transform:translateX(11px) translateY(-8px) rotate(13deg) scale(1.05,.955)}
- 20%{transform:translateX(13px) translateY(-10px) rotate(4deg) scale(1.03,.97)}
- 48%{transform:translateX(6px) translateY(-2px) rotate(6.5deg) scale(.985,1.02)}
- 72%{transform:translateX(2px) translateY(-4px) rotate(-5.5deg) scale(1.02,.98)}
- 100%{transform:translateX(0) translateY(0) rotate(0deg) scale(1,1)}
-}
-@keyframes hugBackB{
- 0%{transform:translateX(-11px) translateY(-8px) rotate(-13deg) scale(1.05,.955)}
- 20%{transform:translateX(-13px) translateY(-10px) rotate(-4deg) scale(1.03,.97)}
- 48%{transform:translateX(-6px) translateY(-2px) rotate(-6.5deg) scale(.985,1.02)}
- 72%{transform:translateX(-2px) translateY(-4px) rotate(5.5deg) scale(1.02,.98)}
- 100%{transform:translateX(0) translateY(0) rotate(0deg) scale(1,1)}
-}
-
-/* 抱抱时的文字气泡 */
-.pop.hugtip{font-size:11px;font-weight:800;color:#C4553B;white-space:nowrap;background:#fff;
- border-radius:99px;padding:2px 9px;box-shadow:0 4px 14px rgba(60,35,10,.18);position:absolute;}
-
-/* 地面投影：让“起跳抱住”有落点参照，动作才有重量感 */
 </style>
 </head>
 <body>
@@ -512,9 +375,6 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
           <div class="hold-pop"></div>
         </div>
       </div>
-      <svg class="a-hand" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="22" fill="#F5C24D"/><path d="M22 34 Q30 20 38 34" stroke="#3A2A1A" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="23" cy="28" r="3" fill="#3A2A1A"/><circle cx="37" cy="28" r="3" fill="#3A2A1A"/></svg>
-      <div class="pops"></div>
-      <div class="gifpop"><img alt="坨坨"><div class="cap"></div></div>
     </div>
     <div class="bear-wrap b2" id="bearGG" data-skin="raw">
       <div class="bphoto">
@@ -530,12 +390,9 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
           <div class="hold-pop"></div>
         </div>
       </div>
-      <svg class="a-hand" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="22" fill="#B7A6E0"/><path d="M22 34 Q30 20 38 34" stroke="#3A2A1A" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="23" cy="28" r="3" fill="#3A2A1A"/><circle cx="37" cy="28" r="3" fill="#3A2A1A"/></svg>
-      <div class="pops"></div>
-      <div class="gifpop"><img alt="果果"><div class="cap"></div></div>
     </div>
     <div class="say" id="heroSay"><b>坨坨：</b>东北一年四张脸——春看杜鹃、夏来避暑、秋赏五花山、冬玩冰雪，哪季来都不白来。<br><b>果果：</b>选个季节，清单和线路我给你换好，嗷嗷～</div>
-    <div class="bear-hint">👆 点一下卖个萌 · <b>双击我俩抱一个</b> · 还会跟着实时天气换装</div>
+    <div class="bear-hint">实时天气联动 · 天冷了自动换上围巾耳包</div>
   </div>
    <div class="fall" id="fallBox"></div>
 
@@ -1043,7 +900,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.3.3';
+const APP_VER='1.3.4';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
@@ -1579,14 +1436,6 @@ document.getElementById('rvText').value=S.rv;
 document.getElementById('destAll').onclick=()=>{S.showAll=!S.showAll;save();renderDests();};
 
 /* ============ 动态IP & 实时天气引擎 ============ */
-const GIFS=[
- ['喜','https://workbuddy-space-static.codebuddy.work/image/OY3SFi2j2fmtqFr2C1rG2q.gif'],
- ['乐','https://workbuddy-space-static.codebuddy.work/image/Fe0tQLkMsqBC5fbHJEB3pI.gif'],
- ['比心','https://workbuddy-space-static.codebuddy.work/image/cJobRdx1KhBLKydoRgDqFj.gif'],
- ['抱抱','https://workbuddy-space-static.codebuddy.work/image/ujegULdJSrMH9FXJeeDmQm.gif'],
- ['贴贴','https://workbuddy-space-static.codebuddy.work/image/uyK5VeAC5QCCcMGIJ9IUj.gif'],
- ['胜利','https://workbuddy-space-static.codebuddy.work/image/lSW9JHqDHeVfhGKfMnJv47.gif']
-];
 const WXCITY=[
  ['hrb','哈尔滨',45.80,126.53],['cc','长春',43.88,125.32],['sy','沈阳',41.80,123.43],['dl','大连',38.91,121.60],
  ['jl','吉林市',43.84,126.55],['yj','延吉',42.91,129.51],['mdj','牡丹江',44.55,129.63],['qqhe','齐齐哈尔',47.35,123.92],
@@ -1666,19 +1515,6 @@ function buildFall(){
   box.appendChild(s);
  }
 }
-/* 逗TA：GIF 表情气泡 */
-let gifTimer=null;
-document.querySelectorAll('.bear-wrap').forEach(w=>{
- w.addEventListener('click',()=>{
-  const p=w.querySelector('.gifpop');
-  const g=GIFS[Math.floor(Math.random()*GIFS.length)];
-  p.querySelector('img').src=g[1];
-  p.querySelector('.cap').textContent=(w.id==='bearTT'?'坨坨：嗷呜～':'果果：嗷嗷～')+g[0];
-  p.style.display='block';
-  clearTimeout(gifTimer);
-  gifTimer=setTimeout(()=>{p.style.display='none';},3800);
- });
-});
 /* 天气 UI 绑定 */
 (function(){
  const sel=document.getElementById('wxCity');
@@ -2497,7 +2333,7 @@ const SKINS=[['raw','原色'],['snow','雪原'],['maple','枫叶'],['berry','靛
 if(!S.pet) S.pet={A:{pet:'tt',skin:'raw',img:''},B:{pet:'gg',skin:'raw',img:''}};
 const PET_TPL={};
 function petTpl(p){
- if(p.img&&p.img.length>4) return `<div class="bphoto"><img class="b-all petimg" src="${p.img}" alt="形象"></div><div class="gifpop"><img alt=""><div class="cap"></div></div>`;
+ if(p.img&&p.img.length>4) return `<div class="bphoto"><img class="b-all petimg" src="${p.img}" alt="形象"></div>`;
  const base=PET_TPL[p.pet]||PET_TPL.tt||'';
  return base;
 }
@@ -2751,89 +2587,6 @@ function shareBoot(){
 
 shareBoot();
 renderSeason();renderPpl();renderPeriod();renderPrice();renderHotel();renderExp();renderList();review();renderDriveForm();renderPark();renderLife();renderFoodGrid();petBoot();genDrive(false);renderGenForm();
-
-/* ===== 3D 毛绒角色小动作 ===== */
-function bearTilt(id){
-  const el=document.getElementById(id); if(!el) return;
-  el.classList.add('tilt');
-  setTimeout(()=>el.classList.remove('tilt'), 2100);
-}
-function bearWave(id){
-  const el=document.getElementById(id); if(!el) return;
-  el.classList.add('wave');
-  setTimeout(()=>el.classList.remove('wave'), 1200);
-}
-function bearCute(id){
-  const el=document.getElementById(id); if(!el) return;
-  el.classList.add('cute');
-  bearSpawnPops(el, ['❤️','💖','✨','🌟'][Math.floor(Math.random()*4)], 3);
-  setTimeout(()=>el.classList.remove('cute'), 1050);
-}
-function bearHugTip(el, txt, delay){
-  setTimeout(()=>{
-    const box=el.querySelector('.pops'); if(!box) return;
-    const sp=document.createElement('span');
-    sp.className='pop hugtip'; sp.textContent=txt;
-    sp.style.left='6%'; sp.style.top='2%'; sp.style.animationDuration='1.55s';
-    box.appendChild(sp); setTimeout(()=>sp.remove(), 2000);
-  }, delay||0);
-}
-function bearHug(){
-  const tt=document.getElementById('bearTT'), gg=document.getElementById('bearGG');
-  if(!tt||!gg) return;
-  /* 1) 踏步走过去 */
-  tt.classList.add('hugWalkA'); gg.classList.add('hugWalkB');
-  setTimeout(()=>{ bearSpawnPops(Math.random()<.5?tt:gg,'✨',1); }, 560);
-  /* 2) 扑上去抱住 */
-  setTimeout(()=>{
-    tt.classList.remove('hugWalkA'); gg.classList.remove('hugWalkB');
-    tt.classList.add('hugHoldA'); gg.classList.add('hugHoldB');
-    bearSpawnPops(tt,['💕','💗','💖'][Math.floor(Math.random()*3)],2);
-    bearSpawnPops(gg,['💞','💕','✨'][Math.floor(Math.random()*3)],2);
-    bearHugTip(tt,'抱一个！',0);
-    bearHugTip(gg,'蹭蹭～',280);
-  }, 1260);
-  /* 3) 松开，踏步回原位 */
-  setTimeout(()=>{
-    tt.classList.remove('hugHoldA'); gg.classList.remove('hugHoldB');
-    tt.classList.add('hugBackA'); gg.classList.add('hugBackB');
-  }, 3120);
-  setTimeout(()=>{
-    tt.classList.remove('hugBackA'); gg.classList.remove('hugBackB');
-  }, 4160);
-}
-function bearSpawnPops(el, emoji, n){
-  const box=el.querySelector('.pops'); if(!box) return;
-  for(let i=0;i<n;i++){
-    const s=document.createElement('span'); s.className='pop'; s.textContent=emoji;
-    s.style.left=(20+Math.random()*60)+'%'; s.style.top=(20+Math.random()*50)+'%';
-    s.style.animationDelay=(Math.random()*0.3)+'s';
-    box.appendChild(s); setTimeout(()=>s.remove(), 1300);
-  }
-}
-(function startBearActor(){
-  if(window.__bearActor) return; window.__bearActor=true;
-  const acts=[
-    {n:'tilt',w:7800,fn:()=>bearTilt(['bearTT','bearGG'][Math.random()<.5?0:1])},
-    {n:'wave',w:13500,fn:()=>bearWave(['bearTT','bearGG'][Math.random()<.5?0:1])},
-    {n:'cute',w:26000,fn:()=>bearCute(['bearTT','bearGG'][Math.random()<.5?0:1])},
-    {n:'hug',w:42000,fn:bearHug,lockMs:4400}
-  ];
-  let lock=false;
-  function next(a){
-    setTimeout(()=>{
-      if(!lock){ lock=true; a.fn(); setTimeout(()=>lock=false, a.lockMs||1300); }
-      next(a);
-    }, a.w*(0.7+Math.random()*0.6));
-  }
-  acts.forEach(next);
-  function bindBear(id){
-    const el=document.getElementById(id); if(!el) return;
-    el.addEventListener('dblclick',e=>{ e.preventDefault(); if(lock) return; lock=true; bearHug(); setTimeout(()=>lock=false,4400); });
-    el.addEventListener('click',()=>{ if(lock) return; lock=true; bearCute(id); setTimeout(()=>lock=false,1200); });
-  }
-  bindBear('bearTT'); bindBear('bearGG');
-})();
 
 </script>
 </body>
