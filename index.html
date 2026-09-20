@@ -7,7 +7,7 @@
 <meta name="description" content="狍游记——东北神兽狍坨坨与狍果果陪你游东北。四季通用：错峰规划、防宰客价格、小众目的地、本地小馆，含记账打卡清单与行后复盘，一键把行程分享给同伴。">
 <meta property="og:title" content="狍游记 · 坨坨果果陪你游东北">
 <meta property="og:description" content="四季通用的东北旅行管家：按人数给交通与防宰客价格，只推本地人去的小馆和冷门好地方，行程一键分享给同伴。">
-<meta property="og:image" content="https://workbuddy-space-static.codebuddy.work/image/LyHJ7EEJCBOMj3pWLiuhIU.jpg">
+<meta property="og:image" content="https://workbuddy-space-static.codebuddy.work/image/c3Kw1vc6VL2pmnOH7LjVvM.jpg">
 <meta property="og:type" content="website">
 <meta name="format-detection" content="telephone=no">
 <style>
@@ -158,215 +158,46 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 /* ===== 动态IP角色 ===== */
 .bears{flex-wrap:wrap;}
 .bears .say{flex:1 1 100%;}
-.bear-wrap{position:relative;flex:0 0 auto;cursor:pointer;transition:transform .3s;}
+.bear-wrap{position:relative;flex:0 0 auto;cursor:pointer;transition:transform .3s;overflow:visible;}
 .bear-wrap:hover{transform:translateY(-5px);}
-.bear-wrap svg{display:block;overflow:visible;}
-.bear-wrap.b1{width:112px;} .bear-wrap.b1 svg{width:112px;height:124px;}
-.bear-wrap.b2{width:94px;} .bear-wrap.b2 svg{width:94px;height:104px;margin-bottom:14px;}
-.btag{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);font-size:10px;background:#fff;border-radius:99px;padding:1px 8px;color:var(--caramel-deep);font-weight:700;box-shadow:var(--shadow);white-space:nowrap;}
+.bphoto{position:relative;width:100%;border-radius:46% 46% 38% 38%;overflow:hidden;animation:bob 3.2s ease-in-out infinite;transform-origin:50% 100%;background:#F5E6D0;}
+.bphoto img{display:block;width:100%;height:auto;}
+.gear{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
+.gear svg{position:absolute;top:0;left:0;width:100%;height:100%;display:block;overflow:visible;display:none;}
+.bear-wrap.b1{width:124px;}
+.bear-wrap.b2{width:112px;}
+.b2 .bphoto{margin-bottom:8px;}
+.btag{position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);font-size:10px;background:#fff;border-radius:99px;padding:1px 8px;color:var(--caramel-deep);font-weight:700;box-shadow:var(--shadow);white-space:nowrap;}
 .b2 .btag{bottom:4px;}
 .bear-hint{flex:1 1 100%;text-align:right;font-size:11px;color:#C9A96E;padding-top:2px;}
 .gifpop{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);width:150px;background:#fff;border-radius:18px;padding:7px;box-shadow:0 8px 26px rgba(60,35,10,.22);display:none;z-index:40;}
 .gifpop img{width:100%;border-radius:12px;display:block;}
 .gifpop:after{content:"";position:absolute;top:100%;left:50%;margin-left:-8px;border:8px solid transparent;border-top-color:#fff;}
 .gifpop .cap{font-size:11.5px;text-align:center;color:var(--caramel-deep);font-weight:700;padding:4px 0 2px;}
-/* 分层动画 */
-.b-all{transform-box:fill-box;transform-origin:50% 100%;animation:bob 3.2s ease-in-out infinite;}
-.b-body{transform-box:fill-box;transform-origin:50% 100%;animation:breathe 3.2s ease-in-out infinite;}
-.b-eyes{transform-box:fill-box;transform-origin:50% 55%;animation:blink 4.6s infinite;}
-.b-tail{transform-box:fill-box;transform-origin:85% 85%;animation:wag 2.6s ease-in-out infinite;}
-.b-ear{transform-box:fill-box;transform-origin:50% 95%;}
-.b-ear.earR{animation:twitch 5.4s infinite;}
-.b-arm{transform-box:fill-box;transform-origin:50% 12%;}
-.b2 .aR{animation:wave 2.8s ease-in-out infinite;}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
-@keyframes blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
-@keyframes wag{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(13deg)}}
-@keyframes twitch{0%,87%,100%{transform:rotate(0)}91%{transform:rotate(-9deg)}95%{transform:rotate(6deg)}}
-@keyframes wave{0%,100%{transform:rotate(6deg)}50%{transform:rotate(-26deg)}}
-@keyframes shiver{0%,100%{transform:translateX(0)}25%{transform:translateX(-2.2px)}75%{transform:translateX(2.2px)}}
-@keyframes puff{0%{opacity:0;transform:translate(0,0) scale(.5)}30%{opacity:.9}100%{opacity:0;transform:translate(16px,-16px) scale(1.6)}}
-@keyframes sweatdrop{0%{opacity:0;transform:translateY(-4px)}25%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
-/* 温度档显隐：默认全隐藏 */
 .o-scarf,.o-earmuffs,.o-gloves,.o-coat,.o-shades,.e-sweat,.e-breath{display:none;}
 .lv-chill .o-scarf{display:block;}
 .lv-freeze .o-scarf,.lv-freeze .o-earmuffs,.lv-freeze .o-gloves{display:block;}
 .lv-frozen .o-scarf,.lv-frozen .o-earmuffs,.lv-frozen .o-gloves,.lv-frozen .o-coat{display:block;}
-.lv-frozen .b-all{animation:bob 3.2s ease-in-out infinite,shiver .38s linear infinite;}
+.lv-frozen .bphoto{animation:bob 3.2s ease-in-out infinite,shiver .38s linear infinite;}
 .lv-frozen .e-breath,.lv-freeze .e-breath{display:block;}
 .e-breath circle{animation:puff 2.4s ease-out infinite;opacity:0;}
 .e-breath .p2{animation-delay:1.2s;}
 .lv-warm .o-shades,.lv-hot .o-shades{display:block;}
 .lv-hot .e-sweat{display:block;}
 .e-sweat path{animation:sweatdrop 1.7s linear infinite;opacity:0;}
-.lv-hot .b-all{animation:bob 5.5s ease-in-out infinite;}
-/* 季节粒子 */
-.fall{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
-.fall span{position:absolute;top:-26px;animation:fall linear infinite;}
-@keyframes fall{to{transform:translateY(430px) rotate(330deg);}}
-/* 实时天气卡 */
-.wx-big{font-size:32px;font-weight:800;color:var(--caramel-deep);line-height:1;}
-.wx-big small{font-size:13px;color:var(--ink2);font-weight:600;}
-.wx-sub{font-size:11.5px;color:var(--ink2);line-height:1.7;}
-.wx-live{font-size:10px;background:var(--green);color:#fff;border-radius:99px;padding:2px 8px;font-weight:700;}
-.wx-sim{font-size:10px;background:#D9C6A6;color:#6B5533;border-radius:99px;padding:2px 8px;font-weight:700;}
-.bear-say{background:var(--gold-soft);border-radius:14px;padding:9px 12px;font-size:12.5px;color:#7A5A22;line-height:1.7;margin-top:10px;display:none;}
-.bear-say.on{display:block;}
-
-/* ============ 东北话气泡 ============ */
-#neToast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%) translateY(14px);
- width:min(400px,calc(100% - 28px));z-index:99;opacity:0;pointer-events:none;transition:.34s cubic-bezier(.2,.9,.3,1.2);}
-#neToast.on{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
-.ne-bub{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1.5px solid var(--caramel);
- border-radius:16px;padding:10px 12px;box-shadow:0 8px 26px rgba(90,60,25,.20);}
-.ne-face{flex:0 0 34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
- font-size:17px;font-weight:800;color:#fff;}
-.ne-face.t{background:linear-gradient(145deg,#E0AE7C,#C98B54);}
-.ne-face.g{background:linear-gradient(145deg,#FBEBD2,#E8CFA6);color:#8A6A3A;}
-.ne-txt{flex:1;font-size:12.8px;line-height:1.66;color:var(--ink);}
-.ne-txt b{color:var(--caramel-deep);}
-.ne-txt .who{font-size:11px;color:#B09877;display:block;margin-bottom:1px;}
-.ne-close{flex:0 0 auto;border:0;background:transparent;color:#C3B096;font-size:15px;cursor:pointer;padding:0 2px;line-height:1;}
-
-/* ============ 帮我规划 ============ */
-.gen-q{margin-bottom:16px;}
-.gen-qt{font-size:12.8px;font-weight:800;color:var(--ink);margin-bottom:7px;display:flex;align-items:center;gap:5px;}
-.gen-qt small{font-weight:500;color:#B09877;font-size:11px;}
-.opts{display:flex;flex-wrap:wrap;gap:7px;}
-.opt{border:1.4px solid var(--line);background:#fff;border-radius:99px;padding:7px 13px;font-size:12.2px;
- color:var(--ink2);cursor:pointer;transition:.16s;user-select:none;line-height:1.3;}
-.opt:hover{border-color:var(--caramel);color:var(--caramel-deep);}
-.opt.on{background:var(--caramel);border-color:var(--caramel);color:#fff;font-weight:700;
- box-shadow:0 3px 10px rgba(200,140,80,.28);}
-.gen-go{width:100%;border:0;border-radius:14px;padding:13px;font-size:14.5px;font-weight:800;cursor:pointer;
- background:linear-gradient(135deg,var(--caramel),var(--caramel-deep));color:#fff;
- box-shadow:0 6px 18px rgba(160,105,50,.32);margin-top:4px;letter-spacing:1px;}
-.gen-go:active{transform:translateY(1px);}
-.gen-more{font-size:11.5px;color:#B09877;text-align:center;margin-top:9px;cursor:pointer;text-decoration:underline;}
-.res-hero{background:linear-gradient(140deg,#FFF6E7,#FCEBD2);border:1.5px dashed var(--caramel);
- border-radius:16px;padding:12px 13px;font-size:13px;line-height:1.75;color:#7A5A22;}
-.res-hero b{color:var(--caramel-deep);}
-.rec{display:flex;gap:9px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line);}
-.rec:last-child{border-bottom:0;}
-.rec-n{flex:0 0 22px;height:22px;border-radius:7px;background:var(--caramel);color:#fff;font-size:11.5px;
- font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px;}
-.rec-b{flex:1;min-width:0;}
-.rec-t{font-size:12.9px;font-weight:800;color:var(--ink);}
-.rec-d{font-size:11.8px;color:var(--ink2);line-height:1.68;margin-top:2px;}
-.rec-s{display:flex;align-items:center;gap:6px;margin-top:5px;}
-.rec-bar{flex:1;height:5px;background:#EFE4D2;border-radius:99px;overflow:hidden;}
-.rec-bar i{display:block;height:100%;background:linear-gradient(90deg,#E8B978,#C98B54);border-radius:99px;}
-.rec-v{font-size:10.5px;color:#B09877;font-weight:700;}
-.pl-d{border-left:2.5px solid var(--caramel);padding:0 0 0 11px;margin:0 0 13px;}
-.pl-dh{font-size:12.6px;font-weight:800;color:var(--caramel-deep);margin-bottom:5px;}
-.pl-i{font-size:12.1px;color:var(--ink2);line-height:1.72;padding:1.5px 0;}
-.pl-tag{display:inline-block;font-size:10px;background:var(--gold-soft);color:#8A6A3A;border-radius:6px;
- padding:1px 6px;margin-left:5px;vertical-align:1px;}
-.cost-tb{width:100%;border-collapse:collapse;font-size:12.1px;}
-.cost-tb td{padding:6px 2px;border-bottom:1px dashed var(--line);color:var(--ink2);}
-.cost-tb td:last-child{text-align:right;font-weight:800;color:var(--ink);white-space:nowrap;}
-.cost-tb tr.sum td{border-bottom:0;border-top:1.6px solid var(--caramel);padding-top:9px;font-size:13.4px;}
-.cost-tb tr.sum td:last-child{color:var(--caramel-deep);}
-.warnbox{background:#FFF3F1;border:1.4px solid #F0BDB2;border-radius:13px;padding:10px 12px;
- font-size:12.1px;line-height:1.72;color:#8C4A3C;margin-top:10px;}
-.okbox{background:#F1F8F0;border:1.4px solid #B9D9B4;border-radius:13px;padding:10px 12px;
- font-size:12.1px;line-height:1.72;color:#3E6B3C;margin-top:10px;}
-
-/* ===== 自驾模块 ===== */
-.tabbar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
-.tabbar::-webkit-scrollbar{display:none;}
-.tabbar button{flex:0 0 auto;min-width:52px;}
-.dv-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:7px;}
-.dv-lab{font-size:12px;color:var(--ink2);min-width:52px;font-weight:700;}
-.dv-car{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 13px;margin-bottom:10px;}
-.dv-car.top{border:2px solid var(--caramel);background:linear-gradient(180deg,#FFF9EF,#fff);}
-.dv-car h4{font-size:13.5px;margin-bottom:3px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
-.dv-car .rank{background:var(--caramel);color:#fff;font-size:10px;border-radius:6px;padding:1px 6px;font-weight:700;}
-.dv-car .rank.r2{background:#C9A227;}
-.dv-car .rank.r3{background:#B8A88F;}
-.dv-car .ex{font-size:11px;color:#B8A88F;margin:2px 0 6px;}
-.dv-car p{font-size:12px;color:var(--ink2);line-height:1.7;margin:4px 0 0;}
-.dv-price{font-size:15px;font-weight:800;color:var(--caramel-deep);}
-.dv-price small{font-size:11px;color:#B8A88F;font-weight:400;}
-.dv-why{background:var(--gold-soft);border-radius:10px;padding:7px 10px;font-size:11.5px;color:#7A5A22;margin-top:7px;line-height:1.65;}
-.dv-bad{background:#FDF0EE;border-radius:10px;padding:7px 10px;font-size:11.5px;color:#A6483A;margin-top:6px;line-height:1.65;}
-.dv-bar{height:6px;background:#F0E7DA;border-radius:4px;overflow:hidden;margin-top:8px;}
-.dv-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--caramel),#E8B96A);border-radius:4px;}
-.cost-row{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px dashed #EFE5D6;color:var(--ink2);}
-.cost-row b{color:var(--ink);}
-.cost-sum{background:var(--gold-soft);border-radius:11px;padding:10px 12px;margin-top:9px;display:flex;justify-content:space-between;align-items:baseline;}
-.cost-sum span{font-size:12px;color:#7A5A22;}
-.cost-sum b{font-size:19px;color:var(--caramel-deep);}
-.droute{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 13px;margin-bottom:10px;cursor:pointer;transition:.18s;}
-.droute:hover{border-color:var(--caramel);}
-.droute.on{border:2px solid var(--caramel);background:#FFFBF3;}
-.droute h4{font-size:13px;margin-bottom:4px;}
-.droute .meta{font-size:11px;color:#B8A88F;margin-bottom:5px;}
-.droute p{font-size:11.5px;color:var(--ink2);line-height:1.7;margin:3px 0 0;}
-.droute .warn{color:#A6483A;}
-.park{display:flex;gap:9px;padding:9px 0;border-bottom:1px dashed #EFE5D6;}
-.park .pk{font-size:19px;width:26px;text-align:center;flex:0 0 auto;}
-.park .pi{flex:1;font-size:11.5px;color:var(--ink2);line-height:1.65;}
-.park .pi b{font-size:12.5px;color:var(--ink);}
-.life{display:flex;gap:8px;font-size:11.5px;color:var(--ink2);line-height:1.7;padding:5px 0;}
-.life .li{font-size:15px;flex:0 0 auto;}
-.life b{color:var(--ink);}
-
-/* ===== 举实物 ===== */
-.bear-wrap{overflow:visible;}
-.bear-wrap.holding .b-arm.aR{transform:rotate(-64deg);transform-origin:139px 152px;animation:none;}
-.holdbox{position:absolute;left:58%;top:26%;width:40%;text-align:center;pointer-events:none;opacity:0;transform:translateY(12px) scale(.6);transition:opacity .26s,transform .26s;z-index:7;}
-.holdbox.on{opacity:1;transform:translateY(0) scale(1);}
-.holdbox .hv{font-size:32px;display:block;line-height:1;filter:drop-shadow(0 3px 7px rgba(0,0,0,.2));animation:hvB 1.2s ease-in-out infinite;}
-.holdbox img.hv{width:100%;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.15);}
-@keyframes hvB{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-8px) rotate(5deg)}}
-.bear-wrap.holding .b-arm.aR{transform:rotate(-64deg);transform-origin:139px 152px;}
-.b-arm.aR{transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
-.bear-wrap.holding .b-head{animation:hvNod .7s ease-in-out infinite;transform-origin:100px 120px;}
-.bear-wrap.holding .b-ear{animation:none;}
-@keyframes hvNod{0%,100%{transform:rotate(0)}50%{transform:rotate(-3deg)}}
-.stage{display:flex;gap:12px;align-items:center;background:linear-gradient(135deg,#FFF7E9,#FFFDF8);border:1px solid #F2E3C8;border-radius:16px;padding:12px;margin-bottom:12px;}
-.stage .sb{width:118px;flex:0 0 auto;position:relative;}
+.lv-hot .bphoto{animation:bob 5.5s ease-in-out infinite;}
+.hold-pop{position:absolute;left:58%;bottom:74%;width:44px;height:44px;background:#fff;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 14px rgba(60,35,10,.18);z-index:7;}
+.hold-pop .hv{animation:hvB 1.2s ease-in-out infinite;display:block;line-height:1;filter:drop-shadow(0 3px 7px rgba(0,0,0,.2));}
+.hold-pop img.hv{width:100%;height:100%;object-fit:cover;border-radius:50%;animation:hvB 1.2s ease-in-out infinite;}
+.bear-wrap.holding .hold-pop{display:flex;}
+.bear-wrap.holding .bphoto{animation:hvNod .7s ease-in-out infinite;}
+.bear-wrap.holding .bphoto img{animation:none;}
 .stage .sb .bear-wrap{width:100%;}
-.stage .st{flex:1;min-width:0;}
-.stage .st h4{font-size:13.5px;color:var(--caramel-deep);margin-bottom:4px;}
-.stage .st p{font-size:12px;color:var(--ink2);line-height:1.75;margin:0;}
-.stage .st .wh{font-size:11px;color:#B8A88F;margin-top:6px;}
-
-/* ===== 美食素材库 ===== */
-.fd{background:#fff;border:1px solid var(--line);border-radius:13px;padding:10px 11px;margin-bottom:8px;cursor:pointer;display:flex;gap:10px;align-items:flex-start;transition:.16s;}
-.fd:hover{border-color:var(--caramel);}
-.fd.on{border:2px solid var(--caramel);background:#FFFBF3;}
-.fd .fe{font-size:24px;width:30px;text-align:center;flex:0 0 auto;}
-.fd .fb{flex:1;min-width:0;}
-.fd h4{font-size:12.8px;margin-bottom:2px;display:flex;gap:5px;align-items:baseline;flex-wrap:wrap;}
-.fd .pr{font-size:11px;color:var(--caramel-deep);font-weight:700;}
-.fd p{font-size:11.5px;color:var(--ink2);line-height:1.65;margin:2px 0 0;}
-.fd .tip{font-size:11px;color:#A6483A;margin-top:4px;}
-.fd .tagb{display:inline-block;background:var(--gold-soft);color:#7A5A22;font-size:10px;border-radius:6px;padding:1px 6px;margin-right:4px;}
-.fd .getimg{font-size:10px;color:#B8A88F;border:1px dashed var(--line);border-radius:7px;padding:2px 7px;margin-top:6px;display:inline-block;cursor:pointer;}
-.fd .getimg:hover{color:var(--caramel-deep);border-color:var(--caramel);}
-.food .hint{font-size:10.5px;color:#B8A88F;margin-top:5px;}
-
-/* ===== 电子宠物 / 形象定制 ===== */
-.petbar{display:flex;align-items:center;gap:6px;justify-content:center;margin-top:8px;flex-wrap:wrap;}
-.petbtn{border:1px solid var(--line);background:#fff;border-radius:12px;font-size:11px;padding:5px 10px;color:var(--ink2);cursor:pointer;}
-.petbtn:hover{border-color:var(--caramel);color:var(--caramel-deep);}
-.petpanel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;margin:10px 0;}
-.petpanel h3{font-size:13.5px;margin-bottom:3px;}
-.petslot{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px dashed #EFE5D6;}
-.petslot .pv{width:56px;flex:0 0 auto;position:relative;}
 .petslot .pv .bear-wrap{width:100%;}
-.petslot .pf{flex:1;min-width:0;}
-.petslot .pf .nm{font-size:12.5px;font-weight:700;margin-bottom:5px;}
-.petopt{display:inline-block;border:1px solid var(--line);background:#fff;border-radius:9px;font-size:11px;padding:3px 8px;margin:0 5px 5px 0;cursor:pointer;color:var(--ink2);}
-.petopt.on{border-color:var(--caramel);background:var(--gold-soft);color:#7A5A22;font-weight:700;}
-.petimg{width:100%;display:block;border-radius:12px;}
-.bear-wrap[data-skin="snow"] svg{filter:hue-rotate(-18deg) saturate(.55) brightness(1.09);}
-.bear-wrap[data-skin="maple"] svg{filter:hue-rotate(28deg) saturate(1.3);}
-.bear-wrap[data-skin="berry"] svg{filter:hue-rotate(-38deg) saturate(1.15) brightness(1.02);}
-.bear-wrap[data-skin="night"] svg{filter:hue-rotate(190deg) saturate(.85) brightness(.95);}
+.bear-wrap[data-skin="snow"] .bphoto img{filter:hue-rotate(-18deg) saturate(.55) brightness(1.09);}
+.bear-wrap[data-skin="maple"] .bphoto img{filter:hue-rotate(28deg) saturate(1.3);}
+.bear-wrap[data-skin="berry"] .bphoto img{filter:hue-rotate(-38deg) saturate(1.15) brightness(1.02);}
+.bear-wrap[data-skin="night"] .bphoto img{filter:hue-rotate(190deg) saturate(.85) brightness(.95);}
 .peturl{display:flex;gap:6px;margin-top:7px;}
 .peturl input{flex:1;min-width:0;border:1px solid var(--line);border-radius:9px;padding:6px 8px;font-size:11.5px;outline:none;}
 .peturl input:focus{border-color:var(--caramel);}
@@ -392,6 +223,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .wxTip{display:none;background:#EAF6EE;border-left:4px solid var(--green);border-radius:10px;
  padding:10px 12px;font-size:12px;line-height:1.7;color:#2F5A3C;margin-top:11px;}
 .wxTip.on{display:block;}
+.petimg{width:100%;height:auto;display:block;}
 </style>
 </head>
 <body>
@@ -399,107 +231,47 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 
 <header class="hero" id="hero">
   <div class="badge-gq">四季通用 · 全年可玩</div>
-  <h1>狍<span>游</span>记<span class="ver" id="appVer">V1.0</span></h1>
+  <h1>狍<span>游</span>记<span class="ver" id="appVer">V1.1</span></h1>
   <div class="sub">坨坨果果陪你游东北 · 春夏秋冬各有玩法 · 小众目的地 × 错峰规划 × 防宰客指南 × 记账打卡复盘</div>
   <div class="bears" id="bearBox">
-    <div class="bear-wrap b1" id="bearTT">
-      <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="100" cy="210" rx="50" ry="8" fill="rgba(140,90,43,.15)"/>
-        <g class="b-all">
-          <path class="b-tail" d="M150 150 C168 138,160 118,146 126 C140 112,122 120,128 134 C120 150,138 160,150 150 Z" fill="#FFF6EA"/>
-          <ellipse cx="82" cy="197" rx="15" ry="11" fill="#8C5A32"/>
-          <ellipse cx="118" cy="197" rx="15" ry="11" fill="#8C5A32"/>
-          <g class="b-body">
-            <ellipse cx="100" cy="164" rx="47" ry="44" fill="#D9A878"/>
-            <ellipse cx="100" cy="177" rx="30" ry="25" fill="#FBF2E1"/>
-          </g>
-          <g class="b-arm aL"><ellipse cx="61" cy="152" rx="12" ry="20" fill="#D9A878"/><ellipse cx="60" cy="170" rx="9" ry="8" fill="#8C5A32"/></g>
-          <g class="b-arm aR"><ellipse cx="139" cy="152" rx="12" ry="20" fill="#D9A878"/><ellipse cx="141" cy="170" rx="9" ry="8" fill="#8C5A32"/></g>
-          <g class="o-scarf"><path d="M60 136 Q100 156 140 136 L138 152 Q100 172 62 152 Z" fill="#C4553B"/></g>
-          <g class="b-head">
-            <g class="b-ear earL"><ellipse cx="40" cy="56" rx="16" ry="21" fill="#D9A878" transform="rotate(-16 40 56)"/><ellipse cx="43" cy="58" rx="9" ry="13" fill="#F2D6B4" transform="rotate(-16 43 58)"/></g>
-            <g class="b-ear earR"><ellipse cx="160" cy="56" rx="16" ry="21" fill="#D9A878" transform="rotate(16 160 56)"/><ellipse cx="157" cy="58" rx="9" ry="13" fill="#F2D6B4" transform="rotate(16 157 58)"/></g>
-            <path d="M74 34 C66 16,82 6,86 18 C90 6,106 16,98 34 C94 44,78 44,74 34 Z" fill="#A9744F"/>
-            <path d="M102 34 C94 16,110 6,114 18 C118 6,134 16,126 34 C122 44,106 44,102 34 Z" fill="#A9744F"/>
-            <ellipse cx="100" cy="88" rx="62" ry="55" fill="#D9A878"/>
-            <g class="b-eyes">
-              <circle cx="76" cy="86" r="8" fill="#4A3220"/><circle cx="79" cy="83" r="2.6" fill="#fff"/>
-              <circle cx="124" cy="86" r="8" fill="#4A3220"/><circle cx="127" cy="83" r="2.6" fill="#fff"/>
-            </g>
-            <ellipse cx="100" cy="114" rx="27" ry="18" fill="#FBF2E1"/>
-            <ellipse cx="100" cy="105" rx="7" ry="5" fill="#4A3220"/>
-            <path d="M92 119 Q100 127 108 119" stroke="#4A3220" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <ellipse cx="63" cy="104" rx="10" ry="6" fill="#F5B79E" opacity=".6"/>
-            <ellipse cx="137" cy="104" rx="10" ry="6" fill="#F5B79E" opacity=".6"/>
-          </g>
-          <g class="o-earmuffs">
-            <path d="M26 50 Q30 30 50 28" stroke="#8C5A2B" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M174 50 Q170 30 150 28" stroke="#8C5A2B" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M28 46 Q52 22 78 40" stroke="#8C5A2B" stroke-width="3.5" fill="none"/>
-            <path d="M172 46 Q148 22 122 40" stroke="#8C5A2B" stroke-width="3.5" fill="none"/>
-          </g>
-          <g class="o-gloves"><ellipse cx="60" cy="172" rx="10" ry="9" fill="#F5C24D"/><ellipse cx="141" cy="172" rx="10" ry="9" fill="#F5C24D"/></g>
-          <g class="o-coat"><path d="M55 140 Q100 160 145 140 L145 160 Q126 178 100 178 Q74 178 55 160 Z" fill="#B54F30"/><circle cx="90" cy="156" r="2.2" fill="#F5C24D"/><circle cx="110" cy="158" r="2.2" fill="#F5C24D"/><circle cx="78" cy="162" r="2.2" fill="#F5C24D"/><circle cx="124" cy="164" r="2.2" fill="#F5C24D"/></g>
-          <g class="o-shades"><rect x="62" y="76" width="30" height="19" rx="9" fill="#3A2A1A"/><rect x="108" y="76" width="30" height="19" rx="9" fill="#3A2A1A"/><rect x="90" y="80" width="20" height="4.5" rx="2" fill="#3A2A1A"/></g>
-          <g class="e-sweat"><path d="M156 62 C156 70,164 72,164 64 C164 58,158 54,156 48 C154 54,148 58,148 64 C148 72,156 70,156 62 Z" fill="#7FC4E8"/></g>
-          <g class="e-breath"><circle class="p1" cx="134" cy="120" r="6" fill="#fff"/><circle class="p2" cx="144" cy="128" r="8" fill="#fff"/></g>
-          <g class="o-scarf"><rect x="110" y="146" width="15" height="28" rx="7" fill="#C4553B" transform="rotate(9 117 160)"/><circle cx="117" cy="158" r="2" fill="#F5C24D"/></g>
-        </g>
-      </svg>
+    <div class="bear-wrap b1" id="bearTT" data-skin="raw">
+      <div class="bphoto">
+        <img class="b-all" src="https://workbuddy-space-static.codebuddy.work/image/c3Kw1vc6VL2pmnOH7LjVvM.jpg" alt="狍坨坨">
+        <div class="gear">
+          <svg class="o-scarf" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><path d="M55 125 Q100 145 145 125 L142 140 Q100 160 58 140 Z" fill="#C4553B"/><rect x="110" y="135" width="18" height="36" rx="9" fill="#C4553B" transform="rotate(9 119 153)"/><circle cx="119" cy="151" r="2.5" fill="#F5C24D"/></svg>
+          <svg class="o-earmuffs" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><path d="M28 52 Q32 32 52 30" stroke="#8C5A2B" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M172 52 Q168 32 148 30" stroke="#8C5A2B" stroke-width="8" fill="none" stroke-linecap="round"/></svg>
+          <svg class="o-gloves" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><ellipse cx="62" cy="164" rx="11" ry="10" fill="#F5C24D"/><ellipse cx="138" cy="164" rx="11" ry="10" fill="#F5C24D"/></svg>
+          <svg class="o-coat" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><path d="M52 130 Q100 150 148 130 L148 150 Q125 170 100 170 Q75 170 52 150 Z" fill="#B54F30"/><circle cx="88" cy="148" r="2.5" fill="#F5C24D"/><circle cx="112" cy="150" r="2.5" fill="#F5C24D"/></svg>
+          <svg class="o-shades" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><rect x="60" y="74" width="32" height="21" rx="10" fill="#3A2A1A"/><rect x="108" y="74" width="32" height="21" rx="10" fill="#3A2A1A"/><rect x="90" y="78" width="20" height="5" rx="2" fill="#3A2A1A"/></svg>
+          <svg class="e-sweat" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><path d="M154 66 C154 74,162 76,162 68 C162 62,156 58,154 52 C152 58,146 62,146 68 C146 76,154 74,154 66 Z" fill="#7FC4E8"/></svg>
+          <svg class="e-breath" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><circle class="p1" cx="134" cy="128" r="6" fill="#fff"/><circle class="p2" cx="144" cy="136" r="8" fill="#fff"/></svg>
+          <div class="hold-pop"></div>
+        </div>
+      </div>
       <span class="btag">坨坨</span>
       <div class="gifpop"><img alt="坨坨"><div class="cap"></div></div>
     </div>
-    <div class="bear-wrap b2" id="bearGG">
-      <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="100" cy="210" rx="48" ry="8" fill="rgba(140,90,43,.15)"/>
-        <g class="b-all">
-          <path class="b-tail" d="M148 152 C166 140,158 120,144 128 C138 114,120 122,126 136 C118 152,136 162,148 152 Z" fill="#FBF7EE"/>
-          <ellipse cx="83" cy="197" rx="14" ry="10" fill="#B08D6A"/>
-          <ellipse cx="117" cy="197" rx="14" ry="10" fill="#B08D6A"/>
-          <g class="b-body"><ellipse cx="100" cy="164" rx="45" ry="42" fill="#F2E3CB"/><ellipse cx="100" cy="177" rx="28" ry="24" fill="#FBF7EE"/></g>
-          <g class="b-arm aL"><ellipse cx="62" cy="152" rx="11" ry="19" fill="#F2E3CB"/><ellipse cx="61" cy="169" rx="8" ry="7" fill="#B08D6A"/></g>
-          <g class="b-arm aR"><ellipse cx="138" cy="152" rx="11" ry="19" fill="#F2E3CB"/><ellipse cx="139" cy="169" rx="8" ry="7" fill="#B08D6A"/></g>
-          <g class="o-scarf"><path d="M62 136 Q100 155 138 136 L136 151 Q100 170 64 151 Z" fill="#7B6BA8"/></g>
-          <g class="b-head">
-            <g class="b-ear earL"><ellipse cx="42" cy="56" rx="15" ry="20" fill="#F2E3CB" transform="rotate(-16 42 56)"/><ellipse cx="45" cy="58" rx="8" ry="12" fill="#EAD3B0" transform="rotate(-16 45 58)"/></g>
-            <g class="b-ear earR"><ellipse cx="158" cy="56" rx="15" ry="20" fill="#F2E3CB" transform="rotate(16 158 56)"/><ellipse cx="155" cy="58" rx="8" ry="12" fill="#EAD3B0" transform="rotate(16 155 58)"/></g>
-            <g class="b-berry">
-              <path d="M166 42 Q174 30 182 28" stroke="#8FA86B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <circle cx="184" cy="30" r="5" fill="#7B6BA8"/><circle cx="174" cy="22" r="4.5" fill="#8F7FC0"/><circle cx="188" cy="20" r="4" fill="#6A5B9E"/>
-              <ellipse cx="170" cy="14" rx="6" ry="3" fill="#8FA86B" transform="rotate(-28 170 14)"/>
-            </g>
-            <ellipse cx="100" cy="88" rx="60" ry="54" fill="#F2E3CB"/>
-            <g class="b-eyes">
-              <circle cx="78" cy="86" r="7.5" fill="#3A2A1A"/><circle cx="80.5" cy="83" r="2.4" fill="#fff"/>
-              <circle cx="122" cy="86" r="7.5" fill="#3A2A1A"/><circle cx="124.5" cy="83" r="2.4" fill="#fff"/>
-            </g>
-            <ellipse cx="100" cy="113" rx="25" ry="17" fill="#FBF7EE"/>
-            <ellipse cx="100" cy="104" rx="6.5" ry="4.5" fill="#5C4030"/>
-            <path d="M93 118 Q100 125 107 118" stroke="#5C4030" stroke-width="2.8" fill="none" stroke-linecap="round"/>
-            <ellipse cx="64" cy="103" rx="10" ry="6" fill="#F3A9A0" opacity=".6"/>
-            <ellipse cx="136" cy="103" rx="10" ry="6" fill="#F3A9A0" opacity=".6"/>
-          </g>
-          <g class="o-earmuffs">
-            <path d="M28 50 Q32 30 52 28" stroke="#6A5B9E" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M172 50 Q168 30 148 28" stroke="#6A5B9E" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M30 46 Q54 22 80 40" stroke="#6A5B9E" stroke-width="3.5" fill="none"/>
-            <path d="M170 46 Q146 22 120 40" stroke="#6A5B9E" stroke-width="3.5" fill="none"/>
-          </g>
-          <g class="o-gloves"><ellipse cx="61" cy="171" rx="9" ry="8" fill="#B7A6E0"/><ellipse cx="139" cy="171" rx="9" ry="8" fill="#B7A6E0"/></g>
-          <g class="o-coat"><path d="M57 140 Q100 159 143 140 L143 159 Q125 177 100 177 Q75 177 57 159 Z" fill="#6A5B9E"/><circle cx="90" cy="156" r="2.2" fill="#EDE7F7"/><circle cx="110" cy="158" r="2.2" fill="#EDE7F7"/><circle cx="78" cy="162" r="2.2" fill="#EDE7F7"/><circle cx="124" cy="164" r="2.2" fill="#EDE7F7"/></g>
-          <g class="o-shades"><rect x="64" y="76" width="28" height="18" rx="9" fill="#3A2A1A"/><rect x="108" y="76" width="28" height="18" rx="9" fill="#3A2A1A"/><rect x="90" y="80" width="20" height="4.5" rx="2" fill="#3A2A1A"/></g>
-          <g class="e-sweat"><path d="M154 62 C154 70,162 72,162 64 C162 58,156 54,154 48 C152 54,146 58,146 64 C146 72,154 70,154 62 Z" fill="#7FC4E8"/></g>
-          <g class="e-breath"><circle class="p1" cx="133" cy="119" r="6" fill="#fff"/><circle class="p2" cx="143" cy="127" r="8" fill="#fff"/></g>
-          <g class="o-scarf"><rect x="108" y="146" width="14" height="27" rx="7" fill="#7B6BA8" transform="rotate(9 115 160)"/><circle cx="115" cy="158" r="2" fill="#EDE7F7"/></g>
-        </g>
-      </svg>
+    <div class="bear-wrap b2" id="bearGG" data-skin="raw">
+      <div class="bphoto">
+        <img class="b-all" src="https://workbuddy-space-static.codebuddy.work/image/MmJQOO9Y6a7sBLMpa4GdI1.jpg" alt="狍果果">
+        <div class="gear">
+          <svg class="o-scarf" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><path d="M58 125 Q100 143 142 125 L140 140 Q100 158 60 140 Z" fill="#7B6BA8"/><rect x="108" y="135" width="17" height="35" rx="8" fill="#7B6BA8" transform="rotate(9 116 152)"/><circle cx="116" cy="150" r="2.5" fill="#EDE7F7"/></svg>
+          <svg class="o-earmuffs" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><path d="M30 52 Q34 32 54 30" stroke="#6A5B9E" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M170 52 Q166 32 146 30" stroke="#6A5B9E" stroke-width="8" fill="none" stroke-linecap="round"/></svg>
+          <svg class="o-gloves" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><ellipse cx="63" cy="164" rx="10" ry="9" fill="#B7A6E0"/><ellipse cx="137" cy="164" rx="10" ry="9" fill="#B7A6E0"/></svg>
+          <svg class="o-coat" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><path d="M55 130 Q100 149 145 130 L145 149 Q123 168 100 168 Q77 168 55 149 Z" fill="#6A5B9E"/><circle cx="89" cy="147" r="2.5" fill="#EDE7F7"/><circle cx="111" cy="149" r="2.5" fill="#EDE7F7"/></svg>
+          <svg class="o-shades" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><rect x="62" y="74" width="30" height="20" rx="9" fill="#3A2A1A"/><rect x="108" y="74" width="30" height="20" rx="9" fill="#3A2A1A"/><rect x="90" y="78" width="20" height="5" rx="2" fill="#3A2A1A"/></svg>
+          <svg class="e-sweat" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><path d="M152 66 C152 74,160 76,160 68 C160 62,154 58,152 52 C150 58,144 62,144 68 C144 76,152 74,152 66 Z" fill="#7FC4E8"/></svg>
+          <svg class="e-breath" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg"><circle class="p1" cx="133" cy="128" r="6" fill="#fff"/><circle class="p2" cx="143" cy="136" r="8" fill="#fff"/></svg>
+          <div class="hold-pop"></div>
+        </div>
+      </div>
       <span class="btag">果果</span>
       <div class="gifpop"><img alt="果果"><div class="cap"></div></div>
     </div>
     <div class="say" id="heroSay"><b>坨坨：</b>东北一年四张脸——春看杜鹃、夏来避暑、秋赏五花山、冬玩冰雪，哪季来都不白来。<br><b>果果：</b>选个季节，清单和线路我给你换好，嗷嗷～</div>
     <div class="bear-hint">👆 点一点我们，有嗷呜惊喜 · 我们还会跟着实时天气换装</div>
   </div>
-  <div class="fall" id="fallBox"></div>
+   <div class="fall" id="fallBox"></div>
 
   <div class="petbar">
     <button class="petbtn" id="petToggle">🎨 换形象</button>
@@ -1005,7 +777,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.0';
+const APP_VER='1.1';
 const APP_DATE='2026-09-20';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
@@ -2393,12 +2165,12 @@ const FOOD_DB=[
 
 let HOLD_T=null;
 function ensureHold(w){
- let h=w.querySelector('.holdbox');
- if(!h){ h=document.createElement('div'); h.className='holdbox'; h.innerHTML='<span class="hv"></span>'; w.appendChild(h); }
+ let h=w.querySelector('.hold-pop');
+ if(!h){ h=document.createElement('div'); h.className='hold-pop'; w.appendChild(h); }
  return h;
 }
 function setHold(w,html,on){
- const h=ensureHold(w); h.innerHTML=html; h.classList.toggle('on',!!on); w.classList.toggle('holding',!!on);
+ const h=ensureHold(w); h.innerHTML=html||''; h.style.display=on?'flex':'none'; w.classList.toggle('holding',!!on);
 }
 function showFood(i){
  const f=FOOD_DB[i]; if(!f)return;
@@ -2459,7 +2231,7 @@ const SKINS=[['raw','原色'],['snow','雪原'],['maple','枫叶'],['berry','靛
 if(!S.pet) S.pet={A:{pet:'tt',skin:'raw',img:''},B:{pet:'gg',skin:'raw',img:''}};
 const PET_TPL={};
 function petTpl(p){
- if(p.img&&p.img.length>4) return `<img class="petimg" src="${p.img}" alt="形象"><div class="gifpop"><img alt=""><div class="cap"></div></div>`;
+ if(p.img&&p.img.length>4) return `<div class="bphoto"><img class="b-all petimg" src="${p.img}" alt="形象"></div><span class="btag">自定义</span><div class="gifpop"><img alt=""><div class="cap"></div></div>`;
  const base=PET_TPL[p.pet]||PET_TPL.tt||'';
  return base.replace(/<span class="btag">[\s\S]*?<\/span>/,'')+'';
 }
