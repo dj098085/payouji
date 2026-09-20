@@ -179,17 +179,26 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .bear-say{background:var(--gold-soft);border-radius:14px;padding:9px 12px;font-size:12.5px;color:#7A5A22;line-height:1.7;margin-top:10px;display:none;}
 .bear-say.on{display:block;}
 
-/* ============ 东北话气泡 ============ */
-#neToast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%) translateY(14px);
- width:min(400px,calc(100% - 28px));z-index:99;opacity:0;pointer-events:none;transition:.34s cubic-bezier(.2,.9,.3,1.2);}
-#neToast.on{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+/* ============ 东北话气泡（挂在 IP 形象区，不贴屏幕底部）============ */
+.ne-wrap{flex:1 1 100%;position:relative;display:none;margin-top:12px;}
+.ne-wrap.on{display:block;animation:nePop .28s cubic-bezier(.2,.9,.3,1.25);}
+@keyframes nePop{from{opacity:0;transform:translateY(9px) scale(.97);}to{opacity:1;transform:none;}}
+/* 尖角指向说话那只：坨坨在左位、果果在右位 */
+.ne-wrap::before{content:'';position:absolute;top:-8px;width:0;height:0;
+ border-left:9px solid transparent;border-right:9px solid transparent;
+ border-bottom:9px solid var(--caramel);}
+/* 尖角指向说话那只。注意果果**不在容器最右**——它是紧跟在坨坨后面的第二个 flex 项：
+   坨坨宽 112 居中在 56px，果果宽 94 中心在 112+12+47=171px。早先写成 right:34px 是错的。 */
+.ne-wrap.who-t::before{left:47px;}
+.ne-wrap.who-g::before{left:162px;}
+#bearBox.talking .say{display:none;}
 .ne-bub{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1.5px solid var(--caramel);
- border-radius:16px;padding:10px 12px;box-shadow:0 8px 26px rgba(90,60,25,.20);}
+ border-radius:16px;padding:10px 12px;box-shadow:0 8px 22px rgba(90,60,25,.14);}
 .ne-face{flex:0 0 34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
  font-size:17px;font-weight:800;color:#fff;}
 .ne-face.t{background:linear-gradient(145deg,#E0AE7C,#C98B54);}
 .ne-face.g{background:linear-gradient(145deg,#FBEBD2,#E8CFA6);color:#8A6A3A;}
-.ne-txt{flex:1;font-size:12.8px;line-height:1.66;color:var(--ink);}
+.ne-txt{flex:1;min-width:0;font-size:12.8px;line-height:1.66;color:var(--ink);}
 .ne-txt b{color:var(--caramel-deep);}
 .ne-txt .who{font-size:11px;color:#B09877;display:block;margin-bottom:1px;}
 .ne-close{flex:0 0 auto;border:0;background:transparent;color:#C3B096;font-size:15px;cursor:pointer;padding:0 2px;line-height:1;}
@@ -392,6 +401,13 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
       </div>
     </div>
     <div class="say" id="heroSay"><b>坨坨：</b>东北一年四张脸——春看杜鹃、夏来避暑、秋赏五花山、冬玩冰雪，哪季来都不白来。<br><b>果果：</b>选个季节，清单和线路我给你换好，嗷嗷～</div>
+    <div class="ne-wrap" id="neToast">
+      <div class="ne-bub">
+        <div class="ne-face t" id="neFace">坨</div>
+        <div class="ne-txt" id="neTxt"></div>
+        <button class="ne-close" id="neClose" aria-label="关闭">✕</button>
+      </div>
+    </div>
     <div class="bear-hint">实时天气联动 · 天冷了自动换上围巾耳包</div>
   </div>
    <div class="fall" id="fallBox"></div>
@@ -889,18 +905,10 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   <button data-v="v-review"><span class="ic">⭐</span>复盘</button>
 </nav>
 
-<div id="neToast">
-  <div class="ne-bub">
-    <div class="ne-face t" id="neFace">坨</div>
-    <div class="ne-txt" id="neTxt"></div>
-    <button class="ne-close" id="neClose" aria-label="关闭">✕</button>
-  </div>
-</div>
-
 </div>
 
 <script>
-const APP_VER='1.3.4';
+const APP_VER='1.3.5';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
@@ -966,9 +974,16 @@ function neSay(txt,who,ms){
  document.getElementById('neFace').textContent=who==='g'?'\u679c':'\u5768';
  document.getElementById('neFace').className='ne-face '+(who==='g'?'g':'t');
  document.getElementById('neTxt').innerHTML='<span class="who">'+(who==='g'?'\u72cd\u679c\u679c':'\u72cd\u5768\u5768')+'</span>'+txt;
- box.classList.add('on');
+ // 气泡挂在 IP 形象区：who 决定尖角指左（坨坨）还是指右（果果）
+ box.classList.remove('who-t','who-g');
+ box.classList.add('on',who==='g'?'who-g':'who-t');
+ const hb=document.getElementById('bearBox'); if(hb) hb.classList.add('talking');
  clearTimeout(neTimer);
- neTimer=setTimeout(()=>box.classList.remove('on'),ms||5400);
+ neTimer=setTimeout(neHide,ms||5400);
+}
+function neHide(){
+ const box=document.getElementById('neToast'); if(box) box.classList.remove('on');
+ const hb=document.getElementById('bearBox'); if(hb) hb.classList.remove('talking');
 }
 function neIdle(){ neSay(RARR(NE.idle),Math.random()<.5?'t':'g'); }
 function neHi(){
@@ -1906,7 +1921,7 @@ function renderGenResult(R){
 
 document.getElementById('gGo').onclick=()=>genPlan(false);
 document.getElementById('gLucky').onclick=()=>genPlan(true);
-document.getElementById('neClose').onclick=()=>document.getElementById('neToast').classList.remove('on');
+document.getElementById('neClose').onclick=()=>neHide();
 /* 东北话定时冒泡 */
 (function tick(){ setTimeout(()=>{ if(!document.hidden) neIdle(); tick(); },52000+Math.random()*48000); })();
 setTimeout(neHi,1100);
