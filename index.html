@@ -19,8 +19,8 @@
   --r:18px; --shadow:0 4px 18px rgba(140,90,43,.10);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:#EFE3CE;color:var(--ink);}
-#phone{max-width:480px;margin:0 auto;background:var(--bg);min-height:100vh;position:relative;box-shadow:0 0 40px rgba(0,0,0,.08);}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:#EFE3CE;color:var(--ink);overflow-x:hidden;}
+#phone{max-width:480px;width:100%;margin:0 auto;background:var(--bg);min-height:100vh;position:relative;box-shadow:0 0 40px rgba(140,90,43,.08);}
 .hero{position:relative;padding:26px 20px 18px;background:linear-gradient(160deg,#FBE3BC,#FFF3DC 60%,#FFF6E9);overflow:hidden;transition:.4s;}
 .hero.sp{background:linear-gradient(160deg,#DCEEDA,#F2FAEE 60%,#FFF6E9);}
 .hero.su{background:linear-gradient(160deg,#CFE7F2,#E8F5FA 60%,#FFF6E9);}
@@ -45,6 +45,38 @@ body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background
 .tabbar button .ic{display:block;font-size:20px;margin-bottom:2px;filter:grayscale(1);opacity:.55;}
 .tabbar button.on{color:var(--caramel-deep);font-weight:700;}
 .tabbar button.on .ic{filter:none;opacity:1;}
+/* ===== 二级分段控件（V1.4.0 导航重整引入）=====
+   用途：一个 tab 内收纳多块内容时，顶部给一行切换条。
+   注意：stick 在 tabbar 之上无所谓，这里用普通流式布局，避免动 main 的 padding。 */
+.segbar{display:flex;gap:6px;background:#F6EDDF;border-radius:13px;padding:4px;margin:0 0 12px;}
+.segbar button{flex:1 1 0;min-width:0;border:0;background:transparent;border-radius:10px;padding:8px 2px;
+ font-size:12.5px;color:var(--ink2);cursor:pointer;font-weight:700;transition:.16s;
+ white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;}
+.segbar button.on{background:#fff;color:var(--caramel-deep);box-shadow:0 2px 8px rgba(140,90,43,.12);}
+.subview{display:none;}
+.subview.on{display:block;animation:fade .2s;}
+/* 导航小红点（消息未读数） */
+.segbar button .dot{display:inline-block;min-width:15px;height:15px;line-height:15px;
+ background:var(--red);color:#fff;border-radius:99px;font-size:9.5px;font-weight:700;
+ padding:0 4px;margin-left:3px;vertical-align:1px;text-align:center;}
+.segbar button.on .dot{background:var(--red);}
+.msg-item{display:flex;gap:10px;padding:11px 12px;background:#fff;border-radius:13px;
+ margin-bottom:8px;box-shadow:0 2px 8px rgba(140,90,43,.07);align-items:flex-start;}
+.msg-item.unread{border-left:3px solid var(--caramel);}
+.msg-ic{flex:0 0 32px;height:32px;border-radius:10px;display:flex;align-items:center;
+ justify-content:center;font-size:16px;background:var(--gold-soft);}
+.msg-bd{flex:1;min-width:0;}
+.msg-bd b{font-size:13px;color:var(--ink);display:block;margin-bottom:2px;}
+.msg-bd p{font-size:11.8px;color:var(--ink2);line-height:1.65;margin:0;}
+.msg-time{font-size:10.5px;color:#C3B096;margin-top:4px;}
+.msg-empty{text-align:center;color:#C9B394;font-size:12px;padding:20px 0;}
+.rec-row{display:flex;justify-content:space-between;align-items:center;padding:9px 2px;
+ border-bottom:1px dashed var(--line);font-size:12.5px;}
+.rec-row:last-child{border-bottom:0;}
+.rec-row .rp{font-size:11px;color:#B8A88F;}
+.badge-ok{background:#EAF2E4;color:#5C8148;border-radius:6px;padding:1px 6px;font-size:10.5px;font-weight:700;}
+.badge-cancel{background:#FDF0EE;color:#A6483A;border-radius:6px;padding:1px 6px;font-size:10.5px;font-weight:700;}
+.badge-empty{background:#EFE9DF;color:#8C7A63;border-radius:6px;padding:1px 6px;font-size:10.5px;font-weight:700;}
 main{padding:16px 16px 90px;}
 .view{display:none;} .view.on{display:block;animation:fade .25s;}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -248,9 +280,15 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
  font-size:12.1px;line-height:1.72;color:#3E6B3C;margin-top:10px;}
 
 /* ===== 自驾模块 ===== */
+/* V1.4.0 导航重整：8 tab → 5 tab，一律均分不再横滚。
+   旧规则 `flex:0 0 auto;min-width:52px` 是给 8 个 tab 做横向滚动的，
+   5 个 tab 用它会右侧留空，故整段移除，回到基础样式 `flex:1`。
+   若要恢复横滚（tab 超过 6 个时），把下面注释掉的规则打开即可。 */
+/*
 .tabbar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
 .tabbar::-webkit-scrollbar{display:none;}
 .tabbar button{flex:0 0 auto;min-width:52px;}
+*/
 .dv-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:7px;}
 .dv-lab{font-size:12px;color:var(--ink2);min-width:52px;font-weight:700;}
 .dv-car{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 13px;margin-bottom:10px;}
@@ -471,14 +509,18 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   <div id="genOut"></div>
 </section>
 
-<!-- ============ VIEW 1: 出发 ============ -->
-<section class="view" id="v-depart">
+<!-- ============ VIEW 1: 出发（已并入「探索」tab，作 subview）============ -->
+<section class="subview" id="sub-depart">
   <div class="card" id="wxCard">
-    <h3>🌤️ 实时天气 · 坨坨果果按气温换装</h3>
+    <h3>🌤️ 实时天气 · 坨坨果果按真实气温换装</h3>
     <div class="frow">
       <select id="wxCity" class="sel"></select>
       <button id="wxGo" style="border:0;background:var(--caramel);color:#fff;border-radius:12px;padding:0 18px;font-weight:700;cursor:pointer;">刷新</button>
     </div>
+    <div class="frow">
+      <button id="wxLocate" style="border:1.5px solid var(--line);background:#fff;color:var(--caramel-deep);border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;font-size:12.5px;">📍 用我的位置</button>
+    </div>
+    <div class="mini-t" style="margin:-2px 0 8px;">到了东北就点这个，按你所在位置拉实测天气（优先于上面选的城市）。</div>
     <div style="display:flex;align-items:center;gap:12px;margin-top:6px;">
       <div class="wx-big"><span id="wxTemp">--</span><small>℃</small></div>
       <div style="flex:1;">
@@ -487,11 +529,14 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
       </div>
       <span class="wx-sim" id="wxTag">模拟</span>
     </div>
+    <div class="wxTip on" id="wxOverview" style="display:none;"></div>
+    <div class="warnbox" id="wxAlert" style="display:none;"></div>
+    <div class="tip">👕 <b>该穿啥</b>：<span id="wxWear">--</span><br>
+    🦌 两小只也跟着实时气温换装：≥24℃ 短袖、15–23℃ 长袖薄外套、8–14℃ 上围脖、0–7℃ 加手套、≤0℃ 耳包＋大棉袄。数据来自 open-meteo 免费接口，按你选的目的地或 GPS 定位拉取。</div>
     <div style="margin-top:10px;">
       <div class="mini-t">手动试温（网络不通时也能玩）：<b id="wxSlideV" style="color:var(--caramel-deep)">10℃</b></div>
       <input type="range" id="wxSlider" min="-35" max="35" step="1" value="10">
     </div>
-    <div class="tip">🦌 气温怎么影响坨坨果果：≤−15℃ 冻得发抖、哈白气、套上大棉袄；−5℃ 以下耳包手套全副武装；≤14℃ 戴围脖；≥26℃ 戴墨镜、冒汗。数据来自 open-meteo 免费天气接口，按你选的城市实时拉取。</div>
   </div>
 
   <h2 class="sec"><span class="n">1</span>行前准备 · 跟着季节换装备</h2>
@@ -566,8 +611,8 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   </div>
 </section>
 
-<!-- ============ VIEW: 算价 ============ -->
-<section class="view" id="v-price">
+<!-- ============ VIEW: 算价（已并入「行程」tab，作 subview）============ -->
+<section class="subview" id="sub-price">
   <h2 class="sec"><span class="n">¥</span>交通算价 · 按官方计价规则估算</h2>
   <p style="font-size:12px;color:var(--ink2);margin-bottom:10px;">不拍脑袋报价：<b>地铁按里程分段票价表</b>、<b>出租车按当地计价规则（起步价 + 续程 + 空驶费 + 夜间/等候）</b>逐项算出，再给出防宰客红线。人数沿用你在「出发」页选的 <b id="pcPplEcho">2</b> 人。</p>
 
@@ -665,8 +710,19 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   </div>
 </section>
 
-<!-- ============ VIEW 2: 行程 ============ -->
+<!-- ============ VIEW 2: 行程（v-plan 合并 v-price / v-drive 的入口）============ -->
+<!-- 说明：本 section 是「行程」tab 的容器，内部用 segbar 切换三块 subview。
+     旧 section（v-plan / v-price / v-drive）保留原 id 与全部 DOM，只加 subview 类，
+     这样内部所有 JS 绑定与渲染函数零改动。 -->
 <section class="view" id="v-plan">
+  <div class="segbar" data-seg="plan">
+    <button data-sub="sub-plan" class="on">🗺️ 线路</button>
+    <button data-sub="sub-price">💰 算价</button>
+    <button data-sub="sub-drive">🚗 自驾</button>
+  </div>
+</section>
+
+<section class="subview on" id="sub-plan">
   <h2 class="sec"><span class="n">3</span>错峰日历 · 按你的出行档期给建议</h2>
   <div class="card">
     <h3>📅 选一个出行档期</h3>
@@ -691,10 +747,8 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   </div>
 </section>
 
-<!-- ============ VIEW 3: 探索 ============ -->
-
-<!-- ============ VIEW 5: 自驾 ============ -->
-<section class="view" id="v-drive">
+<!-- ============ VIEW 5: 自驾（已并入「行程」tab，作 subview）============ -->
+<section class="subview" id="sub-drive">
   <h2 class="sec"><span class="n">5</span>自驾规划 · 停车、线路、车型一次算明白</h2>
   <div class="card" style="padding:12px 13px;">
     <div class="dv-row"><span class="dv-lab">方式</span><span style="flex:1"></span></div>
@@ -738,7 +792,15 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   </div>
 </section>
 
+<!-- ============ VIEW 3: 探索（tab 容器 + subview）============ -->
 <section class="view" id="v-explore">
+  <div class="segbar" data-seg="explore">
+    <button data-sub="sub-explore" class="on">🍄 目的地</button>
+    <button data-sub="sub-depart">🎒 行前</button>
+  </div>
+</section>
+
+<section class="subview on" id="sub-explore">
   <h2 class="sec"><span class="n">6</span>小众目的地 · 人少，但东北味儿十足</h2>
   <div class="card" style="padding:11px 13px;">
     <div style="display:flex;align-items:center;gap:8px;">
@@ -783,8 +845,17 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   </div>
 </section>
 
-<!-- ============ VIEW 4: 工具 ============ -->
-<section class="view" id="v-tools">
+<!-- ============ VIEW 4: 我的（tab 容器）============ -->
+<section class="view" id="v-mine">
+  <div class="segbar" data-seg="mine">
+    <button data-sub="sub-record" class="on">🧾 记录</button>
+    <button data-sub="sub-msg">📬 消息 <span class="dot" id="msgDot">2</span></button>
+    <button data-sub="sub-credit">⭐ 信用</button>
+  </div>
+</section>
+
+<!-- ============ VIEW 4a: 记录（原 v-tools + v-review）============ -->
+<section class="subview on" id="sub-record">
   <h2 class="sec"><span class="n">8</span>预算记账 · 花到哪一目都清楚</h2>
   <div class="card">
     <div class="grid2">
@@ -853,9 +924,9 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   </div>
 </section>
 
-<!-- ============ VIEW 5: 复盘 ============ -->
-<section class="view" id="v-review">
-  <h2 class="sec"><span class="n">11</span>旅行复盘 · 回家路上干这事儿最合适</h2>
+<!-- ============ VIEW 4b: 复盘（已并入「我的 > 记录」，作 subview）============ -->
+<section class="subview" id="sub-review">
+  <h2 class="sec"><span class="n">★</span>旅行复盘 · 回家路上干这事儿最合适</h2>
   <div class="grid2" style="margin-bottom:12px;">
     <div class="stat"><b id="r-exp">¥0</b><small>本次总花费</small></div>
     <div class="stat"><b id="r-ck">0</b><small>打卡地点数</small></div>
@@ -891,24 +962,160 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
     </div>
   </div>
 </section>
+
+<!-- ============ VIEW 4c: 消息（新）============
+     用途：组队相关的通知中心。V2 接云端后由服务端推送，现在是本地示例数据 + 真实交互骨架。
+     设计原则：只做「通知」不做「评价」——涉及信用的话术必须是客观描述。 -->
+<section class="subview" id="sub-msg">
+  <h2 class="sec"><span class="n">📬</span>消息 · 组队相关的都在这儿</h2>
+  <p style="font-size:12px;color:var(--ink2);margin-bottom:12px;">组队申请、行程变更、搭子临时退出、本地通接单，统一收在这里。<b>陌生组队务必在平台内沟通、把约定写清楚</b>，出了分歧才有据可依。</p>
+
+  <div class="segbar" style="margin-bottom:10px;">
+    <button class="on" data-mtab="all">全部</button>
+    <button data-mtab="apply">申请</button>
+    <button data-mtab="change">变更</button>
+    <button data-mtab="system">系统</button>
+  </div>
+  <div id="msgList"></div>
+
+  <div class="card" style="margin-top:12px;">
+    <h3>🔔 通知设置</h3>
+    <div class="chk" id="msgOpt1"><div class="box">✓</div><span>有人申请加入我的行程时提醒我</span></div>
+    <div class="chk" id="msgOpt2"><div class="box">✓</div><span>伙伴取消/变更行程时提醒我</span></div>
+    <div class="chk" id="msgOpt3"><div class="box"></div><span>本地通接单后短信提醒（需绑定手机号）</span></div>
+    <div class="tip">📌 现阶段消息只存在本机（浏览器 localStorage），换设备不同步。接云端后才会真正推送。</div>
+  </div>
+</section>
+
+<!-- ============ VIEW 4d: 信用（新）============
+     合规红线（必读）：
+       ✅ 只记录**客观事实**：是否成行、是否临时取消、取消距出发多久、完成次数、响应率
+       ✅ 允许被记录方**申诉更正**（必须有入口，这是平台免责的关键）
+       ❌ 禁止：主观评价标签（「老赖」「骗子」「不靠谱」）、用户互评分、公开点名羞辱
+     理由：前者是事实陈述，后者构成名誉权侵权，个人开发者无法承担。 -->
+<section class="subview" id="sub-credit">
+  <h2 class="sec"><span class="n">⭐</span>信用档案 · 只记事实，不贴标签</h2>
+  <div class="tip" style="margin:0 0 12px;">🛡️ <b>这里只显示客观记录</b>：约了几次、成行几次、临时取消几次、平均响应时间。<b>不做任何主观评价</b>——我们认为「事实本身就有说服力」，而给人贴标签既不礼貌也不合法。</div>
+
+  <h2 class="sec"><span class="n">👤</span>我自己的记录</h2>
+  <div class="card">
+    <div class="grid2" style="margin-bottom:12px;">
+      <div class="stat"><b id="cr-total">0</b><small>累计约伴次数</small></div>
+      <div class="stat"><b id="cr-done">0</b><small>成功成行</small></div>
+      <div class="stat"><b id="cr-cancel">0</b><small>临时取消</small></div>
+      <div class="stat"><b id="cr-rate">—</b><small>成行率</small></div>
+    </div>
+    <div class="mini-t">「临时取消」指距出发 48 小时内取消。有正当理由（生病、天气封路、航班取消）可申诉标注。</div>
+    <h3 style="margin-top:12px;">📋 明细</h3>
+    <div id="creditList"></div>
+    <p id="creditEmpty" style="font-size:12px;color:#C9B394;">还没有约伴记录。等「搭子」板块上线后，每次组队都会记一笔。</p>
+  </div>
+
+  <h2 class="sec"><span class="n">📝</span>如果记录有误</h2>
+  <div class="card">
+    <h3>申诉入口</h3>
+    <p>任何一条记录，你都可以点「申诉」说明情况。我们核实后会更正，并保留原始记录以备查。</p>
+    <div class="add-row" style="margin-top:10px;">
+      <input id="apInput" placeholder="选中一条记录后，在这里写申诉理由…">
+      <button id="apSend">提交</button>
+    </div>
+    <div class="tip">⚖️ 备注：本应用现阶段为个人自用演示，未公开运营。正式上线前，涉及用户信息的收集与展示必须按《个人信息保护法》单独取得授权，并提供完整的更正、删除通道。</div>
+  </div>
+</section>
+
+<!-- ============ VIEW 3b: 搭子（V2 占位页）============
+     V2 三大板块的入口预告：找搭子 / 本地通 / 房车。
+     现阶段展示架构预览 + 在「我的 > 信用」里预埋数据结构，不联网、不收集任何真实信息。 -->
+<section class="view" id="v-partner">
+  <div class="segbar" data-seg="partner">
+    <button data-sub="sub-partner-people" class="on">🧑‍🤝‍🧑 找搭子</button>
+    <button data-sub="sub-partner-guide">🚗 本地通</button>
+    <button data-sub="sub-partner-rv">🚐 房车</button>
+  </div>
+</section>
+
+<section class="subview on" id="sub-partner-people">
+  <h2 class="sec"><span class="n">1</span>找搭子 · 一个人来东北，也能有个伴</h2>
+  <div class="tip" style="margin:0 0 12px;">🚧 <b>板块建设中</b>。下面是你这个想法在功能上的完整形态，先看结构对不对味，确认后我们接云端做真实数据。</div>
+
+  <div class="card">
+    <h3>发布出行计划时可以写什么</h3>
+    <p style="margin-bottom:10px;">一条完整的约伴信息 = <b>去哪 + 玩啥 + 我是什么人 + 想认识什么人</b>。</p>
+    <div class="kv"><span>去哪儿 · 什么时候</span><b class="v">目的地 + 日期区间</b></div>
+    <div class="kv"><span>想玩什么 · 感受什么</span><b class="v">看雪 / 摄影 / 徒步 / 逛大集…</b></div>
+    <div class="kv"><span>我的性格特点</span><b class="v">话少 / 社牛 / 作息规律…</b></div>
+    <div class="kv"><span>期望的伙伴性格</span><b class="v">随和 / 爱拍照 / 能早起…</b></div>
+    <div class="kv"><span>同性 or 异性优先</span><b class="v">同性 / 异性 / 不限</b></div>
+    <div class="kv" style="border-bottom:0;"><span>目的类型</span><b class="v">纯旅游搭子 / 愿意试着认识伴侣</b></div>
+    <div class="tip">🛡️ <b>关于「认识伴侣」这一项</b>：涉及婚恋交友在国内属强监管领域，个人开发者做公开交友功能需要资质。当前阶段建议：<b>只保留「旅游搭子」这一档公开可见</b>，「想认识未来伴侣」这类意图，在未取得合规路径前不对外开放展示。这条我会在正式做之前跟你确认清楚。</div>
+  </div>
+
+  <div class="card">
+    <h3>已有约伴信息（示例）</h3>
+    <div id="partnerDemo"></div>
+    <div class="tip">👆 以上为<b>假数据演示排版</b>，用来确认信息密度是否合适。要发布真实信息，需要先接云端。</div>
+  </div>
+</section>
+
+<section class="subview" id="sub-partner-guide">
+  <h2 class="sec"><span class="n">2</span>本地通陪游 · 熟悉路的人带你走</h2>
+  <div class="tip" style="margin:0 0 12px;">🚧 <b>板块建设中</b>。这个板块的形态是「本地人报价 → 游客询价 → 双方谈定」。</div>
+
+  <div class="card">
+    <h3>本地通需要满足的条件</h3>
+    <ul>
+      <li><b>自有私家车</b>（需上传行驶证，核验车辆与本人一致）</li>
+      <li><b>熟悉当地路况</b>：哪些路冬季封、哪段容易结冰、哪里停车方便</li>
+      <li><b>懂人文</b>：能讲清本地历史、民俗、哪家馆子是本地人吃的</li>
+      <li><b>能承担导游式讲解</b>：不是单纯开车，而是把地方讲活</li>
+    </ul>
+    <h3 style="margin-top:12px;">接单方式</h3>
+    <p>本地通<b>先报一个价格</b>（按天 / 按线路），需要的人在平台里<b>询价、聊细节</b>。付不付费、付多少，由双方谈定——平台只提供撮合与记录。</p>
+  </div>
+
+  <div class="warnbox">
+    <b>⚠️ 这一块必须先解决合规问题，才能上线</b><br>
+    「有私家车 + 收费载客 + 提供导游服务」在国内法律上同时触碰两条线：<br>
+    ① <b>非法营运</b>——未取得道路运输经营许可，收取费用载客，属违规（交通部门可处罚）；<br>
+    ② <b>无证导游</b>——以营利为目的提供导游服务，需持导游证。<br>
+    <b>可行的合规路径</b>（需要你拍板，我会在动手前给完整方案）：<br>
+    · 平台侧只做「信息发布与撮合」，不做资金结算（不碰钱，责任边界最清晰）<br>
+    · 明确标注「顺路同行 / 油费分摊」而非「营运载客」，并强制签署同行协议<br>
+    · 或者走「旅行社/包车公司入驻」路线，由有资质的主体承接<br>
+    这块我会单独出一份合规评估，不在这轮动手。
+  </div>
+</section>
+
+<section class="subview" id="sub-partner-rv">
+  <h2 class="sec"><span class="n">3</span>房车旅行 · 移动的家开进林海</h2>
+  <div class="tip" style="margin:0 0 12px;">🚧 <b>板块建设中</b>。你提到后期可能独立成付费板块，所以当前只做入口预留，不展开细节。</div>
+
+  <div class="card">
+    <h3>规划中的形态</h3>
+    <ul>
+      <li><b>房车租赁</b>：车型 / 价格 / 取还车点 / 押金规则</li>
+      <li><b>营地地图</b>：东北各省房车营地位置、供电供水、费用、冬季是否营业</li>
+      <li><b>线路推荐</b>：环长白山线、沿边境线、草原线等适合房车的长线</li>
+      <li><b>补给点</b>：加水、排污、充电的固定点位（东北这类点位稀，是刚需）</li>
+      <li><b>冬季注意</b>：管路防冻、采暖、雪地驾驶、限高限宽路桥</li>
+    </ul>
+    <div class="tip">💰 若后期独立为付费板块，需先明确：是收「会员费」还是「撮合服务费」？这决定是否需要支付资质（个人无法直接收款，必须走有支付牌照的通道）。</div>
+  </div>
+</section>
 </main>
 
 <nav class="tabbar">
   <button data-v="v-gen" class="on"><span class="ic">✨</span>规划</button>
-  <button data-v="v-depart"><span class="ic">🎒</span>出发</button>
-  <button data-v="v-price"><span class="ic">💰</span>算价</button>
   <button data-v="v-plan"><span class="ic">🗺️</span>行程</button>
-
-  <button data-v="v-drive"><span class="ic">🚗</span>自驾</button>
   <button data-v="v-explore"><span class="ic">🍄</span>探索</button>
-  <button data-v="v-tools"><span class="ic">🧾</span>工具</button>
-  <button data-v="v-review"><span class="ic">⭐</span>复盘</button>
+  <button data-v="v-partner"><span class="ic">🐾</span>搭子</button>
+  <button data-v="v-mine"><span class="ic">👤</span>我的</button>
 </nav>
 
 </div>
 
 <script>
-const APP_VER='1.3.6';
+const APP_VER='1.4.0';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
@@ -1500,14 +1707,40 @@ const SAY={
  'lv-warm':['嗷呜~太阳有点晒，墨镜戴上了，酷吧？','去长白山顶躲太阳，比这儿凉快 10℃！'],
  'lv-hot':['嗷呜——出汗啦！快带我去 22℃ 的森林里！','这个天气……我只想趴在树荫下当一只废狍。']
 };
-const WX={cur:null,src:'sim'};
+const WX={cur:null,src:'sim',placeName:'',lat:null,lon:null};
 S.wx=S.wx||{city:'hrb'};
+if(S.seasonLock===undefined)S.seasonLock=false;
 
+/* 衣着档位：**只由实时气温决定，与月份/季节标签无关**。
+   阈值按东北体感校准：
+     ≥24℃ 短袖（沈阳大连 9 月白天正是这一档）
+     20–23℃ 薄长袖，不加配饰
+     15–19℃ 长袖 + 薄外套
+     8–14℃  需要围脖/薄羽绒
+     0–7℃   围脖 + 手套
+     −6–0℃  耳包 + 手套 + 围脖
+     ≤−7℃   大棉袄全副武装
+   注意：**围脖从 14℃ 下调到 8℃**。原先 14℃ 就戴围脖，导致 9 月沈阳（白天 25℃）
+   仍显示"秋装"，与实际严重不符。 */
 function tempLv(t){
- if(t<=-15)return'lv-frozen'; if(t<=-5)return'lv-freeze'; if(t<=5)return'lv-chill';
- if(t<=14)return'lv-cool'; if(t<=25)return'lv-mild'; if(t<=30)return'lv-warm'; return'lv-hot';
+ if(t<=-7)return'lv-frozen'; if(t<=0)return'lv-freeze'; if(t<=7)return'lv-chill';
+ if(t<=14)return'lv-cool'; if(t<=23)return'lv-mild'; if(t<=29)return'lv-warm'; return'lv-hot';
 }
-function tempDesc(t){return t<=-15?'极寒':t<=-5?'严寒':t<=5?'冷':t<=14?'微凉':t<=25?'舒适':t<=30?'偏热':'炎热';}
+function tempDesc(t){
+ if(t<=-7)return'极寒'; if(t<=0)return'严寒'; if(t<=7)return'冷';
+ if(t<=14)return'微凉'; if(t<=23)return'舒适'; if(t<=29)return'偏热'; return'炎热';
+}
+/* 穿搭一句话：给用户看的直白建议，不依赖季节 */
+function wearBrief(t){
+ if(t<=-7)return'羽绒服+棉裤+雪地靴，帽子手套围脖一个不能少';
+ if(t<=0)return'厚羽绒+加绒裤，耳包手套必须带';
+ if(t<=7)return'羽绒服或厚大衣，围脖手套安排上';
+ if(t<=14)return'薄羽绒/风衣，早晚加件外套';
+ if(t<=19)return'长袖+薄外套，早晚凉中午暖';
+ if(t<=23)return'薄长袖或短袖加件防晒衣，最舒服的档';
+ if(t<=29)return'短袖就够，防晒别忘';
+ return'短袖+防晒+补水，正午少在户外晒';
+}
 function applyTemp(t){
  WX.cur=t;
  const lv=tempLv(t),box=document.getElementById('bearBox');
@@ -1517,33 +1750,107 @@ function applyTemp(t){
  document.getElementById('heroSay').innerHTML='🦌 '+arr[Math.floor(Math.random()*arr.length)];
  document.getElementById('wxSlider').value=t;
  document.getElementById('wxSlideV').textContent=t+'℃';
+ const wb=document.getElementById('wxWear'); if(wb)wb.textContent=wearBrief(t);
  updateWxLabel();
 }
 function updateWxLabel(){
  const t=WX.cur; if(t==null)return;
  document.getElementById('wxTemp').textContent=t;
- document.getElementById('wxTag').className=WX.src==='live'?'wx-live':'wx-sim';
- document.getElementById('wxTag').textContent=WX.src==='live'?'实时':'模拟';
- const a=WXCITY.find(x=>x[0]===S.wx.city);
- document.getElementById('wxSub').textContent=a[1]+' · '+tempDesc(t);
+ const tagEl=document.getElementById('wxTag');
+ /* 三种数据来源，标签如实标注，不糊弄用户 */
+ if(WX.src==='gps'){tagEl.className='wx-live';tagEl.textContent='我在这';}
+ else if(WX.src==='live'){tagEl.className='wx-live';tagEl.textContent='实时';}
+ else{tagEl.className='wx-sim';tagEl.textContent='模拟';}
+ document.getElementById('wxSub').textContent=WX.placeName+' · '+tempDesc(t);
 }
-async function fetchWeather(){
+/* ===== 定位层：到达目的地后优先用 GPS 实测 =====
+   优先顺序：GPS 定位（用户已在目的地） > 手动选的目的地 > 季节模拟值 */
+function locateMe(){
+ const btn=document.getElementById('wxLocate');
+ if(!navigator.geolocation){
+  neSay('嗷呜～这浏览器不支持定位，你手动选目的地吧。','g',5200);return;
+ }
+ if(btn){btn.textContent='定位中…';btn.disabled=true;}
+ navigator.geolocation.getCurrentPosition(
+  pos=>{
+   const la=pos.coords.latitude, lo=pos.coords.longitude;
+   /* 找最近的已知城市，用于显示名；超过 120km 就显示"当前位置" */
+   let near=null,best=99999;
+   WXCITY.forEach(c=>{
+    const d=Math.hypot((la-c[2])*111,(lo-c[3])*111*Math.cos(la*Math.PI/180));
+    if(d<best){best=d;near=c;}
+   });
+   WX.placeName=(near&&best<120)?near[1]:'当前位置';
+   WX.lat=la;WX.lon=lo;
+   if(btn){btn.textContent='📍 用我的位置';btn.disabled=false;}
+   fetchWeather(true);
+  },
+  err=>{
+   if(btn){btn.textContent='📍 用我的位置';btn.disabled=false;}
+   const msg=(err&&err.code===1)?'你没给定位权限，那就手动选个目的地呗～':'定位没成，手动选目的地一样的。';
+   neSay('嗷呜～'+msg,'g',5600);
+  },
+  {enableHighAccuracy:false,timeout:9000,maximumAge:600000}
+ );
+}
+/* forceGPS=true 时用 WX.lat/WX.lon；否则用 WX.placeName 对应城市 */
+async function fetchWeather(forceGPS){
  const c=WXCITY.find(x=>x[0]===S.wx.city);
+ const useGPS=!!forceGPS&&WX.lat!=null;
+ const la=useGPS?WX.lat:c[2], lo=useGPS?WX.lon:c[3];
+ if(!useGPS)WX.placeName=c[1];
  document.getElementById('wxTemp').textContent='…';
  try{
-  const u=`https://api.open-meteo.com/v1/forecast?latitude=${c[2]}&longitude=${c[3]}&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m&timezone=Asia%2FShanghai`;
+  /* current= 拿实时；daily= 拿今天最高最低（判断昼夜温差）；再加降水与风速阵风 */
+  const u=`https://api.open-meteo.com/v1/forecast?latitude=${la}&longitude=${lo}`
+   +`&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,precipitation,relative_humidity_2m`
+   +`&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max`
+   +`&timezone=Asia%2FShanghai&forecast_days=1`;
   const r=await fetch(u,{signal:AbortSignal.timeout(8000)});
   const d=await r.json();
   const cu=d.current,t=Math.round(cu.temperature_2m);
-  WX.src='live';
+  WX.src=useGPS?'gps':'live';
   const wc=WCODE[cu.weather_code]||['🌡️','—'];
   document.getElementById('wxCond').textContent=wc[0]+' '+wc[1];
-  document.getElementById('wxFeel').textContent='体感 '+Math.round(cu.apparent_temperature)+'℃ · 风 '+Math.round(cu.wind_speed_10m)+'km/h';
+  const gust=Math.round(cu.wind_gusts_10m||0);
+  document.getElementById('wxFeel').textContent=
+   '体感 '+Math.round(cu.apparent_temperature)+'℃ · 风 '+Math.round(cu.wind_speed_10m)+'km/h'
+   +(gust?'（阵风 '+gust+'）':'')+' · 湿度 '+Math.round(cu.relative_humidity_2m||0)+'%';
+  /* 今日概览：最高/最低/降水概率 —— 让用户知道该按哪个温度穿衣 */
+  const dl=d.daily;
+  const tmax=Math.round(dl.temperature_2m_max[0]), tmin=Math.round(dl.temperature_2m_min[0]);
+  const pprob=dl.precipitation_probability_max[0];
+  const ov=document.getElementById('wxOverview');
+  if(ov){
+   ov.style.display='block';
+   ov.innerHTML=`📊 今日 <b>${tmin}℃ ~ ${tmax}℃</b>　·　降水概率 <b>${pprob==null?'—':pprob+'%'}</b>　·　`
+    +`穿衣按 <b>${wearBrief(tmax)}</b>（白天最高温），早晚出门再加一件。`;
+  }
+  /* 恶劣天气提醒：雨雪 / 大风 / 强降温 */
+  const code=cu.weather_code;
+  const alerts=[];
+  if(code>=95)alerts.push('⛈️ 有雷雨，山区别走山脊线');
+  else if(code>=71&&code<=86)alerts.push('🌨️ 有雪，路面可能结冰，鞋要防滑');
+  else if(code>=51&&code<=67)alerts.push('🌧️ 有雨，带伞、鞋子防水');
+  if(gust>=40)alerts.push('💨 阵风 '+gust+'km/h，自驾注意侧风、别走山路');
+  if(tmax-tmin>=12)alerts.push('🌡️ 昼夜温差 '+Math.round(tmax-tmin)+'℃，洋葱式穿衣最稳');
+  const al=document.getElementById('wxAlert');
+  if(al){ al.style.display=alerts.length?'block':'none'; al.innerHTML=alerts.map(x=>'· '+x).join('<br>'); }
+  /* 按**真实气温**校正季节标签（仅当用户没手动锁过）。
+     注意：季节只影响"内容推荐"（去哪玩、吃什么），
+     衣着显示由 applyTemp(t) 独立控制，两者不耦合。 */
+  if(!S.seasonLock){
+   const m=new Date().getMonth()+1;
+   const ns=seasonFromTemp(t,m);
+   if(ns!==S.season){S.season=ns;save();renderSeason();renderFoodGrid();renderDriveForm();renderDests();renderCk();}
+  }
   applyTemp(t);
  }catch(e){
   WX.src='sim';
   document.getElementById('wxCond').textContent='📶 网络不通';
   document.getElementById('wxFeel').textContent=NE.err.net[1];
+  const ov=document.getElementById('wxOverview'); if(ov)ov.style.display='none';
+  const al=document.getElementById('wxAlert'); if(al)al.style.display='none';
   neSay(RARR(NE.err.net),'t',6200);
   applyTemp(SEASON_T[S.season]);
  }
@@ -1568,11 +1875,17 @@ function buildFall(){
  const sel=document.getElementById('wxCity');
  sel.innerHTML=WXCITY.map(c=>`<option value="${c[0]}">${c[1]}</option>`).join('');
  sel.value=S.wx.city;
- sel.onchange=()=>{S.wx.city=sel.value;save();fetchWeather();};
- document.getElementById('wxGo').onclick=fetchWeather;
+ sel.onchange=()=>{
+  S.wx.city=sel.value;save();
+  /* 手动换目的地 → 清掉 GPS 覆盖，改用所选城市 */
+  WX.lat=null;WX.lon=null;
+  fetchWeather(false);
+ };
+ document.getElementById('wxGo').onclick=()=>fetchWeather(false);
+ const lc=document.getElementById('wxLocate'); if(lc)lc.onclick=locateMe;
  document.getElementById('wxSlider').oninput=e=>{WX.src='sim';applyTemp(+e.target.value);};
 })();
-fetchWeather();
+fetchWeather(false);
 
 
 /* ============ 帮我规划：需求式智能引擎 ============ */
@@ -2478,22 +2791,80 @@ const dvLk=document.getElementById('dvLucky');
 if(dvLk) dvLk.onclick=()=>{genDrive(true);renderDriveForm();};
 
 document.querySelectorAll('#seasonBar button').forEach(b=>{
- b.onclick=()=>{S.season=b.dataset.s;save();renderSeason();renderFoodGrid();renderDriveForm();neSay(NE.ev.season[S.season],Math.random()<.5?'t':'g',5200);};
+ b.onclick=()=>{S.season=b.dataset.s;S.seasonLock=true;save();renderSeason();renderFoodGrid();renderDriveForm();neSay(NE.ev.season[S.season],Math.random()<.5?'t':'g',5200);};
+});
+/* ===== 导航切换（V1.4.0：5 tab + 二级 subview）=====
+   设计要点：
+   ① tab 只切 `.view`，subview 由所在 view 内的 `.segbar` 管理
+   ② subview 的显隐 = 「属于哪个 view」 ∩ 「seg 选中项」，两边都要满足才显示
+   ③ 用一个 MAP 把 subview 归属写死，避免靠 DOM 顺序猜（顺序会变，MAP 不会） */
+const SUB_OF={
+ 'v-plan'   :['sub-plan','sub-price','sub-drive'],
+ 'v-explore':['sub-explore','sub-depart'],
+ 'v-mine'   :['sub-record','sub-review','sub-msg','sub-credit']
+};
+function showSub(viewId,subId){
+ const list=SUB_OF[viewId]||[];
+ if(!list.length)return;
+ const target=subId||list[0];
+ list.forEach(s=>{
+  const el=document.getElementById(s);
+  if(el)el.classList.toggle('on', s===target);
+ });
+ const bar=document.querySelector(`#${viewId} .segbar`);
+ if(bar)bar.querySelectorAll('button[data-sub]').forEach(b=>b.classList.toggle('on',b.dataset.sub===target));
+}
+document.querySelectorAll('.segbar').forEach(bar=>{
+ /* 只处理「一级 subview 切换」的 segbar。
+    消息页里那个筛选条（按钮带 data-mtab 而非 data-sub）不归这里管，
+    它的绑定在 renderMsgs 附近单独做，避免互相覆盖。 */
+ bar.querySelectorAll('button[data-sub]').forEach(b=>{
+  b.onclick=()=>{
+   const view=bar.closest('.view');
+   if(view)showSub(view.id,b.dataset.sub);
+   window.scrollTo({top:0,behavior:'smooth'});
+  };
+ });
 });
 document.querySelectorAll('.tabbar button').forEach(b=>{
  b.onclick=()=>{
   document.querySelectorAll('.tabbar button').forEach(x=>x.classList.remove('on'));
   document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));
-  b.classList.add('on');document.getElementById(b.dataset.v).classList.add('on');
+  b.classList.add('on');
+  const vid=b.dataset.v;
+  const vEl=document.getElementById(vid);
+  if(vEl)vEl.classList.add('on');
+  /* 进 tab 时显示它的第一个 subview（记忆上次选中的可后续加） */
+  showSub(vid);
   window.scrollTo({top:0,behavior:'smooth'});
  };
 });
 
-/* init：无历史数据时按当前月份定季节 */
+/* ===== 季节推断：**不由月份决定** =====
+   东北南北跨度太大（漠河与大连同期差 15℃+），月份推季节必然出错。
+   规则：
+     ① 用户手动选过季节 → 尊重用户（S.seasonLock=true）
+     ② 否则：季节标签只作为「内容推荐维度」的初值，用**目的地实时气温**反推
+     ③ 衣着显示一律走 applyTemp(实时温度)，与季节标签解耦
+   气温→季节的映射（按目的地实时温度）：
+     ≤0℃ 冬 ／ 1–13℃ 春秋 ／ ≥14℃ 夏 … 但春秋难分，故：
+     1–13℃ 且月份在 4–10 月 → 春；否则 → 秋
+   这是**兜底**，只要天气接口通了就用真实数据。 */
+function seasonFromTemp(t,m){
+ if(t<=0)return'wi';
+ if(t>=20)return'su';
+ if(t>=14)return(m>=6&&m<=8)?'su':'au';
+ return(m>=4&&m<=5)?'sp':'au';
+}
 (function(){
+ const m=new Date().getMonth()+1;
  if(!localStorage.getItem(KEY)){
-  const m=new Date().getMonth()+1;
+  /* 首访：先给个中性初值，等 fetchWeather 回来再按真实气温校正 */
   S.season=(m>=4&&m<=5)?'sp':(m>=6&&m<=8)?'su':(m>=9&&m<=10)?'au':'wi';
+  S.seasonLock=false;
+ }else if(S.seasonLock===undefined){
+  /* 老数据迁移：此前是自动推的，视为未锁定 */
+  S.seasonLock=false;
  }
 })();
 
@@ -2670,6 +3041,127 @@ function shareBoot(){
 }
 
 shareBoot();
+
+/* ===== 消息中心（V1.4.0 新增）=====
+   V2 接云端后改为服务端推送；当前用本地示例数据，验证信息架构与排版。
+   注意：涉及别人取消行程的措辞必须是**中性事实描述**，不带评价。 */
+S.msgs=S.msgs||[];
+S.credit=S.credit||[];
+S.msgRead=S.msgRead||{};
+
+function seedMsgs(){
+ if(S.msgs.length)return;
+ const now=Date.now();
+ S.msgs=[
+  {id:'m1',t:'apply',ic:'🧑‍🤝‍🧑',unread:true,ts:now-1000*60*42,
+   title:'有人申请加入你的「长白山 4 天」',
+   body:'昵称「林海听风」想加入，同行 2 人，备注：摄影爱好者，能早起拍日出。'},
+  {id:'m2',t:'change',ic:'⚠️',unread:true,ts:now-1000*60*60*5,
+   title:'同行伙伴「小林」取消了本次同行',
+   body:'原定 10月2日 出发，对方于出发前 5 天取消，备注：公司临时安排出差。'},
+  {id:'m3',t:'system',ic:'📢',unread:false,ts:now-1000*60*60*30,
+   title:'秋季线路已更新',
+   body:'新增「五花山摄影线」与「边境线自驾」，可在「行程 > 线路」查看。'}
+ ];
+ save();
+}
+function msgTime(ts){
+ const d=Date.now()-ts, m=Math.floor(d/60000);
+ if(m<1)return'刚刚';
+ if(m<60)return m+' 分钟前';
+ const h=Math.floor(m/60); if(h<24)return h+' 小时前';
+ return Math.floor(h/24)+' 天前';
+}
+let msgFilter='all';
+function renderMsgs(){
+ const box=document.getElementById('msgList'); if(!box)return;
+ const list=S.msgs.filter(m=>msgFilter==='all'||m.t===msgFilter)
+  .sort((a,b)=>b.ts-a.ts);
+ if(!list.length){box.innerHTML='<div class="msg-empty">🐾 这里空空的，暂时没有新消息。</div>';return;}
+ box.innerHTML=list.map(m=>`
+  <div class="msg-item${m.unread?' unread':''}" data-id="${m.id}">
+    <div class="msg-ic">${m.ic}</div>
+    <div class="msg-bd">
+      <b>${m.title}</b>
+      <p>${m.body}</p>
+      <div class="msg-time">${msgTime(m.ts)}</div>
+    </div>
+  </div>`).join('');
+ box.querySelectorAll('.msg-item').forEach(el=>{
+  el.onclick=()=>{
+   const m=S.msgs.find(x=>x.id===el.dataset.id);
+   if(m&&m.unread){m.unread=false;save();renderMsgs();updateMsgDot();}
+  };
+ });
+}
+function updateMsgDot(){
+ const n=S.msgs.filter(m=>m.unread).length;
+ const d=document.getElementById('msgDot');
+ if(d){ if(n>0){d.textContent=n;d.style.display='';} else {d.style.display='none';} }
+ /* 只管消息页自己的筛选条，不碰一级 subview 的 segbar */
+ document.querySelectorAll('[data-mtab]').forEach(b=>{
+  b.classList.toggle('on',b.dataset.mtab===msgFilter);
+ });
+}
+document.querySelectorAll('[data-mtab]').forEach(b=>{
+ b.onclick=()=>{msgFilter=b.dataset.mtab;renderMsgs();updateMsgDot();};
+});
+['msgOpt1','msgOpt2','msgOpt3'].forEach((id,i)=>{
+ const el=document.getElementById(id); if(!el)return;
+ el.onclick=()=>{el.classList.toggle('done');el.querySelector('.box').textContent=el.classList.contains('done')?'✓':'';};
+});
+
+/* ===== 信用档案（V1.4.0 新增）=====
+   合规红线：**只记客观事实，不做主观评价**。
+   这里的数据结构是给 V2 云端用的预埋，现在恒为空列表（不伪造数据）。 */
+function renderCredit(){
+ const total=S.credit.length;
+ const done=S.credit.filter(c=>c.r==='done').length;
+ const cancel=S.credit.filter(c=>c.r==='cancel').length;
+ const rate=total?Math.round(done/total*100)+'%':'—';
+ const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+ set('cr-total',total);set('cr-done',done);set('cr-cancel',cancel);set('cr-rate',rate);
+ const box=document.getElementById('creditList'), emp=document.getElementById('creditEmpty');
+ if(!box)return;
+ if(!total){box.innerHTML='';if(emp)emp.style.display='block';return;}
+ if(emp)emp.style.display='none';
+ const badge=r=>r==='done'?'<span class="badge-ok">已成行</span>'
+  :r==='cancel'?'<span class="badge-cancel">临时取消</span>'
+  :'<span class="badge-empty">未成行</span>';
+ box.innerHTML=S.credit.map(c=>`
+  <div class="rec-row">
+    <div><b>${c.t}</b><div class="rp">${c.d} · ${c.role||'搭子'}</div></div>
+    <div style="text-align:right;">${badge(c.r)}</div>
+  </div>`).join('');
+}
+const apSend=document.getElementById('apSend');
+if(apSend)apSend.onclick=()=>{
+ const v=document.getElementById('apInput').value.trim();
+ if(!v){neSay('嗷呜～你得先写点啥，我才能帮你递上去。','t',4200);return;}
+ document.getElementById('apInput').value='';
+ neSay('收到！申诉已记录，接云端后会真的提交给审核。','g',4600);
+};
+
+/* ===== 找搭子示例卡片（V2 占位，假数据仅用于确认排版）===== */
+(function(){
+ const box=document.getElementById('partnerDemo'); if(!box)return;
+ const demo=[
+  ['阿拉蕾','女 · 28','10月5–9日','长白山看红叶，想拍雾凇晨景','话不多但拍照很讲究，作息规律','想找爱摄影、能早起的同性伙伴','纯旅游搭子'],
+  ['海蛎子','男 · 34','11月20–25日','哈尔滨冰雪大世界 + 雪乡','东北话十级，社牛，饭搭子属性','不限性别，随和的就行','纯旅游搭子'],
+  ['小满','女 · 25','12月1–6日','漠河找北 + 泼水成冰','慢热但熟了话很多，怕冷但想看极光','想找有耐心、不怕冷的同性伙伴','纯旅游搭子']
+ ];
+ box.innerHTML=demo.map(d=>`
+  <div class="card" style="margin-bottom:9px;box-shadow:none;border:1px solid var(--line);">
+    <h3 style="margin-bottom:5px;">${d[0]} <span style="font-weight:400;font-size:11.5px;color:#B8A88F;">${d[1]}</span></h3>
+    <div class="kv"><span>📅 时间</span><b class="v">${d[2]}</b></div>
+    <div class="kv"><span>🎯 想玩啥</span><b class="v" style="font-weight:600;">${d[3]}</b></div>
+    <div class="kv"><span>🙋 我这个人</span><b class="v" style="font-weight:600;">${d[4]}</b></div>
+    <div class="kv"><span>🤝 想找</span><b class="v" style="font-weight:600;">${d[5]}</b></div>
+    <div class="kv" style="border-bottom:0;"><span>🏷️ 类型</span><b class="v">${d[6]}</b></div>
+  </div>`).join('');
+})();
+
+seedMsgs();renderMsgs();updateMsgDot();renderCredit();
 renderSeason();renderPpl();renderPeriod();renderPrice();renderHotel();renderExp();renderList();review();renderDriveForm();renderPark();renderLife();renderFoodGrid();petBoot();genDrive(false);renderGenForm();
 
 </script>
