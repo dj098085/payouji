@@ -9,6 +9,16 @@
 <meta property="og:description" content="四季通用的东北旅行管家：按人数给交通与防宰客价格，只推本地人去的小馆和冷门好地方，行程一键分享给同伴。">
 <meta property="og:image" content="https://workbuddy-space-static.codebuddy.work/image/c3Kw1vc6VL2pmnOH7LjVvM.jpg">
 <meta property="og:type" content="website">
+<!-- ===== PWA（V1.4.4）=====
+     目的：长白山 / 漠河 / 呼伦贝尔草原这些没信号的地方，加到桌面后仍能打开。
+     manifest + apple-touch-icon 让「添加到主屏幕」有正经图标与独立窗口；
+     sw.js 负责离线缓存与天气降级。三者路径均为相对，部署到子目录也不会断。 -->
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<meta name="theme-color" content="#C98B54">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="狍游记">
 <meta name="format-detection" content="telephone=no">
 <style>
 :root{
@@ -1163,7 +1173,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.4.3';
+const APP_VER='1.4.4';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
@@ -1756,6 +1766,33 @@ const SAY={
  'lv-hot':['嗷呜——出汗啦！快带我去 22℃ 的森林里！','这个天气……我只想趴在树荫下当一只废狍。']
 };
 const WX={cur:null,src:'sim',placeName:'',lat:null,lon:null};
+
+/* ===== 天气离线缓存（V1.4.4）=====
+   旅行场景会真的断网（长白山、漠河、草原腹地）。原实现在 fetch 失败时直接
+   掉进 SEASON_T 兜底 —— 那是"季节模拟值"，跟眼前天气毫无关系，等于骗人。
+   改为：成功时把结构化结果存 localStorage；失败时**回放上次真实数据**，
+   并如实标注「N 分钟前」。超 6 小时才判为过期，退回模拟值。 */
+const WX_KEY='paoyouji_wx_v1';
+const WX_MAX_AGE=6*3600*1000;   /* 6 小时 */
+function wxSaveCache(o){ try{ localStorage.setItem(WX_KEY,JSON.stringify(o)); }catch(e){} }
+function wxLoadCache(){
+ try{
+  const raw=localStorage.getItem(WX_KEY); if(!raw)return null;
+  const o=JSON.parse(raw);
+  if(!o||!o.t)return null;
+  o.age=Date.now()-o.t;
+  return o.age<=WX_MAX_AGE?o:null;
+ }catch(e){ return null; }
+}
+function wxAgo(ms){
+ /* 用 floor 不用 round：`round(30s/60000)=1` 会让「30 秒前」显示成「1 分钟前」，
+    而实际还不到一分钟。floor 保证 59 秒内都是「刚刚」。 */
+ if(ms<60000)return'刚刚';
+ const m=Math.floor(ms/60000);
+ if(m<60)return m+' 分钟前';
+ const h=Math.floor(m/60); if(h<24)return h+' 小时前';
+ return Math.floor(h/24)+' 天前';
+}
 S.wx=S.wx||{city:'hrb'};
 if(S.seasonLock===undefined)S.seasonLock=false;
 
@@ -1805,9 +1842,10 @@ function updateWxLabel(){
  const t=WX.cur; if(t==null)return;
  document.getElementById('wxTemp').textContent=t;
  const tagEl=document.getElementById('wxTag');
- /* 三种数据来源，标签如实标注，不糊弄用户 */
+ /* 四种数据来源，标签如实标注，不糊弄用户 */
  if(WX.src==='gps'){tagEl.className='wx-live';tagEl.textContent='我在这';}
  else if(WX.src==='live'){tagEl.className='wx-live';tagEl.textContent='实时';}
+ else if(WX.src==='cached'){tagEl.className='wx-sim';tagEl.textContent='📦 离线';}
  else{tagEl.className='wx-sim';tagEl.textContent='模拟';}
  document.getElementById('wxSub').textContent=WX.placeName+' · '+tempDesc(t);
 }
@@ -1893,7 +1931,35 @@ async function fetchWeather(forceGPS){
    if(ns!==S.season){S.season=ns;save();renderSeason();renderFoodGrid();renderDriveForm();renderDests();renderCk();}
   }
   applyTemp(t);
+  /* 成功拿到真实数据 → 存一份供断网回放 */
+  wxSaveCache({t:Date.now(),temp:t,tmin:tmax,tmax:tmax,pprob:pprob==null?null:pprob,
+   cond:wc[0]+' '+wc[1],feel:document.getElementById('wxFeel').textContent,
+   alerts:alerts,place:WX.placeName,src:WX.src});
  }catch(e){
+  /* ===== 断网兜底：优先回放上次真实数据，其次才是季节模拟值 ===== */
+  const c=wxLoadCache();
+  if(c){
+   WX.src='cached';
+   document.getElementById('wxTemp').textContent=c.temp+'℃';
+   document.getElementById('wxCond').textContent=c.cond||'📦 离线数据';
+   document.getElementById('wxFeel').textContent=(c.feel||'')+'　·　📦 离线，'+wxAgo(c.age)+'的数据';
+   const ov=document.getElementById('wxOverview');
+   if(ov&&c.tmax!=null){
+    ov.style.display='block';
+    ov.innerHTML=`📊 上次记录 <b>${c.tmin}℃ ~ ${c.tmax}℃</b>　·　降水概率 <b>${c.pprob==null?'—':c.pprob+'%'}</b>`
+     +`<br><span style="color:#B8A88F;">📦 现在没网，这是 <b>${wxAgo(c.age)}</b>的数据（${c.place||'—'}），到有信号的地方会自动刷新。</span>`;
+   }
+   const al=document.getElementById('wxAlert');
+   if(al){
+    const list=(c.alerts||[]).slice();
+    list.push('📦 当前无网络，以上为上次实况');
+    al.style.display='block'; al.innerHTML=list.map(x=>'· '+x).join('<br>');
+   }
+   applyTemp(c.temp);
+   neSay('嗷呜～这儿没信号！先给你 '+(c.place||'上次那个地方')+' '+wxAgo(c.age)+'的天气，走出去就自动更新。','t',6200);
+   return;
+  }
+  /* 连缓存都没有（首次访问就断网）→ 才用季节模拟值 */
   WX.src='sim';
   document.getElementById('wxCond').textContent='📶 网络不通';
   document.getElementById('wxFeel').textContent=NE.err.net[1];
@@ -3228,6 +3294,28 @@ if(apSend)apSend.onclick=()=>{
 
 seedMsgs();renderMsgs();updateMsgDot();renderCredit();
 renderSeason();renderPpl();renderPeriod();renderPrice();renderHotel();renderExp();renderList();review();renderDriveForm();renderPark();renderLife();renderFoodGrid();petBoot();genDrive(false);renderGenForm();
+
+/* ===== Service Worker 注册（PWA，V1.4.4）=====
+   放在所有渲染之后，不阻塞首屏。
+   只在 http/https 下注册 —— file:// 打开时 SW 不被允许，会抛异常，直接跳过。
+   注册失败**不影响任何功能**，只是没有离线能力，所以整体 try 住不弹错。 */
+(function(){
+ if(!('serviceWorker' in navigator))return;
+ if(location.protocol!=='http:'&&location.protocol!=='https:')return;
+ window.addEventListener('load',function(){
+  navigator.serviceWorker.register('./sw.js',{scope:'./'}).then(function(reg){
+   /* 有新版本时，提示一次并让新 SW 立即接管 */
+   reg.addEventListener('updatefound',function(){
+    var nw=reg.installing; if(!nw)return;
+    nw.addEventListener('statechange',function(){
+     if(nw.state==='installed'&&navigator.serviceWorker.controller){
+      try{ neSay('嗷呜～有新版本啦！关掉重开这个页面就是最新的。','t',5200); }catch(e){}
+     }
+    });
+   });
+  }).catch(function(){ /* 静默：离线能力不可用，不影响使用 */ });
+ });
+})();
 
 </script>
 </body>
