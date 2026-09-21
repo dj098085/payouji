@@ -401,6 +401,50 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .wxTip.on{display:block;}
 
 .petimg{width:100%;height:auto;display:block;}
+
+/* ============ 大屏适配（V1.4.3 新增）============
+   此前 @media 数量为 0，`#phone` 死锁在 480px：
+   实测 iPad(768) 占屏 64.3%、Laptop(1280) 仅 38.2%，两侧大片死白，
+   且字号在任何屏幕都一样大，投屏 / 笔记本打开观感像半成品。
+
+   ⚠️ 这一段**必须放在 <style> 最末尾**：
+   `.card` / `h2.sec` / `.hero h1` 的基础规则在本文件第 200 行之后才定义，
+   CSS 同优先级按「后出现者胜」，媒体查询若写在前面会被基础规则原样盖回去
+   （V1.4.3 首版就踩了这个坑：媒体查询放在 #phone 附近，实测 padding 与字号纹丝不动）。
+   以后再加断点，也一律追加到这里。 */
+
+/* 档 1 · 平板竖屏（≥720px）：放宽到 620px，字号整体上调一档 */
+@media (min-width:720px){
+  #phone{max-width:620px;}
+  .card p,.card li{font-size:13.6px;}
+  .segbar button{font-size:13.5px;}
+  .tabbar button{font-size:12px;}
+  .tabbar button .ic{font-size:22px;}
+}
+/* 档 2 · 桌面（≥1080px）：加宽 + 两侧氛围底色，去掉"窄条白板感" */
+@media (min-width:1080px){
+  body{background:linear-gradient(160deg,#E9DCC4,#EFE3CE 55%,#E4D5BA);}
+  #phone{max-width:760px;border-left:1px solid rgba(140,90,43,.10);border-right:1px solid rgba(140,90,43,.10);
+    box-shadow:0 0 70px rgba(140,90,43,.16);}
+  .card{padding:17px 19px;}
+  .card p,.card li{font-size:14px;line-height:1.85;}
+  .card h3{font-size:15.5px;}
+  h2.sec{font-size:19px;}
+  .hero h1{font-size:36px;}
+  .hero{padding:34px 26px 22px;}
+  .grid2{gap:14px;}
+}
+/* 档 3 · 宽屏（≥1440px）：再放宽，横向空间足够铺开卡片 */
+@media (min-width:1440px){
+  #phone{max-width:900px;}
+  .grid2{grid-template-columns:repeat(3,1fr);}
+}
+/* 无障碍：尊重系统"减少动态效果" */
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;scroll-behavior:auto !important;}
+  .fall{display:none;}
+}
 </style>
 </head>
 <body>
@@ -883,7 +927,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 
   <h2 class="sec"><span class="n">9</span>打卡记录 · 走到哪戳到哪</h2>
   <div class="card">
-    <p style="margin-bottom:10px;">点击卡片即打卡，进度自动统计到"复盘"页。想加自己的点？用下方自定义清单。</p>
+    <p style="margin-bottom:10px;">点击卡片即打卡，进度自动统计到「我的 › 🌟复盘」。想加自己的点？用下方自定义清单。</p>
     <div class="ck-grid" id="ckGrid"></div>
   </div>
 
@@ -940,7 +984,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   <div class="card">
     <h3>分类花费分布</h3>
     <div id="r-cats"></div>
-    <p id="r-catEmpty" style="font-size:12px;color:#C9B394;">还没有记账记录，去"工具"页记几笔吧。</p>
+    <p id="r-catEmpty" style="font-size:12px;color:#C9B394;">还没有记账记录，去「我的 › 记录」记几笔吧。</p>
   </div>
   <div class="card">
     <h3>这趟旅行打几分？</h3>
@@ -1119,7 +1163,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.4.2';
+const APP_VER='1.4.3';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
@@ -2288,7 +2332,7 @@ function renderGenResult(R){
   SEASON[R.season].gear.forEach(g=>items.push('装备：'+g));
   items.forEach(t=>{ if(!S.list.some(x=>x[0]===t)) S.list.push([t,false]); });
   save(); renderList();
-  neSay('记下了记下了！清单在「工具」页最后一栏，出门前照着划拉一遍就齐活。','g',5600);
+  neSay('记下了记下了！清单在「我的 › 记录」最下面那栏，出门前照着划拉一遍就齐活。','g',5600);
  };
 }
 
