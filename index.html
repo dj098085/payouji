@@ -1115,7 +1115,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.4.0';
+const APP_VER='1.4.1';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
@@ -3010,8 +3010,9 @@ function showInbox(P){
     var b=document.querySelector('[data-v="v-gen"]'); if(b) b.click();
     try{ neSay('中！那咱自己盘一个，想看雪看海还是整点吃的？','g',5200); }catch(e){}
   };
-  var tab=document.querySelector('[data-v="v-tools"]');
-  if(tab) tab.click();
+  /* V1.4.0：原「工具」tab 已并入「我的 > 记录」，跳转逻辑随之更新 */
+  var tab=document.querySelector('[data-v="v-mine"]');
+  if(tab){ tab.click(); if(typeof showSub==='function') showSub('v-mine','sub-record'); }
   setTimeout(function(){ try{ box.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){} },260);
 }
 function shareBoot(){
@@ -3029,7 +3030,9 @@ function shareBoot(){
   };
   document.addEventListener('click',function(e){
     if(e.target&&e.target.id==='gShare'){ e.preventDefault(); shareLink();
-      var tab=document.querySelector('[data-v="v-tools"]'); if(tab) tab.click();
+      /* V1.4.0：原「工具」tab 已并入「我的 > 记录」 */
+      var tab=document.querySelector('[data-v="v-mine"]');
+      if(tab){ tab.click(); if(typeof showSub==='function') showSub('v-mine','sub-record'); }
       setTimeout(function(){ var o=document.getElementById('shOut'); if(o) o.scrollIntoView({behavior:'smooth',block:'center'}); },300);
     }
   });
