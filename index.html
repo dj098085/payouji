@@ -283,7 +283,10 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 /* V1.4.0 导航重整：8 tab → 5 tab，一律均分不再横滚。
    旧规则 `flex:0 0 auto;min-width:52px` 是给 8 个 tab 做横向滚动的，
    5 个 tab 用它会右侧留空，故整段移除，回到基础样式 `flex:1`。
-   若要恢复横滚（tab 超过 6 个时），把下面注释掉的规则打开即可。 */
+   若要恢复横滚（tab 超过 6 个时），把下面注释掉的规则打开即可。
+
+  V1.4.1 复核：已确认这段死规则**全文仅此一处**，不会影响生效中的 `.tabbar button{flex:1}`。
+  保留注释而非删除，是为了 tab 数再涨时能直接复用。 */
 /*
 .tabbar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
 .tabbar::-webkit-scrollbar{display:none;}
@@ -849,6 +852,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 <section class="view" id="v-mine">
   <div class="segbar" data-seg="mine">
     <button data-sub="sub-record" class="on">🧾 记录</button>
+    <button data-sub="sub-review">🌟 复盘</button>
     <button data-sub="sub-msg">📬 消息 <span class="dot" id="msgDot">2</span></button>
     <button data-sub="sub-credit">⭐ 信用</button>
   </div>
@@ -1115,7 +1119,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.4.1';
+const APP_VER='1.4.2';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
@@ -1735,7 +1739,7 @@ function wearBrief(t){
  if(t<=-7)return'羽绒服+棉裤+雪地靴，帽子手套围脖一个不能少';
  if(t<=0)return'厚羽绒+加绒裤，耳包手套必须带';
  if(t<=7)return'羽绒服或厚大衣，围脖手套安排上';
- if(t<=14)return'薄羽绒/风衣，早晚加件外套';
+ if(t<=14)return'风衣或薄外套，早晚偏凉加一件';
  if(t<=19)return'长袖+薄外套，早晚凉中午暖';
  if(t<=23)return'薄长袖或短袖加件防晒衣，最舒服的档';
  if(t<=29)return'短袖就够，防晒别忘';
@@ -2801,7 +2805,11 @@ document.querySelectorAll('#seasonBar button').forEach(b=>{
 const SUB_OF={
  'v-plan'   :['sub-plan','sub-price','sub-drive'],
  'v-explore':['sub-explore','sub-depart'],
- 'v-mine'   :['sub-record','sub-review','sub-msg','sub-credit']
+ 'v-mine'   :['sub-record','sub-review','sub-msg','sub-credit'],
+ /* V1.4.2 补：v-partner 原先漏登记。后果是 showSub('v-partner') 一进来就 return，
+    三个 subview（找搭子/本地通/房车）全是 class="subview on" → 同时显示；
+    且 segbar 按钮点了也不生效（showSub 早退）。 */
+ 'v-partner':['sub-partner-people','sub-partner-guide','sub-partner-rv']
 };
 function showSub(viewId,subId){
  const list=SUB_OF[viewId]||[];
@@ -2846,15 +2854,25 @@ document.querySelectorAll('.tabbar button').forEach(b=>{
      ① 用户手动选过季节 → 尊重用户（S.seasonLock=true）
      ② 否则：季节标签只作为「内容推荐维度」的初值，用**目的地实时气温**反推
      ③ 衣着显示一律走 applyTemp(实时温度)，与季节标签解耦
-   气温→季节的映射（按目的地实时温度）：
-     ≤0℃ 冬 ／ 1–13℃ 春秋 ／ ≥14℃ 夏 … 但春秋难分，故：
-     1–13℃ 且月份在 4–10 月 → 春；否则 → 秋
-   这是**兜底**，只要天气接口通了就用真实数据。 */
+   气温→季节的映射：
+     ≤0℃             → 冬
+     ≥24℃            → 夏
+     20–23℃          → 夏（除 4–5 月，那会儿 20℃ 是「春天来了」，算春）
+     15–19℃          → 春（仅 4–5 月）／夏（6–8 月）／秋（其余）
+     1–14℃           → 春（4–5 月）／秋（其余）
+   这是**兜底**，只要天气接口通了就用真实数据。
+
+   V1.4.2 修正：原实现在 4–5 月只能通过 t<14 的分支拿到 'sp'，
+   一旦 t≥14（5 月白天常见 16–18℃）就直接掉进 'au'，把春天判成秋天。
+   补一条 6–8 月的 'su' 分支，并把 4–5 月的夏季阈值抬到 24℃。 */
 function seasonFromTemp(t,m){
+ const isSpringMonth=(m>=4&&m<=5);
+ const isSummerMonth=(m>=6&&m<=8);
  if(t<=0)return'wi';
- if(t>=20)return'su';
- if(t>=14)return(m>=6&&m<=8)?'su':'au';
- return(m>=4&&m<=5)?'sp':'au';
+ if(t>=24)return'su';                       /* 真热，任何月份都算夏 */
+ if(t>=20)return isSpringMonth?'sp':'su';   /* 20–23℃：4–5 月是暖春，其余算夏 */
+ if(t>=15)return isSpringMonth?'sp':(isSummerMonth?'su':'au');
+ return isSpringMonth?'sp':'au';
 }
 (function(){
  const m=new Date().getMonth()+1;
