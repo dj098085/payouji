@@ -1,0 +1,19 @@
+# 临时文件 / 诊断产物
+_*.txt
+_*.ps1
+_*.js
+*.log
+
+# 凭据类（绝不入库）
+*token*
+*cred*
+.paoyouji_cred
+
+# 系统
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 编辑器
+.vscode/
+.idea/
