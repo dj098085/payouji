@@ -61,13 +61,28 @@ GitHub 仓库**只做版本管理与备份** —— `*.github.io` 国内实测 2
 
 ### 推送命令
 
-仓库走本机代理 `127.0.0.1:7897`，直连不通：
+**github CLI 已授权**（账号 `dj098085`，令牌存系统 keyring，永不过期、无需手工输入）。
 
-```bash
-git -c http.proxy=http://127.0.0.1:7897 push origin main --tags
+两个必须注意的点：**① 走代理**（直连 `github.com:443` 超时）；**② 在仓库目录内执行**（`git -C "中文路径"` 在本机会把路径编坏）。
+
+```powershell
+$gh = "C:\Program Files\GitHub CLI\gh.exe"      # 不在 PATH，要用全路径
+$env:HTTPS_PROXY = "http://127.0.0.1:7897"
+$t  = (& $gh auth token).Trim()                  # 从 keyring 取临时令牌
+Set-Location "G:\我的AI短片素材库\东北IP\狍游记应用\repo"
+git -c http.proxy=http://127.0.0.1:7897 -c credential.helper= `
+    push "https://dj098085:$t@github.com/dj098085/payouji.git" main --tags
 ```
 
-凭据由 Windows 凭据管理器保存，首次推送后无需再输。
+> `credential.helper=` 置空是刻意的：避免 git 去敲 keyring 而卡住。
+> **不要加 `-u`** —— 它会把带令牌的 URL 明文写进 `.git/config`。
+
+### 查看远端状态（不推送）
+
+```powershell
+& $gh api repos/dj098085/payouji/branches/main --jq ".commit.sha"
+& $gh api repos/dj098085/payouji/tags --jq ".[].name"
+```
 
 ## 合规红线
 
