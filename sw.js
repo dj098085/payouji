@@ -10,13 +10,11 @@
 
    版本升级：改 CACHE 版本号即可，activate 时清掉所有旧缓存。 */
 
-const CACHE = 'paoyouji-v1.5.0';
+const CACHE = 'paoyouji-v1.4.4';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
-  './cottage.webp',
-  './ground.webp',
   './icon-192.png',
   './icon-512.png',
   './icon-maskable-512.png',
