@@ -207,12 +207,16 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .say-slot{flex:1 1 100%;min-width:0;position:relative;margin-top:10px;min-height:64px;}
 .bears .say{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;margin:0;
  border-radius:999px;}
-/* 右侧：二人小屋实景图，填掉熊群右侧空白，避免「左重右轻」。
-   高度对齐熊群（112px），图片用 object-fit:cover 裁掉多余天空/地面。 */
-.cottage-card{flex:1 1 auto;min-width:0;align-self:flex-start;height:112px;
- border-radius:16px;overflow:hidden;
- border:1.5px solid rgba(200,140,80,.38);box-shadow:0 6px 18px rgba(140,90,43,.14);line-height:0;}
-.cottage-img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 58%;}
+/* 右侧：坨坨果果的二人小屋（已抠底透明图），填掉熊群右侧空白，避免「左重右轻」。
+   图是透明底，故不用 border/shadow 做「相框」，让它像角色一样自然浮在页面上。
+   卡片 140px 比熊群（112px）略高，房子在卡片尺寸下能看清屋顶与树的细节。
+   cover：图已按卡片比例(1.50)预裁，cover 让房子用满 140px 高（contain 会缩到 115px 太小）。
+   「浮着」的呼吸感由图片自身的透明留白提供（生成阶段多留边），不用 CSS padding——
+   padding 会让可用区小于预设比例，cover 会二次裁切。 */
+.cottage-card{flex:1 1 auto;min-width:0;align-self:center;height:140px;line-height:0;}
+.cottage-img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;}
+/* 底部一道极淡的倒影/地面感，避免房子「悬空」。用径向渐变模拟柔和投影。 */
+.cottage-shadow{display:none;}
 /* 分层动画 */
 /* 温度档显隐：默认全隐藏 */
 .o-scarf,.o-earmuffs,.o-gloves,.o-coat,.o-shades,.e-sweat,.e-breath{display:none;}
@@ -1190,7 +1194,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.4.6';
+const APP_VER='1.4.7';
 const APP_DATE='2026-09-22';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
