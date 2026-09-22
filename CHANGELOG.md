@@ -44,6 +44,56 @@
   （`border-radius:999px` + 1.5px 暖棕描边），两态切换时形状一致，不再有跳变感。
 - 首页 hero 区块总高 **506px → 476px**（省 30px）。
 
+### 追加改造（同日，右侧改为「二人小屋」实景图）
+
+把上一版用来填白的文字块（`.bear-hint`）整块换成**实景图**，视觉上比小字更有分量。
+
+**素材来源**：`视频资产\住宅场景\共同之家\H05_共同之家_外观.png`（1672×941，原图 2.75 MB）。
+画面是木屋 + 苔藓屋顶 + 圆形窗 + 双开木门，门上正有鹿角与蓝靛果枝装饰，
+对应坨坨和果果，选它做「二人小屋」不需要额外解释。
+（同目录另有 `H06_共同之家_内部构造.png`、`H09_共同之家_室内主视图与六方位.png` 备用。）
+
+**处理**：`tools/make_cottage.py` → 按 `420:226` 目标比例居中裁切 → LANCZOS 缩到 840×452 →
+`quality=86, method=6` 存 WebP，产物 **`publish\cottage.webp`（129,746 B，仅为原图 4.5%）**。
+
+**布局**：`.cottage-card` 与熊群**等高（112px）+ 顶对齐**，`object-fit:cover` +
+`object-position:center 58%`（多留地面、少留天空，木屋重心落在视觉中线上）。
+
+实测几何（`_ms.json`，`.bears` 内容宽 440）：
+
+| 元素 | x | y | w | h |
+|---|---|---|---|---|
+| `.bear-row` | 29 | 130 | 440 | 113 |
+| `.bear-pair`（两只熊） | 29 | 130 | 218 | 112 |
+| `.cottage-card`（小屋） | 259 | 130 | 210 | 113 |
+
+`218 + 12(gap) + 210 = 440` —— **正好铺满，右侧再无留白**。
+
+**另外两项隐藏（用户要求，不再展示）**：
+
+- 移除 `.bear-hint`（「实时天气联动 / 天冷了自动换上围巾耳包」）→ 探针 `hintCount: 0`。
+  天气联动功能**代码保留、行为不变**，只是不在首页 hero 露出说明文字。
+- 隐藏标题版本号：`.hero h1 .ver{display:none}` → 探针 `verDisp: "none"`。
+  JS 里 `appVer.textContent` 仍照常写入（有 try 守卫），只是不显示；
+  版本号仍可从 `const APP_VER` 读到，不影响发版流程。
+
+**PWA**：`sw.js` 的 `CACHE` 升到 `paoyouji-v1.4.5`，`ASSETS` 加入 `'./cottage.webp'`
+（不加的话断网时小屋图不缓存在长白山/漠河这些没信号的地方会开天窗）。
+
+### 🔴 过程踩坑：headless 下的 CSS transition 假象
+
+用 Chrome headless + `--virtual-time-budget` 跑探针时，读到气泡 `opacity` 恒为 `0`、
+`visibility` 恒为 `hidden`，**连 inline `!important` 都改不动** —— 一度以为是 CSS 特异性 bug。
+
+真相：**该模式下 CSS transition 永不推进**，探针读到的恒是过渡的*起始值*；
+`el.getAnimations()` 也印证了 `opacity/transform/visibility` 全卡在 `running`。
+真实浏览器里一切正常（所以用户截图里气泡显示是对的）。
+
+**修法**：探针页与截图页统一注入
+`<style>*,*::before,*::after{transition:none !important;animation:none !important;}</style>`。
+判定口诀：`el.style.cssText='opacity:1 !important;transition:none !important'`
+→ 立即读回 `1` 即证明是 transition 卡死，不是样式写错。
+
 ---
 
 ## V1.4.4 · 2026-09-21

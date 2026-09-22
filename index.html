@@ -207,8 +207,12 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .say-slot{flex:1 1 100%;min-width:0;position:relative;margin-top:10px;min-height:64px;}
 .bears .say{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;margin:0;
  border-radius:999px;}
-/* 右侧说明填掉熊群右侧空白，避免「左重右轻」 */
-.bear-hint{flex:1 1 auto;align-self:center;text-align:right;font-size:11px;color:#C9A96E;line-height:1.85;padding:0 2px;}
+/* 右侧：二人小屋实景图，填掉熊群右侧空白，避免「左重右轻」。
+   高度对齐熊群（112px），图片用 object-fit:cover 裁掉多余天空/地面。 */
+.cottage-card{flex:1 1 auto;min-width:0;align-self:flex-start;height:112px;
+ border-radius:16px;overflow:hidden;
+ border:1.5px solid rgba(200,140,80,.38);box-shadow:0 6px 18px rgba(140,90,43,.14);line-height:0;}
+.cottage-img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 58%;}
 /* 分层动画 */
 /* 温度档显隐：默认全隐藏 */
 .o-scarf,.o-earmuffs,.o-gloves,.o-coat,.o-shades,.e-sweat,.e-breath{display:none;}
@@ -389,7 +393,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 
 
 
-.hero h1 .ver{font-size:11px;vertical-align:middle;margin-left:7px;color:#8C6F52;background:#fff;border:1px solid #F0E3CE;border-radius:7px;padding:2px 7px;font-weight:700;letter-spacing:0;box-shadow:0 2px 6px rgba(140,90,43,.08);}
+.hero h1 .ver{display:none;}
 
 .bphoto{position:relative;width:100%;}
 
@@ -503,7 +507,9 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
       </div>
     </div>
       </div>
-      <div class="bear-hint">实时天气联动<br>天冷了自动换上围巾耳包</div>
+      <div class="cottage-card">
+        <img class="cottage-img" src="cottage.webp" alt="狍坨坨与狍果果的二人小屋">
+      </div>
     </div>
     <div class="say-slot">
       <div class="say" id="heroSay"><b>坨坨：</b>东北一年四张脸——春看杜鹃、夏来避暑、秋赏五花山、冬玩冰雪，哪季来都不白来。<br><b>果果：</b>选个季节，清单和线路我给你换好，嗷嗷～</div>

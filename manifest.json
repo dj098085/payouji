@@ -1,0 +1,22 @@
+{
+  "name": "狍游记 · 坨坨果果陪你游东北",
+  "short_name": "狍游记",
+  "description": "东北四季通用旅行管家：按人数给交通与防宰客价格，只推本地人去的小馆和冷门好地方，含记账打卡复盘与行程分享。",
+  "lang": "zh-CN",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#EFE3CE",
+  "theme_color": "#C98B54",
+  "categories": ["travel", "lifestyle", "utilities"],
+  "icons": [
+    { "src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "帮我规划", "short_name": "规划", "url": "./index.html#v-gen" },
+    { "name": "我的记录", "short_name": "记录", "url": "./index.html#v-mine" }
+  ]
+}
