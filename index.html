@@ -201,32 +201,64 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 
    透视统一（V1.4.8）：三元素（坨坨 / 果果 / 小屋）**底边落在同一水平线**，
    否则像三张图各自贴上去。做法：.bear-row 用 align-items:flex-end，
-   三者的底边统一贴到行底 -> 脚底与房子地坪同线 = 站在同一地面。 */
+   三者的底边统一贴到行底 -> 脚底与房子地坪同线 = 站在同一地面。
+
+   V1.4.9：两小只靠近。gap 4px->0 只解决了"盒子间距"，
+   但两张源图**自带的左右透明边距**仍在撑视觉空隙：
+     坨坨 左透明 18.54% / 右透明 1.25%
+     果果 左透明 17.08% / 右透明 3.33%
+   实测盒子贴合后，视觉空隙仍有 16.7px，出在果果左侧（90px x 17.08% = 15.4px）。
+   角色图是 base64 内联、装备 SVG 按 viewBox 定位，裁图会让装备错位，
+   故用 **负 margin-left 把果果左移**，等价于"裁掉它的左透明边距"：
+     抵消 15.4px 中的 12px，保留 ~4px 视觉呼吸感（完全贴上会显得糊成一团）。
+   同时坨坨左侧也有 18.54% 透明边距（108px x 18.54% = 20px），
+   导致整行左端空出一大块 -> 用负 margin-left 提上来，让坨坨贴住行首。 */
 .bears{flex-wrap:wrap;align-items:flex-start;}
-.bear-row{display:flex;gap:2px;align-items:flex-end;flex:1 1 100%;}
-.bear-pair{display:flex;gap:4px;align-items:flex-end;flex:0 0 auto;}
+.bear-row{display:flex;gap:0;align-items:flex-end;flex:1 1 100%;}
+.bear-pair{display:flex;gap:0;align-items:flex-end;flex:0 0 auto;}
 .bear-wrap{position:relative;flex:0 0 auto;}
-.bear-wrap.b1{width:112px;}
-.bear-wrap.b2{width:94px;}
+/* 坨坨：左透明边距 18.54% x 108px ≈ 20px，左移 16px 让主体贴近行首 */
+.bear-wrap.b1{width:108px;margin-left:-16px;}
+/* 果果：左透明边距 17.08% x 90px ≈ 15.4px，左移 12px 贴近坨坨 */
+.bear-wrap.b2{width:90px;margin-left:-12px;}
 .say-slot{flex:1 1 100%;min-width:0;position:relative;margin-top:10px;min-height:64px;}
 .bears .say{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;margin:0;
  border-radius:999px;}
-/* 右侧：坨坨果果的二人小屋（已抠底透明图），填掉熊群右侧空白，避免「左重右轻」。
-   图是透明底，故不用 border/shadow 做「相框」，让它像角色一样自然浮在页面上。
-   卡片 140px 比熊群（112px）略高，房子在卡片尺寸下能看清屋顶与树的细节。
-   cover：图已按卡片比例(1.50)预裁，cover 让房子用满 140px 高（contain 会缩到 115px 太小）。
-   「浮着」的呼吸感由图片自身的透明留白提供（生成阶段多留边），不用 CSS padding——
-   padding 会让可用区小于预设比例，cover 会二次裁切。 */
 /* 右侧：坨坨果果的二人小屋（已抠底透明图）。
-   透视统一（V1.4.8）：
-     · 卡片高度 118px ≈ 两小只实际高度（坨坨 111px），三者体量接近才像同一场景；
-       之前设 140px 会让两小只相对变小、且底对齐后上方空一截。
-     · .bear-row 用 align-items:flex-end -> 房子地坪与两只蹄子落在同一条线。
-     · object-fit:contain（不是 cover）——图已预裁成卡片比例，contain 保证
-       房子左右边缘完整不被切（用户反馈「左右两边要补全」）。
-     · 不加 border/shadow：透明图不需要"相框"，让它像角色一样自然浮在页面上。 */
-.cottage-card{flex:1 1 auto;min-width:0;align-self:flex-end;height:124px;line-height:0;}
-.cottage-img{display:block;width:100%;height:100%;object-fit:contain;object-position:left bottom;}
+   透视统一（V1.4.8）：三元素底边落在同一水平线 -> 站在同一地面。
+   V1.4.9 修正：
+     · 小屋图换代：旧图（v7）的主体横向铺满 100% 画布宽 —— 左右圆窗被画布边缘
+       平切，这正是用户说的「左右两边缺边缘」。改用以旧图为参考、要求主体内收
+       重生成的 v9；主体 1536x894（ratio 1.718），左右轮廓完整、四周留白充足。
+       ⚠️ v9 的背景不是纯白而是浅灰 (243,242,242)，d=12.2 —— 抠底阈值必须
+          按角部实测值现取（T0 = d + 4 = 16.2），照抄旧图的 T0=10.3 会静默失效。
+     · object-position 由 left bottom 改 **center bottom**：图本身已带左右对称
+       透明边距（实测 L4 / R4），left 对齐会把整幅推向左界、右边空一块。
+     · 卡片高 120 -> 132 -> **160px**（最终）。
+       这三档是在截图对比里逐档试出来的：132px 时房子虽比 120px 大，
+       但房子主体比例 1.718（宽扁），高度仍被 contain 卡住，
+       实际只画出 227x132 —— 横向没铺满卡片，视觉上"像在远处"。
+       给到 160px 后，限制项从"高度"切换为"宽度"：
+       房子横向铺满 274px、高 274/1.718 = 159px，
+       体量与两小只（107px 高）拉开层次，形成"近大远小"的正确透视。
+       注意：加高卡片只动顶边，底边仍由 align-items:flex-end 锁在同一水平线，
+       不会破坏三元素底边一致。
+     · margin-left 保持 0（V1.4.9 曾试 -4px 后撤销）。
+       实测负 margin 会让卡片的可用宽度与元素框宽度不一致，
+       contain 按放大的可用宽度算缩放比，绘制结果超出元素框 -> **右边缘被裁**，
+       反而制造了新的"缺边缘"。房子与果果的空隙本已只有 1.6px，无需再拉近。
+     · max-width 撤销，改回 flex:1 1 auto（V1.4.9 定稿）。
+       曾试 max-width:250px + margin-left:auto：房子确实不再贴右边界，
+       但卡片被推到行尾，房子与果果的空隙从 5.6px 暴涨到 **46.4px**，
+       行中段被拆成"左两小只 / 右房子"两个孤岛，比原来更差。
+       根因：390px 视口里两小只占 170px，余地不足以让房子按 1.718 比例铺满
+       （铺满需 275px，170+275=445 > 390）。**必然要在"房子大小"和"两者间距"
+       之间取舍** —— 取间距优先：让卡片吃掉全部剩余宽度，
+       房子在卡内按高度 160px 自适应（实际绘制 240px），空隙维持个位数。
+     · contain 保证房子左右边缘完整不被切（用户反馈「左右两边要补全」）。
+     · 不加 border/shadow：透明图不需要"相框"。 */
+.cottage-card{flex:1 1 auto;min-width:0;align-self:flex-end;height:160px;line-height:0;}
+.cottage-img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;}
 /* 分层动画 */
 /* 温度档显隐：默认全隐藏 */
 .o-scarf,.o-earmuffs,.o-gloves,.o-coat,.o-shades,.e-sweat,.e-breath{display:none;}
@@ -415,13 +447,14 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
    下边距几乎相同 -> 只要容器底对齐，两张图的主体底边就自然同线。
    故：img 用 object-fit:contain + object-position:bottom，
        容器高度按各自主体的实际比例给（坨坨 1.008、果果 1.104），
-       这样两双蹄子落在同一地面，不再一只悬空。 */
+       这样两双蹄子落在同一地面，不再一只悬空。
+   V1.4.9：宽度 112/94 -> 108/90，容器高同步重算（比例不变，只换分子）。 */
 .bphoto{position:relative;width:100%;}
 .bphoto img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;}
 /* 坨坨主体 385x382 -> 高 = 宽/1.008 */
-.b1 .bphoto{height:calc(112px / 1.008);}
+.b1 .bphoto{height:calc(108px / 1.008);}
 /* 果果主体 382x346 -> 高 = 宽/1.104，即矮一截（母狍体型小） */
-.b2 .bphoto{height:calc(94px / 1.104);}
+.b2 .bphoto{height:calc(90px / 1.104);}
 
 .gear{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
 
@@ -1215,7 +1248,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.4.8';
+const APP_VER='1.4.9';
 const APP_DATE='2026-09-22';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
