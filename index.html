@@ -195,12 +195,16 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .pill.on{border-color:var(--caramel);background:var(--gold-soft);color:var(--caramel-deep);font-weight:800;}
 .mini-t{font-size:11px;color:#B8A88F;margin:2px 0 8px;}
 /* ===== 动态IP角色 =====
-   上行＝两只熊（左对齐，右侧留给说话区不显空旷）；下行＝说话区。
+   上行＝两只熊 + 二人小屋（共用一条"地面线"）；下行＝说话区。
    说话区（气泡 / 常驻问候语）用 visibility 显隐、不退流，槽位高度由气泡恒定撑住，
-   所以切换时下方内容纹丝不动。 */
+   所以切换时下方内容纹丝不动。
+
+   透视统一（V1.4.8）：三元素（坨坨 / 果果 / 小屋）**底边落在同一水平线**，
+   否则像三张图各自贴上去。做法：.bear-row 用 align-items:flex-end，
+   三者的底边统一贴到行底 -> 脚底与房子地坪同线 = 站在同一地面。 */
 .bears{flex-wrap:wrap;align-items:flex-start;}
-.bear-row{display:flex;gap:12px;align-items:flex-start;flex:1 1 100%;}
-.bear-pair{display:flex;gap:12px;align-items:flex-start;flex:0 0 auto;}
+.bear-row{display:flex;gap:2px;align-items:flex-end;flex:1 1 100%;}
+.bear-pair{display:flex;gap:4px;align-items:flex-end;flex:0 0 auto;}
 .bear-wrap{position:relative;flex:0 0 auto;}
 .bear-wrap.b1{width:112px;}
 .bear-wrap.b2{width:94px;}
@@ -213,10 +217,16 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
    cover：图已按卡片比例(1.50)预裁，cover 让房子用满 140px 高（contain 会缩到 115px 太小）。
    「浮着」的呼吸感由图片自身的透明留白提供（生成阶段多留边），不用 CSS padding——
    padding 会让可用区小于预设比例，cover 会二次裁切。 */
-.cottage-card{flex:1 1 auto;min-width:0;align-self:center;height:140px;line-height:0;}
-.cottage-img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;}
-/* 底部一道极淡的倒影/地面感，避免房子「悬空」。用径向渐变模拟柔和投影。 */
-.cottage-shadow{display:none;}
+/* 右侧：坨坨果果的二人小屋（已抠底透明图）。
+   透视统一（V1.4.8）：
+     · 卡片高度 118px ≈ 两小只实际高度（坨坨 111px），三者体量接近才像同一场景；
+       之前设 140px 会让两小只相对变小、且底对齐后上方空一截。
+     · .bear-row 用 align-items:flex-end -> 房子地坪与两只蹄子落在同一条线。
+     · object-fit:contain（不是 cover）——图已预裁成卡片比例，contain 保证
+       房子左右边缘完整不被切（用户反馈「左右两边要补全」）。
+     · 不加 border/shadow：透明图不需要"相框"，让它像角色一样自然浮在页面上。 */
+.cottage-card{flex:1 1 auto;min-width:0;align-self:flex-end;height:124px;line-height:0;}
+.cottage-img{display:block;width:100%;height:100%;object-fit:contain;object-position:left bottom;}
 /* 分层动画 */
 /* 温度档显隐：默认全隐藏 */
 .o-scarf,.o-earmuffs,.o-gloves,.o-coat,.o-shades,.e-sweat,.e-breath{display:none;}
@@ -399,15 +409,26 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 
 .hero h1 .ver{display:none;}
 
+/* .bphoto 用「主体框比例」定高，而不是让 img 的原始透明边距决定高度。
+   实测两张源图都是 480x480，主体框：
+     坨坨 385x382（下边距 8.5%）  果果 382x346（下边距 8.8%）
+   下边距几乎相同 -> 只要容器底对齐，两张图的主体底边就自然同线。
+   故：img 用 object-fit:contain + object-position:bottom，
+       容器高度按各自主体的实际比例给（坨坨 1.008、果果 1.104），
+       这样两双蹄子落在同一地面，不再一只悬空。 */
 .bphoto{position:relative;width:100%;}
-
-.bphoto img{display:block;width:100%;height:auto;}
+.bphoto img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;}
+/* 坨坨主体 385x382 -> 高 = 宽/1.008 */
+.b1 .bphoto{height:calc(112px / 1.008);}
+/* 果果主体 382x346 -> 高 = 宽/1.104，即矮一截（母狍体型小） */
+.b2 .bphoto{height:calc(94px / 1.104);}
 
 .gear{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
 
 .gear svg{position:absolute;top:0;left:0;width:100%;height:100%;display:block;overflow:visible;display:none;}
 
-.b2 .bphoto{margin-bottom:8px;}
+/* V1.4.8：删除 .b2 .bphoto{margin-bottom:8px} —— 它让果果整只上移 8px，
+   与坨坨不在同一地面，是「像三张图各自贴上去」的直接原因之一。 */
 
 
 .bear-wrap[data-skin="snow"] .bphoto img{filter:hue-rotate(-18deg) saturate(.55) brightness(1.09);}
@@ -1194,7 +1215,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.4.7';
+const APP_VER='1.4.8';
 const APP_DATE='2026-09-22';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
