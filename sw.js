@@ -10,7 +10,7 @@
 
    版本升级：改 CACHE 版本号即可，activate 时清掉所有旧缓存。 */
 
-const CACHE = 'paoyouji-v1.4.5';
+const CACHE = 'paoyouji-v1.4.6';
 const ASSETS = [
   './',
   './index.html',
