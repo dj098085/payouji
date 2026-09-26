@@ -40,6 +40,7 @@ body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background
 .hero h1 span{color:var(--red);}
 .hero .sub{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.7;}
 .badge-gq{position:absolute;top:20px;right:16px;background:var(--green);color:#fff;font-size:11px;padding:4px 10px;border-radius:999px;font-weight:700;box-shadow:0 3px 8px rgba(127,168,107,.35);}
+.hero-scene{width:100%;height:auto;display:block;border-radius:14px;margin:14px 0 4px;box-shadow:0 6px 18px rgba(140,90,43,.16);}
 .bears{display:flex;gap:12px;margin-top:14px;align-items:center;}
 .bears .say{flex:1;background:#fff;border-radius:16px;padding:10px 12px;font-size:12.5px;color:var(--ink2);line-height:1.7;position:relative;box-shadow:var(--shadow);}
 .bears .say b{color:var(--caramel-deep);}
@@ -198,8 +199,8 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .bears{flex-wrap:wrap;}
 .bears .say{flex:1 1 100%;}
 .bear-wrap{position:relative;flex:0 0 auto;}
-.bear-wrap.b1{width:112px;}
-.bear-wrap.b2{width:94px;}
+.bear-wrap.b1{width:112px;margin-left:-17px;}
+.bear-wrap.b2{width:104px;margin-left:-6px;margin-top:8px;}
 .bear-hint{flex:1 1 100%;text-align:right;font-size:11px;color:#C9A96E;padding-top:2px;}
 /* 分层动画 */
 /* 温度档显隐：默认全隐藏 */
@@ -394,7 +395,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 
 .gear svg{position:absolute;top:0;left:0;width:100%;height:100%;display:block;overflow:visible;display:none;}
 
-.b2 .bphoto{margin-bottom:8px;}
+.b2 .bphoto{margin-bottom:0;}
 
 
 .bear-wrap[data-skin="snow"] .bphoto img{filter:hue-rotate(-18deg) saturate(.55) brightness(1.09);}
@@ -464,6 +465,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   <div class="badge-gq">四季通用 · 全年可玩</div>
   <h1>狍<span>游</span>记<span class="ver" id="appVer">V1.3</span></h1>
   <div class="sub">坨坨果果陪你游东北（黑吉辽 + 蒙东五盟市） · 春夏秋冬各有玩法 · 小众目的地 × 错峰规划 × 防宰客指南 × 记账打卡复盘</div>
+  <img class="hero-scene" src="hero_scene.webp" alt="狍坨坨狍果果的森林小屋">
   <div class="bears" id="bearBox">
     <div class="bear-wrap b1" id="bearTT" data-skin="raw">
       <div class="bphoto">
@@ -1173,7 +1175,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.4.4';
+const APP_VER='1.5.1';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
