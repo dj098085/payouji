@@ -238,17 +238,13 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 @keyframes nePop{from{opacity:0;transform:translateY(9px) scale(.97);}to{opacity:1;transform:none;}}
 .ne-bub{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1.5px solid #E8D5B8;
  border-radius:16px;padding:10px 12px;box-shadow:0 8px 22px rgba(90,60,25,.14);position:relative;}
-/* 气泡下方三角：白色填充 + 浅米色边框 */
-.ne-bub::after{content:'';position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);
- border-left:12px solid transparent;border-right:12px solid transparent;border-top:12px solid #E8D5B8;}
-.ne-bub::before{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);
- border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #fff;z-index:1;}
+/* 气泡下方三角：单层、指向当前说话人 */
+.ne-bub::after{content:'';position:absolute;bottom:-10px;left:12px;
+ border-left:9px solid transparent;border-right:9px solid transparent;border-top:9px solid #E8D5B8;}
 /* 狍坨坨说话：三角指左 */
-.ne-wrap.who-t .ne-bub::after{left:80px;transform:none;}
-.ne-wrap.who-t .ne-bub::before{left:80px;transform:none;}
+.ne-wrap.who-t .ne-bub::after{left:12px;}
 /* 狍果果说话：三角指右 */
-.ne-wrap.who-g .ne-bub::after{left:184px;transform:none;}
-.ne-wrap.who-g .ne-bub::before{left:184px;transform:none;}
+.ne-wrap.who-g .ne-bub::after{left:auto;right:12px;}
 .ne-face{flex:0 0 34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
  font-size:17px;font-weight:800;color:#fff;}
 .ne-face.t{background:linear-gradient(145deg,#E0AE7C,#C98B54);}
@@ -1203,7 +1199,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.6.16';
+const APP_VER='1.6.17';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
