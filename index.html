@@ -40,11 +40,14 @@ body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background
 .hero h1 span{color:var(--red);}
 .hero .sub{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.7;}
 .badge-gq{position:absolute;top:20px;right:16px;background:var(--green);color:#fff;font-size:11px;padding:4px 10px;border-radius:999px;font-weight:700;box-shadow:0 3px 8px rgba(127,168,107,.35);}
-/* hero 双栏：左侧互动区(唯一一组坨坨+果果) / 右侧 3D 小屋+草地 */
-.hero-cabin-row{display:flex;flex-direction:column;gap:14px;margin:14px 0 4px;align-items:stretch;}
-.bears-col{min-width:0;}
-.cabin-col{min-width:0;}
-.hero-cabin{width:100%;height:auto;display:block;border-radius:14px;box-shadow:0 6px 18px rgba(140,90,43,.16);}
+/* hero 场景：统一天空/草地背景，两小只在前景、森林小屋在后景 */
+.hero-cabin-row{position:relative;margin:14px 0 4px;border-radius:20px;overflow:hidden;
+  background:linear-gradient(180deg,#F7E9CC 0%,#F2E8CF 42%,#E8F0D6 58%,#DDEAC2 100%);
+  box-shadow:var(--shadow);min-height:360px;padding:14px 14px 10px;}
+.cabin-col{position:absolute;inset:0;z-index:0;display:flex;align-items:center;justify-content:center;padding-top:6px;}
+.hero-cabin{width:82%;max-width:340px;height:auto;display:block;border-radius:0;box-shadow:none;object-fit:contain;}
+.bears-col{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;min-height:360px;}
+.bears{margin-top:auto;}
 .bears{display:flex;gap:12px;margin-top:14px;align-items:center;}
 .bears .say{flex:1;background:#fff;border-radius:16px;padding:10px 12px;font-size:12.5px;color:var(--ink2);line-height:1.7;position:relative;box-shadow:var(--shadow);}
 .bears .say b{color:var(--caramel-deep);}
@@ -202,8 +205,8 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .bears{flex-wrap:wrap;}
 .bears .say{flex:1 1 100%;}
 .bear-wrap{position:relative;flex:0 0 auto;}
-.bear-wrap.b1{width:112px;margin-left:-17px;}
-.bear-wrap.b2{width:104px;margin-left:-6px;margin-top:8px;}
+.bear-wrap.b1{width:96px;margin-left:-12px;}
+.bear-wrap.b2{width:90px;margin-left:-4px;margin-top:6px;}
 .bear-hint{flex:1 1 100%;text-align:right;font-size:11px;color:#C9A96E;padding-top:2px;}
 /* 分层动画 */
 /* 温度档显隐：默认全隐藏 */
@@ -434,9 +437,10 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   .segbar button{font-size:13.5px;}
   .tabbar button{font-size:12px;}
   .tabbar button .ic{font-size:22px;}
-  .hero-cabin-row{flex-direction:row;align-items:flex-start;gap:18px;}
-  .bears-col{flex:1.05;}
-  .cabin-col{flex:1;}
+  .hero-cabin-row{flex-direction:column;min-height:400px;}
+  .hero-cabin{width:70%;max-width:400px;}
+  .bears-col{flex:none;width:100%;}
+  .cabin-col{flex:none;width:100%;}
 }
 /* 档 2 · 桌面（≥1080px）：加宽 + 两侧氛围底色，去掉"窄条白板感" */
 @media (min-width:1080px){
@@ -449,6 +453,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   h2.sec{font-size:19px;}
   .hero h1{font-size:36px;}
   .hero{padding:34px 26px 22px;}
+  .hero-cabin{width:60%;max-width:440px;}
   .grid2{gap:14px;}
 }
 /* 档 3 · 宽屏（≥1440px）：再放宽，横向空间足够铺开卡片 */
@@ -1187,7 +1192,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.6.1';
+const APP_VER='1.6.2';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
