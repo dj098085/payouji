@@ -236,13 +236,6 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .ne-wrap{flex:1 1 100%;position:relative;display:none;margin-top:12px;}
 .ne-wrap.on{display:block;animation:nePop .28s cubic-bezier(.2,.9,.3,1.25);}
 @keyframes nePop{from{opacity:0;transform:translateY(9px) scale(.97);}to{opacity:1;transform:none;}}
-/* 尖角指向说话那只：坨坨在左位、果果在右位。
-   三角位于气泡底边，不超出气泡宽度，尖端落在两小只头顶上方。 */
-.ne-wrap::before{content:'';position:absolute;bottom:-5px;width:0;height:0;
- border-left:7px solid transparent;border-right:7px solid transparent;
- border-top:7px solid var(--caramel);transform:translateX(-50%);}
-.ne-wrap.who-t::before{left:80px;}
-.ne-wrap.who-g::before{left:184px;}
 .ne-bub{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1.5px solid var(--caramel);
  border-radius:16px;padding:10px 12px;box-shadow:0 8px 22px rgba(90,60,25,.14);}
 .ne-face{flex:0 0 34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
@@ -1199,7 +1192,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.6.13';
+const APP_VER='1.6.14';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
