@@ -47,11 +47,10 @@ body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background
   box-shadow:var(--shadow);padding:16px 16px 14px;}
 .cabin-col{position:relative;z-index:1;flex:1 1 auto;display:flex;align-items:flex-end;justify-content:center;max-width:480px;padding-bottom:10px;}
 .hero-cabin{width:100%;height:auto;max-width:none;display:block;border-radius:0;box-shadow:none;}
-.bears-col{position:relative;z-index:2;flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-start;min-width:0;}
-.bears{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
-.bears-col>.say{flex:0 0 auto;width:100%;background:#fff;border-radius:16px;padding:10px 12px;font-size:12.5px;color:var(--ink2);line-height:1.7;position:relative;box-shadow:var(--shadow);margin-top:14px;}
-.bears-col>.say b{color:var(--caramel-deep);}
-.bear-hint{flex:1 1 100%;text-align:center;font-size:11px;color:#C9A96E;padding-top:4px;}
+.bears-col{position:relative;z-index:2;flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;gap:6px;min-width:0;}
+.bears{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:2px;}
+.bears-col>.ne-wrap{flex:0 0 auto;width:100%;display:block;margin-top:0;}
+.bear-hint{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;z-index:3;text-align:center;font-size:11px;color:#7A6A4E;background:rgba(255,253,248,.72);padding:3px 10px;border-radius:999px;}
 .seasonbar{display:flex;gap:8px;margin-top:14px;}
 .seasonbar button{flex:1;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:9px 4px;font-size:12px;color:var(--ink2);cursor:pointer;font-weight:700;line-height:1.35;}
 .seasonbar button .se{display:block;font-size:19px;margin-bottom:2px;}
@@ -240,7 +239,6 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
    坨坨宽 112 居中在 56px，果果宽 94 中心在 112+12+47=171px。早先写成 right:34px 是错的。 */
 .ne-wrap.who-t::before{left:47px;}
 .ne-wrap.who-g::before{left:162px;}
-#bearBox.talking~.say{display:none;}
 .ne-bub{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1.5px solid var(--caramel);
  border-radius:16px;padding:10px 12px;box-shadow:0 8px 22px rgba(90,60,25,.14);}
 .ne-face{flex:0 0 34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
@@ -438,9 +436,9 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   .tabbar button{font-size:12px;}
   .tabbar button .ic{font-size:22px;}
   .hero-cabin-row{flex-direction:row;align-items:stretch;gap:18px;}
-  .bears-col{flex:1 1 46%;justify-content:space-between;}
-  .bears-col>.say{margin-top:0;}
-  .cabin-col{flex:1 1 54%;max-width:none;align-items:flex-end;}
+  .bears-col{flex:1 1 52%;justify-content:flex-start;gap:10px;}
+  .bears-col>.ne-wrap{width:100%;}
+  .cabin-col{flex:0 0 45%;max-width:300px;align-items:flex-end;}
 }
 /* 档 2 · 桌面（≥1080px）：加宽 + 两侧氛围底色，去掉"窄条白板感" */
 @media (min-width:1080px){
@@ -478,6 +476,13 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   <div class="sub">坨坨果果陪你游东北（黑吉辽 + 蒙东五盟市） · 春夏秋冬各有玩法 · 小众目的地 × 错峰规划 × 防宰客指南 × 记账打卡复盘</div>
   <div class="hero-cabin-row">
     <div class="bears-col">
+      <div class="ne-wrap on" id="neToast">
+        <div class="ne-bub">
+          <div class="ne-face t" id="neFace">坨</div>
+          <div class="ne-txt" id="neTxt"><span class="who">狍坨坨</span>下午好啊老铁，这阵儿头脑最清楚，适合规划。</div>
+          <button class="ne-close" id="neClose" aria-label="关闭">✕</button>
+        </div>
+      </div>
       <div class="bears" id="bearBox">
     <div class="bear-wrap b1" id="bearTT" data-skin="raw">
       <div class="bphoto">
@@ -509,15 +514,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
         </div>
       </div>
     </div>
-    <div class="ne-wrap" id="neToast">
-      <div class="ne-bub">
-        <div class="ne-face t" id="neFace">坨</div>
-        <div class="ne-txt" id="neTxt"></div>
-        <button class="ne-close" id="neClose" aria-label="关闭">✕</button>
       </div>
-    </div>
-      </div>
-    <div class="say" id="heroSay"><b>坨坨：</b>东北一年四张脸——春看杜鹃、夏来避暑、秋赏五花山、冬玩冰雪，哪季来都不白来。<br><b>果果：</b>选个季节，清单和线路我给你换好，嗷嗷～</div>
     </div>
     <div class="cabin-col">
       <img class="hero-cabin" src="hero_scene.png" alt="森林小屋与草地">
@@ -1192,7 +1189,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.6.6';
+const APP_VER='1.6.7';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
@@ -1265,8 +1262,14 @@ function neSay(txt,who,ms){
  clearTimeout(neTimer);
  neTimer=setTimeout(neHide,ms||5400);
 }
+const NE_DEFAULT={who:'t',face:'坨',name:'狍坨坨',txt:'下午好啊老铁，这阵儿头脑最清楚，适合规划。'};
 function neHide(){
- const box=document.getElementById('neToast'); if(box) box.classList.remove('on');
+ const box=document.getElementById('neToast'); if(!box) return;
+ document.getElementById('neFace').textContent=NE_DEFAULT.face;
+ document.getElementById('neFace').className='ne-face '+NE_DEFAULT.who;
+ document.getElementById('neTxt').innerHTML='<span class="who">'+NE_DEFAULT.name+'</span>'+NE_DEFAULT.txt;
+ box.classList.remove('who-t','who-g');
+ box.classList.add('who-'+NE_DEFAULT.who);
  const hb=document.getElementById('bearBox'); if(hb) hb.classList.remove('talking');
 }
 function neIdle(){ neSay(RARR(NE.idle),Math.random()<.5?'t':'g'); }
