@@ -42,9 +42,12 @@ body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background
 .badge-gq{position:absolute;top:20px;right:16px;background:var(--green);color:#fff;font-size:11px;padding:4px 10px;border-radius:999px;font-weight:700;box-shadow:0 3px 8px rgba(127,168,107,.35);}
 /* hero 场景：统一天空/草地背景，两小只在前景、森林小屋在后景 */
 .hero-cabin-row{position:relative;display:flex;flex-wrap:wrap;flex-direction:column;gap:10px;margin:14px 0 4px;border-radius:20px;overflow:hidden;
-  background-image:url('hero_ground_bg_v166.png');
+  background-image:url('hero_ground_bg_v166_au.png');
   background-size:100% 100%;background-position:center;background-repeat:no-repeat;
   box-shadow:var(--shadow);padding:16px 16px 14px;}
+.hero.sp .hero-cabin-row{background-image:url('hero_ground_bg_v166_sp.png');}
+.hero.su .hero-cabin-row{background-image:url('hero_ground_bg_v166_su.png');}
+.hero.wi .hero-cabin-row{background-image:url('hero_ground_bg_v166_wi.png');}
 .cabin-col{position:relative;z-index:1;flex:1 1 auto;display:flex;align-items:flex-end;justify-content:center;max-width:480px;padding-bottom:10px;}
 .hero-cabin{width:100%;height:auto;max-width:none;display:block;border-radius:0;box-shadow:none;}
 .bears-col{position:relative;z-index:2;flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;gap:6px;min-width:0;}
@@ -1199,7 +1202,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.6.17';
+const APP_VER='1.6.18';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
