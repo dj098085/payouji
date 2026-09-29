@@ -44,7 +44,7 @@ body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background
 .hero-cabin-row{position:relative;display:flex;flex-direction:column;gap:10px;margin:14px 0 4px;border-radius:20px;overflow:hidden;
   background:linear-gradient(180deg,#F7E9CC 0%,#F2E8CF 42%,#E8F0D6 58%,#DDEAC2 100%);
   box-shadow:var(--shadow);padding:16px 16px 14px;}
-.cabin-col{position:relative;z-index:1;flex:1 1 auto;display:flex;align-items:flex-end;justify-content:center;max-width:480px;margin-left:auto;}
+.cabin-col{position:relative;z-index:1;flex:1 1 auto;display:flex;align-items:flex-start;justify-content:center;max-width:480px;padding-top:12px;}
 .hero-cabin{width:100%;height:auto;max-width:none;display:block;border-radius:0;box-shadow:none;}
 .bears-col{position:relative;z-index:2;flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-end;min-width:0;}
 .bears{margin-top:auto;}
@@ -478,6 +478,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   <div class="hero-cabin-row">
     <div class="bears-col">
       <div class="bears" id="bearBox">
+    <div class="say" id="heroSay"><b>坨坨：</b>东北一年四张脸——春看杜鹃、夏来避暑、秋赏五花山、冬玩冰雪，哪季来都不白来。<br><b>果果：</b>选个季节，清单和线路我给你换好，嗷嗷～</div>
     <div class="bear-wrap b1" id="bearTT" data-skin="raw">
       <div class="bphoto">
         <img class="b-all" src="tt_hero.png" alt="狍坨坨">
@@ -508,7 +509,6 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
         </div>
       </div>
     </div>
-    <div class="say" id="heroSay"><b>坨坨：</b>东北一年四张脸——春看杜鹃、夏来避暑、秋赏五花山、冬玩冰雪，哪季来都不白来。<br><b>果果：</b>选个季节，清单和线路我给你换好，嗷嗷～</div>
     <div class="ne-wrap" id="neToast">
       <div class="ne-bub">
         <div class="ne-face t" id="neFace">坨</div>
@@ -1191,7 +1191,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.6.3';
+const APP_VER='1.6.4';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
