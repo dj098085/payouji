@@ -242,12 +242,11 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .ne-bub{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1.5px solid #E8D5B8;
  border-radius:16px;padding:10px 12px;box-shadow:0 8px 22px rgba(90,60,25,.14);position:relative;}
 /* 气泡下方三角：单层、指向当前说话人 */
-.ne-bub::after{content:'';position:absolute;bottom:-10px;left:12px;
- border-left:9px solid transparent;border-right:9px solid transparent;border-top:9px solid #E8D5B8;}
-/* 狍坨坨说话：三角指左 */
-.ne-wrap.who-t .ne-bub::after{left:12px;}
-/* 狍果果说话：三角指右 */
-.ne-wrap.who-g .ne-bub::after{left:auto;right:12px;}
+.ne-bub::after{content:'';position:absolute;bottom:-14px;left:40px;
+ border-left:10px solid transparent;border-right:10px solid transparent;border-top:14px solid #E8D5B8;}
+/* 参考图中三角固定在气泡左下角 */
+.ne-wrap.who-t .ne-bub::after{left:40px;right:auto;}
+.ne-wrap.who-g .ne-bub::after{left:40px;right:auto;}
 .ne-face{flex:0 0 34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
  font-size:17px;font-weight:800;color:#fff;}
 .ne-face.t{background:linear-gradient(145deg,#E0AE7C,#C98B54);}
@@ -1202,7 +1201,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.6.18';
+const APP_VER='1.6.19';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
