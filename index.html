@@ -50,7 +50,11 @@ body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background
 .bears-col{position:relative;z-index:2;flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;gap:6px;min-width:0;}
 .bears{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:2px;}
 .bears-col>.ne-wrap{flex:0 0 auto;width:100%;display:block;margin-top:0;}
-.bear-hint{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;z-index:3;text-align:center;font-size:11px;color:#7A6A4E;background:rgba(255,253,248,.72);padding:3px 10px;border-radius:999px;}
+.hero-weather{position:absolute;top:12px;right:12px;z-index:5;display:flex;align-items:center;gap:4px;background:rgba(255,253,248,.82);backdrop-filter:blur(6px);border:1px solid rgba(230,218,195,.6);border-radius:14px;padding:5px 10px;box-shadow:0 4px 12px rgba(90,60,25,.1);font-size:12px;color:var(--caramel-deep);}
+.hero-weather .hw-icon{font-size:17px;line-height:1;}
+.hero-weather .hw-temp{font-weight:800;font-size:15px;}
+.hero-weather small{font-size:11px;color:#9A8B6E;margin-right:2px;}
+.hero-weather .hw-cond{font-size:11px;color:#8C7A63;white-space:nowrap;}
 .seasonbar{display:flex;gap:8px;margin-top:14px;}
 .seasonbar button{flex:1;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:9px 4px;font-size:12px;color:var(--ink2);cursor:pointer;font-weight:700;line-height:1.35;}
 .seasonbar button .se{display:block;font-size:19px;margin-bottom:2px;}
@@ -232,9 +236,9 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .ne-wrap.on{display:block;animation:nePop .28s cubic-bezier(.2,.9,.3,1.25);}
 @keyframes nePop{from{opacity:0;transform:translateY(9px) scale(.97);}to{opacity:1;transform:none;}}
 /* 尖角指向说话那只：坨坨在左位、果果在右位 */
-.ne-wrap::before{content:'';position:absolute;top:-8px;width:0;height:0;
+.ne-wrap::before{content:'';position:absolute;bottom:-8px;width:0;height:0;
  border-left:9px solid transparent;border-right:9px solid transparent;
- border-bottom:9px solid var(--caramel);}
+ border-top:9px solid var(--caramel);}
 /* 尖角指向说话那只。注意果果**不在容器最右**——它是紧跟在坨坨后面的第二个 flex 项：
    坨坨宽 112 居中在 56px，果果宽 94 中心在 112+12+47=171px。早先写成 right:34px 是错的。 */
 .ne-wrap.who-t::before{left:47px;}
@@ -475,6 +479,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
   <h1>狍<span>游</span>记<span class="ver" id="appVer">V1.3</span></h1>
   <div class="sub">坨坨果果陪你游东北（黑吉辽 + 蒙东五盟市） · 春夏秋冬各有玩法 · 小众目的地 × 错峰规划 × 防宰客指南 × 记账打卡复盘</div>
   <div class="hero-cabin-row">
+    <div class="hero-weather" id="heroWeather"><span class="hw-icon" id="hwIcon">🌡️</span><span class="hw-temp" id="hwTemp">--</span><small>℃</small><span class="hw-cond" id="hwCond">--</span></div>
     <div class="bears-col">
       <div class="ne-wrap on" id="neToast">
         <div class="ne-bub">
@@ -519,7 +524,6 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
     <div class="cabin-col">
       <img class="hero-cabin" src="hero_scene.png" alt="森林小屋与草地">
     </div>
-    <div class="bear-hint">实时天气联动 · 天冷了自动换上围巾耳包</div>
   </div>
    <div class="fall" id="fallBox"></div>
 
@@ -1189,7 +1193,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.6.7';
+const APP_VER='1.6.8';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
@@ -1854,11 +1858,17 @@ function applyTemp(t){
  ['lv-frozen','lv-freeze','lv-chill','lv-cool','lv-mild','lv-warm','lv-hot'].forEach(x=>box.classList.remove(x));
  box.classList.add(lv);
  const arr=SAY[lv];
- document.getElementById('heroSay').innerHTML='🦌 '+arr[Math.floor(Math.random()*arr.length)];
+ const hs=document.getElementById('heroSay'); if(hs)hs.innerHTML='🦌 '+arr[Math.floor(Math.random()*arr.length)];
  document.getElementById('wxSlider').value=t;
  document.getElementById('wxSlideV').textContent=t+'℃';
  const wb=document.getElementById('wxWear'); if(wb)wb.textContent=wearBrief(t);
  updateWxLabel();
+ const ht=document.getElementById('hwTemp'); if(ht)ht.textContent=t;
+}
+function updateHeroWeather(icon,temp,cond){
+ const hi=document.getElementById('hwIcon'); if(hi)hi.textContent=icon;
+ const ht=document.getElementById('hwTemp'); if(ht)ht.textContent=temp==null?'--':temp;
+ const hc=document.getElementById('hwCond'); if(hc){hc.textContent=cond||'--'; hc.style.display=(cond&&cond!=='--')?'inline':'none';}
 }
 function updateWxLabel(){
  const t=WX.cur; if(t==null)return;
@@ -1920,6 +1930,7 @@ async function fetchWeather(forceGPS){
   WX.src=useGPS?'gps':'live';
   const wc=WCODE[cu.weather_code]||['🌡️','—'];
   document.getElementById('wxCond').textContent=wc[0]+' '+wc[1];
+  updateHeroWeather(wc[0],t,wc[1]);
   const gust=Math.round(cu.wind_gusts_10m||0);
   document.getElementById('wxFeel').textContent=
    '体感 '+Math.round(cu.apparent_temperature)+'℃ · 风 '+Math.round(cu.wind_speed_10m)+'km/h'
@@ -1964,6 +1975,7 @@ async function fetchWeather(forceGPS){
    WX.src='cached';
    document.getElementById('wxTemp').textContent=c.temp+'℃';
    document.getElementById('wxCond').textContent=c.cond||'📦 离线数据';
+   updateHeroWeather((c.cond||'📦 离线').split(' ')[0],c.temp,(c.cond||'📦 离线').split(' ').slice(1).join(' ')||'离线');
    document.getElementById('wxFeel').textContent=(c.feel||'')+'　·　📦 离线，'+wxAgo(c.age)+'的数据';
    const ov=document.getElementById('wxOverview');
    if(ov&&c.tmax!=null){
@@ -1984,6 +1996,7 @@ async function fetchWeather(forceGPS){
   /* 连缓存都没有（首次访问就断网）→ 才用季节模拟值 */
   WX.src='sim';
   document.getElementById('wxCond').textContent='📶 网络不通';
+  updateHeroWeather('📶','--','网络不通');
   document.getElementById('wxFeel').textContent=NE.err.net[1];
   const ov=document.getElementById('wxOverview'); if(ov)ov.style.display='none';
   const al=document.getElementById('wxAlert'); if(al)al.style.display='none';
