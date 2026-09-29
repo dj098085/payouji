@@ -1193,7 +1193,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.6.8';
+const APP_VER='1.6.9';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
@@ -1924,7 +1924,12 @@ async function fetchWeather(forceGPS){
    +`&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,precipitation,relative_humidity_2m`
    +`&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max`
    +`&timezone=Asia%2FShanghai&forecast_days=1`;
-  const r=await fetch(u,{signal:AbortSignal.timeout(8000)});
+  let r;
+  if(typeof AbortSignal!=='undefined' && AbortSignal.timeout){
+   r=await fetch(u,{signal:AbortSignal.timeout(8000)});
+  }else{
+   r=await Promise.race([fetch(u),new Promise((_,reject)=>setTimeout(()=>reject(new Error('timeout')),8000))]);
+  }
   const d=await r.json();
   const cu=d.current,t=Math.round(cu.temperature_2m);
   WX.src=useGPS?'gps':'live';
