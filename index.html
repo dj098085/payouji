@@ -14,6 +14,7 @@
      manifest + apple-touch-icon 让「添加到主屏幕」有正经图标与独立窗口；
      sw.js 负责离线缓存与天气降级。三者路径均为相对，部署到子目录也不会断。 -->
 <link rel="manifest" href="./manifest.json">
+<link rel="preload" as="image" href="./hero_stage_1920.webp">
 <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 <meta name="theme-color" content="#C98B54">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,6 +48,7 @@ body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background
   box-shadow:var(--shadow);container-type:inline-size;}
 .hero.sp .hero-cabin-row{background-image:url('hero_stage_1920.webp');}
 .hero.su .hero-cabin-row{background-image:url('hero_stage_1920.webp');}
+.hero.au .hero-cabin-row{background-image:url('hero_stage_1920.webp');}
 .hero.wi .hero-cabin-row{background-image:url('hero_stage_1920.webp');}
 .cabin-col,.bears,.bears-col{display:none;}
 .hero-weather{position:absolute;top:3.3%;right:2.97%;z-index:5;display:flex;align-items:center;gap:1cqw;
@@ -234,24 +236,26 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .bear-say.on{display:block;}
 
 /* ============ 东北话气泡（21:9 舞台：按设计稿百分比定位）============ */
-.ne-wrap{position:absolute;left:2.29%;top:2.96%;width:37.5%;height:34.4%;z-index:3;display:none;}
+.ne-wrap{position:absolute;left:2.29%;top:2.96%;width:37.5%;z-index:3;display:none;}
 .ne-wrap.on{display:block;animation:nePop .28s cubic-bezier(.2,.9,.3,1.25);}
 @keyframes nePop{from{opacity:0;transform:translateY(9px) scale(.97);}to{opacity:1;transform:none;}}
-.ne-bub{width:100%;height:100%;box-sizing:border-box;display:flex;gap:1.2cqw;align-items:flex-start;
-  padding:1.2cqw 1.6cqw;position:relative;overflow:hidden;}
+.ne-bub{width:100%;box-sizing:border-box;display:flex;gap:1.2cqw;align-items:flex-start;
+  min-height:14.51cqw;padding:1.2cqw 1.6cqw 3.8cqw;position:relative;overflow:hidden;}
 /* 白色内衬：素材框内部透明，垫底保证文字可读（底边止于框线处，由 V 白三角接续） */
-.ne-bub::before{content:'';position:absolute;left:0;top:0;right:0;bottom:21.4%;z-index:0;
+.ne-bub::before{content:'';position:absolute;left:0;top:0;right:0;bottom:3.3cqw;z-index:0;
   background:linear-gradient(180deg,rgba(253,253,251,.97),rgba(242,246,236,.95));border-radius:2.4cqw;}
-/* V 尾内部白三角（与内衬同色，压在素材框线之下，口保持开着） */
-.ne-tailfill{position:absolute;top:78.6%;width:7.152%;z-index:0;pointer-events:none;}
+/* V 尾内部白三角（与内衬同色，压在素材框线之下，口保持开着；bottom 定位随内容高度自适应） */
+.ne-tailfill{position:absolute;bottom:0;width:7.152%;z-index:0;pointer-events:none;}
 .ne-tailfill svg{display:block;width:100%;height:auto;}
 .ne-wrap.who-t .ne-tailfill{left:23.48%;}
 .ne-wrap.who-g .ne-tailfill{left:69.26%;}
-/* 气泡框线 = 用户素材原图（含 V 尾描边），100% 铺满，随说话人切换 */
-.ne-frame{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background-position:center;background-size:100% 100%;background-repeat:no-repeat;}
-.ne-wrap.who-t .ne-frame{background-image:url('ne_rect_t.png');}
-.ne-wrap.who-g .ne-frame{background-image:url('ne_rect_g.png');}
+/* 气泡框线 = 用户素材原图九宫格：四角与含 V 尾的底边不变形，中间随文字高度纵向拉伸 */
+.ne-frame{position:absolute;inset:0;z-index:1;pointer-events:none;border:0 solid transparent;
+  border-width:1.2cqw 1.2cqw 4.16cqw 1.2cqw;}
+.ne-wrap.who-t .ne-frame{border-image-source:url('ne_rect_t.png');border-image-slice:30 30 104 30;
+  border-image-width:1.2cqw 1.2cqw 4.16cqw 1.2cqw;border-image-repeat:stretch;}
+.ne-wrap.who-g .ne-frame{border-image-source:url('ne_rect_g.png');border-image-slice:30 30 104 30;
+  border-image-width:1.2cqw 1.2cqw 4.16cqw 1.2cqw;border-image-repeat:stretch;}
 .ne-face{flex:0 0 3.4cqw;height:3.4cqw;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;z-index:2;
  font-size:1.9cqw;font-weight:800;color:#fff;}
 .ne-face.t{background:linear-gradient(145deg,#E0AE7C,#C98B54);}
@@ -1208,7 +1212,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.6.29';
+const APP_VER='1.6.30';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
