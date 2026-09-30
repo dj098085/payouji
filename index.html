@@ -238,22 +238,28 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .ne-wrap.on{display:block;animation:nePop .28s cubic-bezier(.2,.9,.3,1.25);}
 @keyframes nePop{from{opacity:0;transform:translateY(9px) scale(.97);}to{opacity:1;transform:none;}}
 .ne-bub{width:100%;height:100%;box-sizing:border-box;display:flex;gap:1.2cqw;align-items:flex-start;
-  background:linear-gradient(180deg,rgba(253,253,251,.95),rgba(242,246,236,.9));
-  border:max(1.2px,.32cqw) solid #A97E54;border-radius:2.4cqw;padding:1.2cqw 1.6cqw;
-  box-shadow:0 .3cqw 1.2cqw rgba(90,60,25,.08);position:relative;overflow:hidden;}
-/* V 形尾线（设计稿样式）：SVG，随说话人切换水平位置 */
-.ne-tail{position:absolute;top:calc(100% - .3cqw);width:7.85%;pointer-events:none;}
-.ne-tail svg{display:block;width:100%;height:auto;}
-.ne-wrap.who-t .ne-tail{left:23.3%;}
-.ne-wrap.who-g .ne-tail{left:67.9%;}
-.ne-face{flex:0 0 3.4cqw;height:3.4cqw;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  padding:1.2cqw 1.6cqw;position:relative;overflow:hidden;}
+/* 白色内衬：素材框内部透明，垫底保证文字可读（底边止于框线处，由 V 白三角接续） */
+.ne-bub::before{content:'';position:absolute;left:0;top:0;right:0;bottom:21.4%;z-index:0;
+  background:linear-gradient(180deg,rgba(253,253,251,.97),rgba(242,246,236,.95));border-radius:2.4cqw;}
+/* V 尾内部白三角（与内衬同色，压在素材框线之下，口保持开着） */
+.ne-tailfill{position:absolute;top:78.6%;width:7.152%;z-index:0;pointer-events:none;}
+.ne-tailfill svg{display:block;width:100%;height:auto;}
+.ne-wrap.who-t .ne-tailfill{left:23.48%;}
+.ne-wrap.who-g .ne-tailfill{left:69.26%;}
+/* 气泡框线 = 用户素材原图（含 V 尾描边），100% 铺满，随说话人切换 */
+.ne-frame{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background-position:center;background-size:100% 100%;background-repeat:no-repeat;}
+.ne-wrap.who-t .ne-frame{background-image:url('ne_rect_t.png');}
+.ne-wrap.who-g .ne-frame{background-image:url('ne_rect_g.png');}
+.ne-face{flex:0 0 3.4cqw;height:3.4cqw;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;z-index:2;
  font-size:1.9cqw;font-weight:800;color:#fff;}
 .ne-face.t{background:linear-gradient(145deg,#E0AE7C,#C98B54);}
 .ne-face.g{background:linear-gradient(145deg,#FBEBD2,#E8CFA6);color:#8A6A3A;}
-.ne-txt{flex:1;min-width:0;font-size:2.05cqw;line-height:1.45;color:var(--ink);}
+.ne-txt{flex:1;min-width:0;font-size:2.05cqw;line-height:1.45;color:var(--ink);position:relative;z-index:2;}
 .ne-txt b{color:var(--caramel-deep);}
 .ne-txt .who{font-size:1.85cqw;color:#B09877;display:block;margin-bottom:1px;}
-.ne-close{flex:0 0 auto;border:0;background:transparent;color:#C3B096;font-size:2.6cqw;cursor:pointer;padding:0 2px;line-height:1;}
+.ne-close{flex:0 0 auto;border:0;background:transparent;color:#C3B096;font-size:2.6cqw;cursor:pointer;padding:0 2px;line-height:1;position:relative;z-index:2;}
 
 /* ============ 帮我规划 ============ */
 .gen-q{margin-bottom:16px;}
@@ -490,7 +496,8 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
         <div class="ne-txt" id="neTxt"><span class="who">狍坨坨</span>下午好啊老铁，这阵儿头脑最清楚，适合规划。</div>
         <button class="ne-close" id="neClose" aria-label="关闭">✕</button>
       </div>
-      <svg class="ne-tail" viewBox="0 0 55 62"><path d="M3.5 3 L27.5 58 L51.5 3" fill="none" stroke="#A97E54" stroke-width="6" stroke-linecap="round"/></svg>
+      <svg class="ne-tailfill" viewBox="0 0 67 79"><polygon points="2.2,0 64.8,0 33.5,79" fill="#F3F6EE"/></svg>
+      <div class="ne-frame"></div>
     </div>
     <div class="bears-col">
       <div class="bears" id="bearBox">
@@ -1201,7 +1208,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.6.27';
+const APP_VER='1.6.28';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
