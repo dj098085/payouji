@@ -41,18 +41,18 @@ body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background
 .hero .sub{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.7;}
 .badge-gq{position:absolute;top:20px;right:16px;background:var(--green);color:#fff;font-size:11px;padding:4px 10px;border-radius:999px;font-weight:700;box-shadow:0 3px 8px rgba(127,168,107,.35);}
 /* hero 场景：统一天空/草地背景，两小只在前景、森林小屋在后景 */
-.hero-cabin-row{position:relative;display:flex;flex-wrap:wrap;flex-direction:column;gap:10px;margin:14px 0 4px;border-radius:20px;overflow:hidden;
+.hero-cabin-row{position:relative;display:flex;flex-wrap:wrap;flex-direction:row;align-items:stretch;gap:10px;margin:14px 0 4px;border-radius:20px;overflow:hidden;
   background-image:url('hero_ground_bg_v166_au.png');
   background-size:100% 100%;background-position:center;background-repeat:no-repeat;
-  box-shadow:var(--shadow);padding:16px 16px 14px;}
+  box-shadow:var(--shadow);padding:6px 10px 4px;}
 .hero.sp .hero-cabin-row{background-image:url('hero_ground_bg_v166_sp.png');}
 .hero.su .hero-cabin-row{background-image:url('hero_ground_bg_v166_su.png');}
 .hero.wi .hero-cabin-row{background-image:url('hero_ground_bg_v166_wi.png');}
-.cabin-col{position:relative;z-index:1;flex:1 1 auto;display:flex;align-items:flex-end;justify-content:center;max-width:480px;padding-bottom:10px;}
+.cabin-col{position:relative;z-index:1;flex:0 0 45%;display:flex;align-items:flex-end;justify-content:center;max-width:300px;padding-bottom:10px;}
 .hero-cabin{width:100%;height:auto;max-width:none;display:block;border-radius:0;box-shadow:none;}
-.bears-col{position:relative;z-index:2;flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;gap:6px;min-width:0;}
-.bears{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:2px;}
-.bears-col>.ne-wrap{flex:0 0 auto;width:100%;display:block;margin-top:0;}
+.bears-col{position:relative;z-index:2;flex:1 1 52%;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;gap:6px;min-width:0;}
+.bears{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-top:auto;}
+.bears-col>.ne-wrap{flex:0 0 auto;width:100%;display:block;margin-top:0;margin-bottom:-14px;}
 .hero-weather{position:absolute;top:12px;right:12px;z-index:5;display:flex;flex-direction:column;align-items:flex-start;background:rgba(255,253,248,.82);backdrop-filter:blur(6px);border:1px solid rgba(230,218,195,.6);border-radius:14px;padding:5px 10px;box-shadow:0 4px 12px rgba(90,60,25,.1);color:var(--caramel-deep);}
 .hero-weather .hw-main{display:flex;align-items:center;gap:4px;line-height:1;}
 .hero-weather .hw-icon{font-size:18px;}
@@ -240,18 +240,18 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 .ne-wrap.on{display:block;animation:nePop .28s cubic-bezier(.2,.9,.3,1.25);}
 @keyframes nePop{from{opacity:0;transform:translateY(9px) scale(.97);}to{opacity:1;transform:none;}}
 .ne-bub{display:flex;gap:9px;align-items:flex-start;background:#fff;border:1.5px solid #E8D5B8;
- border-radius:16px;padding:10px 12px;box-shadow:0 8px 22px rgba(90,60,25,.14);position:relative;}
+ border-radius:14px;padding:8px 10px;box-shadow:0 8px 22px rgba(90,60,25,.14);position:relative;}
 /* 气泡下方三角：单层、指向当前说话人 */
 .ne-bub::after{content:'';position:absolute;bottom:-14px;left:48px;
  border-left:10px solid transparent;border-right:10px solid transparent;border-top:14px solid #E8D5B8;}
 /* 参考图中三角固定在气泡左下角 */
 .ne-wrap.who-t .ne-bub::after{left:40px;right:auto;}
 .ne-wrap.who-g .ne-bub::after{left:40px;right:auto;}
-.ne-face{flex:0 0 34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
- font-size:17px;font-weight:800;color:#fff;}
+.ne-face{flex:0 0 30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+ font-size:15px;font-weight:800;color:#fff;}
 .ne-face.t{background:linear-gradient(145deg,#E0AE7C,#C98B54);}
 .ne-face.g{background:linear-gradient(145deg,#FBEBD2,#E8CFA6);color:#8A6A3A;}
-.ne-txt{flex:1;min-width:0;font-size:12.8px;line-height:1.66;color:var(--ink);}
+.ne-txt{flex:1;min-width:0;font-size:12px;line-height:1.5;color:var(--ink);}
 .ne-txt b{color:var(--caramel-deep);}
 .ne-txt .who{font-size:11px;color:#B09877;display:block;margin-bottom:1px;}
 .ne-close{flex:0 0 auto;border:0;background:transparent;color:#C3B096;font-size:15px;cursor:pointer;padding:0 2px;line-height:1;}
@@ -1201,7 +1201,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.6.22';
+const APP_VER='1.6.23';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
