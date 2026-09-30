@@ -58,6 +58,8 @@ body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background
 .hero-weather .hw-icon{font-size:2.6cqw;}
 .hero-weather .hw-temp{font-weight:800;font-size:2.6cqw;color:#2E2A24;}
 .hero-weather small{font-size:1.6cqw;color:#8A8378;}
+/* 四季/天气特效层：canvas 粒子（雨/雪/落叶/花瓣/光斑/雾），铺满 hero，不吃点击 */
+.hero-fx{position:absolute;inset:0;width:100%;height:100%;z-index:4;pointer-events:none;display:block;}
 .hero-weather .hw-cond{font-size:2cqw;color:#5B554B;margin-top:0;white-space:nowrap;}
 .seasonbar{display:flex;gap:8px;margin-top:14px;}
 .seasonbar button{flex:1;border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:9px 4px;font-size:12px;color:var(--ink2);cursor:pointer;font-weight:700;line-height:1.35;}
@@ -503,6 +505,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
       <svg class="ne-tailfill" viewBox="0 0 67 79"><polygon points="2.2,0 64.8,0 33.5,79" fill="#F3F6EE"/></svg>
       <div class="ne-frame"></div>
     </div>
+    <canvas class="hero-fx" id="heroFx" aria-hidden="true"></canvas>
     <div class="bears-col">
       <div class="bears" id="bearBox">
     <div class="bear-wrap b1" id="bearTT" data-skin="raw">
@@ -1212,7 +1215,7 @@ input[type=range]{width:100%;accent-color:var(--caramel);}
 </div>
 
 <script>
-const APP_VER='1.6.30';
+const APP_VER='1.6.31';
 const APP_DATE='2026-09-21';
 try{document.getElementById('appVer').textContent='V'+APP_VER;}catch(e){}
 const KEY='paoyouji_state_v2';
@@ -1810,7 +1813,7 @@ const SAY={
  'lv-warm':['嗷呜~太阳有点晒，墨镜戴上了，酷吧？','去长白山顶躲太阳，比这儿凉快 10℃！'],
  'lv-hot':['嗷呜——出汗啦！快带我去 22℃ 的森林里！','这个天气……我只想趴在树荫下当一只废狍。']
 };
-const WX={cur:null,src:'sim',placeName:'',lat:null,lon:null};
+const WX={cur:null,src:'sim',placeName:'',lat:null,lon:null,code:null};
 
 /* ===== 天气离线缓存（V1.4.4）=====
    旅行场景会真的断网（长白山、漠河、草原腹地）。原实现在 fetch 失败时直接
@@ -1884,11 +1887,159 @@ function applyTemp(t){
  updateWxLabel();
  const ht=document.getElementById('hwTemp'); if(ht)ht.textContent=t;
 }
-function updateHeroWeather(icon,temp,cond){
+function updateHeroWeather(icon,temp,cond,code){
+ /* code = open-meteo weather_code，供 hero 特效层判断雨/雪/雾/雷。null 表示没拿到，特效按季节走。 */
+ if(code!=null&&code!==undefined)WX.code=code;
  const hi=document.getElementById('hwIcon'); if(hi)hi.textContent=icon;
  const ht=document.getElementById('hwTemp'); if(ht)ht.textContent=temp==null?'--':temp;
  const hc=document.getElementById('hwCond'); if(hc){hc.textContent=cond||'--'; hc.style.display=(cond&&cond!=='--')?'inline':'none';}
 }
+/* ===== hero 四季 / 天气特效层（V1.6.31）=====
+   优先级：实时天气 weather_code（雪/雨/雷雨/雾） > 季节默认（春花瓣柳絮·夏光斑·秋落叶·冬飘雪）。
+   自足式：每 0.8s 自检一次 hero 的季节 class 与 WX.code，切季或换天气自动跟随，外部无需通知。
+   性能：DPR 上限 2；粒子数按画幅面积自适应；页面切后台停帧；prefers-reduced-motion 只画静态一帧。 */
+const FX={
+ cv:null,ctx:null,mode:'',season:'',ps:[],raf:0,w:0,h:0,dpr:1,t:0,last:0,chk:9,flash:0,nextFlash:4,
+ R:Math.random,
+ seasonOf(){
+  const m=document.getElementById('hero');
+  const s=(m&&(String(m.className).match(/\b(sp|su|au|wi)\b/)||[])[1])||S.season||'au';
+  return s;
+ },
+ modeOf(){
+  const c=WX.code;
+  if(c!=null){
+   if((c>=71&&c<=77)||(c>=85&&c<=86))return'snow';
+   if(c>=95)return'storm';
+   if((c>=51&&c<=67)||(c>=80&&c<=82))return'rain';
+   if(c===45||c===48)return'fog';
+  }
+  return {sp:'petal',su:'bokeh',au:'leaf',wi:'snow'}[this.seasonOf()]||'leaf';
+ },
+ build(){
+  const w=this.w,h=this.h,R=this.R; if(!w||!h)return;
+  const A=w*h, n=(a,b,c)=>Math.max(a,Math.min(b,Math.round(c)));
+  this.ps=[];
+  if(this.mode==='rain'||this.mode==='storm'){
+   const cnt=n(46,120,A/2600);
+   for(let i=0;i<cnt;i++)this.ps.push({x:R()*w*1.2-w*.1,y:R()*h,len:8+R()*16,sp:520+R()*380,a:.25+R()*.35,lw:.8+R()*.9});
+  }else if(this.mode==='snow'){
+   const cnt=n(40,110,A/3200);
+   for(let i=0;i<cnt;i++)this.ps.push({x:R()*w,y:R()*h,r:1.1+R()*2.2,sp:22+R()*55,sw:6+R()*18,ph:R()*6.283,a:.5+R()*.5});
+  }else if(this.mode==='leaf'){
+   const cnt=n(10,26,A/11000), cols=['#D98A3C','#C4642F','#E0A94B','#B8552C','#9AA85A'];
+   for(let i=0;i<cnt;i++)this.ps.push({c:cols[(R()*cols.length)|0],x:R()*w,y:R()*h,s:5+R()*6,rot:R()*6.283,vr:(R()-.5)*2.2,sp:26+R()*46,sw:10+R()*26,ph:R()*6.283,a:.78+R()*.22});
+  }else if(this.mode==='petal'){
+   const cnt=n(12,30,A/9500), cols=['#F7D6E0','#FFE9F0','#F3C9D8','#FFFFFF'];
+   for(let i=0;i<cnt;i++)this.ps.push({c:cols[(R()*cols.length)|0],x:R()*w,y:R()*h,s:2.6+R()*3.2,rot:R()*6.283,vr:(R()-.5)*1.8,sp:18+R()*34,sw:8+R()*22,ph:R()*6.283,a:.6+R()*.4});
+  }else if(this.mode==='bokeh'){
+   const cnt=n(8,20,A/13000);
+   for(let i=0;i<cnt;i++)this.ps.push({bokeh:1,x:R()*w,y:R()*h,r:7+R()*16,sp:5+R()*14,ph:R()*6.283,a:.09+R()*.14});
+   const m=n(6,16,A/16000);
+   for(let i=0;i<m;i++)this.ps.push({c:'#FFFFFF',x:R()*w,y:R()*h,s:2+R()*2.4,rot:R()*6.283,vr:(R()-.5)*1.4,sp:12+R()*24,sw:8+R()*18,ph:R()*6.283,a:.5+R()*.35});
+  }else if(this.mode==='fog'){
+   const cnt=4;
+   for(let i=0;i<cnt;i++)this.ps.push({x:R()*w,y:h*(.32+R()*.52),rw:w*(.55+R()*.55),rh:h*(.10+R()*.12),sp:6+R()*14,a:.05+R()*.07});
+  }
+ },
+ step(dt){
+  const w=this.w,h=this.h,t=this.t,m=this.mode;
+  if(m==='rain'||m==='storm'){
+   for(const p of this.ps){ p.y+=p.sp*dt; p.x-=p.sp*dt*.16;
+    if(p.y>h+20){p.y=-20;p.x=this.R()*w*1.2-w*.1;} }
+   if(m==='storm'){ this.nextFlash-=dt; if(this.nextFlash<=0){this.flash=.16;this.nextFlash=3.5+this.R()*6;} }
+   if(this.flash>0)this.flash-=dt;
+  }else if(m==='snow'){
+   for(const p of this.ps){ p.y+=p.sp*dt; p.x+=Math.sin(t*1.1+p.ph)*p.sw*dt;
+    if(p.y>h+6){p.y=-6;p.x=this.R()*w;} if(p.x<-6)p.x=w+6; if(p.x>w+6)p.x=-6; }
+  }else if(m==='leaf'||m==='petal'){
+   for(const p of this.ps){ p.y+=p.sp*dt; p.x+=Math.sin(t*.9+p.ph)*p.sw*dt; p.rot+=p.vr*dt;
+    if(p.y>h+12){p.y=-12;p.x=this.R()*w;} if(p.x<-12)p.x=w+12; if(p.x>w+12)p.x=-12; }
+  }else if(m==='bokeh'){
+   for(const p of this.ps){
+    if(p.bokeh){ p.y-=p.sp*dt; if(p.y<-p.r){p.y=h+p.r;p.x=this.R()*w;} }
+    else{ p.y-=p.sp*dt; p.x+=Math.sin(t*.8+p.ph)*p.sw*dt; p.rot+=p.vr*dt;
+      if(p.y<-12){p.y=h+12;p.x=this.R()*w;} }
+   }
+  }else if(m==='fog'){
+   for(const p of this.ps){ p.x+=p.sp*dt; if(p.x-p.rw/2>w)p.x=-p.rw/2-p.rw*.2; }
+  }
+ },
+ draw(){
+  const c=this.ctx,w=this.w,h=this.h,t=this.t,m=this.mode;
+  if(!c||!w||!h)return;
+  c.clearRect(0,0,w,h);
+  /* 冬季地面薄雪：只在底部 16% 渐隐，不动画面本身 */
+  if(this.seasonOf()==='wi'){ const g=c.createLinearGradient(0,h*.84,0,h);
+   g.addColorStop(0,'rgba(255,255,255,0)'); g.addColorStop(1,'rgba(255,255,255,.26)');
+   c.fillStyle=g; c.fillRect(0,h*.84,w,h*.16); }
+  if(m==='rain'||m==='storm'){
+   c.lineCap='round';
+   for(const p of this.ps){ c.strokeStyle='rgba(206,222,238,'+p.a+')'; c.lineWidth=p.lw;
+    c.beginPath(); c.moveTo(p.x,p.y); c.lineTo(p.x-p.len*.16,p.y+p.len); c.stroke(); }
+   if(this.flash>0){ c.fillStyle='rgba(255,255,255,'+Math.min(.42,this.flash*2.6)+')'; c.fillRect(0,0,w,h); }
+  }else if(m==='snow'){
+   for(const p of this.ps){ c.fillStyle='rgba(255,255,255,'+p.a+')';
+    c.beginPath(); c.arc(p.x,p.y,p.r,0,6.2832); c.fill(); }
+  }else if(m==='leaf'){
+   for(const p of this.ps){ c.save(); c.translate(p.x,p.y); c.rotate(p.rot); c.globalAlpha=p.a;
+    c.fillStyle=p.c; c.beginPath(); c.ellipse(0,0,p.s,p.s*.55,0,0,6.2832); c.fill();
+    c.strokeStyle='rgba(120,70,30,.45)'; c.lineWidth=Math.max(.6,p.s*.09);
+    c.beginPath(); c.moveTo(-p.s,0); c.lineTo(p.s,0); c.stroke(); c.restore(); }
+   c.globalAlpha=1;
+  }else if(m==='petal'||m==='bokeh'){
+   for(const p of this.ps){
+    if(p.bokeh){ const a=p.a*(.6+.4*Math.sin(t*.7+p.ph)), g=c.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);
+     g.addColorStop(0,'rgba(255,246,214,'+a+')'); g.addColorStop(1,'rgba(255,246,214,0)');
+     c.fillStyle=g; c.beginPath(); c.arc(p.x,p.y,p.r,0,6.2832); c.fill(); }
+    else{ c.save(); c.translate(p.x,p.y); c.rotate(p.rot); c.globalAlpha=p.a; c.fillStyle=p.c;
+     c.beginPath(); c.ellipse(0,0,p.s,p.s*.62,0,0,6.2832); c.fill(); c.restore(); }
+   }
+   c.globalAlpha=1;
+  }else if(m==='fog'){
+   for(const p of this.ps){ const g=c.createLinearGradient(p.x,p.y,p.x+p.rw,p.y);
+    g.addColorStop(0,'rgba(255,255,255,0)'); g.addColorStop(.5,'rgba(255,255,255,'+p.a+')');
+    g.addColorStop(1,'rgba(255,255,255,0)'); c.fillStyle=g; c.fillRect(p.x-p.rw/2,p.y-p.rh/2,p.rw,p.rh); }
+  }
+ },
+ resize(){
+  if(!this.cv)return;
+  const r=this.cv.getBoundingClientRect(); if(!r.width||!r.height)return;
+  this.dpr=Math.min(window.devicePixelRatio||1,2);
+  this.w=r.width; this.h=r.height;
+  this.cv.width=Math.round(r.width*this.dpr); this.cv.height=Math.round(r.height*this.dpr);
+  this.ctx.setTransform(this.dpr,0,0,this.dpr,0,0);
+  this.mode=this.modeOf(); this.season=this.seasonOf(); this.build();
+  /* 循环未启动（reduced-motion / 初始 w|h=0 时曾跳过绘制）也要补画一帧，否则画布空白 */
+  if(!this.raf){ this.step(0); this.draw(); }
+ },
+ start(){ if(!this.raf&&this._loop){ this.last=0; this.raf=requestAnimationFrame(this._loop); } },
+ stop(){ if(this.raf){ cancelAnimationFrame(this.raf); this.raf=0; } },
+ init(){
+  this.cv=document.getElementById('heroFx'); if(!this.cv)return;
+  this.ctx=this.cv.getContext('2d'); if(!this.ctx)return;
+  const self=this;
+  this._loop=function(ts){
+   self.raf=requestAnimationFrame(self._loop);
+   if(!self.w||!self.h){ self.resize(); }
+   const now=ts||0; if(!self.last)self.last=now;
+   let dt=(now-self.last)/1000; self.last=now;
+   if(dt>.1)dt=.1; if(dt<0)dt=0;
+   self.t+=dt; self.chk+=dt;
+   if(self.chk>.8){ self.chk=0; const m=self.modeOf(); if(m!==self.mode){ self.mode=m; self.build(); } }
+   self.step(dt); self.draw();
+  };
+  this.resize();
+  const box=this.cv.parentElement;
+  if(window.ResizeObserver&&box){ new ResizeObserver(()=>this.resize()).observe(box); }
+  else{ window.addEventListener('resize',()=>this.resize()); }
+  document.addEventListener('visibilitychange',()=>{ document.hidden?this.stop():this.start(); });
+  const rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(rm&&rm.matches){ this.step(0); this.draw(); return; }  /* 只画静态一帧 */
+  this.start();
+ }
+};
+FX.init();
 function updateWxLabel(){
  const t=WX.cur; if(t==null)return;
  document.getElementById('wxTemp').textContent=t;
@@ -1954,7 +2105,7 @@ async function fetchWeather(forceGPS){
   WX.src=useGPS?'gps':'live';
   const wc=WCODE[cu.weather_code]||['🌡️','—'];
   document.getElementById('wxCond').textContent=wc[0]+' '+wc[1];
-  updateHeroWeather(wc[0],t,wc[1]);
+  updateHeroWeather(wc[0],t,wc[1],cu.weather_code);
   const gust=Math.round(cu.wind_gusts_10m||0);
   document.getElementById('wxFeel').textContent=
    '体感 '+Math.round(cu.apparent_temperature)+'℃ · 风 '+Math.round(cu.wind_speed_10m)+'km/h'
@@ -1990,7 +2141,7 @@ async function fetchWeather(forceGPS){
   applyTemp(t);
   /* 成功拿到真实数据 → 存一份供断网回放 */
   wxSaveCache({t:Date.now(),temp:t,tmin:tmax,tmax:tmax,pprob:pprob==null?null:pprob,
-   cond:wc[0]+' '+wc[1],feel:document.getElementById('wxFeel').textContent,
+   cond:wc[0]+' '+wc[1],code:cu.weather_code,feel:document.getElementById('wxFeel').textContent,
    alerts:alerts,place:WX.placeName,src:WX.src});
  }catch(e){
   /* ===== 断网兜底：优先回放上次真实数据，其次才是季节模拟值 ===== */
@@ -1999,7 +2150,7 @@ async function fetchWeather(forceGPS){
    WX.src='cached';
    document.getElementById('wxTemp').textContent=c.temp+'℃';
    document.getElementById('wxCond').textContent=c.cond||'📦 离线数据';
-   updateHeroWeather((c.cond||'📦 离线').split(' ')[0],c.temp,(c.cond||'📦 离线').split(' ').slice(1).join(' ')||'离线');
+   updateHeroWeather((c.cond||'📦 离线').split(' ')[0],c.temp,(c.cond||'📦 离线').split(' ').slice(1).join(' ')||'离线',c.code);
    document.getElementById('wxFeel').textContent=(c.feel||'')+'　·　📦 离线，'+wxAgo(c.age)+'的数据';
    const ov=document.getElementById('wxOverview');
    if(ov&&c.tmax!=null){
